@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- SEO GOOGLE -->
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Lycus labs : Plugins for Autodesk and 3D Visualizations
+			{% endblock %}
+		</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="robots" content="index, follow, all">
+		<meta name="description" content="Lycus labs creates software and computer visualization solutions for computer graphics industry">
+		<meta name="keywords" content="Software pluggins, graphics industry, Autodesk plugins, 3d visualization, solutions technologic, Computer Sciences, Software engineer senior">
+		<script type="application/ld+json">
+
+			{
+																											            "@context": "https://schema.org",
+																											            "@type": "Organization",
+																											            "mainEntityOfPage": {
+																											                "@type": "WebPage",
+																											                "@id": "https://www.lycuslabs.com/"
+																											            },
+																											            "headline": "Lycus labs creates software and computer visualization solutions for computer graphics industry"
+																											            "image": [
+																											                "https://lycuslabs.com/Lycuslabslogo.svg"
+																											            ],
+																											            "datePublished": "2022-30-03T08:00:00+08:00",
+																											            "dateModified": "2022-30-03T09:20:00+08:00",
+																											            "author": {
+																											                "@type": "Person",
+																											                "name": "Lucile DEBUCHY",
+																											                "url": "https://www.lucile-debuchy.com/"
+																											            },
+																											            "publisher": {
+																											                "@type": "Organization",
+																											                "name": "https://www.lycuslabs.com/",
+																											                "logo": {
+																											                    "@type": "ImageObject",
+																											                    "url": "https://lycuslabs.com/Lycuslabslogo.svg" alt="Lycuslabs Logo",
+																											                }
+																											            }
+																											        }
+		</script>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
+			<link rel="stylesheet" href="{{ asset('assets/css/navbar.css')}}">
+			<link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
+		{% endblock %}
+
+		{% block javascripts %}
+			<script src="https://kit.fontawesome.com/d36e2f2546.js" crossorigin="anonymous"></script>
+			<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+			<script src="{{ asset('assets/js/nav.js') }}"></script>
+		{% endblock %}
+	</head>
+	{% block navbar %}
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">LycusLabs</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarText">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="home" href="{{ path('home') }}">Home</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Products
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li>
+									<a class="dropdown-item" href="#">Mesh Tool</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="#">Services</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Team</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Contact</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_login')}}">Login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_register')}}">Register</a>
+						</li>
+                        {% if app.user %}
+						<li class="nav-item">
+							<a class="nav-link" href="#">Profil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_logout')}}">Logout</a>
+						</li>
+                        <button class="my-button-dark position-relative">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-shopping-cart me-2"></i>
+                                    Cart
+                                </a>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    <span class="visually-hidden"></span>
+                                </span>
+                        {% endif %} 
+                         </button>
+
+                        {% if is_granted('ROLE_ADMIN') %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Admin
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+								<li class="nav-item">
+									<a class="nav-link" aria-current="allproducts" href="{{ path('product_index') }}">All Products</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" aria-current="allcategories" href="{{ path('category_index') }}">All Categories</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" aria-current="allservices" href="{{ path('services_index') }}">All Services</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" aria-current="allusers" href="#">All Users</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" haria-current="allorders" href="{{ path('order_index') }}">All Orders</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" aria-current="allteam" href="{{ path('team_index') }}">The team</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" aria-current="carouselimages" href="{{ path('carousel_index') }}">Carousel</a>
+								</li>
+							</ul>
+						</li>
+                        {% endif %}
+
+                        
+					</ul>
+
+				</div>
+			</div>
+		</html>
+	</html>
+</nav>{% endblock %}<body>
+{% block body %}{% endblock %}</body></html>

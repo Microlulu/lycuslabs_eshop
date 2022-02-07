@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order{% endblock %}
+
+{% block body %}
+    <h1>Order</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ order.id }}</td>
+            </tr>
+            <tr>
+                <th>Fullname</th>
+                <td>{{ order.fullname }}</td>
+            </tr>
+            <tr>
+                <th>Date_order</th>
+                <td>{{ order.dateOrder ? order.dateOrder|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ order.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ order.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ order.city }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ order.country }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ order.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ order.total }}</td>
+            </tr>
+            <tr>
+                <th>Vat_number</th>
+                <td>{{ order.vatNumber }}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td>{{ order.reference }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('order_index') }}">back to list</a>
+
+    <a href="{{ path('order_edit', {'id': order.id}) }}">edit</a>
+
+    {{ include('order/_delete_form.html.twig') }}
+{% endblock %}

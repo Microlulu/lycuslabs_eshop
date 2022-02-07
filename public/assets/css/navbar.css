@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap');
+
+*{margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+nav{
+    min-height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #384364 ;
+    box-shadow: 0 5px 25px rgb(0 0 0 /20%);
+}
+
+img{
+    width: 200px;
+    height: auto;
+    margin-left: 2em;
+}
+
+.nav-links{
+    display :flex;
+    justify-content: space-evenly;
+    width: 35%;
+    list-style: none;
+    /* margin-right: 2em; */
+  
+}
+
+.nav-links a{
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+/* BURGER MENU */
+
+.burger{
+    display: none;
+    cursor: pointer;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color : white;
+    margin: 5px;
+    transition : all 0.3s ease;
+}
+
+
+.nav-active{
+    transform: translateX(0%) !important;
+}
+
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform : translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.toggle .line1{
+transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+    opacity: 0;
+}
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+
+/* START BURGER MENU */
+
+/* MEDIA QUERIES */
+
+/* 320px — 480px: Mobile devices */
+@media  only screen and (min-width: 320px) and (max-width :480px){
+    body{
+        overflow-x: hidden;
+    }
+    .nav-links{
+        position : absolute;
+        right: 0px;
+        height: 92vh;
+        top : 65px;
+        background-color: #384364 ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+    .nav-links li{
+        opacity: 0;
+    }
+
+    .nav-links a{
+        font-size: 0.8em;
+    }
+    .burger{
+        display: block;
+    
+    }
+}
+
+
+/* 481px — 768px: iPads, Tablets */
+@media  only screen and (min-width: 481px) and (max-width :768px){
+    body{
+        overflow-x: hidden;
+    }
+    .nav-links{
+        position : absolute;
+        right: 0px;
+        height: 92vh;
+        top : 65px;
+        background-color: #384364 ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+    .nav-links li{
+        opacity: 0;
+    }
+    .burger{
+        display: block;
+    }
+}
+
+
+/* 769px — 1024px: Small screens, laptops */
+@media only screen and (min-width :769px) and (max-width :1024px){
+    .nav-links{
+      width : 70%;
+      
+    }
+}
+
+/* 1025px — 1200px: Desktops, large screens */
+@media only screen and (max-width: 1200px) and (min-width: 1025px)  {
+    .nav-links{
+        width : 60%;
+        
+      } 
+    }
+
+
+/* 1201px and more —  Extra large screens, TV */ 
+@media only screen and (min-width: 1201px)  {
+    .nav-links{
+        width : 50%;
+        
+      } 
+
+}
+
+/* END OF MEDIA QUERIES */
