@@ -68,6 +68,7 @@ class OrderController extends AbstractController
         ]);
     }
 
+    // cette fonction n'est appeler nulle part car l'administrateur n'est pas en mesure de supprimer une commande.
     #[Route('/order_delete{id}', name: 'order_delete', methods: ['POST'])]
     public function delete(Request $request, Order $order, EntityManagerInterface $entityManager): Response
     {

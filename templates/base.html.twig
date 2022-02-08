@@ -86,15 +86,10 @@
 						<li class="nav-item">
 							<a class="nav-link" href="#">Contact</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_login')}}">Login</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_register')}}">Register</a>
-						</li>
+						
                         {% if app.user %}
 						<li class="nav-item">
-							<a class="nav-link" href="#">Profil</a>
+							<a class="nav-link" href="{{ path('profil') }}">Profil</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('app_logout')}}">Logout</a>
@@ -107,7 +102,7 @@
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                     <span class="visually-hidden"></span>
                                 </span>
-                        {% endif %} 
+
                          </button>
 
                         {% if is_granted('ROLE_ADMIN') %}
@@ -126,7 +121,7 @@
 									<a class="nav-link" aria-current="allservices" href="{{ path('services_index') }}">All Services</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" aria-current="allusers" href="#">All Users</a>
+									<a class="nav-link" aria-current="allusers" href="{{ path('services_index') }}">All Users</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" haria-current="allorders" href="{{ path('order_index') }}">All Orders</a>
@@ -140,6 +135,15 @@
 							</ul>
 						</li>
                         {% endif %}
+						{% else %}
+								<li class="nav-item">
+									<a class="nav-link" aria-current="login" href="{{ path('app_login') }}">Login</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" aria-current="register" href="{{ path('app_register') }}">Register</a>
+								</li>
+
+							{% endif %}
 
                         
 					</ul>

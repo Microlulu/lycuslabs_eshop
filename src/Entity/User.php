@@ -55,8 +55,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $deletedat;
 
-    #[ORM\Column(type: 'boolean')]
-    private $delete_user;
 
     /**
      * @ORM\Column(type="boolean")
@@ -256,18 +254,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDeletedat(?string $deletedat): self
     {
         $this->deletedat = $deletedat;
-
-        return $this;
-    }
-
-    public function getDeleteUser(): ?bool
-    {
-        return $this->delete_user;
-    }
-
-    public function setDeleteUser(bool $delete_user): self
-    {
-        $this->delete_user = $delete_user;
 
         return $this;
     }

@@ -21,7 +21,6 @@ class UserType extends AbstractType
             ->add('telephone')
             ->add('createdat')
             ->add('deletedat')
-            ->add('delete_user')
             ->add('password')
             ->add('email')
         ;

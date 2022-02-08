@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BuyActionController!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<p>Firstname:
+					{{ app.user.firstname }}</p>
+				<p>Lastname:
+					{{ app.user.lastname }}</p>
+				<hr>
+				<h5>Delivery adresse :</h5>
+				<p>{{ adresse.adresse}}</p>
+				<p>Zipcode :{{ adresse.zipcode}}</p>
+				<p>City :
+					{{ adresse.city}}</p>
+				<p>Country :
+					{{ adresse.country}}</p>
+				<a class="btn btn-success mt-5" href="{{ path('change_adresse_delivery') }}">Change adresse</a>
+				<a class="btn btn-success mt-5" href="{{ path('order_cart') }}">Confirm</a>
+			</div>
+			<div class="col-6">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Image</th>
+							<th scope="col">Name</th>
+							<th scope="col">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						{% for item in panier %}
+							<tr>
+								<td><img src="{{ asset('images/products/' ~ item['product'].image) }}" alt="{{ item['shortcut']}}" style="width:80px"></td>
+								<td>{{  item['product'].title }}</td>
+								<td>{{ item ['total'] }}
+									€</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<h5>Total of your cart :
+					{{ totalCart }}</h5>
+
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

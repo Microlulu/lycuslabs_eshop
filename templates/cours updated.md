@@ -34,13 +34,13 @@ Mandy Ibéné - 2022/01/17
     - [Ajouter les méthodes (connexion/déconnexion, inscription)](#ajouter-les-méthodes-connexiondéconnexion-inscription)
       - [Connexion et déconnexion](#connexion-et-déconnexion)
       - [Inscription](#inscription)
-        - [La fonction *is_granted*](#la-fonction-is_granted)
-    - [Access control](#access-control)
+        - [La fonction *is_granted* et l'access_control de security.yaml](#la-fonction-is_granted-et-laccess_control-de-securityyaml)
   - [Le fichier services.yaml](#le-fichier-servicesyaml)
+  - [Configurer le Mailer DSN avec Mailjet](#configurer-le-mailer-dsn-avec-mailjet)
+  - [Le reset password](#le-reset-password)
   - [Ajouter Booststrap](#ajouter-booststrap)
     - [Mettre en forme les formulaires](#mettre-en-forme-les-formulaires)
-    - [Supprimer des photos de la BDD lorsque qu'elle ne sont pas utilisées](#supprimer-des-photos-de-la-bdd-lorsque-quelle-ne-sont-pas-utilisées)
-    - [Pour faire un reset password](#pour-faire-un-reset-password)
+
 
 <!-- ____________________________________________________________________ -->
 
@@ -54,8 +54,6 @@ ou en utilisant le CLI de Symfony :
 
     symfony new my_project --webapp --version=5.3
 
-Il demande pendant l'installation si on veux installer Doker (pas necessaire si pas de demande particulières)
---> no
 
 ## Lancer un serveur
 
@@ -178,9 +176,9 @@ Bien sûr on n'oubli pas de mettre à jour la base :
 
     symfony console doctrine:schema:update --force
 
-Si il y a une erreur lors de la mise à jour c'est plus que probable que cela vienne des articles déjà présents dans la base de données. En effet, puisqu'on a décidé que la propriété user ne peut pas être nulle, alors les articles déjà présents dans la bdd posent problème parce qu'il n'ont pas de user associé, la valeur est donc nulle.
+S'il y a une erreur lors de la mise à jour c'est plus que probable que cela vienne des articles déjà présents dans la base de données. En effet, puisqu'on a décidé que la propriété user ne peut pas être nulle, alors les articles déjà présents dans la bdd posent problème parce qu'il n'ont pas de user associé, la valeur est donc nulle.
 
-Dans phpmyadmin, on peut constater que la propriété user est une clé secondaire. Pour chaque artlce, la valeur de user correspond à l'id d'un utilisateur, id qui est la clé primaire de l'utilisateur dans la table user.
+Dans phpmyadmin, on peut constater que la propriété user est une clé secondaire. Pour chaque article, la valeur de user correspond à l'id d'un utilisateur, id qui est la clé primaire de l'utilisateur dans la table user.
 
 
 Pas besoin de champ user dans le formulaire de création d'article puisque c'est l'utilisateur connecté qui sera automatiquement associé à l'article, on ne lui laisse pas le choix. Mais imaginons que se soit une propriété categorie que l'on est rajouté à article et que cette dernière créé une relation avec une table categorie, on remarquera que le champs categorie n'a pas été ajouté dans le formulaire de création d'article. C'est à nous de le faire manuellement. il faut donc ajouter dans le fichier ArticleType.php situé dans /src/Form/ la ligne :
@@ -203,7 +201,7 @@ Pour créer automatiquement le controller d'une entité (dans /src/Controller), 
 
 Il faut entrer la commande :
 
-     symfony console make:form category Category
+    symfony console make:form category Category
 
 Le "category" correspond au nom du formulaire, "Category" correspond au nom de la classe à laquelle est lié le formulaire (ne pas oublier la majuscule).
 
@@ -434,8 +432,6 @@ Pour créer le formulaire d'inscription, il faut entrer la commande :
 
     symfony console make:registration-form
 
-Il faut ensuite faire quelques paramétrages :
-
     Do you want to add a @UniqueEntity validation annotation on your User class to make sure duplicate accounts aren't created? (yes/no) [yes]:
     >
 
@@ -444,6 +440,9 @@ Il faut ensuite faire quelques paramétrages :
 
     Do you want to automatically authenticate the user after registration? (yes/no) [yes]:
     >
+
+Si on a configurer Mailjet, on peut si on le souhaite répondre yes à la seconde question, cependant ça impliquera de ne pas donner de mail bidon quand on créera de nouveaux utilisateurs.
+
 
 Dans le fichier /src/Form/RegistrationFormType.php, on ajoute sous :
 
@@ -481,7 +480,7 @@ Pour ajouter le rôle d'administrateur à un utilisateur, via phpmyadmin, dans l
 écrit exacetement comme ceci. 
 
 
-##### La fonction *is_granted*
+##### La fonction *is_granted* et l'access_control de security.yaml
 
 Les rôles servent à limiter l'affichage et les actions. On peut notamment les utilisé avec la fonction twig *is_granted*. Cette dernière permet de vérifier le rôle de l'utilisateur. Par exemple on rentre dans la condition if suivante :
 
@@ -491,30 +490,36 @@ Les rôles servent à limiter l'affichage et les actions. On peut notamment les 
 
 si l'utilisateur connecté est un administrateur.
 
-### Access control
+Cependant, à ce stade, si un utilisateur connaît l'url d'une page, il peut toujours y accéder via la barre d'adresse du navigateur. C'est pourquoi dans le fichier security.yaml situé dans /config/package/ on décommente la ligne :
 
-ajouter l'Acces control dans notre fichier permettant la création d'un projet Symfony. l'ajouter après la 9ème étape ! 
+    # - { path: ^/admin, roles: ROLE_ADMIN }
 
-1)  Acces control :
-    Dans le fichier security.yaml (config/packages) décommenter la ligne , bien respecter les espaces au debut:
-    access_control:
-    "{ path: ^/admin, roles: ROLE_ADMIN }" 
+situé sous access_control :
 
-On creer ensuite un dossier Admin dans les Controllers et on y place tout les controllers dont seuls l'admin sera concerner (ex : Categories, Images, Produits...)
- (donc: ProduitController.php, CategoryController.php,...)
+     access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
 
-    Dans chacun des controllers du dossier "Admin":
-    Il faut ensuite changer les namespaces des fichiers comme ceci :
-        2) Ajouter "\Admin" dans le namespace (à la fin de la ligne)
-        ex : namespace App\Controller\Admin;
+<font color="yellow">⚠ Attention à l'indentation ! ⚠</font>
 
-        3) Ajouter "admin/" dans l'annotation de la class au début de l'URI 
-        (ex: #[Route('/produit')] devient #[Route('/admin/produit')]
+Dans le dossier /src/Controller il faut ensuite créer un dossier Admin, puis y déplacer tous les controller qui concerne l'administration. **Pour tous ces controllers**, il faut d'abord changer le namespace. Ainsi cette ligne :
 
-autres exemples :
-ex : #[Route('/admin/images')]
-ex : #[Route('/admin/category')]
-ex : #[Route('/admin/produit')]
+    namespace App\Controller;
+
+est donc modifiée en :
+
+    namespace App\Controller\Admin;
+
+Il faut aussi changer le routage. Pour ce faire, il faut changer la ligne située juste avant la déclaration de classe. Par exemple si le controller se nomme CategoryController.php, on peut repérer ces lignes dans le fichier :
+
+    #[Route('/category')]
+    class CategoryController extends AbstractController
+    {
+        ...
+
+il faut ajouter /admin dans la route, comme ceci :
+
+    #[Route('/admin/category')]
 
 <!-- ____________________________________________________________________ -->
 
@@ -526,6 +531,82 @@ Lorsque des constantes sont utilisées plusieurs fois dans le projet de manière
         upload_dir: '%kernel.project_dir%/public/images/'
 
 Dans un controller, pour atteindre cette constante, il suffit de faire $this->getParameter('upload_dir').
+
+<!-- ____________________________________________________________________ -->
+
+## Configurer le Mailer DSN avec Mailjet
+
+Créer un compte sur Mailjet. Aller dans les préférences de compte puis dans "REST API" cliquer sur "Gestion de la clé API principale et des sous-clés".
+
+Dans le terminal de VSCode, entrer la commande :
+
+    composer require symfony/mailjet-mailer
+
+Cela rajoute des lignes dans le fichier *.env*. Décommenter la ligne :
+
+    # MAILER_DSN=mailjet+api://PUBLIC_KEY:PRIVATE_KEY@api.mailjet.com
+
+Puis remplacer PUBLIC_KEY par la CLÉ API de Mailjet et PRIVATE_KEY par la CLÉ SECRÈTE.
+
+<!-- ____________________________________________________________________ -->
+
+## Le reset password
+
+Il faut avoir configurer le Mailer DSN pour pouvoir continuer ([Configurer le Mailer DSN avec Mailjet](#configurer-le-mailer-dsn-avec-mailjet)).
+
+
+Si ce n'est pas déjà fait, il faut télécharger le Reset Password Feature via composer :
+
+    composer require symfonycasts/reset-password-bundle
+
+
+On peut ensuite rentrer la commande suivante pour ajouter la feature au projet :
+    
+    symfony console make:reset-password
+
+    > home
+
+    > [mail utilisé pour s'inscrire sur Mailjet]
+
+    > Ride Your Way Support
+
+Mailjet va utiliser la boîte mail utilisée pour s'inscrire dessus pour envoyer des mail. Il utilisera "Ride Your Way Support" comme nom d'expéditeur.
+
+Entre autres, la commande ci-dessus va créer une entité ResetPasswordRequest.php et son repository ResetPasswordRequestRepository.php, un ResetPasswordController.php, un ChangePasswordFormType.php et un ResetPasswordRequestFormType.php, dans /templates/ le dossier reset_password avec les vues.
+
+
+Il faut ensuite mettre la jour la base de données, afin de créer la table reset_password_request liée à l'entité ResetPasswordRequest :
+
+    symfony console doctrine:schema:update --force
+
+
+Il faut ensuite ajouter un lien dans la vue security/login.html.twig vers la méthode pour le reset password :
+
+    <a class="link-info my-a-ommit" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
+
+
+Créer un compte (sur le projet symfony) avec une vraie adresse mail, une pour laquelle on pourra ouvrir la boîte de réception (ne pas utiliser la même adresse que celle utilisée pour l'inscription à Mailjet !).
+
+
+Sur la page de login, cliquer sur Mot de passe oublié ? puis entrer le mail du compte créé précédement. Si tout va bien, un mail est reçu dans la boîte de réception. 
+
+Cliquer sur le lien donné (le copier/coller semble poser problème donc à éviter, par ailleurs si le mail a été reçu dans les spam, le déplacer vers la boîte principale parce que le clique peut ne potentiellement pas marché tant qu'il est dans les spam).
+
+Changer le mot de passe et vérifier que le changement a bien été pris en compte en essayant de se connecter avec le nouveau mot de passe.
+
+
+Si le mail n'a pas été reçu dans la boîte de réception (principale et spam) alors il se peut que les anciens test posent problème. Aller dans la base de données phpMyAdmin. Dans la table reset_password_request, supprimer toutes les entrées (il se peut que puisque les anciens liens ne sont pas expirés alors quelque chose empêche de renvoyer un nouveau mail). Après ça, réessayer le reset.
+
+Si ça ne marche toujours pas, aller dans l'onglet "Stats" de Mailjet (en haut, dans la barre de navigation) pour vérifier si un mail a bien été envoyé, si c'est le cas alors : 
+- soit l'adresse mail indiquée pour l'envoi du mail de reset n'existe pas (vérifier l'orthographe)
+- soit la boîte mail existe mais la boîte de réception est pleine / le nom de domaine (orange, ...) n'est pas supporté (et dans ce cas utilisé une autre adresse qui n'utilise pas ce nom de domaine) / le service de messagerie est inactif / ...
+- soit ¯\_(ツ)_/¯
+
+Cependant si on constate qu'aucun mail n'a été envoyé, alors le problème vient très sûrment de la configuration du Mailer DSN. Bien vérifié que dans le fichier *.env*, la ligne du  :
+
+    MAILER_DSN=mailjet+api://PUBLIC_KEY:PRIVATE_KEY@api.mailjet.com
+
+suis bien ce pattern et que PUBLIC_KEY et PRIVATE_KEY ont été remplacé correctement ([Configurer le Mailer DSN avec Mailjet](#configurer-le-mailer-dsn-avec-mailjet)).
 
 <!-- ____________________________________________________________________ -->
 
@@ -557,83 +638,3 @@ on peut venir ajouter (au même niveau d'indentation) :
 
     form_themes: ['bootstrap_4_layout.html.twig']
 
-### Supprimer des photos de la BDD lorsque qu'elle ne sont pas utilisées
-
-Il faut utiliser la fonction unlink()
-il faut modifier dans l'edit et dans la delete :
-Afin de dire a la BDD si on édit et que la photo est remplacée et n'est plus utilisée: ne la garde pas, supprime la.
-Si on la supprime de notre article ou fiche produit : ne la garde pas, supprime la.
-
-Comme ceci :
-
-  #[Route('/{id}/edit', name: 'images_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Images $image, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(ImagesType::class, $image);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('images_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('images/edit.html.twig', [
-            'image' => $image,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'images_delete', methods: ['GET'])]
-    public function delete(Request $request, Images $image, EntityManagerInterface $entityManager): Response
-    {
-        
-            $entityManager->remove($image);
-            $entityManager->flush();
-            $filename = $this->getParameter('upload_dir_produits') . $image->getImgname();
-           
-            if(file_exists($filename)){
-                unlink($filename);
-            }
-            
-
-            $id = $image->getProduit()->getId();
-
-        return $this->redirectToRoute('produit_show', ['id' => $id ], Response::HTTP_SEE_OTHER);
-    }
-}
-
-
-### Pour faire un reset password
-Dans le terminal : composer require symfonycasts/reset-password-bundle
-
-ensuite on fait :
-symfony console make:reset-password
-
-on reponds a la question :
- What route should users be redirected to after their password has been successfully reset? [app_home]: 
- > home
-
-
-
- What email address will be used to send reset confirmations? e.g. mailer@your-domain.com:   
- > lucile.debuchy@gmail.com
- je mets l'adresse du support technique c'est mieux : (il faut que ca soit une boite mail a laquelle j'ai accès)
- ex : support@lycuslabs.com
-
- What "name" should be associated with that email address? e.g. "Acme Mail Bot":
- > support
-
- ensuite on va sur le fichier .env
- et on change la ligne MAILER_DSN comme ceci :
- > MAILER_DSN=mailjet+api://660154336e069c57eac663b5adc88507:f08b2ed854cff0922a2f66c4420b6aba@api.mailjet.com
- (pour mailjet on prends la clé public que l'on mets avant les :
- et on prends la clé privé que l'on place apres les : comme ci dessus)
-
-
- au peut utiliser yopmail pour faire nos tests si ca ne fonctionne pas.
- on creer une adresse bidon qui n'est pas utilisé, et on peux s'envoyez un mail pour vérifier si ca fonctionne.
-
- on n'oublie pas de rajouter dans les templates > security > login un lien a href
- pour afficher la page reset password !
- ex :   <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié?</a>

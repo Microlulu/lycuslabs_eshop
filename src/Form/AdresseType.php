@@ -21,7 +21,7 @@ class AdresseType extends AbstractType
             ->add('country')
             ->add('telephone')
             ->add('vat_number')
-            ->add('user_id')
+            
         ;
     }
 

@@ -44,6 +44,9 @@ class Adresse
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $vat_number;
 
+    #[ORM\Column(type: 'boolean')]
+    private $delivery;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -165,6 +168,18 @@ class Adresse
     public function setVatNumber(?string $vat_number): self
     {
         $this->vat_number = $vat_number;
+
+        return $this;
+    }
+
+    public function getDelivery(): ?bool
+    {
+        return $this->delivery;
+    }
+
+    public function setDelivery(bool $delivery): self
+    {
+        $this->delivery = $delivery;
 
         return $this;
     }

@@ -14,14 +14,21 @@ class ProductType extends AbstractType
         $builder
             ->add('title')
             ->add('shortcut')
-            ->add('description')
+            ->add('description', TextareaType::class,['label'=> 'Description of the product'])
             ->add('price')
-            ->add('image')
-            ->add('createdat')
-            ->add('deletedat')
-            ->add('updatedat')
-            ->add('category_id')
-            ->add('voucher')
+            ->add('image',FileType::class,[
+                'label'=> 'Upload an image',
+                'required' => false,
+                'data_class'=>null
+            ])
+            ->add('category_id', EntityType::class, [
+                'class'=> Category::class,
+                'choice_label'=>'name'
+            ])
+            ->add('voucher', CheckboxType::class, [
+                'label'=> "En promotion",
+                'required' => false,
+            ])
         ;
     }
 

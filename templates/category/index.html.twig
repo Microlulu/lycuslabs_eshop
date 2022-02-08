@@ -3,8 +3,8 @@
 {% block title %}Category index{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
-
+    <h1>All categories</h1>
+<div class="container">
     <table class="table">
         <thead>
             <tr>
@@ -25,8 +25,8 @@
                 <td>{{ category.deletedat ? category.deletedat|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ category.updatedat ? category.updatedat|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+                    <a href="{{ path('category_show', {'id': category.id}) }}"><i class="far fa-eye">show</i></a>
+                    <a href="{{ path('category_edit', {'id': category.id}) }}"><i class="far fa-edit">edit</i></a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('category_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('category_new') }}">Create new</a>
+</div>
 {% endblock %}

@@ -22,6 +22,9 @@ class Carousel
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $text;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $shortcut;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Carousel
     public function setText(?string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getShortcut(): ?string
+    {
+        return $this->shortcut;
+    }
+
+    public function setShortcut(string $shortcut): self
+    {
+        $this->shortcut = $shortcut;
 
         return $this;
     }

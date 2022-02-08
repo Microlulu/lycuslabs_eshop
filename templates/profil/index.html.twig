@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<h1>Hello
+			{{ app.user.prenom }}!</h1>
+
+		<div class="container mt-5">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-7">
+					<div class="card p-3 py-4">
+						<div class="text-center mt-3">
+							<h5 class="mt-2 mb-0">{{ app.user.firstname ~ ' ' ~ app.user.lastname }}</h5>
+							<div class="px-4 mt-1">
+
+								<p>{{ app.user.email }}</p>
+								<p>
+									Adresse :
+									<br>
+								   {{ app.user.adresse }}</p>
+								<p>{{ app.user.zipcode ~ ' ' ~ app.user.city }}</p>
+								<p>{{ app.user.country }}</p>
+							</div>
+								<a aria-current="adresse_index" class="btn btn-secondary" href="{{ path('adresse_index') }}">Update my adresse</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+{% if not is_granted('ROLE_ADMIN') %}
+		<div class="card mt-10 p-3 py-4">
+			<div class="text-center">
+				<h4>A probleme,
+					{{ app.user.firstname }}
+					?</h4>
+			</div>
+
+			{# <a aria-current="contact" class="btn btn-secondary" href="{{ path('new_contact') }}">Contact</a> #}
+
+		</div>
+{% endblock %}

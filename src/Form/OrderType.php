@@ -13,16 +13,15 @@ class OrderType extends AbstractType
     {
         $builder
             ->add('fullname')
-            ->add('date_order')
+            ->add('vat_number')
             ->add('adresse')
             ->add('zipcode')
             ->add('city')
             ->add('country')
             ->add('telephone')
             ->add('total')
-            ->add('vat_number')
-            ->add('reference')
-            ->add('user_id')
+
+
         ;
     }
 

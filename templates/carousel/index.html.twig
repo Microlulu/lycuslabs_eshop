@@ -12,19 +12,19 @@
                 <th>Image</th>
                 <th>Title</th>
                 <th>Text</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for carousel in carousels %}
             <tr>
                 <td>{{ carousel.id }}</td>
-                <td>{{ carousel.image }}</td>
+                 <td><img src="{{ asset('images/carousel/'~ carousel.image )}}" alt="{{ carousel.shortcut}}" style="width:200px"></td>
                 <td>{{ carousel.title }}</td>
                 <td>{{ carousel.text }}</td>
                 <td>
-                    <a href="{{ path('carousel_show', {'id': carousel.id}) }}">show</a>
-                    <a href="{{ path('carousel_edit', {'id': carousel.id}) }}">edit</a>
+                    <a href="{{ path('carousel_show', {'id': carousel.id}) }}"><i class="far fa-eye">show</i></a>
+                    <a href="{{ path('carousel_edit', {'id': carousel.id}) }}"><i class="far fa-edit"> edit</i></a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('carousel_new') }}">Create new</a>
+    <a class="btn btn-secondary" href="{{ path('carousel_new') }}">Create new</a>
 {% endblock %}

@@ -14,9 +14,12 @@ class TeamType extends AbstractType
         $builder
             ->add('firstname')
             ->add('lastname')
-            ->add('photo')
+            ->add('photo', FileType::class, [
+                'data_class' => null,
+                'required' => false,
+                'label'=> 'uplaod a photo of a member'])
             ->add('job')
-            ->add('description')
+            ->add('description', TextareaType::class,['label'=> 'Description of the member'])
         ;
     }
 
