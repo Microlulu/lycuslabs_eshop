@@ -87,12 +87,6 @@ class TeamController extends AbstractController
              $photo_new_name = uniqid() . '.' . $photo->guessExtension();
              // je déplace la photo vers mon serveur
              $photo->move(
-                 //Premier argument : l'emplacement de la photo
-                 $this->getParameter('upload_dir_team'),
-                 //Deuxieme argument : le nouveau nom de la photo
-                 $photo_new_name
-             );
-             $photo->move(
                  //Premier argument : l'emplacement de l'a photo
                  $this->getParameter('upload_dir_team'),
                  //Deuxieme argument : le nouveau nom de la photo

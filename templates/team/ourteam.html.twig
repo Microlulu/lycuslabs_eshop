@@ -1,0 +1,20 @@
+ {% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+ 
+ 
+ 
+ <div class="container marketing">
+{% for member in team %}
+        <div class="row">
+          <div class="col-lg-4">
+          <img style="width:140px; height:140px"src="{{ asset('images/produits/' ~ member.photo )}}"  class="rounded-circle" alt="{{ member.shortcut }}" ></td>
+            <h2>{{ member.firstname ~ mamber.lastname}}</h2>
+            <h6>{{ member.job }}</h6>
+            <p>{{ member.description }}</p>
+          </div>
+          {% endfor %}
+        </div>
+{% endblock %}

@@ -28,6 +28,9 @@ class Team
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $shortcut;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class Team
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getShortcut(): ?string
+    {
+        return $this->shortcut;
+    }
+
+    public function setShortcut(string $shortcut): self
+    {
+        $this->shortcut = $shortcut;
 
         return $this;
     }

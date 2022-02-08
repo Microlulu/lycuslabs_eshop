@@ -35,7 +35,7 @@ class AdresseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $adresse->setUser($user);
+            $adresse->setUserId($user);
             $adresse->setDelivery(false);
             $entityManager->persist($adresse);
             $entityManager->flush();

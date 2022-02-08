@@ -34,7 +34,7 @@ class ProfilController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             // j'ajoute dès la table adresse une adresse de livraison par defaut
-            $adresse_final->setUser($this->getUser());
+            $adresse_final->setUserId($this->getUser());
             $adresse_final->setFirstname($form->get('firstname')->getData());
             $adresse_final->setLastname($form->get('lastname')->getData());
             $adresse_final->setAdresse($form->get('adresse')->getData());

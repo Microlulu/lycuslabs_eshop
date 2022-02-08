@@ -50,6 +50,7 @@ class OrderController extends AbstractController
         ]);
     }
 
+    // cette fonction n'est appeler nulle part 
     #[Route('/{id}/order_edit', name: 'order_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Order $order, EntityManagerInterface $entityManager): Response
     {
@@ -68,7 +69,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    // cette fonction n'est appeler nulle part car l'administrateur n'est pas en mesure de supprimer une commande.
+    // cette fonction n'est appeler nulle part 
     #[Route('/order_delete{id}', name: 'order_delete', methods: ['POST'])]
     public function delete(Request $request, Order $order, EntityManagerInterface $entityManager): Response
     {

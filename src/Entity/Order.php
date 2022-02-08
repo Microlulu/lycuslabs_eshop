@@ -53,6 +53,9 @@ class Order
     #[ORM\OneToMany(mappedBy: 'order_id', targetEntity: DetailOrder::class, orphanRemoval: true)]
     private $detailOrders;
 
+    #[ORM\Column(type: 'boolean')]
+    private $delivery;
+
     public function __construct()
     {
         $this->detailOrders = new ArrayCollection();
@@ -221,6 +224,18 @@ class Order
                 $detailOrder->setOrderId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDelivery(): ?bool
+    {
+        return $this->delivery;
+    }
+
+    public function setDelivery(bool $delivery): self
+    {
+        $this->delivery = $delivery;
 
         return $this;
     }
