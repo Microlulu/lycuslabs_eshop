@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voucher index
+{% endblock %}
+
+{% block body %}
+	<h1>Voucher index</h1>
+    <p>Explications :</p>
+	{% for message in app.flashes('message') %}
+		<div class="alert alert-warning">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Discount</th>
+				<th>Name</th>
+				<th>Date_start</th>
+				<th>Date_end</th>
+				<th>Couponcode</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for voucher in vouchers %}
+				<tr>
+					<td>{{ voucher.id }}</td>
+					<td>{{ voucher.discount }}</td>
+					<td>{{ voucher.name }}</td>
+					<td>{{ voucher.dateStart ? voucher.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ voucher.dateEnd ? voucher.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ voucher.couponcode }}</td>
+					<td>
+						<a href="{{ path('voucher_show', {'id': voucher.id}) }}">
+							<i class="far fa-eye">
+								show</i>
+						</a>
+						<a href="{{ path('voucher_edit', {'id': voucher.id}) }}">
+							<i class="far fa-edit">
+								edit</i>
+						</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a class="btn btn-primary" href="{{ path('voucher_new') }}">Create new</a>
+{% endblock %}

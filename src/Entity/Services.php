@@ -30,6 +30,9 @@ class Services
     #[ORM\OneToMany(mappedBy: 'service_id', targetEntity: ImagesServices::class, orphanRemoval: true)]
     private $imagesServices;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $shortcut;
+
     public function __construct()
     {
         $this->imagesServices = new ArrayCollection();
@@ -114,6 +117,18 @@ class Services
                 $imagesService->setServiceId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getShortcut(): ?string
+    {
+        return $this->shortcut;
+    }
+
+    public function setShortcut(string $shortcut): self
+    {
+        $this->shortcut = $shortcut;
 
         return $this;
     }

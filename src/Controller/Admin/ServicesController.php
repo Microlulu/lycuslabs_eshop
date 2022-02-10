@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Services;
 use App\Form\ServicesType;
+use App\Repository\ProductRepository;
 use App\Repository\ServicesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,15 +15,16 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/services')]
 class ServicesController extends AbstractController
 {
-    #[Route('/', name: 'services_index', methods: ['GET'])]
-    public function index(ServicesRepository $servicesRepository): Response
+    #[Route('/services_index', name: 'services_index', methods: ['GET'])]
+    public function index(ProductRepository $productRepository, ServicesRepository $servicesRepository): Response
     {
         return $this->render('services/index.html.twig', [
             'services' => $servicesRepository->findAll(),
+            'list_product' => $productRepository->findAll(),
         ]);
     }
 
-    #[Route('/new_service', name: 'service_new', methods: ['GET', 'POST'])]
+    #[Route('/service_new', name: 'service_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $service = new Services();
@@ -90,12 +92,7 @@ class ServicesController extends AbstractController
                     //Deuxieme argument : le nouveau nom de l'image
                     $image_new_name
                 );
-                $image->move(
-                    //Premier argument : l'emplacement de l'image
-                    $this->getParameter('upload_dir_services'),
-                    //Deuxieme argument : le nouveau nom de l'image
-                    $image_new_name
-                );
+                
                 //je verifie si il y'a déjà une image uploader pour ce service
                 $filename = $this->getParameter('upload_dir_services') . $old_name_image;
                 if (file_exists($filename)) {
@@ -118,7 +115,7 @@ class ServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/service_delete{id}', name: 'service_delete', methods: ['POST'])]
+    #[Route('/services_delete{id}', name: 'services_delete', methods: ['POST'])]
     public function delete(Request $request, Services $service, EntityManagerInterface $entityManager): Response
     {
         $entityManager->remove($service);
@@ -130,4 +127,13 @@ class ServicesController extends AbstractController
         }
         return $this->redirectToRoute('services_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/our_services', name: 'our_services', methods: ['GET'])]
+    public function OurServices(ServicesRepository $servicesRepository): Response
+    {
+        return $this->render('services/ourservices.html.twig', [
+            'services' => $servicesRepository->findAll(),
+        ]);
+    }
+    
 }

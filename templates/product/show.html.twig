@@ -24,31 +24,32 @@
                 <td>{{ product.description }}</td>
             </tr>
             <tr>
+                <th>Additional Description</th>
+                <td>{{ product.descriptionadd }}</td>
+            </tr>
+            <tr>
                 <th>Price</th>
-                <td>{{ product.price }}</td>
+                <td>{{ product.price }} €</td>
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ product.image }}</td>
+                <td><img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.shortcut }}" style="width:200px"></td>
             </tr>
             <tr>
                 <th>Createdat</th>
                 <td>{{ product.createdat ? product.createdat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Deletedat</th>
-                <td>{{ product.deletedat ? product.deletedat|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
                 <th>Updatedat</th>
                 <td>{{ product.updatedat ? product.updatedat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+
         </tbody>
     </table>
 
-    <a href="{{ path('product_index') }}">back to list</a>
-
-    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+    <a class="btn btn-secondary" href="{{ path('product_index') }}">back to list</a>
+  
+    <a class="btn btn-primary" href="{{ path('product_edit', {'id': product.id}) }}"><i class="far fa-edit"> Edit</i></a>
 
     {{ include('product/_delete_form.html.twig') }}
 {% endblock %}

@@ -24,13 +24,13 @@
                 <td>{{ member.id }}</td>
                 <td>{{ member.firstname }}</td>
                 <td>{{ member.lastname }}</td>
-                 <td><img src="{{ asset('images/team/' ~ member.photo) }}" alt="{{ member.shortcut }}" style="width:80px"></td>
+                <td><img src="{{ asset('images/team/' ~ member.photo) }}" alt="{{ member.shortcut }}" style="width:80px"></td>
                 <td>{{ member.shortcut }}</td>
                 <td>{{ member.job }}</td>
                 <td>{{ member.description |length > 100 ? member.description|slice(0, 100) ~ '...' : member.description }}</td>
                 <td>
-                    <a href="{{ path('team_show', {'id': member.id}) }}">show</a>
-                    <a href="{{ path('team_edit', {'id': member.id}) }}">edit</a>
+                    <a href="{{ path('team_show', {'id': member.id}) }}"><i class="far fa-eyes"> show</i></a>
+                    <a href="{{ path('team_edit', {'id': member.id}) }}"><i class="far fa-edit"> edit</i></a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('team_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('team_new') }}">Create new</a>
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Classes\Cart;
 use App\Entity\Adresse;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,13 +14,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProfilController extends AbstractController
 {
     #[Route('/profil', name: 'profil')]
-    public function index(Cart $cart, Request $request, EntityManagerInterface $entityManager): Response
+    public function index(Cart $cart, Request $request, ProductRepository $productRepository, EntityManagerInterface $entityManager): Response
     {
         $user =$this->getUser();
         
         return $this->render('profil/index.html.twig', [
             'user' => $user,
-            'itemsInCart'=> $cart->getCountCart()
+            'items_cart'=> $cart->getCountCart(),
+            'list_product' => $productRepository->findAll(),
         ]);
     }
 

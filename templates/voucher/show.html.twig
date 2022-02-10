@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voucher{% endblock %}
+
+{% block body %}
+    <h1>Voucher</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ voucher.id }}</td>
+            </tr>
+            <tr>
+                <th>Discount</th>
+                <td>{{ voucher.discount }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ voucher.name }}</td>
+            </tr>
+            <tr>
+                <th>Date_start</th>
+                <td>{{ voucher.dateStart ? voucher.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_end</th>
+                <td>{{ voucher.dateEnd ? voucher.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Couponcode</th>
+                <td>{{ voucher.couponcode }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary" href="{{ path('voucher_index') }}">back to list</a>
+<br>
+    <a class="btn btn-primary" href="{{ path('voucher_edit', {'id': voucher.id}) }}"><i class="far fa-edit"> edit</i></a>
+
+    {{ include('voucher/_delete_form.html.twig') }}
+{% endblock %}

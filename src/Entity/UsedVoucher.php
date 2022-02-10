@@ -16,11 +16,11 @@ class UsedVoucher
     #[ORM\Column(type: 'datetime')]
     private $usedate;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'usedVouchers')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'usedVouchers')]
     #[ORM\JoinColumn(nullable: false)]
     private $user_id;
 
-    #[ORM\ManyToOne(targetEntity: voucher::class, inversedBy: 'usedVouchers')]
+    #[ORM\ManyToOne(targetEntity: Voucher::class, inversedBy: 'usedVouchers')]
     #[ORM\JoinColumn(nullable: false)]
     private $voucher_id;
 
@@ -41,24 +41,24 @@ class UsedVoucher
         return $this;
     }
 
-    public function getUserId(): ?user
+    public function getUserId(): ?User
     {
         return $this->user_id;
     }
 
-    public function setUserId(?user $user_id): self
+    public function setUserId(?User $user_id): self
     {
         $this->user_id = $user_id;
 
         return $this;
     }
 
-    public function getVoucherId(): ?voucher
+    public function getVoucherId(): ?Voucher
     {
         return $this->voucher_id;
     }
 
-    public function setVoucherId(?voucher $voucher_id): self
+    public function setVoucherId(?Voucher $voucher_id): self
     {
         $this->voucher_id = $voucher_id;
 

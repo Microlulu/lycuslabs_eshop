@@ -124,4 +124,14 @@ class TeamController extends AbstractController
 
         return $this->redirectToRoute('team_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    #[Route('/team_members', name: 'team_members', methods: ['GET'])]
+    public function TeamMembers(TeamRepository $teamRepository): Response
+    {
+        return $this->render('team/ourteam.html.twig', [
+            'teams' => $teamRepository->findAll(),
+        ]);
+    }
+    
 }

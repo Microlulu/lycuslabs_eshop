@@ -30,7 +30,7 @@ class Voucher
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $couponcode;
 
-    #[ORM\OneToMany(mappedBy: 'voucher', targetEntity: product::class)]
+    #[ORM\OneToMany(mappedBy: 'voucher', targetEntity: Product::class)]
     private $product_id;
 
     #[ORM\OneToMany(mappedBy: 'voucher_id', targetEntity: UsedVoucher::class)]
@@ -108,14 +108,14 @@ class Voucher
     }
 
     /**
-     * @return Collection|product[]
+     * @return Collection|Product[]
      */
     public function getProductId(): Collection
     {
         return $this->product_id;
     }
 
-    public function addProductId(product $productId): self
+    public function addProductId(Product $productId): self
     {
         if (!$this->product_id->contains($productId)) {
             $this->product_id[] = $productId;
@@ -125,7 +125,7 @@ class Voucher
         return $this;
     }
 
-    public function removeProductId(product $productId): self
+    public function removeProductId(Product $productId): self
     {
         if ($this->product_id->removeElement($productId)) {
             // set the owning side to null (unless already changed)
@@ -165,5 +165,10 @@ class Voucher
         }
 
         return $this;
+    }
+
+
+    public function __tostring(){
+        return $this->discount;
     }
 }

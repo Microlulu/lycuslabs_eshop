@@ -13,7 +13,7 @@ class Messages
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'messages')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'messages')]
     #[ORM\JoinColumn(nullable: false)]
     private $user_id;
 
@@ -31,12 +31,12 @@ class Messages
         return $this->id;
     }
 
-    public function getUserId(): ?user
+    public function getUserId(): ?User
     {
         return $this->user_id;
     }
 
-    public function setUserId(?user $user_id): self
+    public function setUserId(?User $user_id): self
     {
         $this->user_id = $user_id;
 

@@ -2,14 +2,16 @@
 
 namespace App\Controller\Admin;
 
+use DateTime;
 use App\Entity\Product;
+use App\Entity\Category;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/product')]
 class ProductController extends AbstractController
@@ -48,6 +50,10 @@ class ProductController extends AbstractController
             }
             // j'enregitre l'image dans la BDD avec le nouveau nom
             $product->setImage($image_new_name);
+
+            // je set la date du jour
+            $date_e = new DateTime();
+            $product->setCreatedat($date_e);
 
             $entityManager->persist($product);
             $entityManager->flush();
@@ -103,6 +109,10 @@ class ProductController extends AbstractController
             // j'enregitre l'image dans la BDD avec le nouveau nom
             $product->setImage($image_new_name);
 
+            // si je modifie mon produit, je set la date du jour dans le champ updatedat de ma BDD
+            $date_e = new DateTime();
+            $product->setUpdatedat($date_e);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
@@ -118,6 +128,10 @@ class ProductController extends AbstractController
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+            // si je supprime ma categorie, je set la date du jour dans le champ updatedat de ma BDD
+            $date_e = new DateTime();
+            $product->setDeletedat($date_e);
+
             $entityManager->remove($product);
             $entityManager->flush();
         }
@@ -130,4 +144,6 @@ class ProductController extends AbstractController
         }
         return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }

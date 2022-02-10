@@ -3,12 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Product;
+use App\Entity\Voucher;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ProductType extends AbstractType
@@ -19,6 +20,7 @@ class ProductType extends AbstractType
             ->add('title')
             ->add('shortcut')
             ->add('description', TextareaType::class,['label'=> 'Description of the product'])
+            ->add('descriptionadd', TextareaType::class,['label'=> 'Additionnal information of the product'])
             ->add('price')
             ->add('image',FileType::class,[
                 'label'=> 'Upload an image',
@@ -29,8 +31,10 @@ class ProductType extends AbstractType
                 'class'=> Category::class,
                 'choice_label'=>'name'
             ])
-            ->add('voucher', CheckboxType::class, [
-                'label'=> "En promotion",
+            ->add('voucher', EntityType::class, [
+                'label'=> "discount",
+                'class'=> Voucher::class,
+                'choice_name'=> "discount",
                 'required' => false,
             ])
         ;

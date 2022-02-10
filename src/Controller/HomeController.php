@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Classes\Cart;
+use App\Entity\Product;
 use App\Repository\ProductRepository;
 use App\Repository\CarouselRepository;
 use App\Repository\CategoryRepository;
@@ -23,7 +24,17 @@ class HomeController extends AbstractController
             'carousel'=>$carouselRepository->findAll(),
             'services'=>$servicesRepository->findAll(),
             'category' => $categoryRepository->findAll(),
-            'itemsInCart'=> $cart->getCountCart()
+            'items_cart'=> $cart->getCountCart()
+        ]);
+    }
+
+    
+    #[Route('/ourproduct{id}', name: 'our_products', methods: ['GET'])]
+    public function showEachProduct(Product $product, ProductRepository $productRepository): Response
+    {
+        return $this->render('home/ourproducts.html.twig', [
+            'product' => $product,
+            'list_product' => $productRepository->findAll(),
         ]);
     }
 }

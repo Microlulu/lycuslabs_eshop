@@ -15,32 +15,32 @@
 		<script type="application/ld+json">
 
 			{
-																											            "@context": "https://schema.org",
-																											            "@type": "Organization",
-																											            "mainEntityOfPage": {
-																											                "@type": "WebPage",
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"mainEntityOfPage": {
+			    "@type": "WebPage",
 																											                "@id": "https://www.lycuslabs.com/"
-																											            },
-																											            "headline": "Lycus labs creates software and computer visualization solutions for computer graphics industry"
-																											            "image": [
-																											                "https://lycuslabs.com/Lycuslabslogo.svg"
-																											            ],
-																											            "datePublished": "2022-30-03T08:00:00+08:00",
-																											            "dateModified": "2022-30-03T09:20:00+08:00",
-																											            "author": {
-																											                "@type": "Person",
-																											                "name": "Lucile DEBUCHY",
-																											                "url": "https://www.lucile-debuchy.com/"
-																											            },
-																											            "publisher": {
-																											                "@type": "Organization",
-																											                "name": "https://www.lycuslabs.com/",
-																											                "logo": {
-																											                    "@type": "ImageObject",
-																											                    "url": "https://lycuslabs.com/Lycuslabslogo.svg" alt="Lycuslabs Logo",
-																											                }
-																											            }
-																											        }
+			},
+			"headline": "Lycus labs creates software and computer visualization solutions for computer graphics industry"
+			"image": [
+			"https://lycuslabs.com/Lycuslabslogo.svg"
+			],
+			"datePublished": "2022-30-03T08:00:00+08:00",
+			"dateModified": "2022-30-03T09:20:00+08:00",
+			"author": {
+			    "@type": "Person",
+			    "name": "Lucile DEBUCHY",
+			    "url": "https://www.lucile-debuchy.com/"
+			},
+			"publisher": {
+			    "@type": "Organization",
+			    "name": "https://www.lycuslabs.com/",
+			    "logo": {
+				    "@type": "ImageObject",
+				    "url": "https://lycuslabs.com/Lycuslabslogo.svg" alt="Lycuslabs Logo",
+					}
+				}
+			}
 		</script>
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
@@ -48,11 +48,7 @@
 			<link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
 		{% endblock %}
 
-		{% block javascripts %}
-			<script src="https://kit.fontawesome.com/d36e2f2546.js" crossorigin="anonymous"></script>
-			<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-			<script src="{{ asset('assets/js/nav.js') }}"></script>
-		{% endblock %}
+
 	</head>
 	{% block navbar %}
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -67,18 +63,24 @@
 							<a class="nav-link active" aria-current="home" href="{{ path('home') }}">Home</a>
 						</li>
 						<li class="nav-item dropdown">
+						
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								Products
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							{% if list_product is defined %}
+							{% for item in list_product %}
 								<li>
-									<a class="dropdown-item" href="#">Mesh Tool</a>
+									<a class="dropdown-item" href="{{ path('our_products', {'id' : item.id} ) }}">{{ item.title }}</a>
 								</li>
+							{% endfor %}
+							{% endif %}
+
 							</ul>
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="#">Services</a>
+							<a class="nav-link" href="{{ path('our_services') }}">Services</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('team_members') }}">Team</a>
@@ -95,7 +97,7 @@
 							<a class="nav-link" href="{{ path('app_logout')}}">Logout</a>
 						</li>
                         <button class="my-button-dark position-relative">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ path('buy_action') }}">
                                     <i class="fas fa-shopping-cart me-2"></i>
                                     Cart
                                 </a>
@@ -132,7 +134,11 @@
 								<li class="nav-item">
 									<a class="nav-link" aria-current="carouselimages" href="{{ path('carousel_index') }}">Carousel</a>
 								</li>
+								<li class="nav-item">
+									<a class="nav-link" aria-current="carouselimages" href="{{ path('voucher_index') }}">Create Discount</a>
+								</li>
 							</ul>
+							
 						</li>
                         {% endif %}
 						{% else %}
@@ -153,4 +159,13 @@
 		</html>
 	</html>
 </nav>{% endblock %}<body>
-{% block body %}{% endblock %}</body></html>
+{% block body %}
+{% endblock %}
+		{% block javascripts %}
+			<script src="https://kit.fontawesome.com/d36e2f2546.js" crossorigin="anonymous"></script>
+			<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+			<script src="{{ asset('assets/js/nav.js') }}"></script>
+		{% endblock %}
+</body>
+
+</html>

@@ -23,7 +23,7 @@
                 <td>{{ carousel.title }}</td>
                 <td>{{ carousel.text }}</td>
                 <td>
-                    <a href="{{ path('carousel_show', {'id': carousel.id}) }}"><i class="far fa-eye">show</i></a>
+                    <a href="{{ path('carousel_show', {'id': carousel.id}) }}"><i class="far fa-eye"> show</i></a>
                     <a href="{{ path('carousel_edit', {'id': carousel.id}) }}"><i class="far fa-edit"> edit</i></a>
                 </td>
             </tr>
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-secondary" href="{{ path('carousel_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('carousel_new') }}">Create new</a>
 {% endblock %}

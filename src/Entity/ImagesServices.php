@@ -19,7 +19,7 @@ class ImagesServices
     #[ORM\Column(type: 'string', length: 255)]
     private $alt;
 
-    #[ORM\ManyToOne(targetEntity: services::class, inversedBy: 'imagesServices')]
+    #[ORM\ManyToOne(targetEntity: Services::class, inversedBy: 'imagesServices')]
     #[ORM\JoinColumn(nullable: false)]
     private $service_id;
 
@@ -52,12 +52,12 @@ class ImagesServices
         return $this;
     }
 
-    public function getServiceId(): ?services
+    public function getServiceId(): ?Services
     {
         return $this->service_id;
     }
 
-    public function setServiceId(?services $service_id): self
+    public function setServiceId(?Services $service_id): self
     {
         $this->service_id = $service_id;
 

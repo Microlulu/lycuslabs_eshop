@@ -18,11 +18,13 @@ class BuyActionController extends AbstractController
         $user=$this->getUser();
         // je verifie que le user a bien renseigner son adresse
         // sinon je renvoie vers la methode qui change l'adresse
-        if(!$user->getAdresse()){
-            return $this->redirectToRoute('change_adresse_profil');
-        }
+
+        // if(!$user->getAdresse()){
+        //     return $this->redirectToRoute('change_adresse_profil');
+        // }
+
         // je reccupere l'adresse finale de "livraison" par default
-        $adresse_final = $adresseRepository ->findOneBy(['user' => $this->getUser()]);
+        $adresse_final = $adresseRepository ->findOneBy(['user_id' => $this->getUser()]);
         // si il trouve une adresse avec true a la livraison elle passe sur la vue
         if($adresse_final){
             $adresse = $adresse_final;

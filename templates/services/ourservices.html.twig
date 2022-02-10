@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HomeController!{% endblock %}
+
+{% block body %}
+
+
+
+
+
+			<!-- START OF THE SERVICES -->
+
+			<hr class="featurette-divider">
+			<div class=" mt-5 ">
+				<div class="justify-content-center row">
+					{% for item in services %}
+						<article class="col-10 btn-toolbar d-flex">
+							{% if loop.index0 is even %}
+								{{ include ("services/service_template_1.html.twig") }}
+							{% else %}
+								{{ include ("services/service_template_2.html.twig") }}
+							{% endif %}
+						</article>
+					{% endfor %}
+				</div>
+
+
+				<!-- /END OF THE SERVICES -->
+{% endblock %}

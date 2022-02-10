@@ -39,7 +39,7 @@ class Product
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $updatedat;
 
-    #[ORM\ManyToOne(targetEntity: category::class, inversedBy: 'products')]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private $category_id;
 
@@ -48,6 +48,9 @@ class Product
 
     #[ORM\ManyToOne(targetEntity: Voucher::class, inversedBy: 'product_id')]
     private $voucher;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $descriptionadd;
 
     public function __construct()
     {
@@ -112,7 +115,7 @@ class Product
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -155,12 +158,12 @@ class Product
         return $this;
     }
 
-    public function getCategoryId(): ?category
+    public function getCategoryId(): ?Category
     {
         return $this->category_id;
     }
 
-    public function setCategoryId(?category $category_id): self
+    public function setCategoryId(?Category $category_id): self
     {
         $this->category_id = $category_id;
 
@@ -205,6 +208,18 @@ class Product
     public function setVoucher(?Voucher $voucher): self
     {
         $this->voucher = $voucher;
+
+        return $this;
+    }
+
+    public function getDescriptionadd(): ?string
+    {
+        return $this->descriptionadd;
+    }
+
+    public function setDescriptionadd(?string $descriptionadd): self
+    {
+        $this->descriptionadd = $descriptionadd;
 
         return $this;
     }

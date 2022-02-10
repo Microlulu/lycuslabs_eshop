@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use App\Entity\Adresse;
 use App\Form\AdresseType;
 use App\Repository\AdresseRepository;
@@ -17,11 +16,12 @@ class AdresseController extends AbstractController
     #[Route('/adresse_index', name: 'adresse_index', methods: ['GET'])]
     public function index(AdresseRepository $adresseRepository): Response
     {
+        // vu admin
         // je recupere l'utilisateur pour pouvoir voir toutes les infos en relation avec cet utilisateurs
-        // si je ne le fais pas je vois toutes les infos de tout le monde.
+        // si je ne le fais pas je vois toutes les adresses de tout le monde.
         $user=$this->getUser();
         return $this->render('adresse/index.html.twig', [
-            'adresses' => $adresseRepository->findBy(['user' => $user]),
+            'adresses' => $adresseRepository->findBy(['user_id' => $user]),
         ]);
     }
 
@@ -92,7 +92,7 @@ class AdresseController extends AbstractController
         // je recupere l'utilisateur pour pouvoir voir tout les adresses qu'il a enregistrer
         // si je ne le fais pas je vois toutes les adresses de tout le monde
         $user = $this->getUser();
-        $adresses = $adresseRepository->findBy(['user' => $user]);
+        $adresses = $adresseRepository->findBy(['user_id' => $user]);
         // je lui dis compte le nombre d'adresses presente dans la bdd
         if(count($adresses) == 0){
             // si il yen a pas je lui dis va en creer une
@@ -100,7 +100,7 @@ class AdresseController extends AbstractController
         }
             // si oui je l'envoie vers la liste de ces adresses
         return $this->render('adresse/index.html.twig', [
-            'adresses' => $adresseRepository->findBy(['user' => $user]),
+            'adresses' => $adresseRepository->findBy(['user_id' => $user]),
         ]);
     }
 
@@ -109,7 +109,7 @@ class AdresseController extends AbstractController
     {
         $user =$this->getUser();
         // je reccupere la liste des adresses de livraison de l'user connecté
-        $list_adresses = $adresseRepository->findBy(['user' => $user]);
+        $list_adresses = $adresseRepository->findBy(['user_id' => $user]);
         foreach($list_adresses as $row){
             // je passe toutes ses adresses en false
             $row->setDelivery(false);
@@ -127,5 +127,5 @@ class AdresseController extends AbstractController
         ]);
     }
 
-
+    
 }

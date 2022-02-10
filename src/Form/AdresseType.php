@@ -15,12 +15,13 @@ class AdresseType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('company')
+            ->add('vat_number')
             ->add('adresse')
             ->add('zipcode')
             ->add('city')
             ->add('country')
             ->add('telephone')
-            ->add('vat_number')
+ 
             
         ;
     }

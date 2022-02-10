@@ -1,0 +1,12 @@
+
+	<article class="col-18 my-4 d-flex">
+           <div class="d-flex flex-column py-3 px-4">
+		<h3>{{ item.title }}</h3>
+		<h5 class="text-success">{{ item.subtitle }}</h5>
+		<p class="lead">{{ item.text }}</p>
+		</div>
+		
+        <img class= "rounded" src="{{ asset('images/services/' ~ item.image) }}" alt="{{ item.shortcut}}" style="width:500px">
+
+
+	</article>

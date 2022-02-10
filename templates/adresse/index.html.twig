@@ -1,52 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Adresse index{% endblock %}
+{% block title %}Adresse index
+{% endblock %}
 
 {% block body %}
-    <h1>Adresse index</h1>
+	<h1>All Users'adresses :
+	</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Company</th>
-                <th>Adresse</th>
-                <th>Zipcode</th>
-                <th>City</th>
-                <th>Country</th>
-                <th>Telephone</th>
-                <th>Vat_number</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for adresse in adresses %}
-            <tr>
-                <td>{{ adresse.id }}</td>
-                <td>{{ adresse.firstname }}</td>
-                <td>{{ adresse.lastname }}</td>
-                <td>{{ adresse.company }}</td>
-                <td>{{ adresse.adresse }}</td>
-                <td>{{ adresse.zipcode }}</td>
-                <td>{{ adresse.city }}</td>
-                <td>{{ adresse.country }}</td>
-                <td>{{ adresse.telephone }}</td>
-                <td>{{ adresse.vatNumber }}</td>
-                <td>
-                    <a href="{{ path('adresse_show', {'id': adresse.id}) }}">show</a>
-                    <a href="{{ path('adresse_edit', {'id': adresse.id}) }}">edit</a>
-                     <a href="{{ path('select_adresse_delivery', {'id': adresse.id}) }}">Select</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Company</th>
+				<th>Vat_number</th>
+				<th>Adresse</th>
+				<th>Zipcode</th>
+				<th>City</th>
+				<th>Country</th>
+				<th>Telephone</th>
 
-    <a href="{{ path('adresse_new') }}">Create new</a>
+			</tr>
+		</thead>
+		<tbody>
+			{% for adresse in adresses %}
+				<tr>
+					<td>{{ adresse.id }}</td>
+					<td>{{ adresse.firstname }}</td>
+					<td>{{ adresse.lastname }}</td>
+					<td>{{ adresse.company }}</td>
+					<td>{{ adresse.vatNumber }}</td>
+					<td>{{ adresse.adresse }}</td>
+					<td>{{ adresse.zipcode }}</td>
+					<td>{{ adresse.city }}</td>
+					<td>{{ adresse.country }}</td>
+					<td>{{ adresse.telephone }}</td>
+
+					<td>
+						<a href="{{ path('adresse_show', {'id': adresse.id}) }}">
+							<i class="far fa-eye">
+								Show</i>
+						</a>
+					</td>
+					<td></td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="11">There is no addresses registered yet !</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
 {% endblock %}

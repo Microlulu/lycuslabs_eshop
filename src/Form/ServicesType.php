@@ -19,6 +19,7 @@ class ServicesType extends AbstractType
                 'label'=> 'Upload an image'])
             ->add('title')
             ->add('subtitle')
+            ->add('shortcut')
             ->add('text')
         ;
     }

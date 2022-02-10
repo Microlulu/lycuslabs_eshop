@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Voucher{% endblock %}
+
+{% block body %}
+    <h1>Create new Voucher</h1>
+
+    {{ include('voucher/_form.html.twig') }}
+
+    <a class="btn btn-secondary" href="{{ path('voucher_index') }}">back to list</a>
+{% endblock %}

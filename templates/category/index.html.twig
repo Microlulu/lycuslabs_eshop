@@ -11,7 +11,6 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Createdat</th>
-                <th>Deletedat</th>
                 <th>Updatedat</th>
                 <th>actions</th>
             </tr>
@@ -22,11 +21,10 @@
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
                 <td>{{ category.createdat ? category.createdat|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ category.deletedat ? category.deletedat|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ category.updatedat ? category.updatedat|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}"><i class="far fa-eye">show</i></a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}"><i class="far fa-edit">edit</i></a>
+                    <a href="{{ path('category_show', {'id': category.id}) }}"><i class="far fa-eye"> show</i></a>
+                    <a href="{{ path('category_edit', {'id': category.id}) }}"><i class="far fa-edit"> edit</i></a>
                 </td>
             </tr>
         {% else %}

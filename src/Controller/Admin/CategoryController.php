@@ -2,14 +2,15 @@
 
 namespace App\Controller\Admin;
 
+use DateTime;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/category')]
 class CategoryController extends AbstractController
@@ -30,6 +31,10 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // je set la date du jour
+            $date_e = new DateTime();
+            $category->setCreatedat($date_e);
+
             $entityManager->persist($category);
             $entityManager->flush();
 
@@ -57,6 +62,11 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // si je modifie ma categorie, je set la date du jour dans le champ updatedat de ma BDD
+            $date_e = new DateTime();
+            $category->setUpdatedat($date_e);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
@@ -71,7 +81,11 @@ class CategoryController extends AbstractController
     #[Route('/category_delete{id}', name: 'category_delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
+            // si je supprime ma categorie, je set la date du jour dans le champ updatedat de ma BDD
+            $date_e = new DateTime();
+            $category->setDeletedat($date_e);
+            
             $entityManager->remove($category);
             $entityManager->flush();
         }

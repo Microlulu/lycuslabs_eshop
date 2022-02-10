@@ -25,7 +25,7 @@ class CarouselController extends AbstractController
     #[Route('/new_carousel', name: 'carousel_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        // je creer un nouvel objet carousel
+        // je creer un nouvel objet Carousel
         $carousel = new Carousel();
         $form = $this->createForm(CarouselType::class, $carousel);
         $form->handleRequest($request);
@@ -50,7 +50,7 @@ class CarouselController extends AbstractController
                  return $this->redirectToRoute('caroussel_new', [], Response::HTTP_SEE_OTHER);
                 }
  
-             $carousel->setImage($image_new_name);
+            $carousel->setImage($image_new_name);
             $entityManager->persist($carousel);
             $entityManager->flush();
 
@@ -87,12 +87,6 @@ class CarouselController extends AbstractController
                  // je creer un nom unique pour l'image
              $image_new_name = uniqid() . '.' . $image->guessExtension();
              // je déplace l'image vers mon serveur
-             $image->move(
-                 //Premier argument : l'emplacement de l'image
-                 $this->getParameter('upload_dir_carousel'),
-                 //Deuxieme argument : le nouveau nom de l'image
-                 $image_new_name
-             );
              $image->move(
                  //Premier argument : l'emplacement de l'image
                  $this->getParameter('upload_dir_carousel'),

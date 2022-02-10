@@ -3,7 +3,7 @@
 {% block title %}Category{% endblock %}
 
 {% block body %}
-    <h1>Category : : {{ category.name }}</h1>
+    <h1>Category : {{ category.name }}</h1>
 
     <table class="table">
         <tbody>
@@ -20,19 +20,15 @@
                 <td>{{ category.createdat ? category.createdat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Deletedat</th>
-                <td>{{ category.deletedat ? category.deletedat|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
                 <th>Updatedat</th>
                 <td>{{ category.updatedat ? category.updatedat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('category_index') }}">back to list</a>
-
-    <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id}) }}"><i class="far fa-edit">edit</i></a>
+    <a class="btn btn-secondary" href="{{ path('category_index') }}">back to list</a>
+    
+    <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id}) }}"><i class="far fa-edit"> edit</i></a>
 
     {{ include('category/_delete_form.html.twig') }}
 {% endblock %}

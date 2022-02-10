@@ -3,7 +3,7 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <h1>All Users - index</h1>
 
     <table class="table">
         <thead>
@@ -11,7 +11,6 @@
                 <th>Id</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>Password</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Adresse</th>
@@ -28,7 +27,6 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
                 <td>{{ user.firstname }}</td>
                 <td>{{ user.lastname }}</td>
                 <td>{{ user.adresse }}</td>
@@ -37,8 +35,7 @@
                 <td>{{ user.country }}</td>
                 <td>{{ user.telephone }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('user_show', {'id': user.id}) }}"><i class="far fa-eye"> show</i></a>
                 </td>
             </tr>
         {% else %}
@@ -49,5 +46,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('user_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('user_new') }}">Create new</a>
 {% endblock %}

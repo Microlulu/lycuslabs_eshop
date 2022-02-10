@@ -17,6 +17,7 @@ class CarouselType extends AbstractType
                 'data_class' => null,
                 'required' => false,
                 'label'=> 'Upload an image'])
+            ->add('shortcut')
             ->add('title')
             ->add('text')
         ;

@@ -16,7 +16,7 @@ class ImagesProduct
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[ORM\ManyToOne(targetEntity: product::class, inversedBy: 'imagesProducts')]
+    #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'imagesProducts')]
     #[ORM\JoinColumn(nullable: false)]
     private $product_id;
 
@@ -40,12 +40,12 @@ class ImagesProduct
         return $this;
     }
 
-    public function getProductId(): ?product
+    public function getProductId(): ?Product
     {
         return $this->product_id;
     }
 
-    public function setProductId(?product $product_id): self
+    public function setProductId(?Product $product_id): self
     {
         $this->product_id = $product_id;
 
