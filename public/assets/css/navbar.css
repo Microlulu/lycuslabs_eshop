@@ -38,6 +38,37 @@ img{
     font-size: 17px;
 }
 
+/* DEBUT DU DROPDOWN */
+.dropdown{
+    position: relative;
+}
+.dropdown + .link:focus,
+.link:hover{
+    color: white;
+}
+
+.dropdown-menu{
+    position:absolute;
+    left: 0;
+    top: calc(100% + 0.25rem);
+    background-color: #5f6885;
+    padding: .75rem;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.1);
+    opacity: 0;
+    /* pointer-events none permet que je n'ai pas de probleme si je veux cliquer sur mon lien et que le css et par dessus 
+    ca annule toutes reactions avec la souris*/
+    pointer-events: none;
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+    transform: translateY(-10px);
+} 
+
+.dropdown> .link:focus + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
 /* BURGER MENU */
 
 .burger{
@@ -114,6 +145,8 @@ transform: rotate(-45deg) translate(-5px,6px);
         display: block;
     
     }
+
+
 }
 
 

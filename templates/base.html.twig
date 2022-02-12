@@ -44,13 +44,16 @@
 		</script>
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
-			<link rel="stylesheet" href="{{ asset('assets/css/navbar.css')}}">
-			<link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
+			{# <link rel="stylesheet" href="{{ asset('assets/css/navbar.css')}}"> #}
+			{# <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}"> #}
 		{% endblock %}
 
 
 	</head>
+
 	{% block navbar %}
+	 
+	{# debut de la nav bar principal #}
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#">LycusLabs</a>
@@ -67,14 +70,7 @@
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								Products
 							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							{% if list_product is defined %}
-							{% for item in list_product %}
-								<li>
-									<a class="dropdown-item" href="{{ path('our_products', {'id' : item.id} ) }}">{{ item.title }}</a>
-								</li>
-							{% endfor %}
-							{% endif %}
+							<ul id="listsProducts" class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 							</ul>
 						</li>
@@ -86,7 +82,7 @@
 							<a class="nav-link" href="{{ path('team_members') }}">Team</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Contact</a>
+							<a class="nav-link" href="{{ path('contact') }}">Contact</a>
 						</li>
 						
                         {% if app.user %}
@@ -96,6 +92,7 @@
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('app_logout')}}">Logout</a>
 						</li>
+				
                         <button class="my-button-dark position-relative">
                                 <a class="nav-link" href="{{ path('buy_action') }}">
                                     <i class="fas fa-shopping-cart me-2"></i>
@@ -164,7 +161,23 @@
 		{% block javascripts %}
 			<script src="https://kit.fontawesome.com/d36e2f2546.js" crossorigin="anonymous"></script>
 			<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-			<script src="{{ asset('assets/js/nav.js') }}"></script>
+			<script>
+					fetch('/api/products')
+					.then(response => {
+						return response.json()
+					})
+					.then(products => {
+						const listElement = document.getElementById("listsProducts");
+						// je cree un text vide et je dit dans ma boucle += qui veut dire ajoute mais ne supprime pas l'ancien produit
+						var text = ""
+						for(index in products) {
+							text += "<li class='nav-item'>"+
+								"<a class='nav-link' href='/ourproduct/"+products[index].id+"'>"+products[index].title+"</a>"+
+							"</li>"
+						}
+						listElement.innerHTML = text
+					});
+			</script>
 		{% endblock %}
 </body>
 

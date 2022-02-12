@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Services;
 use App\Form\ServicesType;
-use App\Repository\ProductRepository;
 use App\Repository\ServicesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,11 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class ServicesController extends AbstractController
 {
     #[Route('/services_index', name: 'services_index', methods: ['GET'])]
-    public function index(ProductRepository $productRepository, ServicesRepository $servicesRepository): Response
+    public function index(ServicesRepository $servicesRepository): Response
     {
         return $this->render('services/index.html.twig', [
             'services' => $servicesRepository->findAll(),
-            'list_product' => $productRepository->findAll(),
+
         ]);
     }
 
@@ -59,6 +58,7 @@ class ServicesController extends AbstractController
         return $this->renderForm('services/new.html.twig', [
             'service' => $service,
             'form' => $form,
+
         ]);
     }
 
@@ -67,6 +67,7 @@ class ServicesController extends AbstractController
     {
         return $this->render('services/show.html.twig', [
             'service' => $service,
+
         ]);
     }
 
@@ -112,6 +113,7 @@ class ServicesController extends AbstractController
         return $this->renderForm('services/edit.html.twig', [
             'service' => $service,
             'form' => $form,
+
         ]);
     }
 
@@ -133,6 +135,7 @@ class ServicesController extends AbstractController
     {
         return $this->render('services/ourservices.html.twig', [
             'services' => $servicesRepository->findAll(),
+
         ]);
     }
     

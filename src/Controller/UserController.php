@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Controller\Admin\ProductController;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,15 +17,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     #[Route('/user_index', name: 'user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
+    public function index(ProductRepository $productRepository,UserRepository $userRepository): Response
     {
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
+              // je rajoute cette ligne dans toutes mes vues publiques et privées pour pouvoir voir le bouton dynamique qui contient la boucle des produits
+              'list_product' => $productRepository->findAll(),
         ]);
     }
 
     #[Route('/new_user', name: 'user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, ProductRepository $productRepository): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -39,19 +43,23 @@ class UserController extends AbstractController
         return $this->renderForm('user/new.html.twig', [
             'user' => $user,
             'form' => $form,
+              // je rajoute cette ligne dans toutes mes vues publiques  et privées pour pouvoir voir le bouton dynamique qui contient la boucle des produits
+              'list_product' => $productRepository->findAll(),
         ]);
     }
 
     #[Route('/user_show{id}', name: 'user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user, ProductRepository $productRepository): Response
     {
         return $this->render('user/show.html.twig', [
             'user' => $user,
+              // je rajoute cette ligne dans toutes mes vues publiques  et privées pour pouvoir voir le bouton dynamique qui contient la boucle des produits
+              'list_product' => $productRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}/user_edit', name: 'user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, ProductRepository $productRepository): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -65,6 +73,8 @@ class UserController extends AbstractController
         return $this->renderForm('user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
+              // je rajoute cette ligne dans toutes mes vues publiques et privées pour pouvoir voir le bouton dynamique qui contient la boucle des produits
+              'list_product' => $productRepository->findAll(),
         ]);
     }
 

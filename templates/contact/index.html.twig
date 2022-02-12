@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+	{# Je creer un include avec le fichier a inclure et je lui mets un parametre name pour le rendre dynamique et pouvoir réutiliser cette include sur plusieurs pages #}
+	{{ include("partials/title_section.html.twig", {'name':'Contact Us'}) }}
+
+		<div class="container mt-5">
+			<div class="row justify-content-center">
+				<div class="col-xl-6 col-md-10">
+					<div>
+						<div class="bg-white">
+							<div class="mt-2">
+                                <h5>A project in mind? or a simple question? Contact us! </h6>
+                                <h6>Our professionals are at your disposal, ready to offer you advice and prices tailored to satisfy all your desires.</h5>
+
+							</div>
+							{{ form_start(contact_form) }}
+							<form method="post">
+
+								<div class="form-group">
+									{{ form_widget(contact_form) }}
+								</div>
+								
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary mt-3" name="submit">Send</button>
+								</div>
+								{{ form_end(contact_form) }}
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+{% endblock %}

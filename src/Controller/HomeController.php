@@ -16,25 +16,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'home')]
-    public function index(Request $request, CategoryRepository $categoryRepository, ServicesRepository $servicesRepository, Cart $cart, CarouselRepository $carouselRepository, ProductRepository $productRepository): Response
+    public function index(Request $request, CategoryRepository $categoryRepository, ServicesRepository $servicesRepository, Cart $cart, CarouselRepository $carouselRepository): Response
     {
         return $this->render('home/index.html.twig', [
-            'list_product' => $productRepository->findAll(),
-            'cart'=>$cart->getCart(),
-            'carousel'=>$carouselRepository->findAll(),
-            'services'=>$servicesRepository->findAll(),
+
+            'cart' => $cart->getCart(),
+            'carousel' => $carouselRepository->findAll(),
+            'services' => $servicesRepository->findAll(),
             'category' => $categoryRepository->findAll(),
-            'items_cart'=> $cart->getCountCart()
+            'items_cart' => $cart->getCountCart()
         ]);
     }
 
-    
-    #[Route('/ourproduct{id}', name: 'our_products', methods: ['GET'])]
-    public function showEachProduct(Product $product, ProductRepository $productRepository): Response
+
+    #[Route('/ourproduct/{id}', name: 'our_products', methods: ['GET'])]
+    public function showEachProduct(Product $product): Response
     {
         return $this->render('home/ourproducts.html.twig', [
             'product' => $product,
-            'list_product' => $productRepository->findAll(),
+
         ]);
     }
 }

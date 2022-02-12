@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Carousel;
 use App\Form\CarouselType;
 use App\Repository\CarouselRepository;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,7 @@ class CarouselController extends AbstractController
     {
         return $this->render('carousel/index.html.twig', [
             'carousels' => $carouselRepository->findAll(),
+
         ]);
     }
 
@@ -68,6 +70,7 @@ class CarouselController extends AbstractController
     {
         return $this->render('carousel/show.html.twig', [
             'carousel' => $carousel,
+
         ]);
     }
 

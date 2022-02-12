@@ -13,17 +13,30 @@
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
+{# Je creer un include avec le fichier a inclure et je lui mets un parametre name pour le rendre dynamique et pouvoir réutiliser cette include sur plusieurs pages #}
+	{{ include("partials/title_section.html.twig", {'name':'Please Sign in'}) }}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+		<div class="container mt-5">
+			<div class="row justify-content-center">
+				<div class="col-xl-6 col-md-10">
+					<div>
+						<div class="bg-white">
+                            <label for="inputEmail">Email</label>
+							 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                                <label for="inputPassword">Password</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+						</div>
+                        <a href="{{ path('app_forgot_password_request')}}">Forgot your password?</a>
+                    <br>
+                        <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
 
+					</div>
+				</div>
+			</div>
+		</div>
+        </form>
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
         See https://symfony.com/doc/current/security/remember_me.html
@@ -34,10 +47,5 @@
             </label>
         </div>
     #}
-<a href="{{ path('app_forgot_password_request')}}">Forgot your password?</a>
-<br>
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+
 {% endblock %}

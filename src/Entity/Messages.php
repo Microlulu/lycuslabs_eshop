@@ -26,6 +26,9 @@ class Messages
     #[ORM\Column(type: 'text')]
     private $message;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $reference;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Messages
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(?string $reference): self
+    {
+        $this->reference = $reference;
 
         return $this;
     }

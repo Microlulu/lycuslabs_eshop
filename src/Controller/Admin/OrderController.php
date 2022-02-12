@@ -22,6 +22,7 @@ class OrderController extends AbstractController
     {
         return $this->render('order/index.html.twig', [
             'orders' => $orderRepository->findAll(),
+
         ]);
     }
 
@@ -42,6 +43,7 @@ class OrderController extends AbstractController
         return $this->renderForm('order/new.html.twig', [
             'order' => $order,
             'form' => $form,
+
         ]);
     }
 
@@ -50,6 +52,7 @@ class OrderController extends AbstractController
     {
         return $this->render('order/show.html.twig', [
             'order' => $order,
+
         ]);
     }
 
@@ -69,6 +72,7 @@ class OrderController extends AbstractController
         return $this->renderForm('order/edit.html.twig', [
             'order' => $order,
             'form' => $form,
+
         ]);
     }
 

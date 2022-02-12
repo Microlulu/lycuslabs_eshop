@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use Exception;
 use App\Entity\Voucher;
 use App\Form\VoucherType;
+use App\Repository\ProductRepository;
 use PhpParser\Node\Stmt\TryCatch;
 use App\Repository\VoucherRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/voucher')]
+#[Route('/admin/voucher')]
 class VoucherController extends AbstractController
 {
     #[Route('/voucher_index', name: 'voucher_index', methods: ['GET'])]
@@ -21,6 +22,7 @@ class VoucherController extends AbstractController
     {
         return $this->render('voucher/index.html.twig', [
             'vouchers' => $voucherRepository->findAll(),
+
         ]);
     }
 
@@ -67,6 +69,7 @@ class VoucherController extends AbstractController
         return $this->renderForm('voucher/edit.html.twig', [
             'voucher' => $voucher,
             'form' => $form,
+
         ]);
     }
 

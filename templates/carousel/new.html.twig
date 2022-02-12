@@ -3,6 +3,7 @@
 {% block title %}New Carousel{% endblock %}
 
 {% block body %}
+<div class="container">
     <h1>Create new Carousel</h1>
 
     {{ include('carousel/_form.html.twig') }}
@@ -13,4 +14,5 @@
     {% endfor %}
 
     <a class="btn btn-secondary" href="{{ path('carousel_index') }}">back to list</a>
+    </div>
 {% endblock %}

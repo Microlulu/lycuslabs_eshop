@@ -40,6 +40,7 @@ Mandy Ibéné - 2022/01/17
   - [Le reset password](#le-reset-password)
   - [Ajouter Booststrap](#ajouter-booststrap)
     - [Mettre en forme les formulaires](#mettre-en-forme-les-formulaires)
+    - [DATA FIXTURES](#data-fixtures)
 
 
 <!-- ____________________________________________________________________ -->
@@ -638,3 +639,63 @@ on peut venir ajouter (au même niveau d'indentation) :
 
     form_themes: ['bootstrap_4_layout.html.twig']
 
+
+### DATA FIXTURES
+symfony console doctrine:fixtures:load
+
+Permet de creer des faux utilisateurs
+attention sont utilisations supprime toutes données déja existantes dans la BDD
+
+il va creer un fichier ave ca dedans :
+
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\User;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
+class AppFixtures extends Fixture
+{
+
+    private UserPasswordHasherInterface $hasher;
+
+    public function __construct(UserPasswordHasherInterface $hasher)
+    {
+        $this->hasher = $hasher;
+    }
+    
+    public function load(ObjectManager $manager): void
+    {
+        // __________ dummy users __________
+
+        // admin
+        $admin = new User();
+        $admin->setName('Admin');
+        $admin->setFirstname('Notsuper');
+        $admin->setEmail('admin@example.com');
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setIsVerified(true);
+        $password = $this->hasher->hashPassword($admin, 'adminpass');
+        $admin->setPassword($password);
+        $manager->persist($admin);
+
+        // lambda user
+        $user = new User();
+        $user->setName('User');
+        $user->setFirstname('Lambda');
+        $user->setEmail('lambdauser@example.com');
+        $user->setIsVerified(true);
+        $password = $this->hasher->hashPassword($user, 'mdpmdp');
+        $user->setPassword($password);
+        $manager->persist($user);
+
+        
+        $manager->flush();
+    }
+}
+
+
+et on peut changer les infos pour creer les utilisateurs

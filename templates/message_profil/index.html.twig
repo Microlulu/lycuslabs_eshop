@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MessageProfilController!{% endblock %}
+
+{% block body %}
+{# Je creer un include avec le fichier a inclure et je lui mets un parametre name pour le rendre dynamique et pouvoir réutiliser cette include sur plusieurs pages #}
+	{{ include("partials/title_section.html.twig", {'name':'Help'}) }}
+<div class="container mt-5">
+			<div class="row justify-content-center">
+				<div class="col-xl-6 col-md-10">
+					<div>
+						<div class="bg-white">
+							<div class="mt-2">
+                                <h5>Need some assistance about a order or a product?</h6>
+                                <h6>We are really sorry to hear that you have a probleme ! Please let us know and we will fix it !</h5>
+
+							</div>
+							{{ form_start(message_form) }}
+							<form method="post">
+
+								<div class="form-group">
+									{{ form_widget(message_form) }}
+								</div>
+								
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary mt-3" name="submit">Send</button>
+								</div>
+								{{ form_end(message_form) }}
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}

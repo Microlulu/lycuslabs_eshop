@@ -20,11 +20,12 @@ class CategoryController extends AbstractController
     {
         return $this->render('category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
+
         ]);
     }
 
     #[Route('/new_category', name: 'category_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new( Request $request, EntityManagerInterface $entityManager): Response
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
@@ -44,14 +45,16 @@ class CategoryController extends AbstractController
         return $this->renderForm('category/new.html.twig', [
             'category' => $category,
             'form' => $form,
+
         ]);
     }
 
     #[Route('/category_show{id}', name: 'category_show', methods: ['GET'])]
-    public function show(Category $category): Response
+    public function show( Category $category): Response
     {
         return $this->render('category/show.html.twig', [
             'category' => $category,
+
         ]);
     }
 
@@ -75,6 +78,7 @@ class CategoryController extends AbstractController
         return $this->renderForm('category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
+
         ]);
     }
 

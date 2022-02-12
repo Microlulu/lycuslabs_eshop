@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Classes\OrderManager;
 use App\Classes\Cart;
 use App\Repository\AdresseRepository;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BuyActionController extends AbstractController
 {
     #[Route('/buy/action', name: 'buy_action')]
-    public function index(Cart $cart, AdresseRepository $adresseRepository): Response
+    public function index(Cart $cart, AdresseRepository $adresseRepository, ProductRepository $productRepository): Response
     {
         $user=$this->getUser();
         // je verifie que le user a bien renseigner son adresse
@@ -37,7 +38,9 @@ class BuyActionController extends AbstractController
              // j'envoie à la vue buy_action dans le fichier buy_action/index.html.twig le detail du panier
              'cart' => $cart->getDetailCart(),
              'totalcart' => $cart->getTotalCart(),
-             'adresse' => $adresse
+             'adresse' => $adresse,
+              // je rajoute cette ligne dans toutes mes vues publiques pour pouvoir voir le bouton dynamique qui contient la boucle des produits
+            'list_product' => $productRepository->findAll(),
         ]);
     }
 

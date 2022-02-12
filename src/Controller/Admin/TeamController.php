@@ -5,11 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\Team;
 use App\Form\TeamType;
 use App\Repository\TeamRepository;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/team')]
 class TeamController extends AbstractController
@@ -19,6 +20,7 @@ class TeamController extends AbstractController
     {
         return $this->render('team/index.html.twig', [
             'teams' => $teamRepository->findAll(),
+
         ]);
     }
 
@@ -59,6 +61,7 @@ class TeamController extends AbstractController
         return $this->renderForm('team/new.html.twig', [
             'team' => $team,
             'form' => $form,
+
         ]);
     }
 
@@ -67,11 +70,12 @@ class TeamController extends AbstractController
     {
         return $this->render('team/show.html.twig', [
             'team' => $team,
+
         ]);
     }
 
     #[Route('/{id}/team_edit', name: 'team_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Team $team, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Team $team, EntityManagerInterface $entityManager, ProductRepository $productRepository): Response
     {
         // je reccupere le nom de l'ancienne photo
         $old_name_photo = $team->getPhoto();
@@ -111,6 +115,7 @@ class TeamController extends AbstractController
         return $this->renderForm('team/edit.html.twig', [
             'team' => $team,
             'form' => $form,
+
         ]);
     }
 
@@ -127,10 +132,11 @@ class TeamController extends AbstractController
 
 
     #[Route('/team_members', name: 'team_members', methods: ['GET'])]
-    public function TeamMembers(TeamRepository $teamRepository): Response
+    public function TeamMembers(ProductRepository $productRepository, TeamRepository $teamRepository): Response
     {
         return $this->render('team/ourteam.html.twig', [
             'teams' => $teamRepository->findAll(),
+
         ]);
     }
     

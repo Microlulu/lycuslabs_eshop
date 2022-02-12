@@ -14,21 +14,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProfilController extends AbstractController
 {
     #[Route('/profil', name: 'profil')]
-    public function index(Cart $cart, Request $request, ProductRepository $productRepository, EntityManagerInterface $entityManager): Response
+    public function index(Cart $cart, Request $request, EntityManagerInterface $entityManager): Response
     {
         $user =$this->getUser();
         
-        return $this->render('profil/index.html.twig', [
+        return $this->render('profil/account.html.twig', [
             'user' => $user,
-            'items_cart'=> $cart->getCountCart(),
-            'list_product' => $productRepository->findAll(),
+
         ]);
     }
 
 
 
     #[Route('/change-adresse-profil', name: 'change_adresse_profil')]
-    public function changeAdresse(Request $request, EntityManagerInterface $manager ): Response
+    public function changeAdresse(Request $request, EntityManagerInterface $manager): Response
     {
         $user =$this->getUser();
         $adresse_final = new Adresse();
@@ -52,8 +51,9 @@ class ProfilController extends AbstractController
             $manager->flush();
             return $this->redirectToRoute('profil');
         }
-        return $this->render('profil/adresse.html.twig', [
-            'form'=> $form->createView()
+        return $this->render('profil/account.html.twig', [
+            'form'=> $form->createView(),
+
         ]);
     }
 }
