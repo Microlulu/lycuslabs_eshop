@@ -162,6 +162,9 @@
 			<script src="https://kit.fontawesome.com/d36e2f2546.js" crossorigin="anonymous"></script>
 			<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 			<script>
+			// Je creer un script pour mon bouton "products" : c'est un bouton dynamique qui prends en compte tout les produits existants et les affiches sous forme de dropdown.
+			// A la demande de mon client, j'ai fais un bouton dynamique et pas de page affichant tout les produits comme les e-commerces traditionnels car mon client est une start-up qui pour l'instant n'a qu'un seul produit.
+			// Cette startup n'a pas pour projet de faire un site avec beaucoup de produits, le CEO m'a dit qu'au grand maximum il y'aurait 5 produits et tous seront très différents des uns des autres, d'ou sa demande de les séparer dans des pages bien distinctent sans liens entre eux.
 					fetch('/api/products')
 					.then(response => {
 						return response.json()

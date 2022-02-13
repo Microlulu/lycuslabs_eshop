@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Classes\OrderManager;
 use App\Classes\Cart;
 use App\Repository\AdresseRepository;
-use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BuyActionController extends AbstractController
 {
     #[Route('/buy/action', name: 'buy_action')]
-    public function index(Cart $cart, AdresseRepository $adresseRepository, ProductRepository $productRepository): Response
+    public function index(Cart $cart, AdresseRepository $adresseRepository): Response
     {
         $user=$this->getUser();
         // je verifie que le user a bien renseigner son adresse
@@ -25,7 +24,10 @@ class BuyActionController extends AbstractController
         // }
 
         // je reccupere l'adresse finale de "livraison" par default
-        $adresse_final = $adresseRepository ->findOneBy(['user_id' => $this->getUser()]);
+        $adresse_final = $adresseRepository->findOneBy([
+            'user_id' => $this->getUser(),
+            'delivery' => true,
+        ]);
         // si il trouve une adresse avec true a la livraison elle passe sur la vue
         if($adresse_final){
             $adresse = $adresse_final;
@@ -39,8 +41,7 @@ class BuyActionController extends AbstractController
              'cart' => $cart->getDetailCart(),
              'totalcart' => $cart->getTotalCart(),
              'adresse' => $adresse,
-              // je rajoute cette ligne dans toutes mes vues publiques pour pouvoir voir le bouton dynamique qui contient la boucle des produits
-            'list_product' => $productRepository->findAll(),
+
         ]);
     }
 

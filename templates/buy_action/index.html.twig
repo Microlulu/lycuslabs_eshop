@@ -8,9 +8,9 @@
 		<div class="row">
 			<div class="col-6 mt-5">
 				<p>Firstname:
-					{{ app.user.firstname }}</p>
+					{{ adresse.firstname }}</p>
 				<p>Lastname:
-					{{ app.user.lastname }}</p>
+					{{ adresse.lastname }}</p>
 				<hr>
 				<h5>Delivery adresse :</h5>
 				<p>{{ adresse.adresse}}</p>
@@ -19,7 +19,6 @@
 					{{ adresse.city}}</p>
 				<p>Country :
 					{{ adresse.country}}</p>
-				<a class="btn btn-secondary mt-5" href="{{ path('change_adresse_delivery') }}">Change adresse</a>
 				<a class="btn btn-success mt-5" href="{{ path('order_cart') }}">Confirm</a>
 			</div>
 			<div class="col-6">

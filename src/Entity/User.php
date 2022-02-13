@@ -36,21 +36,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $lastname;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $adresse;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $zipcode;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $city;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $country;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $telephone;
-
     #[ORM\Column(type: 'datetime')]
     private $createdat;
 
@@ -180,66 +165,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(?string $adresse): self
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    public function getZipcode(): ?string
-    {
-        return $this->zipcode;
-    }
-
-    public function setZipcode(?string $zipcode): self
-    {
-        $this->zipcode = $zipcode;
-
-        return $this;
-    }
-
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    public function setCity(?string $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(?string $country): self
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    public function getTelephone(): ?string
-    {
-        return $this->telephone;
-    }
-
-    public function setTelephone(?string $telephone): self
-    {
-        $this->telephone = $telephone;
 
         return $this;
     }

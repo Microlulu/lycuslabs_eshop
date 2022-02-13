@@ -122,7 +122,6 @@ class Cart
             if ($product) {
                 //Je rempli le nouveau tableau avec l'objet produit
                 $detail_panier[] = [
-
                     'product' => $product,
                     'quantity' => $quantity,
                     'total' => $quantity * $product->getPrice()

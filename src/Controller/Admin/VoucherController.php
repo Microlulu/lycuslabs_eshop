@@ -5,8 +5,6 @@ namespace App\Controller\Admin;
 use Exception;
 use App\Entity\Voucher;
 use App\Form\VoucherType;
-use App\Repository\ProductRepository;
-use PhpParser\Node\Stmt\TryCatch;
 use App\Repository\VoucherRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;

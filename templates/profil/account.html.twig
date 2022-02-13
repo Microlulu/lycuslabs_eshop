@@ -1,39 +1,50 @@
 {% extends 'base.html.twig' %}
 {% block title %}BuyActionController!
-{% endblock
-%}
+{% endblock %}
 {% block body %}
 
-<div class="d-flex align-items-start">
-  <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-    <button class="nav-link active" id="button_adresses" data-bs-toggle="pill" data-bs-target="#button_adresses" type="button" role="tab" aria-controls="button_adresses" aria-selected="true">My adresses</button>
-    <button class="nav-link" id="button_orders" data-bs-toggle="pill" data-bs-target="#button_orders" type="button" role="tab" aria-controls="button_orders" aria-selected="false">My orders</button>
-    <button class="nav-link" id="button_contactus" data-bs-toggle="pill" data-bs-target="#button_contactus" type="button" role="tab" aria-controls="button_contact" aria-selected="false">Contact us</button>
-    <button class="nav-link" id="button_logout" data-bs-toggle="pill" data-bs-target="#button_logout" type="button" role="tab" aria-controls="button_logout" aria-selected="false">Logout</button>
-  </div>
+    <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="button_adresses" data-bs-toggle="pill" data-bs-target="#button_adresses"
+                    type="button" role="tab" aria-controls="button_adresses" aria-selected="true">My adresses
+            </button>
+            <button class="nav-link" id="button_orders" data-bs-toggle="pill" data-bs-target="#button_orders"
+                    type="button" role="tab" aria-controls="button_orders" aria-selected="false">My orders
+            </button>
+            <button class="nav-link" id="button_contactus" data-bs-toggle="pill" data-bs-target="#button_contactus"
+                    type="button" role="tab" aria-controls="button_contact" aria-selected="false">Contact us
+            </button>
+            <button class="nav-link" id="button_logout" data-bs-toggle="pill" data-bs-target="#button_logout"
+                    type="button" role="tab" aria-controls="button_logout" aria-selected="false">Logout
+            </button>
+        </div>
 
-  <div class="tab-content" id="v-pills-tabContent">
-    <div class="tab-pane fade show active" id="button_adresses_content" role="tabpanel" aria-labelledby="button_adresses">
-    {# debut des cards #}
-        <div class="row">
-            {% for adresse in list_adresses %}
-                <div class="col-lg-3">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="button_adresses_content" role="tabpanel"
+                 aria-labelledby="button_adresses">
+                {# debut des cards #}
+                <div class="row">
+                    {% for key, adresse in list_adresses %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body" style="width: 35rem;">
+                                    <h5 class="card-title">{{ key+1 }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{ adresse.firstName }} - {{ adresse.lastName }}</h6>
+                                    <p class="card-text">{{ adresse.zipcode }}</p>
+                                    <p class="card-text">{{ adresse.zipcode }}</p>
+                                    <a href="#" class="card-link">Card link</a>
+                                    <a href="#" class="card-link">Another link</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
+            </div>
+            <div class="tab-pane fade" id="button_orders_content" role="tabpanel" aria-labelledby="button_orders">...
+            </div>
+            <div class="tab-pane fade" id="button_contactus_content" role="tabpanel" aria-labelledby="button_contactus">
+                ...
+            </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="button_orders_content" role="tabpanel" aria-labelledby="button_orders">...</div>
-    <div class="tab-pane fade" id="button_contactus_content" role="tabpanel" aria-labelledby="button_contactus">...</div>
-    
-  </div>
-</div>
 {% endblock %}

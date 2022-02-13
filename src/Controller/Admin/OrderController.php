@@ -3,9 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Order;
-use App\Entity\User;
-use App\Entity\UserVoucher;
-use App\Entity\Category;
 use App\Form\OrderType;
 use App\Repository\OrderRepository;
 use Doctrine\ORM\EntityManagerInterface;

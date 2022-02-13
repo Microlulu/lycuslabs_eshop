@@ -15,12 +15,15 @@ class ApiConstructorService{
      */
     private function getSerializer(): Serializer {
         // On spécifie qu'on utilise l'encodeur JSON
+        // l'encodeur me formate un message
         $encoders = [new JsonEncoder()];
 
         // On instancie le "normaliseur" pour convertir la collection en tableau
+        // le normaliseur permet de rendre le message clair
         $normalizers = [new ObjectNormalizer()];
 
         // On instancie le convertisseur
+        // on creer un serializer, ce lui qui nous rends notre réponse bien encoder, bien normaliser
         return new Serializer($normalizers, $encoders);
     }
 
@@ -29,11 +32,14 @@ class ApiConstructorService{
      * @return String
      */
     public function getRawJson(mixed $data): String {
-        // On récupère le serializer déjà configurer par défaut
+        // On récupère le serializer déjà configurer par défault
         $serializer = $this->getSerializer();
-        // On convertit en json
+        // On convertit en json (brut)
         return $serializer->serialize($data, 'json', [
+            // circular-reference-handler pour éviter d'avoir des boucles à l'infini lors de creation du json
+            // (pour pas que ça crash)
             'circular_reference_handler' => function ($object) {
+            // je ne fais pas de boucle, au lieu de faire des boucles je récupère l'id
                 return $object->getId();
             }
         ]);
@@ -44,15 +50,19 @@ class ApiConstructorService{
      * @param array|null $customHeader
      * @return Response
      */
+    // j'initialise la reponse que je doit renvoyer depuis le controller
     public function initReponse(String $json = '', array $customHeader = null) {
         // if you have data, set the response with data or init by default by empty string
         $response = new Response($json);
-
+        // j'appelle une réponse
         if (!empty($customHeader)) {
+            //  si customHeader est different de vide (donc plein) on ajoute nos customs header a nos headers
             // Set multiple headers simultaneously
             $response->headers->add($customHeader);
+            //les customs header et les headers sont des blocs d'infos de json (reponse)
         }
         $response->headers->set('Content-Type', 'application/json');
+        //dans la réponse, vise le header et set un content type avec la valeur application json
 
         return $response;
     }
@@ -67,11 +77,14 @@ class ApiConstructorService{
     // $customHeader = null si il n'a rien c'est null
     public function getResponseForApi(mixed $data, array $customHeader = null): Response {
         return $this->initReponse($this->getRawJson($data), $customHeader);
+        //return la initréponse il attends un json et un customHeader, donc je lui dit va chercher le json dans la method getRawJson et prends le customHeader aussi en parametres
         
     }
 
     public function getJsonBodyFromRequest() {
+        //je creer une nouvelle request
         $request = new Request();
+        //je decode la request
         return json_decode($request->getContent(), true);
     }
 }

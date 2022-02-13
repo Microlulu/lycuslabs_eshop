@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\Team;
 use App\Form\TeamType;
 use App\Repository\TeamRepository;
-use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -75,7 +74,7 @@ class TeamController extends AbstractController
     }
 
     #[Route('/{id}/team_edit', name: 'team_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Team $team, EntityManagerInterface $entityManager, ProductRepository $productRepository): Response
+    public function edit(Request $request, Team $team, EntityManagerInterface $entityManager): Response
     {
         // je reccupere le nom de l'ancienne photo
         $old_name_photo = $team->getPhoto();
@@ -132,7 +131,7 @@ class TeamController extends AbstractController
 
 
     #[Route('/team_members', name: 'team_members', methods: ['GET'])]
-    public function TeamMembers(ProductRepository $productRepository, TeamRepository $teamRepository): Response
+    public function TeamMembers(TeamRepository $teamRepository): Response
     {
         return $this->render('team/ourteam.html.twig', [
             'teams' => $teamRepository->findAll(),

@@ -24,7 +24,7 @@ class ApiController extends AbstractController{
     
 
     /**
-     * Le construct permet d'initialiser ta classe apicontroller et de charger l ou les répository
+     * Le construct permet d'initialiser ta classe apicontroller et de charger le ou les répository
      * une fois le répository acceder on le mets dans notre variable global pour pouvoir y acceder partout
      * 
      * @param ProductRepository $productRepository
@@ -42,6 +42,8 @@ class ApiController extends AbstractController{
     #[Route('/products', name: 'products')]
     public function products(): Response {
         $allProducts = $this->productRepository->findAll();
+        // je reccupere tout les produits existant pour mes mettre dans mon bouton dynamique
+        // jsoncontent est une reponse de l'ApiConstructorService pour pouvoir l'envoyer dans l'Api (c'est une donnée que je renvoie de mon back a mon front)
         $jsoncontent = $this->apiService->getResponseForApi($allProducts);
         return $jsoncontent;
     }
