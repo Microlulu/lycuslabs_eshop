@@ -7,11 +7,11 @@ use App\Entity\User;
 use App\Repository\AdresseRepository;
 
 class DefaultAdresseService {
-//je cree une classe dans le but de pouvoir m'en servir partout ou j'ai besoin
-// je cree une globale
+//je crée une classe dans le but de pouvoir m'en servir partout ou j'ai besoin
+// je crée une globale
     private AdresseRepository $adresseRepository;
 
-    // Je fais une construct pour initialiser/parameter mes adresses avant de les utilises
+    // Je fais une construct pour initialiser/parameter mes adresses avant de les utiliser.
     public function __construct(AdresseRepository $adresseRepository) {
         $this->adresseRepository = $adresseRepository;
     }
@@ -30,14 +30,14 @@ class DefaultAdresseService {
         return false;
     }
 
-    //le repository sert a chercher des données dans la BDD
-    //l'entité sert a creer une ligne/donnée dans la BDD
-    //je rappelle l'entité user car l'adresse concerne l'user
+    //le repository sert à chercher des données dans la BDD
+    //l'entité sert à créer une ligne/donnée dans la BDD
+    //je rappelle l'entité user, car l'adresse concerne l'user
 
     public function selectByDefault(Adresse $adresse, User $user){
         // j'appelle ma methode pour verifier si j'ai une adresse par default
         if($this->isDefaultAdresse($user)) {
-            // si il a deja une adresse par defaut la nouvelle adresse sera false
+            // s'il a deja une adresse par défaut la nouvelle adresse sera false
             $adresse->setDelivery(false);
         } else {
             // si il n'a pas d'adresse par default : mets la a true

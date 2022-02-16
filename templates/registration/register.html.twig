@@ -4,10 +4,10 @@
 {% endblock %}
 
 {% block body %}
-	{# Je creer un include avec le fichier a inclure et je lui mets un parametre name pour le rendre dynamique et pouvoir réutiliser cette include sur plusieurs pages #}
-	{{ include("partials/title_section.html.twig", {'name':'Register'}) }}
+	{# Je creer un include avec le fichier a inclure et je lui mets un parametre name pour le rendre dynamique et pouvoir réutiliser cette include sur plusieurs pages
+	{{ include("partials/title_section.html.twig", {'name':'Register'}) }} #}
 
-	{# MON TEMPLATE #}
+	{# MON TEMPLATE#}
 
 		<div class="container">
 			<div class="row justify-content-center">
@@ -36,8 +36,8 @@
 								</div>
 
 								<div class="login_footer form-group">
-									<div class="chek-form">
-										<div class="custome-checkbox">
+									<div class="check-form">
+										<div class="custom-checkbox">
 											{{ form_row(registrationForm.agreeTerms) }}
 										</div>
 									</div>

@@ -32,23 +32,23 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // je reccupere le fichier image passé dans le formulaire
+            // je récupère le fichier image passé dans le formulaire
             $image = $form->get('image')->getData();
-            // Si il y'a une image  j'enregistre si non j'enregistre une image par défaut
+            // S'il y a une image, j'enregistre si non j'enregistre une image par défaut
             if (!is_null($image)) {
-                // je creer un nom unique pour l'image
+                // je crée un nom unique pour l'image
                 $image_new_name = uniqid() . '.' . $image->guessExtension();
                 // je déplace l'image vers mon serveur
                 $image->move(
                     //Premier argument : l'emplacement de l'image
                     $this->getParameter('upload_dir_products'),
-                    //Deuxieme argument : le nouveau nom de l'image
+                    //Deuxième argument : le nouveau nom de l'image
                     $image_new_name
                 );
             } else {
                 $image_new_name = 'default.png';
             }
-            // j'enregitre l'image dans la BDD avec le nouveau nom
+            // j'enregistre l'image dans la BDD avec le nouveau nom
             $product->setImage($image_new_name);
 
             // je set la date du jour
@@ -80,23 +80,23 @@ class ProductController extends AbstractController
     #[Route('/{id}/product_edit', name: 'product_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
-        // je reccupere l'anciene image pour povoir la setter avec le produit 
+        // je récupère l'ancienne image pour pouvoir la setter avec le produit
         $old_name_image = $product->getImage();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // je reccupère le fichier image passé dans le formulaire
+            // je récupère le fichier image passé dans le formulaire
             $image = $form->get('image')->getData();
-            // Si il y'a une image  j'enregistre si non j'enregistre une image par défaut
+            // S'il y a une image, j'enregistre si non j'enregistre une image par défaut
             if (!is_null($image)) {
-                // je creer un nom unique pour l'image
+                // je crée un nom unique pour l'image
                 $image_new_name = uniqid() . '.' . $image->guessExtension();
                 // je déplace l'image vers mon serveur
                 $image->move(
                     //Premier argument : l'emplacement de l'image
                     $this->getParameter('upload_dir_products'),
-                    //Deuxieme argument : le nouveau nom de l'image
+                    //Deuxième argument : le nouveau nom de l'image
                     $image_new_name
                 );
 
@@ -108,7 +108,7 @@ class ProductController extends AbstractController
                 // si l'image n'a pas chargé je remet l'ancien nom
                 $image_new_name = $old_name_image;
             }
-            // j'enregitre l'image dans la BDD avec le nouveau nom
+            // j'enregistre l'image dans la BDD avec le nouveau nom
             $product->setImage($image_new_name);
 
             // si je modifie mon produit, je set la date du jour dans le champ updatedat de ma BDD
@@ -130,7 +130,7 @@ class ProductController extends AbstractController
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
-            // si je supprime ma categorie, je set la date du jour dans le champ updatedat de ma BDD
+            // si je supprime ma catégorie, je set la date du jour dans le champ updatedat de ma BDD
             $date_e = new DateTime();
             $product->setDeletedat($date_e);
 

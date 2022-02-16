@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Classes\OrderManager;
-use App\Classes\Cart;
+use App\Services\OrderManager;
+use App\Services\Cart;
 use App\Repository\AdresseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,19 +16,19 @@ class BuyActionController extends AbstractController
     public function index(Cart $cart, AdresseRepository $adresseRepository): Response
     {
         $user=$this->getUser();
-        // je verifie que le user a bien renseigner son adresse
+        // je vérifie que l'user a bien renseigné son adresse
         // sinon je renvoie vers la methode qui change l'adresse
 
         // if(!$user->getAdresse()){
         //     return $this->redirectToRoute('change_adresse_profil');
         // }
 
-        // je reccupere l'adresse finale de "livraison" par default
+        // je récupère l'adresse finale de "livraison" par default
         $adresse_final = $adresseRepository->findOneBy([
             'user_id' => $this->getUser(),
             'delivery' => true,
         ]);
-        // si il trouve une adresse avec true a la livraison elle passe sur la vue
+        // s'il trouve une adresse avec true a la livraison elle passe sur la vue
         if($adresse_final){
             $adresse = $adresse_final;
         }else{

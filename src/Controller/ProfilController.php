@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Classes\Cart;
+use App\Services\Cart;
 use App\Entity\Adresse;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;

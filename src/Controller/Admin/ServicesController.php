@@ -34,13 +34,13 @@ class ServicesController extends AbstractController
             //Je set le nom de l'image
             $image = $form->get('image')->getData();
             if (!is_null($image)) {
-                //Je creer un nom unique pour l'image
+                //Je crée un nom unique pour l'image
                 $image_new_name = uniqid() . '.' . $image->guessExtension();
                 // je déplace l'image vers mon serveur
                 $image->move(
                     //Premier argument : l'emplacement de l'image (la ou la stocker), umpload_dir est déclarée dans /config/services.yaml
                     $this->getParameter('upload_dir_services'),
-                    //Deuxieme argument : le nouveau nom de l'image
+                    //Deuxième argument : le nouveau nom de l'image
                     $image_new_name
                 );
             } else {

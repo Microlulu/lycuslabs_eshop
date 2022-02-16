@@ -66,7 +66,7 @@ class CategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // si je modifie ma categorie, je set la date du jour dans le champ updatedat de ma BDD
+            // si je modifie ma catégorie, je set la date du jour dans le champ updatedat de ma BDD
             $date_e = new DateTime();
             $category->setUpdatedat($date_e);
 
@@ -86,7 +86,7 @@ class CategoryController extends AbstractController
     public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
-            // si je supprime ma categorie, je set la date du jour dans le champ updatedat de ma BDD
+            // si je supprime ma catégorie, je set la date du jour dans le champ updatedat de ma BDD
             $date_e = new DateTime();
             $category->setDeletedat($date_e);
             

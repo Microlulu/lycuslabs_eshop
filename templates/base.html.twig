@@ -21,7 +21,7 @@
 			    "@type": "WebPage",
 																											                "@id": "https://www.lycuslabs.com/"
 			},
-			"headline": "Lycus labs creates software and computer visualization solutions for computer graphics industry"
+			"headline": "Lycus labs creates software and computer visualization solutions for computer graphics industry",
 			"image": [
 			"https://lycuslabs.com/Lycuslabslogo.svg"
 			],
@@ -37,15 +37,18 @@
 			    "name": "https://www.lycuslabs.com/",
 			    "logo": {
 				    "@type": "ImageObject",
-				    "url": "https://lycuslabs.com/Lycuslabslogo.svg" alt="Lycuslabs Logo",
+				    "url": "https://lycuslabs.com/Lycuslabslogo.svg",
+					"alt": "Lycuslabs Logo"
 					}
 				}
 			}
 		</script>
 		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
+			{#<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">#}
 			{# <link rel="stylesheet" href="{{ asset('assets/css/navbar.css')}}"> #}
-			{# <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}"> #}
+			<link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
+			<link rel="stylesheet" href="{{ asset('assets/css/team.css')}}">
+			<link rel="stylesheet" href="{{ asset('assets/css/register.css')}}">
 		{% endblock %}
 
 
@@ -153,25 +156,27 @@
 
 				</div>
 			</div>
-		</html>
-	</html>
-</nav>{% endblock %}<body>
+
+</nav>
+{% endblock %}
+
+<body>
 {% block body %}
 {% endblock %}
 		{% block javascripts %}
 			<script src="https://kit.fontawesome.com/d36e2f2546.js" crossorigin="anonymous"></script>
 			<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 			<script>
-			// Je creer un script pour mon bouton "products" : c'est un bouton dynamique qui prends en compte tout les produits existants et les affiches sous forme de dropdown.
-			// A la demande de mon client, j'ai fais un bouton dynamique et pas de page affichant tout les produits comme les e-commerces traditionnels car mon client est une start-up qui pour l'instant n'a qu'un seul produit.
-			// Cette startup n'a pas pour projet de faire un site avec beaucoup de produits, le CEO m'a dit qu'au grand maximum il y'aurait 5 produits et tous seront très différents des uns des autres, d'ou sa demande de les séparer dans des pages bien distinctent sans liens entre eux.
+			// Je crée un script pour mon bouton "products" : c'est un bouton dynamique qui prends en compte tous les produits existants et les affiches sous forme de dropdown.
+			// À la demande de mon client, j'ai fait un bouton dynamique et pas de page affichant tous les produits comme les e-commerces traditionnels, car mon client est une start-up qui pour l'instant n'a qu'un seul produit.
+			// Cette startup n'a pas pour projet de faire un site avec beaucoup de produits, le CEO m'a dit qu'au grand maximum, il y aurait 5 produits et tous seront très différents des uns des autres, d'où sa demande de les séparer dans des pages bien distincte sans liens entre eux.
 					fetch('/api/products')
 					.then(response => {
 						return response.json()
 					})
 					.then(products => {
 						const listElement = document.getElementById("listsProducts");
-						// je cree un text vide et je dit dans ma boucle += qui veut dire ajoute mais ne supprime pas l'ancien produit
+						// je crée un text vide et je dis dans ma boucle += qui veut dire ajoute, mais ne supprime pas l'ancien produit
 						var text = ""
 						for(index in products) {
 							text += "<li class='nav-item'>"+

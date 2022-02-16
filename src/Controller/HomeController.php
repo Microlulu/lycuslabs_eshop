@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Classes\Cart;
+use App\Services\Cart;
 use App\Entity\Product;
 use App\Repository\CarouselRepository;
 use App\Repository\CategoryRepository;

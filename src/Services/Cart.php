@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes;
+namespace App\Services;
 
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -21,14 +21,14 @@ class Cart
 
     /**
      * function pour ajouter un produit au panier
-     * si le produit ce trouve déja dans le panier, t'ajoute 1 a la quantité
+     * si le produit se trouve deja dans le panier, t'ajoute 1 a la quantité
      * sinon ajoute le produit x1
      */
     public function addCart($id)
     {
-        //je reccupere le panier de la session, si le panier est non trouvé je créer un array panier
+        //je récupère le panier de la session, si le panier est non trouvé je crée un array panier
         $cart = $this->session->get('cart', []);
-        //Je verifie sur l'id existe dans mon panier
+        //Je vérifie sur l'id existe dans mon panier
         //si oui je rajoute 1 à la quantité
         if (!empty($cart[$id])) {
             //Je rajoute 1 à la quantité
@@ -46,7 +46,7 @@ class Cart
 
 
     /**
-     * function qui trouve le panier, si il n'y a pas de panier, il en creer un vide
+     * function qui trouve le panier, s'il n'y a pas de panier, il en créer un vide
      */
     public function getCart()
     {
@@ -60,15 +60,15 @@ class Cart
      */
     public function deleteProductCart($id)
     {
-        //Je reccupere le panier
+        //Je récupère le panier
         $cart = $this->session->get('cart', []);
-        // Je verifie si l'id existe
+        // Je vérifie si l'id existe
         if (!empty($cart[$id])) {
             //Si oui je le supprime
             unset($cart[$id]);
         }
    
-        // je renvoi le nouveau panier dans la session
+        // je renvoie le nouveau panier dans la session
         $this->session->set('cart', $cart);
     }
 
@@ -78,11 +78,11 @@ class Cart
      */
     public function deleteQuantityProduct($id)
     {
-        // Je reccupere le panier
+        // Je récupère le panier
         $cart = $this->session->get('cart', []);
-        // Je teste si la quantité est supperieur a 1
+        // Je teste si la quantité est supérieure à 1
         if ($cart[$id] > 1) {
-            // Si oui, j'enleve 1 a la quantité
+            // Si oui, j'enlève 1 a la quantité
             $cart[$id] = $cart[$id] - 1;
             // ou panier[$id] --;
         } else {
@@ -94,7 +94,7 @@ class Cart
 
 
     /**
-     * methode qui efface tout le panier
+     * Methode qui efface tout le panier
      */
 
     public function deleteCart()
@@ -105,22 +105,22 @@ class Cart
 
 
     /**
-     * methode qui renvoi le panier avec le detail des produits
+     * Methode qui renvoi le panier avec le detail des produits
      *
      */
     public function getDetailCart()
     {
-        //Je reccupere le panier
+        //Je récupère le panier
         $cart = $this->getCart();
-        // Je creer un tableau vide
+        // Je crée un tableau vide
         $detail_cart = [];
-        //Je fais une boucle sur le anier et je reccupere les id
+        //Je fais une boucle sur le panier et je récupère les id
         foreach ($cart as $id => $quantity) {
-            //je reccupere le produit par son id avec la methode find du produit repository
+            //je récupère le produit par son id avec la methode find du produit repository
             $product = $this->productRepository->find($id);
             //je teste si le produit est toujours disponible en bdd
             if ($product) {
-                //Je rempli le nouveau tableau avec l'objet produit
+                //Je remplie le nouveau tableau avec l'objet produit
                 $detail_panier[] = [
                     'product' => $product,
                     'quantity' => $quantity,
@@ -135,7 +135,7 @@ class Cart
 
 
     /**
-     * methode pour calculer le total du panier
+     * Methode pour calculer le total du panier
      *
      */
     public function getTotalCart()
@@ -150,7 +150,7 @@ class Cart
     }
 
   /**
-     * methode pour compter le nombres de produits présent dans le panier
+     * Methode pour compter le nombres de produits présent dans le panier
      *
      */
 

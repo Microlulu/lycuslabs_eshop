@@ -34,18 +34,18 @@ class TeamController extends AbstractController
             //Je set le nom de la photo
             $photo = $form->get('photo')->getData();
             if(!is_null($photo)){
-                //Je créer un nom unique pour la photo
+                //Je crée un nom unique pour la photo
                 $photo_new_name = uniqid() . '.' . $photo->guessExtension();
                 // je déplace la photo vers mon serveur
                 $photo->move(
                     //Premier argument : l'emplacement de la photo (là ou la stocker), upload_dir est déclarée dans /config/services.yaml
                     $this->getParameter('upload_dir_team'),
-                    //Deuxieme argument : le nouveau nom de la photo
+                    //Deuxième argument : le nouveau nom de la photo
                     $photo_new_name
                 );
             
                }else{
-                   // je lui mets une erreur si il y'a un problème
+                   // je lui mets une erreur s'il y a un problème
                 $this->addFlash('Error', 'your photo is not valid');
                 return $this->redirectToRoute('team_new', [], Response::HTTP_SEE_OTHER);
                }
@@ -76,23 +76,23 @@ class TeamController extends AbstractController
     #[Route('/{id}/team_edit', name: 'team_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Team $team, EntityManagerInterface $entityManager): Response
     {
-        // je reccupere le nom de l'ancienne photo
+        // je récupère le nom de l'ancienne photo
         $old_name_photo = $team->getPhoto();
         $form = $this->createForm(TeamType::class, $team);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // je reccupere le fichier image passé dans le formulaire
+            // je récupère le fichier image passé dans le formulaire
             $photo = $form->get('photo')->getData();
             // Si il y'a une photo j'enregistre 
             if(!is_null($photo)){
-                 // je creer un nom unique pour la photo
+                 // je crée un nom unique pour la photo
              $photo_new_name = uniqid() . '.' . $photo->guessExtension();
              // je déplace la photo vers mon serveur
              $photo->move(
                  //Premier argument : l'emplacement de l'a photo
                  $this->getParameter('upload_dir_team'),
-                 //Deuxieme argument : le nouveau nom de la photo
+                 //Deuxième argument : le nouveau nom de la photo
                  $photo_new_name
              );
              $filename = $this->getParameter('upload_dir_team') . $old_name_photo;
@@ -104,7 +104,7 @@ class TeamController extends AbstractController
                   // si la photo n'a pas chargée je remet l'ancien nom
                   $photo_new_name = $old_name_photo;
             }
-            // j'enregitre la photo dans la BDD avec le nouveau nom
+            // j'enregistre la photo dans la BDD avec le nouveau nom
             $team->setPhoto($photo_new_name);
             $entityManager->flush();
 
@@ -133,7 +133,7 @@ class TeamController extends AbstractController
     #[Route('/team_members', name: 'team_members', methods: ['GET'])]
     public function TeamMembers(TeamRepository $teamRepository): Response
     {
-        return $this->render('team/ourteam.html.twig', [
+        return $this->render('team/team.html.twig', [
             'teams' => $teamRepository->findAll(),
 
         ]);

@@ -27,13 +27,16 @@
                     {% for key, adresse in list_adresses %}
                         <div class="col-lg-3 col-md-6">
                             <div class="card">
+                                <a href="" class="btn btn-primary">Choose</a>
                                 <div class="card-body" style="width: 35rem;">
-                                    <h5 class="card-title">{{ key+1 }}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">{{ adresse.firstName }} - {{ adresse.lastName }}</h6>
+                                    <h5 class="card-title">Address #{{ key+1 }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{ adresse.firstName }}  {{ adresse.lastName }}</h6>
+                                    <p class="card-text">{{ adresse.adresse }}</p>
                                     <p class="card-text">{{ adresse.zipcode }}</p>
-                                    <p class="card-text">{{ adresse.zipcode }}</p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
+                                    <p class="card-text">{{ adresse.city }}</p>
+                                    <p class="card-text">{{ adresse.country }}</p>
+                                    <a href="{{ path('adresse_edit', {'id': adresse.id}) }}" class="btn btn-success">Edit</a>
+                                    <a href="{{ path('adresse_delete', {'id': adresse.id}) }}" class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +46,16 @@
             <div class="tab-pane fade" id="button_orders_content" role="tabpanel" aria-labelledby="button_orders">...
             </div>
             <div class="tab-pane fade" id="button_contactus_content" role="tabpanel" aria-labelledby="button_contactus">
-                ...
+                // Debut du formulaire de contact des utilisateurs connecté
+                <div class="row">
+                    <h4> Need assistance with your purchase?</h4>
+
+                    <a aria-current="contact" class="btn btn-secondary" href="{{ path('message_profil') }}">Contact us</a>
+
+                </div>
+
+
+
             </div>
         </div>
     </div>

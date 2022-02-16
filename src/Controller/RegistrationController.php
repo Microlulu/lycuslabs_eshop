@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use DateTime;
 use App\Entity\User;
+use App\Controller\SecurityController;
 use App\Security\EmailVerifier;
 use App\Form\RegistrationFormType;
 use Symfony\Component\Mime\Address;
@@ -31,7 +32,7 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -62,8 +63,8 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
 
-            // je precise à mon utilisateur que son email a bien été activée et je le redirige sur la page login
-            $this->addFlash('success', 'Your email adress has been verified.');
+            // je précise à mon utilisateur que son email a bien été activée et je le redirige sur la page login
+            $this->addFlash('success', 'Your email address has been verified.');
             return $this->redirectToRoute('app_login');
 
             return $userAuthenticator->authenticateUser(

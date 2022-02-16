@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+{% block title %}LOGIN / REGISTER{% endblock %}
+
+{% block body %}
+{# FORM DOUBLE NEUMORPHISME  #}
+{# REGISTRATION FORM #}
+{{ form_start(registrationForm) }}
+
+{#  REGISTER + MESSAGE FLASH A FAIRE EN CSS
+<div
+        class="message-flash">
+    {# je viens réincorporer tout mon formulaire de base creer par symfony dans un modèle, j'ai créé
+    {% for flashError in app.flashes('verify_email_error') %}
+    <div class="" role="alert">{{ flashError }}</div>
+    {% endfor %}
+</div>
+#}
+
+
+<div class="main">
+    <div class="form_container a-container" id="a-container">
+        <form class="form" id="a-form" method="" action="">
+            <h2 class="title">Create Account</h2>
+            <div class="form__icons">
+                <img class="form__icon" src="{{ asset('images/svg/fb.svg') }}" alt=""/>
+                <img class="form__icon" src="{{ asset('images/svg/instagram.svg') }}"/>
+                <img class="form__icon" src="{{ asset('images/svg/twitter.svg') }}"/>
+                <img class="form__icon" src="{{ asset('images/svg/linkedin.svg') }}"/>
+            </div>
+            <span class="form__span">or use email for registration</span>
+            <input class="form__input" type="text" placeholder="Name"/>
+            <input class="form__input" type="text" placeholder="Email"/>
+            <input class="form__input" type="password" placeholder="Password"/>
+            <button class="button submit">SIGN UP</button>
+        </form>
+    </div>
+    <--
+    {# LOGIN + MESSAGE INFORMATIF SUR L'UTILISATEUR LOGGER + MESSAGE EN CAS DE PROBLEME
+    {% if error %}
+    <div class="">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+    <div class="mb-3">
+        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+    </div>
+    {% endif %}
+    #}
+    -->
+
+    {# LOGIN FORM #}
+    <div class="container b-container" id="b-container">
+        <form class="form" id="b-form" method="" action="">
+            <h2 class="title">Sign in to Website</h2>
+            <div class="form__icons">
+                <img class="form__icon" src="svg/fb.svg" alt=""/>
+                <img class="form__icon" src="svg/linkedin.svg"/>
+                <img class="form__icon" src="svg/twitter.svg"/>
+            </div>
+            <span class="form__span">or use your email account</span>
+            <input class="form__input" type="text" placeholder="Email"/>
+            <input class="form__input" type="password" placeholder="Password"/>
+            <a class="form__link">Forgot your password?</a>
+            <button class="button submit">SIGN IN</button>
+        </form>
+    </div>
+
+
+    {# SWITCH #}
+    <div class="switch" id="switch-cnt">
+        <div class="switch__circle"></div>
+        <div class="switch__circle switch__circle--t"></div>
+        <div class="switch__container" id="switch-c1">
+            <h2 class="title">Welcome Back !</h2>
+            <p class="description">To keep connected with us please login with your personal info</p>
+            <button class="switch__button button switch-btn">SIGN IN</button>
+        </div>
+        <div class="switch__container is-hidden" id="switch-c2">
+            <h2 class="switch__title title">Hello Friend !</h2>
+            <p class="description">Enter your personal details and start journey with us</p>
+            <button class="switch__button button switch-btn">SIGN UP</button>
+        </div>
+    </div>
+</div>
+{% block javascript %}
+<script src="script.js"></script>
+{% endblock %}
+
+{% endblock %}

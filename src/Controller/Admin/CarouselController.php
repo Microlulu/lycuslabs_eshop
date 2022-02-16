@@ -26,7 +26,7 @@ class CarouselController extends AbstractController
     #[Route('/new_carousel', name: 'carousel_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        // je creer un nouvel objet Carousel
+        // je crée un nouvel objet Carousel
         $carousel = new Carousel();
         $form = $this->createForm(CarouselType::class, $carousel);
         $form->handleRequest($request);
@@ -35,18 +35,18 @@ class CarouselController extends AbstractController
              //Je set le nom de l'image
              $image = $form->get('image')->getData();
              if(!is_null($image)){
-                 //Je créer un nom unique pour l'image
+                 //Je crée un nom unique pour l'image
                  $image_new_name = uniqid() . '.' . $image->guessExtension();
                  // je déplace l'image vers mon serveur
                  $image->move(
                      //Premier argument : l'emplacement de l'image (là ou la stocker), umpload_dir est déclarée dans /config/services.yaml
                      $this->getParameter('upload_dir_carousel'),
-                     //Deuxieme argument : le nouveau nom de l'image
+                     //Deuxième argument : le nouveau nom de l'image
                      $image_new_name
                  );
              
                 }else{
-                    // je lui mets une erreur si il y'a un problème
+                    // je lui mets une erreur s'il y a un problème
                  $this->addFlash('Error', 'your image is not valid');
                  return $this->redirectToRoute('caroussel_new', [], Response::HTTP_SEE_OTHER);
                 }
@@ -76,23 +76,23 @@ class CarouselController extends AbstractController
     #[Route('/{id}/carousel_edit', name: 'carousel_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Carousel $carousel, EntityManagerInterface $entityManager): Response
     {
-        // je reccupere le nom de l'ancienne image
+        // je récupère le nom de l'ancienne image
         $old_name_image = $carousel->getImage();
         $form = $this->createForm(CarouselType::class, $carousel);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // je reccupere le fichier image passé dans le formulaire
+            // je récupère le fichier image passé dans le formulaire
             $image = $form->get('image')->getData();
-            // Si il y'a une image  j'enregistre si non j'enregistre une image par défaut
+            // S'il y a une image, j'enregistre si non j'enregistre une image par défaut
             if(!is_null($image)){
-                 // je creer un nom unique pour l'image
+                 // je crée un nom unique pour l'image
              $image_new_name = uniqid() . '.' . $image->guessExtension();
              // je déplace l'image vers mon serveur
              $image->move(
                  //Premier argument : l'emplacement de l'image
                  $this->getParameter('upload_dir_carousel'),
-                 //Deuxieme argument : le nouveau nom de l'image
+                 //Deuxième argument : le nouveau nom de l'image
                  $image_new_name
              );
              $filename = $this->getParameter('upload_dir_carousel') . $old_name_image;
@@ -101,10 +101,10 @@ class CarouselController extends AbstractController
              }
  
             }else{
-                  // si l'image n'a pas chargé je remet l'ancien nom
+                  // si l'image n'a pas chargé je remets l'ancien nom
                   $image_new_name = $old_name_image;
             }
-            // j'enregitre l'image dans la BDD avec le nouveau nom
+            // j'enregistre l'image dans la BDD avec le nouveau nom
             $carousel->setImage($image_new_name);
 
             $entityManager->flush();
@@ -125,7 +125,7 @@ class CarouselController extends AbstractController
         $entityManager->flush();
         $filename = $this->getParameter('upload_dir') . $carousel->getImage();
         
-        //Je verifie si mon fichier existe 
+        //Je vérifie si mon fichier existe
         if(file_exists($filename)){
             unlink($filename);
         }
