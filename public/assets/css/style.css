@@ -1,6 +1,23 @@
 /* TYPOS IMPORTEES DE GOOGLE FONTS : Nom : "Inter"; Dimensions: "Extra-light 200, Light 300, Regular 400, Bold 700"; */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;700&display=swap');
 
+/* VARIABLES COULEURS*/
+:root {
+    /* Nuances de blanc */
+    --extrawhite: #f9f9f9ff;
+    --whitebg: #edf0f1ff;
+    /* Nuances de gris */
+    --lightgrey: #d3dce7ff;
+    --mediumgrey: #a0a5a8ff;
+    --darkgrey: #7d7f79ff;
+    --black: #181818ff;
+    /* Nuances de couleurs pour le texte et les détails*/
+    --purple: #4d23be;
+    --blue: #346edb;
+    /* Dégradé de bleu à violet pour les boutons*/
+    --gradient: linear-gradient(94deg, rgba(89,161,226,1) 0%, rgba(55,81,197,1) 70%, rgba(77,35,190,1) 100%);
+}
+
 *{
     margin: 0;
     padding:0;
@@ -16,6 +33,7 @@ body{
     align-items: center;
     font-family: 'Inter', sans-serif;
     font-size: 12px;
-    background-color: #ecf0f1;
-    color: #a0a5a8;
+    background-color:var(--whitebg);
+    color: var(--mediumgrey);
 }
+

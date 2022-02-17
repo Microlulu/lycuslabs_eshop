@@ -15,8 +15,8 @@ class ContactController extends AbstractController
     {
         // j'ai créé un formulaire ContactType que je viens aussi créer dans mon controller
         $form = $this->createForm(ContactType::class);
-        // je renvoie ensuite ce formulaire a ma vue index de contact
-        return $this->render('contact/index.html.twig', [
+        // je renvoie ensuite ce formulaire à ma vue index de contact
+        return $this->render('contact/contact_us.html.twig', [
             'contact_form' => $form->createView(),
 
         ]);

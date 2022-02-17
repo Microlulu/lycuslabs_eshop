@@ -19,7 +19,7 @@
 
 <div class="main">
     <div class="form_container a-container" id="a-container">
-        <form class="form" id="a-form" method="" action="">
+        <form class="form" id="a-form" method="post" action="app_register">
             <h2 class="title">Create Account</h2>
             <div class="form__icons">
                 <img class="form__icon" src="{{ asset('images/svg/fb.svg') }}" alt=""/>
@@ -28,12 +28,16 @@
                 <img class="form__icon" src="{{ asset('images/svg/linkedin.svg') }}"/>
             </div>
             <span class="form__span">or use email for registration</span>
-            <input class="form__input" type="text" placeholder="Name"/>
+            <input class="form__input" type="text" placeholder="Firstname"/>
+            <input class="form__input" type="text" placeholder="Lastname"/>
             <input class="form__input" type="text" placeholder="Email"/>
-            <input class="form__input" type="password" placeholder="Password"/>
-            <button class="button submit">SIGN UP</button>
+            <input class="form__input" type="password" placeholder="Password" name="password" id="inputPassword" autocomplete="current-password" required/>
+            <input class="form__input" type="password" placeholder="Repeat Password" name="password" id="inputPassword" autocomplete="current-password" required/>
+            <input class="form__input" type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <button href="{{ path('app_register') }}" class="button submit" type="submit">SIGN UP</button>
         </form>
     </div>
+    {{ form_end(registrationForm) }}
     <--
     {# LOGIN + MESSAGE INFORMATIF SUR L'UTILISATEUR LOGGER + MESSAGE EN CAS DE PROBLEME
     {% if error %}
@@ -50,18 +54,19 @@
 
     {# LOGIN FORM #}
     <div class="container b-container" id="b-container">
-        <form class="form" id="b-form" method="" action="">
+        <form class="form" id="b-form" method="post" action="app_login">
             <h2 class="title">Sign in to Website</h2>
             <div class="form__icons">
-                <img class="form__icon" src="svg/fb.svg" alt=""/>
-                <img class="form__icon" src="svg/linkedin.svg"/>
-                <img class="form__icon" src="svg/twitter.svg"/>
+                <img class="form__icon" src="{{ asset('images/svg/fb.svg') }}" alt="facebook"/>
+                <img class="form__icon" src="{{ asset('images/svg/instagram.svg') }}" alt="instagram"/>
+                <img class="form__icon" src="{{ asset('images/svg/twitter.svg') }}" alt="twitter"/>
+                <img class="form__icon" src="{{ asset('images/svg/linkedin.svg') }}" alt="linkedin"/>
             </div>
             <span class="form__span">or use your email account</span>
             <input class="form__input" type="text" placeholder="Email"/>
-            <input class="form__input" type="password" placeholder="Password"/>
-            <a class="form__link">Forgot your password?</a>
-            <button class="button submit">SIGN IN</button>
+            <input class="form__input" type="password" placeholder="Password" name="password" id="inputPassword" autocomplete="current-password" required/>
+            <a href="{{ path('app_forgot_password_request')}}" class="form__link">Forgot your password?</a>
+            <button  href="{{ path('app_login') }}" class="button submit" type="submit">SIGN IN</button>
         </form>
     </div>
 
@@ -82,8 +87,6 @@
         </div>
     </div>
 </div>
-{% block javascript %}
-<script src="script.js"></script>
-{% endblock %}
 
 {% endblock %}
+<script src="{{ asset('assets/js/script.js') }}"></script>

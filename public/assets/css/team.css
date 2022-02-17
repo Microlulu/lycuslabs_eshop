@@ -15,8 +15,9 @@
 .title_team{
     text-align: center;
     text-transform: capitalize;
-    color: #3751C5;
+    color: var(--black);
     margin: 15px 0;
+    font-size: 34px;
 }
 
 .team-row{
@@ -32,8 +33,8 @@
     padding: 20px 10px;
     cursor: pointer;
     max-width: 300px;
-    box-shadow: 9px 9px 16px rgba(163,177,198,.6),
-    -9px -9px 16px rgba(255,255,255,.5);
+    box-shadow: 9px 9px 16px var(--lightgrey),
+    -9px -9px 16px var(--extrawhite);
     transition: all 0.3s;
 }
 
@@ -48,8 +49,8 @@
     margin:0 auto;
     border-radius: 100px;
     overflow: hidden;
-    box-shadow: 9px 9px 16px rgba(163,177,198,.6),
-    -9px -9px 16px rgba(255,255,255,.5);
+    box-shadow: 9px 9px 16px var(--lightgrey),
+    -9px -9px 16px var(--extrawhite);
 }
 .imgBox img{
     display: block;
@@ -61,19 +62,20 @@
 .member h2{
     text-transform: uppercase;
     font-size: 24px;
-    color: #3751C5;
-    margin:15px 0;
+    color: var(--black);
+    margin: 8px 0;
 }
 
 .member h6{
     text-align: center;
-    color: #9b9b9b;
+    color: var(--darkgrey);
     font-weight: 700;
     font-size: 1rem;
+    margin-bottom: 15px;
 
 }
 .member p{
     font-size: 15px;
-    color: #346EDB;
+    color: var(--blue);
     line-height: 1.6;
 }
