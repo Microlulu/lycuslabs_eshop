@@ -8,7 +8,7 @@ let switchCircle = document.querySelectorAll('.switch__circle');
 let switchBtn = document.querySelectorAll('.switch-btn');
 let aContainer = document.querySelector('#a-container');
 let bContainer = document.querySelector('#b-container');
-let allButtons = document.querySelectorAll('.submit');
+let allButtons = document.querySelectorAll('.submitRight');
 
 /* La méthode preventDefault() de l'interface Event indique à l'utilisateur que si l'événement n'est pas explicitement
 traité, son action par défaut ne doit pas être appliquée comme elle le serait normalement.

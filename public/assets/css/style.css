@@ -4,14 +4,14 @@
 /* VARIABLES COULEURS*/
 :root {
     /* Nuances de blanc */
-    --extrawhite: #f9f9f9ff;
+    --extrawhite: #f9f9f9ff; /* couleur utilisée pour le neumorphisme*/
     --whitebg: #edf0f1ff;
     /* Nuances de gris */
-    --lightgrey: #d3dce7ff;
+    --lightgrey: #d3dce7ff; /* couleur utilisée pour le neumorphisme*/
     --mediumgrey: #a0a5a8ff;
     --darkgrey: #7d7f79ff;
     --black: #181818ff;
-    /* Nuances de couleurs pour le texte et les détails*/
+    /* Nuances de couleurs pour le texte et les détails (boutons, lignes...)*/
     --purple: #4d23be;
     --blue: #346edb;
     /* Dégradé de bleu à violet pour les boutons*/
@@ -23,17 +23,13 @@
     padding:0;
     box-sizing: border-box;
     user-select: none;
+
 }
 
 body{
     width: 100%;
     height:100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
     background-color:var(--whitebg);
-    color: var(--mediumgrey);
+    color: var(--black);
 }
 

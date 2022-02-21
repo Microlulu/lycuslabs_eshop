@@ -67,11 +67,12 @@ class RegistrationController extends AbstractController
             $this->addFlash('success', 'Your email address has been verified.');
             return $this->redirectToRoute('app_login');
 
+            /*
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
                 $request
-            );
+            );*/
         }
 
         return $this->render('security/login_form.html.twig', [
