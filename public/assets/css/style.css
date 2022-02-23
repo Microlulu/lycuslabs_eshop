@@ -1,6 +1,6 @@
 /* TYPOS IMPORTEES DE GOOGLE FONTS : Nom : "Inter"; Dimensions: "Extra-light 200, Light 300, Regular 400, Bold 700"; */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;700&display=swap');
-
+/* STYLE PRINCIPAL DU SITE*/
 /* VARIABLES COULEURS*/
 :root {
     /* Nuances de blanc */
@@ -14,6 +14,7 @@
     /* Nuances de couleurs pour le texte et les détails (boutons, lignes...)*/
     --purple: #4d23be;
     --blue: #346edb;
+    --darkblue: #2b1055;
     /* Dégradé de bleu à violet pour les boutons*/
     --gradient: linear-gradient(94deg, rgba(89,161,226,1) 0%, rgba(55,81,197,1) 70%, rgba(77,35,190,1) 100%);
 }
@@ -23,6 +24,7 @@
     padding:0;
     box-sizing: border-box;
     user-select: none;
+    scroll-behavior: smooth;
 
 }
 
@@ -33,3 +35,141 @@ body{
     color: var(--black);
 }
 
+
+
+/*  DEBUT DE LA NAVBAR  */
+nav{
+    background: var(--whitebg);
+    z-index: 2000;
+    margin-bottom: 5px;
+    box-shadow: 9px 9px 16px var(--lightgrey),
+    -9px -9px 16px var(--extrawhite);
+}
+nav:after{
+    content: '';
+    clear: both;
+    display: table;
+}
+nav .logo{
+    float: left;
+    color: black;
+    font-size: 27px;
+    font-weight:600;
+    line-height: 70px;
+    padding-left: 60px;
+    font-family: 'Inter', sans-serif;
+}
+.mainMenu{
+    float:right;
+    list-style: none;
+    margin-right: 40px ;
+    position: relative;
+    z-index: 3000;
+
+}
+.mainMenu li{
+    float: left;
+    display: inline-block;
+    background: var(--whitebg);
+    margin: 0 5px;
+    list-style: none;
+
+}
+
+.mainMenu li a{
+    font-family: 'Inter', sans-serif;
+    color: var(--darkblue) ;
+    text-decoration: none;
+    line-height: 70px;
+    font-size: 18px;
+    padding: 8px 15px;
+}
+/* Pour donner un effet de halo autour des boutons lorsqu'on on passe dessus*/
+.mainMenu li a:hover{
+    border-radius: 5px;
+    color: var(--purple);
+    box-shadow: 0 0 5px var(--blue),
+                0 0 5px var(--blue);
+}
+/* Pas de halo autour des boutons du dropdown*/
+.mainMenu ul li a:hover {
+    color: var(--purple);
+    box-shadow: none;
+}
+
+.mainMenu ul {
+    position: absolute;
+    top:90px ;
+    box-shadow: 9px 9px 16px var(--darkblue);
+    opacity:0;
+    visibility: hidden;
+    transition:top .3s;
+    border-top: solid var(--purple);
+
+}
+.mainMenu li:hover > ul {
+    top:70px ;
+    opacity: 1;
+    visibility: visible;
+}
+.mainMenu ul li{
+    position: relative;
+    margin: 0px;
+    width: 180px;
+    float: none;
+    display: list-item;
+    border-bottom: 1px solid var(--lightgrey) ;
+}
+.mainMenu ul li a{
+    line-height: 50px;
+}
+
+#burger, #close{
+    display: none;
+}
+
+
+/* DEBUT DE LA NAVBAR RESPONSIVE */
+@media all and (max-width: 1182px ) {
+    /* BURGER TOGGLE*/
+    #burger{
+        display: block;
+        height: 35px;
+        width: 35px;
+        right:40px;
+        top: 20px ;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .mainMenu{
+        margin-right: 0;
+        float: left;
+    }
+    nav .logo{
+        padding-left: 30px;
+        width: 100%;
+    }
+ /* nav ul li, nav ul ul li{
+        display: none;
+
+    }
+
+  */
+    .dropdown{
+        top: 70px;
+        position: static;
+        border-top: none;
+        float: none;
+        display: none;
+        opacity:1;
+        visibility: visible;
+    }
+
+
+    .mainMenu a:hover{
+      box-shadow: none;
+    }
+
+
+}

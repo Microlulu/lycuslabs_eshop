@@ -17,7 +17,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(Request $request, CategoryRepository $categoryRepository, ServicesRepository $servicesRepository, Cart $cart, CarouselRepository $carouselRepository): Response
     {
-        return $this->render('home/index.html.twig', [
+        return $this->render('home/home.html.twig', [
             'cart' => $cart->getCart(),
             'carousel' => $carouselRepository->findAll(),
             'services' => $servicesRepository->findAll(),

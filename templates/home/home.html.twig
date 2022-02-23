@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<section class="decor sectionImg">
+    <img src="{{ asset('images/stars.png') }}" id="stars">
+    <img src="{{ asset('images/moon.png') }}" id="moon">
+    <img src="{{ asset('images/mountains_behind.png') }}" id="mountains_behind">
+    <h2 id="textMoto">Advanced simplicity</h2>
+    <a href="#sec" id="btnWhite">Explore</a>
+    <img src="{{ asset('images/mountains_front.png') }}" id="mountains_front">
+</section>
+
+    <div class="sec" id="sec">
+        <h2>Who are we ?</h2>
+        <p>Lycus Labs (formerly Titan GFX) provides 3D modeling solutions and custom software plugins to businesses.<br>
+            The modeling solutions are not intended for a specific market. Indeed, the company aims to provide solutions to different fields such as architecture, video games, machinery, etc.<br>
+            The software plugins, on the other hand, are intended for artists and users of 3D modeling and rendering software.
+            <br><br>
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+            illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
+            aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
+            ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam
+            quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+            consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+            fugiat quo voluptas nulla pariatur?"
+        </p>
+    </div>
+{% endblock %}

@@ -1,62 +1,66 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<!-- SEO GOOGLE -->
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}Lycus labs : Plugins for Autodesk and 3D Visualizations
-			{% endblock %}
-		</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="robots" content="index, follow, all">
-		<meta name="description" content="Lycus labs creates software and computer visualization solutions for computer graphics industry">
-		<meta name="keywords" content="Software pluggins, graphics industry, Autodesk plugins, 3d visualization, solutions technologic, Computer Sciences, Software engineer senior">
-		<script type="application/ld+json">
+<html lang="en">
+<head>
+    <!-- SEO GOOGLE -->
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}Lycus labs : Plugins for Autodesk and 3D Visualizations
+        {% endblock %}
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, all">
+    <meta name="description"
+          content="Lycus labs creates software and computer visualization solutions for computer graphics industry">
+    <meta name="keywords"
+          content="Software plugins, graphics industry, Autodesk plugins, 3d visualization, solutions technological, Computer Sciences, Software engineer senior">
+    <script type="application/ld+json">
 
-			{
-			"@context": "https://schema.org",
-			"@type": "Organization",
-			"mainEntityOfPage": {
-			    "@type": "WebPage",
-				"@id": "https://www.lycuslabs.com/"
-			},
-			"headline": "Lycus labs creates software and computer visualization solutions for computer graphics industry",
-			"image": [
-			"https://lycuslabs.com/Lycuslabslogo.svg"
-			],
-			"datePublished": "2022-30-03T08:00:00+08:00",
-			"dateModified": "2022-30-03T09:20:00+08:00",
-			"author": {
-			    "@type": "Person",
-			    "name": "Lucile DEBUCHY",
-			    "url": "https://www.lucile-debuchy.com/"
-			},
-			"publisher": {
-			    "@type": "Organization",
-			    "name": "https://www.lycuslabs.com/",
-			    "logo": {
-				    "@type": "ImageObject",
-				    "url": "https://lycuslabs.com/Lycuslabslogo.svg",
-					"alt": "Lycuslabs Logo"
-					}
-				}
-			}
-		</script>
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
-			<link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
-			<link rel="stylesheet" href="{{ asset('assets/css/team.css')}}">
-			<link rel="stylesheet" href="{{ asset('assets/css/contact.css')}}">
-		{% endblock %}
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.lycuslabs.com/"
+            },
+            "headline": "Lycus labs creates software and computer visualization solutions for computer graphics industry",
+            "image": [
+                "https://lycuslabs.com/Lycuslabslogo.svg"
+            ],
+            "datePublished": "2022-30-03T08:00:00+08:00",
+            "dateModified": "2022-30-03T09:20:00+08:00",
+            "author": {
+                "@type": "Person",
+                "name": "Lucile DEBUCHY",
+                "url": "https://www.lucile-debuchy.com/"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "https://www.lycuslabs.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://lycuslabs.com/Lycuslabslogo.svg",
+                    "alt": "Lycuslabs Logo"
+                }
+            }
+        }
+    </script>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/team.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+
+    {% endblock %}
 
 
-	</head>
 
-	{% block navbar %}
-	 
-	{# debut de la nav bar principal #}
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+</head>
+
+{% block navbar %}
+
+    {# debut de la nav bar principal #}
+    {#    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#">LycusLabs</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +72,7 @@
 							<a class="nav-link active" aria-current="home" href="{{ path('home') }}">Home</a>
 						</li>
 						<li class="nav-item dropdown">
-						
+
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								Products
 							</a>
@@ -86,7 +90,7 @@
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('contact') }}">Contact</a>
 						</li>
-						
+
                         {% if app.user %}
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('profil') }}">Profil</a>
@@ -94,7 +98,7 @@
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('app_logout')}}">Logout</a>
 						</li>
-				
+
                         <button class="my-button-dark position-relative">
                                 <a class="nav-link" href="{{ path('buy_action') }}">
                                     <i class="fas fa-shopping-cart me-2"></i>
@@ -137,7 +141,7 @@
 									<a class="nav-link" aria-current="carouselimages" href="{{ path('voucher_index') }}">Create Discount</a>
 								</li>
 							</ul>
-							
+
 						</li>
                         {% endif %}
 						{% else %}
@@ -150,42 +154,85 @@
 
 							{% endif %}
 
-                        
+
 					</ul>
 
 				</div>
 			</div>
 
 </nav>
+    #}
+    <nav>
+        <div class="logo">Lycuslabs</div>
+        {# IMAGE POUR OUVRIR NAVBAR #}
+        <img src="{{ asset('images/svg/bars-solid.svg') }}" aria-label="open the menu" id="burger">
+
+        <ul class="mainMenu">
+            <li><a href="{{ path('home') }}" aria-label="home" >Home</a></li>
+
+            <li>
+                <a id="navbarDropdown" aria-label="products">Products</a>
+                <ul  id="listsProducts" class="dropdown">
+                {# ICI COMMENCE LE BOUTON DYNAMIQUE DES PRODUITS VOIR BAS DE PAGE POUR JAVASCRIPT#}
+                </ul>
+            </li>
+            <li><a href="{{ path('our_services') }}" aria-label="services" >Services</a></li>
+            <li><a href="{{ path('team_members') }}" aria-label="team">Team</a></li>
+            <li><a href="{{ path('contact') }}" aria-label="contact">Contact</a></li>
+
+
+            {# USER LOGGED PART #}
+            {% if app.user %}
+            <li><a href="{{ path('profil') }}" aria-label="profil">Profil</a></li>
+            <li><a href="{{ path('buy_action') }}" aria-label="cart">Cart</a></li>
+            <li><a href="{{ path('app_logout') }}" aria-label="logout">Logout</a></li>
+            {# ADMIN PART #}
+            {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="#">Admin</a></li>
+            {% endif %}
+            {% else %}
+            <li><a href="{{ path('app_register') }}" aria-label="login or register" >Login/Register</a></li>
+            {% endif %}
+
+            {# IMAGE POUR FERMER NAVBAR #}
+            <img src="{{ asset('images/svg/xmark-solid.svg') }}" aria-label="close the menu" id="close">
+        </ul>
+    </nav>
 {% endblock %}
 
 <body>
 {% block body %}
 {% endblock %}
-		{% block javascripts %}
-			<script src="https://kit.fontawesome.com/d36e2f2546.js" crossorigin="anonymous"></script>
-			<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-			<script>
-			// Je crée un script pour mon bouton "products" : c'est un bouton dynamique qui prends en compte tous les produits existants et les affiches sous forme de dropdown.
-			// À la demande de mon client, j'ai fait un bouton dynamique et pas de page affichant tous les produits comme les e-commerces traditionnels, car mon client est une start-up qui pour l'instant n'a qu'un seul produit.
-			// Cette startup n'a pas pour projet de faire un site avec beaucoup de produits, le CEO m'a dit qu'au grand maximum, il y aurait 5 produits et tous seront très différents des uns des autres, d'où sa demande de les séparer dans des pages bien distincte sans liens entre eux.
-					fetch('/api/products')
-					.then(response => {
-						return response.json()
-					})
-					.then(products => {
-						const listElement = document.getElementById("listsProducts");
-						// je crée un text vide et je dis dans ma boucle += qui veut dire ajoute, mais ne supprime pas l'ancien produit
-						var text = ""
-						for(index in products) {
-							text += "<li class='nav-item'>"+
-								"<a class='nav-link' href='/ourproduct/"+products[index].id+"'>"+products[index].title+"</a>"+
-							"</li>"
-						}
-						listElement.innerHTML = text
-					});
-			</script>
-		{% endblock %}
+
+{% block javascripts %}
+    <script src="https://kit.fontawesome.com/d36e2f2546.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/home.js') }}"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script>
+        // Je crée un script pour mon bouton "products" : c'est un bouton dynamique qui prends en compte tous les produits existants et les affiches sous forme de dropdown.
+        // À la demande de mon client, j'ai fait un bouton dynamique et pas de page affichant tous les produits comme les e-commerces traditionnels, car mon client est une start-up qui pour l'instant n'a qu'un seul produit.
+        // Cette startup n'a pas pour projet de faire un site avec beaucoup de produits, le CEO m'a dit qu'au grand maximum, il y aurait 5 produits et tous seront très différents des uns des autres, d'où sa demande de les séparer dans des pages bien distincte sans liens entre eux.
+        fetch('/api/products')
+            .then(response => {
+                return response.json()
+            })
+            .then(products => {
+                const listElement = document.getElementById("listsProducts");
+                // je crée un text vide et je dis dans ma boucle += qui veut dire ajoute, mais ne supprime pas l'ancien produit
+                let text = ""
+                for (index in products) {
+                    // et la je viens créer mon ma balise li dans lequel je mets un lien a et je viens faire ma boucle sur mes produits, je dis prends l'id d'un produit dans l'index Products et ajoute son titre et un + pour dire répète cette action dans un
+                    // autre li pour chaque produits
+                    text += "<li>" +
+                        "<a href='/ourproduct/" + products[index].id + "'>" + products[index].title + "</a>" +
+                        "</li>"
+                }
+                listElement.innerHTML = text
+            });
+    </script>
+
+{% endblock %}
+
 </body>
 
 </html>
