@@ -1,74 +1,49 @@
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Product{% endblock %}
 
 {% block body %}
 
-
-<!--Main layout-->
-  <main class="mt-5 pt-4">
-    <div class="container dark-grey-text mt-5">
-
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
-        <img src="{{ asset('images/products/' ~ product.image )}}"  class="img-fluid mt-5" style="  width:600px" alt="{{ product.image }}" ></td>
-
+    <div class="small-container single-product">
+        <div class="product_container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="{{ asset('images/products/' ~ product.image ) }}" style="width:100%"
+                         alt="{{ product.image }}" id="productImg">
+                    <div class="small-img-row">
+                        <div class="small-img-col">
+                            <img src="{{ asset('images/products/' ~ product.image ) }}" style="width:100%"
+                                 alt="{{ product.image }}" class="small-img">
+                        </div>
+                        <div class="small-img-col">
+                            <img src="{{ asset('images/products/' ~ product.image ) }}" style="width:100%"
+                                 alt="{{ product.image }}" class="small-img">
+                        </div>
+                        <div class="small-img-col">
+                            <img src="{{ asset('images/products/' ~ product.image ) }}" style="width:100%"
+                                 alt="{{ product.image }}" class="small-img">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p class="ariane"> Home / Products</p>
+                    <h1>{{ product.title }}</h1>
+                    <h2>{{ product.price }} €</h2>
+                    <label class="qty">Quantity</label>
+                    <input type="number" value="1">
+                    <a class="link" href="">Add to cart</a>
+                    <h3>Description</h3>
+                    <br>
+                    <p>{{ product.description }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Additional information</h3>
+                <p>{{ product.descriptionadd }}</p>
+            </div>
         </div>
-        <!--Grid column-->
+    </div>
 
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
 
-          <!--Content-->
-          <div class="p-4">
-            <h1>{{ product.title }}</h1>
-            <p class="lead">
-              <span class="mr-1">
-                <del>{{ product.price }} €</del>
-              </span>
-              <span>{{ product.price }} €</span>
-            </p>
 
-            <p class="lead font-weight-bold">Description</p>
-
-            <p>{{ product.description }}</p>
-
-            <form class="d-flex justify-content-left">
-              <!-- Default input -->
-              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
-              <button class="btn btn-primary btn-md my-0 p" href="" type="submit">Add to cart
-                <i class="fas fa-shopping-cart ml-1"></i>
-              </button>
-
-            </form>
-
-          </div>
-          <!--Content-->
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
-      <hr>
-
-      <!--Grid row-->
-      <div class="row d-flex justify-content-center wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-md-6 text-center">
-
-          <h4 class="my-4 h4">Additional information</h4>
-
-          <p>{{ product.descriptionadd  }}</p>
-
-        </div>
-        <!--Grid column-->
-      </div>
-      <!--Grid row-->
-      {% endblock %}
+{% endblock %}

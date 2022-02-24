@@ -1,0 +1,47 @@
+/* IMPORT DU FICHIER STYLE.CSS */
+@import url("style.css");
+@import url("register.css");
+.main_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.service_container{
+    box-shadow: 10px 10px 15px var(--lightgrey),
+    -10px -10px 15px var(--extrawhite);
+    width: 90%;
+    height: 90%;
+    border-radius: 20px;
+    margin: 30px;
+    padding: 30px;
+
+}
+
+.col{
+    flex-direction: column;
+
+}
+.left{
+    justify-content: left;
+}
+.right{
+    justify-content: right;
+}
+
+h1{
+    font-family: 'Inter', sans-serif;
+    font-size: 3.5em;
+    line-height: 60px;
+    color: var(--purple);
+}
+h2{
+     font-weight: 700;
+    margin-bottom: 15px;
+     font-size: 1.8rem;
+     color: var(--blue);
+ }
+inline{
+   display: inline-block;
+    width: auto;
+}

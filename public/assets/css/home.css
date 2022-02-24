@@ -79,8 +79,10 @@ section img#mountains_front{
     border-bottom: 3px solid var(--purple);
     width: 25%;
     padding-bottom: 3px;
+    font-family: 'Inter', sans-serif;
 }
 .sec p{
-    font-size: 1.4em;
-    color: var(--blue)
+    font-size: 1.2em;
+    color: var(--darkgrey);
+    font-family: 'Inter', sans-serif;
 }

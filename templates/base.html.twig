@@ -47,9 +47,11 @@
     </script>
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/team.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/product.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/services.css') }}">
 
     {% endblock %}
 
@@ -184,7 +186,7 @@
             {# USER LOGGED PART #}
             {% if app.user %}
             <li><a href="{{ path('profil') }}" aria-label="profil">Profil</a></li>
-            <li><a href="{{ path('buy_action') }}" aria-label="cart">Cart</a></li>
+            <li><a href="{{ path('buy_action') }}" aria-label="cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
             <li><a href="{{ path('app_logout') }}" aria-label="logout">Logout</a></li>
             {# ADMIN PART #}
             {% if is_granted('ROLE_ADMIN') %}
@@ -206,6 +208,7 @@
 
 {% block javascripts %}
     <script src="https://kit.fontawesome.com/d36e2f2546.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/product.js') }}"></script>
     <script src="{{ asset('assets/js/home.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <script>

@@ -33,7 +33,9 @@
     word-spacing: 3px;
     border-bottom: 3px solid var(--purple);
     width: 65%;
+    color: var(--purple);
     padding-bottom: 3px;
+    font-family: 'Inter', sans-serif;
 }
 .contact_container .msg .heading h5{
     font-weight: 700;
@@ -41,6 +43,7 @@
     word-spacing: 3px;
     width: 42%;
     padding: 5px 0 3px 0;
+    font-family: 'Inter', sans-serif;
 
 }
 
@@ -55,6 +58,7 @@
     padding-top: 5px;
     width: 42%;
     color: var(--darkgrey);
+    font-family: 'Inter', sans-serif;
 
 }
 

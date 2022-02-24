@@ -1,6 +1,6 @@
 /* BURGER MENU */
 
-    const openBurger = document.querySelector('#burger');
+ /*   const openBurger = document.querySelector('#burger');
     const mainMenu = document.querySelector('.mainMenu');
     const closeMenu = document.querySelectorAll('#close');
 
@@ -18,7 +18,7 @@ function close(){
 
 
 }
-
+*/
 
 
 

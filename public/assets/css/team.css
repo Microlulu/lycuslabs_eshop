@@ -15,11 +15,13 @@
 .title_team{
     text-align: center;
     text-transform: capitalize;
-    color: var(--black);
-    margin: 15px 0;
-    font-size: 34px;
     font-weight: 700;
-    line-height: 3;
+    font-family: 'Inter', sans-serif;
+    font-size: 50px;
+    line-height: 60px;
+    margin: 75px 0px 0px 0px;
+    color: var(--purple);
+
 }
 
 .team-row{

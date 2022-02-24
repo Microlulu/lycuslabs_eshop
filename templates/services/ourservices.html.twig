@@ -7,11 +7,11 @@
 
 			<!-- START OF THE SERVICES -->
 
-			<hr class="featurette-divider">
-			<div class=" mt-5 ">
-				<div class="justify-content-center row">
+			<div class="margin-top">
+				<div class="main_container"></div>
+				<div class="row">
 					{% for item in services %}
-						<article class="col-10 btn-toolbar d-flex">
+						<article>
 							{% if loop.index0 is even %}
 								{{ include ("services/service_template_1.html.twig") }}
 							{% else %}

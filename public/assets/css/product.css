@@ -1,0 +1,119 @@
+/* IMPORT DU FICHIER STYLE.CSS */
+@import url("style.css");
+@import url("register.css");
+
+ .product_container{
+     box-shadow: 10px 10px 15px var(--lightgrey),
+                 -10px -10px 15px var(--extrawhite);
+     width: 100%;
+     height: 100%;
+     border-radius: 20px;
+     padding: 0 50px 50px 50px;
+
+ }
+
+.ariane{
+    color: var(--mediumgrey);
+    font-size: 1em;
+    font-family: 'Inter', sans-serif;
+}
+
+.small-container{
+    max-width: 90%;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 20px;
+}
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.single-product{
+    margin-top: 60px;
+}
+.small-img-row{
+    display: flex;
+    justify-content: space-around;
+}
+.col-2 img{
+    max-width: 100%;
+    padding: 50px 0;
+}
+.small-img-col{
+    flex-basis: 24%;
+    cursor: pointer;
+}
+.single-product .col-2 img{
+    padding: 0;
+}
+.single-product .col-2{
+    padding: 20px;
+}
+
+.col-2{
+    flex-basis: 50%;
+    min-width: 300px;
+}
+.col-2 h1{
+    font-family: 'Inter', sans-serif;
+     font-size: 3.5em;
+    line-height: 60px;
+    margin: 25px 0px;
+    color: var(--purple);
+}
+.single-product h2{
+    margin: 0 0 20px 0 ;
+    font-size: 30px;
+    font-weight: 700;
+
+}
+.single-product h3{
+    margin-top: 25px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--blue);
+}
+.qty{
+    font-size: 1em;
+    color: var(--black);
+}
+.single-product input{
+    width: 50px;
+    height: 40px;
+    padding-left: 18px;
+    font-size: 20px;
+    margin-right: 10px;
+    border:1px solid var(--blue);
+}
+input:focus{
+    outline:none;
+}
+
+p{
+    margin: 5px;
+    font-size: 1.2em;
+    color: var(--darkgrey);
+}
+.link{
+    text-decoration: none;
+    width: 180px;
+    height: 50px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.15px;
+    background: var(--gradient);
+    color: var(--extrawhite);
+    box-shadow: 8px 8px 16px var(--lightgrey),
+                -8px -8px 16px var(--extrawhite);
+    border: none;
+    outline: none;
+    padding: 10px;
+
+
+}
+.link:hover{
+    background: var(--mediumgrey);
+}
