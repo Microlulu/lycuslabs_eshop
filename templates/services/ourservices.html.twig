@@ -5,22 +5,24 @@
 {% block body %}
 
 
-			<!-- START OF THE SERVICES -->
+<!-- START OF THE SERVICES -->
 
-			<div class="margin-top">
-				<div class="main_container"></div>
-				<div class="row">
-					{% for item in services %}
-						<article>
-							{% if loop.index0 is even %}
-								{{ include ("services/service_template_1.html.twig") }}
-							{% else %}
-								{{ include ("services/service_template_2.html.twig") }}
-							{% endif %}
-						</article>
-					{% endfor %}
-				</div>
+<div class="margin-top">
+    <div class="main_container">
+        <div class="row">
+            {% for item in services %}
+                <div>
+                    {% if loop.index0 is even %}
+                        {{ include ("services/service_template_1.html.twig") }}
+                    {% else %}
+                        {{ include ("services/service_template_2.html.twig") }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
 
-				<!-- /END OF THE SERVICES -->
-{% endblock %}
+    <!-- /END OF THE SERVICES -->
+    {% endblock %}

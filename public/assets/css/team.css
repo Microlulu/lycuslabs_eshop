@@ -17,7 +17,7 @@
     text-transform: capitalize;
     font-weight: 700;
     font-family: 'Inter', sans-serif;
-    font-size: 50px;
+    font-size: 2.5em;
     line-height: 60px;
     margin: 75px 0px 0px 0px;
     color: var(--purple);
@@ -74,12 +74,12 @@
     text-align: center;
     color: var(--darkgrey);
     font-weight: 700;
-    font-size: 1rem;
+    font-size:1.2rem;
     margin-bottom: 15px;
 
 }
 .member p{
-    font-size: 15px;
+    font-size: 1em;
     color: var(--blue);
     line-height: 1.6;
 }

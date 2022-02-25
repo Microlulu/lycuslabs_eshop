@@ -7,8 +7,6 @@
     transform: translate(-50%, -50%);
     position:absolute;
     background: var(--whitebg);
-
-
 }
 .contact_container{
     box-shadow: 10px 10px 15px var(--lightgrey),
@@ -30,18 +28,18 @@
 
 .contact_container .msg .heading h3{
     font-weight: 700;
+    font-size: 1.5em;
     word-spacing: 3px;
     border-bottom: 3px solid var(--purple);
-    width: 65%;
+    width: 75%;
     color: var(--purple);
     padding-bottom: 3px;
     font-family: 'Inter', sans-serif;
 }
 .contact_container .msg .heading h5{
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     word-spacing: 3px;
-    width: 42%;
     padding: 5px 0 3px 0;
     font-family: 'Inter', sans-serif;
 
@@ -53,10 +51,8 @@
 
 .contact_container .msg .heading h6{
     font-weight: 500;
-    font-size: 12px;
-    word-spacing: 3px;
+    font-size: 1rem;
     padding-top: 5px;
-    width: 42%;
     color: var(--darkgrey);
     font-family: 'Inter', sans-serif;
 
@@ -64,7 +60,7 @@
 
 
 .contact_container .msg .user input{
-    padding: 4px 25px 10px;
+    padding: 4px 100px 10px 23px;
     margin: 2px 0;
     font-size: 13px;
     letter-spacing: 0.15px;
@@ -84,7 +80,7 @@
 
 .contact_container .msg .user-message input{
     outline: none;
-    padding: 4px 25px 100px;
+    padding: 4px 100px 100px 23px;
     margin: 2px 0;
     font-size: 13px;
     letter-spacing: 0.15px;
@@ -98,7 +94,7 @@
 }
 
 .contact_container .msg .btn{
-    margin:10px 10px 10px 50px;
+    margin:30px 10px 10px 50px;
 }
 
 .contact_container .msg .btn input{

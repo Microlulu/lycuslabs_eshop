@@ -1,10 +1,14 @@
 /* IMPORT DU FICHIER STYLE.CSS */
 @import url("style.css");
 @import url("register.css");
+@import url("product.css");
+
 .main_container{
     width: 100%;
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
+
 }
 
 .service_container{
@@ -15,33 +19,66 @@
     border-radius: 20px;
     margin: 30px;
     padding: 30px;
+    float: left;
+
+}
+.service_container_right{
+    box-shadow: 10px 10px 15px var(--lightgrey),
+    -10px -10px 15px var(--extrawhite);
+    width: 90%;
+    height: 90%;
+    border-radius: 20px;
+    margin: 30px;
+    padding: 30px;
+    float: right;
+    text-align: right;
 
 }
 
-.col{
-    flex-direction: column;
-
+.right{
+    float: right;
+    margin-right: 40px;
 }
 .left{
-    justify-content: left;
-}
-.right{
-    justify-content: right;
+    float: left;
+    margin-left: 40px;
 }
 
 h1{
     font-family: 'Inter', sans-serif;
-    font-size: 3.5em;
+    font-size: 2.5em;
     line-height: 60px;
     color: var(--purple);
 }
 h2{
      font-weight: 700;
-    margin-bottom: 15px;
+     margin-bottom: 15px;
      font-size: 1.8rem;
      color: var(--blue);
  }
-inline{
-   display: inline-block;
-    width: auto;
+p{
+    font-family: 'Inter', sans-serif;
+    font-size:1.2em;
+}
+
+.imgServ_Box{
+    width: 100%;
+    height: 300px;
+    border:1px solid #eaeff5;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 9px 9px 16px var(--lightgrey),
+    -9px -9px 16px var(--extrawhite);
+}
+.imgServ_Box img{
+    display: block;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+}
+
+.colServ-2{
+    flex-basis: 30%;
+    min-width: 300px;
+    width: 50%;
 }
