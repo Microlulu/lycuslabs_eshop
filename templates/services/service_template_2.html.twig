@@ -1,19 +1,16 @@
-<article class="service_container_right">
-	<div>
-		<div class="right">
-		<h1>{{ item.title }}</h1>
-		<h2>{{ item.subtitle }}</h2>
-		</div>
-		<div class="row">
-			<div style="width:50%">
-				<p>{{ item.text }}</p>
-			</div>
-			<div  style="width: 40%">
-				<div class="imgServ_Box">
-					<img src="{{ asset('images/services/' ~ item.image) }}" alt="{{ item.shortcut }}">
-				</div>
-			</div>
-
-		</div>
-	</div>
+<article class="service_container right">
+    <div>
+        <div class="txt_align_right">
+            <h2>{{ item.title }}</h2>
+            <h3>{{ item.subtitle }}</h3>
+        </div>
+        <div class="row-2">
+            <div class="right">
+                <p>{{ item.text }}</p>
+            </div>
+            <div class="imgServ_Box">
+                <img src="{{ asset('images/services/' ~ item.image) }}" alt="{{ item.shortcut }}">
+            </div>
+        </div>
+    </div>
 </article>

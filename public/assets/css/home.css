@@ -20,7 +20,7 @@
     overflow: hidden;
 }
 
-section::before{
+section .decor::before{
     content: '';
     position: absolute;
     bottom: 0;
@@ -28,7 +28,7 @@ section::before{
     height: 100px;
     z-index: 1000;
 }
-section img{
+section .imgs{
     position: absolute;
     top: 0;
     left: 0;
@@ -74,9 +74,10 @@ section img#mountains_front{
 }
 .sec h2{
     font-size: 2.5em;
+    font-weight: 700;
     margin-bottom: 10px;
-    color: var(--purple);
-    border-bottom: 3px solid var(--purple);
+    color: var(--darkblue);
+    text-transform: uppercase;
     width: 17%;
     padding-bottom: 3px;
     font-family: 'Inter', sans-serif;

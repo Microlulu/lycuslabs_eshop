@@ -4,21 +4,51 @@
 /* VARIABLES COULEURS*/
 :root {
     /* Nuances de blanc */
-    --extrawhite: #f9f9f9ff; /* couleur utilisée pour le neumorphisme*/
-    --whitebg: #edf0f1ff;
+    --extrawhite: #f9f9f9ff; /* couleur utilisée pour la lumières des cadres neumorphisme*/
+    --whitebg: #edf0f1ff; /* couleur utilisée pour le background*/
     /* Nuances de gris */
-    --lightgrey: #d3dce7ff; /* couleur utilisée pour le neumorphisme*/
-    --mediumgrey: #a0a5a8ff;
-    --darkgrey: #7d7f79ff;
+    --lightgrey: #d3dce7ff; /* couleur utilisée pour les ombres des cadres neumorphisme*/
+    --mediumgrey: #a0a5a8ff; /* couleur utilisée pour les textes moins importants et pour les hovers des boutons(ex: fil d'ariane)*/
+    --darkgrey: #7d7f79ff; /* couleur utilisée pour les textes*/
     --black: #181818ff;
-    /* Nuances de couleurs pour le texte et les détails (boutons, lignes...)*/
-    --purple: #4d23be;
+    /* Couleurs */
+    --purple: #4d23be; /* couleur utilisée pour les sous titres*/
     --blue: #346edb;
-    --darkblue: #2b1055;
-    /* Dégradé de bleu à violet pour les boutons*/
+    --darkblue: #2b1055; /* couleur utilisée pour les titres*/
+    --red: #AC1C47; /* couleur utilisée pour les background des boutons remove ou delete*/
+    /* Dégradé de bleu à violet pour les boutons normaux*/
     --gradient: linear-gradient(94deg, rgba(89,161,226,1) 0%, rgba(55,81,197,1) 70%, rgba(77,35,190,1) 100%);
 }
+/* REGLES DE TEXTE ET DE DIMENSIONS:
+Les titres : text-transform: uppercase;
+             font-size :2.5em;
 
+les sous titres : font-size:1.8em;
+
+le texte: font-size:1.2em;
+
+les boutons :
+    text-transform: uppercase;
+    width: 180px;
+    height: 50px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 1em;
+    letter-spacing: 1.15px;
+    background: var(--gradient);
+    color: var(--extrawhite);
+    box-shadow: 8px 8px 16px var(--lightgrey),
+    -8px -8px 16px var(--extrawhite);
+    border: none;
+    outline: none;
+    cursor:pointer;
+
+
+les hovers des boutons :
+    background: var(--mediumgrey);
+}*/
+
+/* CLASSES PARTAGEES CSS */
 *{
     margin: 0;
     padding:0;
@@ -32,8 +62,56 @@ body{
     width: 100%;
     height:100vh;
     background-color:var(--whitebg);
+    color: var(--darkgrey);
+    font-family: 'Inter', sans-serif;
+}
+
+h1{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5em;
+    line-height: 60px;
+    padding: 30px 0;
+    color: var(--darkblue);
+}
+
+h2{
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5em;
+    line-height: 60px;
+    color: var(--darkblue);
+    text-transform: uppercase;
+}
+
+h3{
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    color: var(--purple);
+}
+p{
+    font-family: 'Inter', sans-serif;
+    font-size:1.2em;
+}
+
+.col{
+    flex-direction: column;
+
+}
+
+.qty{
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
     color: var(--black);
 }
+
+
+
+
+
+
 
 
 
@@ -114,7 +192,7 @@ nav .logo{
 }
 .mainMenu ul li{
     position: relative;
-    margin: 0px;
+    margin: 0;
     width: 180px;
     float: none;
     display: list-item;

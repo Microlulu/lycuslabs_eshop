@@ -1,4 +1,4 @@
-/* IMPORT DU FICHIER STYLE.CSS */
+/* IMPORT DU FICHIER STYLE.CSS et REGISTER.CSS pour certaines classes */
 @import url("style.css");
 @import url("register.css");
 
@@ -32,11 +32,6 @@
     justify-content: space-around;
 }
 
-.col{
-    flex-direction: column;
-
-}
-
 .single-product{
     margin-top: 30px;
 }
@@ -64,6 +59,7 @@
     max-width: 100%;
     padding: 50px 0;
 }
+
 .small-img-col{
     flex-basis: 24%;
     cursor: pointer;
@@ -80,29 +76,16 @@
     min-width: 300px;
 }
 .col-2 h1{
-    font-family: 'Inter', sans-serif;
-     font-size: 2.5em;
-    line-height: 60px;
     margin: 0px 0px 10px 0px;
-    color: var(--purple);
+    text-align: left;
 }
 .single-product h2{
-    font-family: 'Inter', sans-serif;
     margin: 0 0 20px 0 ;
     font-size: 1.8em;
-    font-weight: 700;
+}
 
-}
 .single-product h3{
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
     font-size: 1.3rem;
-    color: var(--blue);
-}
-.qty{
-    font-family: 'Inter', sans-serif;
-    font-size: 1em;
-    color: var(--black);
 }
 
 .single-product input{
@@ -133,7 +116,6 @@ p{
     height: 50px;
     border-radius: 25px;
     font-weight: 700;
-    font-size: 14px;
     letter-spacing: 1.15px;
     background: var(--gradient);
     color: var(--extrawhite);
@@ -141,8 +123,10 @@ p{
                 -8px -8px 16px var(--extrawhite);
     border: none;
     outline: none;
-    padding: 10px;
-
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
 
 }
 

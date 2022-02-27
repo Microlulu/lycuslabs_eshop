@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart page{% endblock %}
+
+{% block body %}
+    <div class="wrapper_cart">
+        <h1>Checkout</h1>
+        <div class="project">
+            <div class="shop">
+                <div class="box_article">
+                    <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
+                </div>
+                <div class="content_article">
+                    <h3>NOM DU PRODUIT</h3>
+                    <h4>Price: 500€</h4>
+                    <p class="qty">Quantity: <input value="1"></p>
+                    <button class="remove">REMOVE
+                    </button>
+                </div>
+                <div class="box_article">
+                    <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
+                </div>
+                <div class="content_article">
+                    <h3>NOM DU PRODUIT 4</h3>
+                    <h4>Price: 4500€</h4>
+                    <p class="qty">Quantity: <input value="1"></p>
+                    <button class="remove">REMOVE
+                    </button>
+                </div>
+                <div class="box_article">
+                    <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
+                </div>
+                <div class="content_article">
+                    <h3>NOM DU PRODUIT 3</h3>
+                    <h4>Price: 5500€</h4>
+                    <p class="qty">Quantity: <input value="1"></p>
+                    <button class="remove">REMOVE
+                    </button>
+                </div>
+            </div>
+            {# COTE DROIT DU PANIER #}
+            <div class="right_bar_adresse">
+                <p><span>Subtotal</span> <span> 7000 €</span></p>
+                <hr>
+                <p><span>Coupon Code</span> <input placeholder="DISCOUNT20"></p>
+                <hr>
+                <p class="total_price"><span>TOTAL</span> <span>7000€</span></p>
+                <h5>Delivery</h5>
+                <p><span>Email :</span> <span>user's email here</span></p>
+                <p>Firstname + Lastname user</p>
+                <p>Adresse</p>
+                <p>Zipcode</p>
+                <p>City</p>
+                <p>Country</p>
+                <a href="payment.html.twig">Edit</a>
+
+                <a href="payment.html.twig">Checkout</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

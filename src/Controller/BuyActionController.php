@@ -36,11 +36,12 @@ class BuyActionController extends AbstractController
             $adresse = $this->getUser();
         }
 
-        return $this->render('buy_action/index.html.twig', [
+        return $this->render('buy_action/cart.html.twig', [
              // j'envoie à la vue buy_action dans le fichier buy_action/index.html.twig le detail du panier
              'cart' => $cart->getDetailCart(),
              'totalcart' => $cart->getTotalCart(),
              'adresse' => $adresse,
+
 
         ]);
     }

@@ -52,6 +52,10 @@
         <link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/product.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/services.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/cart.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/payment.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
 
     {% endblock %}
 
@@ -165,9 +169,9 @@
 </nav>
     #}
     <nav>
-        <div class="logo">Lycuslabs</div>
+        <div class="logo">LycusLabs</div>
         {# IMAGE POUR OUVRIR NAVBAR #}
-        <img src="{{ asset('images/svg/bars-solid.svg') }}" aria-label="open the menu" id="burger">
+        <img src="{{ asset('images/svg/bars-solid.svg') }}" alt="menu_burger" aria-label="open the menu" id="burger">
 
         <ul class="mainMenu">
             <li><a href="{{ path('home') }}" aria-label="home" >Home</a></li>
@@ -186,18 +190,19 @@
             {# USER LOGGED PART #}
             {% if app.user %}
             <li><a href="{{ path('profil') }}" aria-label="profil">Profil</a></li>
-            <li><a href="{{ path('buy_action') }}" aria-label="cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li><a href="{{ path('buy_action') }}" aria-label="cart"><img alt="cart" src="{{ asset('images/svg/shopping-cart.png') }}"></a></li>
             <li><a href="{{ path('app_logout') }}" aria-label="logout">Logout</a></li>
             {# ADMIN PART #}
             {% if is_granted('ROLE_ADMIN') %}
             <li><a href="#">Admin</a></li>
             {% endif %}
             {% else %}
-            <li><a href="{{ path('app_register') }}" aria-label="login or register" >Login/Register</a></li>
+            <li><a href="{{ path('app_login') }}" aria-label="login" >Login</a></li>
+            <li><a href="{{ path('app_register') }}" aria-label="register" >Register</a></li>
             {% endif %}
 
             {# IMAGE POUR FERMER NAVBAR #}
-            <img src="{{ asset('images/svg/xmark-solid.svg') }}" aria-label="close the menu" id="close">
+            <img alt="close" src="{{ asset('images/svg/xmark-solid.svg') }}" aria-label="close the menu" id="close">
         </ul>
     </nav>
 {% endblock %}
@@ -207,7 +212,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://kit.fontawesome.com/d36e2f2546.js" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/js/product.js') }}"></script>
     <script src="{{ asset('assets/js/home.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>

@@ -3,36 +3,46 @@
 {% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
-	{# Je creer un include avec le fichier a inclure et je lui mets un parametre name pour le rendre dynamique et pouvoir réutiliser cette include sur plusieurs pages #}
-	{{ include("partials/title_section.html.twig", {'name':'Contact Us'}) }}
-
-		<div class="container mt-5">
-			<div class="row justify-content-center">
-				<div class="col-xl-6 col-md-10">
-					<div>
-						<div class="bg-white">
-							<div class="mt-2">
-                                <h5>A project in mind? or a simple question? Contact us! </h6>
-                                <h6>Our professionals are at your disposal, ready to offer you advice and prices tailored to satisfy all your desires.</h5>
-
-							</div>
-							{{ form_start(contact_form) }}
-							<form method="post">
-
-								<div class="form-group">
-									{{ form_widget(contact_form) }}
-								</div>
-								
-								<div class="form-group">
-									<button type="submit" class="btn btn-primary mt-3" name="submit">Send</button>
-								</div>
-								{{ form_end(contact_form) }}
-
-							</form>
-						</div>
-					</div>
+	<div class="box">
+		<div class="contact_container">
+			<div class="msg">
+				<div class="heading">
+					<h3>CONTACT</h3>
+					<h5>Do you have a project in mind?<br>
+						or a question?
+						Our professionals are at<br>
+						your disposal.</h5>
 				</div>
+				{{ form_start(contact_form) }}
+				<div class="user">
+
+					{{ form_widget(contact_form.firstname) }}
+				</div>
+				<div class="user">
+
+					{{ form_widget(contact_form.lastname) }}
+
+				</div>
+				<div class="user">
+
+					{{ form_widget(contact_form.email) }}
+
+				</div>
+				<div class="user-message">
+
+					{{ form_widget(contact_form.message) }}
+
+				</div>
+				<div class="btn">
+					<input type="submit" name="" value="SUBMIT">
+				</div>
+				{{ form_end(contact_form) }}
+
+			</div>
+			<div class="image_contact">
+				<img src="{{ asset('images/ExcavatorGIF.gif') }}">
 			</div>
 		</div>
+	</div>
 
 {% endblock %}

@@ -12,18 +12,6 @@
 
 }
 
-.title_team{
-    text-align: center;
-    text-transform: capitalize;
-    font-weight: 700;
-    font-family: 'Inter', sans-serif;
-    font-size: 2.5em;
-    line-height: 60px;
-    margin: 75px 0px 0px 0px;
-    color: var(--purple);
-
-}
-
 .team-row{
     display: flex;
     justify-content: center;
@@ -66,13 +54,15 @@
 .member h2{
     text-transform: uppercase;
     font-size: 24px;
-    color: var(--black);
+    color: var(--darkblue);
     margin: 8px 0;
+    text-transform: uppercase;
+
 }
 
 .member h6{
     text-align: center;
-    color: var(--darkgrey);
+    color: var(--purple);
     font-weight: 700;
     font-size:1.2rem;
     margin-bottom: 15px;
@@ -80,6 +70,6 @@
 }
 .member p{
     font-size: 1em;
-    color: var(--blue);
+    color: var(--darkgrey);
     line-height: 1.6;
 }
