@@ -1,5 +1,4 @@
 @import url("style.css");
-@import url("register.css");
 
 .box{
     top : 50%;
@@ -13,94 +12,56 @@
                 -10px -10px 15px var(--extrawhite);
     width: 1000px;
     height: 600px;
-    border-radius: 20px;
+    border-radius: 25px;
     display: flex;
     flex-direction: row;
-
 }
-
 .contact_container .msg .heading{
-    color: var(--purple);
-    font-size: 1.2em;
-    padding: 30px 0 10px 50px;
+    padding: 30px 0 10px 40px;
     width: 100%;
 }
-
-.contact_container .msg .heading h3{
-    font-weight: 700;
-    font-size: 1.5em;
-    word-spacing: 3px;
+/* Je mets important pour overwrite le padding de mon h1 car seule la page contact a un padding différent*/
+.contact_container .msg .heading h1{
     width: 75%;
-    color: var(--darkblue);
-    padding-bottom: 3px;
-    font-family: 'Inter', sans-serif;
-    text-transform: uppercase;
-
+    text-align: left;
+    padding: 0 0 3px 0 !important;
 }
-
 .contact_container .msg .user{
-    margin:10px 10px 10px 50px;
+    padding: 18px 0;
+    margin: 10px 0 0 40px;
+
 }
-
-
 
 .contact_container .msg .user input{
-    padding: 4px 100px 10px 23px;
-    margin: 2px 0;
-    font-size: 13px;
-    letter-spacing: 0.15px;
-    border: none;
-    outline:none;
-    font-family: 'Inter', sans-serif;
     background-color: var(--whitebg);
-    transition: 0.25s ease;
-    border-radius: 8px;
-    box-shadow: inset 2px 2px 4px var(--lightgrey),
-    inset -2px -2px 4px var(--extrawhite);
-}
+    padding-left: 10px;
+    outline: none;
+    border: none;
+    font-size: 1.2em;
 
+}
 .contact_container .msg .user-message{
-    margin:10px 10px 10px 50px;
+    margin:10px 10px 10px 40px;
 }
 
+/* INPUT MESSAGE*/
 .formContactMessage{
+    font-family: 'Inter', sans-serif;
     outline: none;
-    padding: 4px 120px 150px 23px;
+    font-size: 1.2em;
+    padding: 10px 70px 80px 23px;
     margin: 2px 0;
-    font-size: 13px;
     letter-spacing: 0.15px;
     border: none;
-    font-family: 'Inter', sans-serif;
     background-color: var(--whitebg);
     transition: 0.25s ease;
     border-radius: 8px;
-    box-shadow: inset 2px 2px 4px var(--lightgrey),
-    inset -2px -2px 4px var(--extrawhite);
+    box-shadow: inset 8px 8px 8px var(--lightgrey),
+    inset -8px -8px 8px var(--extrawhite);
 }
 
-.contact_container .msg .btn{
-    margin:30px 10px 10px 50px;
-}
-
-.contact_container .msg .btn input{
-    background: var(--gradient);
-    width: 180px;
-    height: 50px;
-    border-radius: 25px;
-    font-weight: 700;
-    font-size: 1em;
-    letter-spacing: 1.15px;
-    color: var(--extrawhite);
-    box-shadow: 8px 8px 16px var(--lightgrey),
-    -8px -8px 16px var(--extrawhite);
-    border: none;
-    outline: none;
-    cursor: pointer;
-
-
-}
-.contact_container .msg .btn .input:hover{
-    background: var(--mediumgrey);
+.contact_container .msg .btn-form{
+    margin:10px 10px 10px 50px;
 }
 
 .contact_container .msg{
@@ -119,3 +80,18 @@
     border-top-right-radius: 20px;
 
 }
+
+/* RESEAUX SOCIAUX */
+.form__icon {
+    object-fit: contain;
+    width: 40px;
+    opacity: 0.5;
+    transition: 0.15s;
+    margin-top: 20px;
+}
+.form__icon:hover {
+    opacity: 1;
+    transition: 0.15s;
+    cursor: pointer;
+}
+

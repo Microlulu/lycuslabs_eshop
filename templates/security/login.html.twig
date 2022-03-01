@@ -16,12 +16,28 @@
     <h1> Welcome back!</h1>
     <div class="login_main_container">
         <div class="login-div">
-            <div class="logo_login"></div>
-            <div class="title_login">Login</div>
-
-
+            <div class="logo_login">
+                <div class="logo">
+                    <img src="{{ asset('images/TruckGIF.gif') }}" alt="menu_burger" aria-label="LycusLabs logo">
+                </div>
+            </div>
+            <h2>LOGIN</h2>
+            <h4 class="txt_center">Access to your account</h4>
+            <div class="fields">
+                <div class="user">
+                    <img class="small_icon" src="{{ asset('images/svg/email.png') }}" alt="email" aria-label="enter your email">
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="user">
+                    <img class="small_icon" src="{{ asset('images/svg/lock.png') }}"  alt="password" aria-label="enter your password">
+                    <input type="password" placeholder="Password">
+                </div>
+            </div>
+            <button class="mt-30" aria-label="login">LOGIN</button>
+            <div class="link">
+                <a href="#">Forgot password?</a> or <a href="#">Sign up</a>
+            </div>
         </div>
-
     </div>
 
 

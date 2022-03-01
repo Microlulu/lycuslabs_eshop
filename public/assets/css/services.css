@@ -12,24 +12,12 @@
 
 .service_container{
     box-shadow: 10px 10px 15px var(--lightgrey),
-    -10px -10px 15px var(--extrawhite);
+                -10px -10px 15px var(--extrawhite);
     width: 90%;
     height: 90%;
     border-radius: 20px;
     margin: 30px;
     padding: 30px;
-}
-.txt_align_right{
-    text-align: right;
-}
-
-.right{
-    float: right;
-    margin-right: 40px;
-}
-.left{
-    float: left;
-    margin-left: 40px;
 }
 
 .imgServ_Box{
@@ -38,17 +26,14 @@
     border:1px solid #eaeff5;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 9px 9px 16px var(--lightgrey),
-    -9px -9px 16px var(--extrawhite);
+    box-shadow: 0px 0px 2px var(--darkgrey),
+                0px 0px 0px 5px var(--extrawhite),
+                9px 9px 16px var(--lightgrey),
+                -9px -9px 16px var(--extrawhite);
 }
 .imgServ_Box img{
     display: block;
     width: inherit;
     height: inherit;
     object-fit: cover;
-}
-
-.row-2{
-    display: flex;
-    flex-direction: row;
 }

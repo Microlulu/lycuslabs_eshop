@@ -1,0 +1,26 @@
+/* IMPORT DU FICHIER STYLE.CSS et REGISTER.CSS pour certaines classes */
+@import url("style.css");
+@import url("contact.css");
+@import url("login.css");
+
+.register_main_container{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+.register-div{
+    width: 430px;
+    height: 800px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    margin: 20px;
+    background: var(--whitebg);
+    box-shadow: 8px 8px 16px var(--lightgrey),
+    -8px -8px 16px var(--extrawhite);
+}
+.register-div h2{
+    padding-top: 24px;
+}

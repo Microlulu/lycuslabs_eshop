@@ -16,7 +16,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Inter', sans-serif;
     overflow: hidden;
 }
 
@@ -45,10 +44,11 @@ section img#mountains_front{
 }
 #textMoto{
     position: absolute;
-    right: -350px;
+    right: -200px;
     color: var(--extrawhite);
     white-space: nowrap;
-    font-size: 5.5vw;
+    font-size: 4vw;
+    font-weight: bold;
     z-index: 9;
 }
 #btnWhite{
@@ -60,30 +60,16 @@ section img#mountains_front{
     color: var(--purple);
     font-size: 1.5em;
     transform: translateY(100px) ;
-
 }
-
 
 .sec{
     position: relative;
     padding: 50px;
-    background: var(--whitebg);
-
-
-
 }
-.sec h2{
-    font-size: 2.5em;
-    font-weight: 700;
+
+.sec h1{
     margin-bottom: 10px;
-    color: var(--darkblue);
-    text-transform: uppercase;
-    width: 17%;
     padding-bottom: 3px;
-    font-family: 'Inter', sans-serif;
+    text-align: left;
 }
-.sec p{
-    font-size: 1.2em;
-    color: var(--darkgrey);
-    font-family: 'Inter', sans-serif;
-}
+

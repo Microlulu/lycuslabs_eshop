@@ -1,17 +1,62 @@
+/* IMPORT DU FICHIER STYLE.CSS et REGISTER.CSS pour certaines classes */
+@import url("style.css");
+
 .login_main_container{
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    text-align: center;
 }
 .login-div{
     width: 430px;
-    height: 700px;
+    height: 640px;
     padding: 60px 35px 35px 35px;
     border-radius: 40px;
     margin: 20px;
     background: var(--whitebg);
     box-shadow: 8px 8px 16px var(--lightgrey),
     -8px -8px 16px var(--extrawhite);
+}
+.logo{
+    margin: 0 auto;
+}
+.logo img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 2px var(--darkgrey),
+                0px 0px 0px 5px var(--extrawhite),
+                8px 8px 16px var(--lightgrey),
+                -8px -8px 16px var(--extrawhite);
+}
+.login-div h2{
+    padding-top: 24px;
+}
+.fields{
+    width: 100%;
+    padding: 30px 5px 5px 5px;
+}
+
+.fields input{
+    background-color: var(--whitebg);
+    font-size: 1.2em;
+    padding-left: 10px;
+    outline: none;
+    border: none;
+}
+.fields .user{
+    margin-bottom: 10px;
+    width: 340px !important;
+    padding: 20px 15px 15px 5px;
+}
+.link{
+    padding-top: 20px;
+    text-align: center;
+}
+.link a{
+    text-decoration: none;
+    color: var(--blue);
+    font-size: 1em;
 }

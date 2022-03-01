@@ -1,6 +1,7 @@
 /* TYPOS IMPORTEES DE GOOGLE FONTS : Nom : "Inter"; Dimensions: "Extra-light 200, Light 300, Regular 400, Bold 700"; */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;700&display=swap');
 /* STYLE PRINCIPAL DU SITE*/
+
 /* VARIABLES COULEURS*/
 :root {
     /* Nuances de blanc */
@@ -13,40 +14,12 @@
     --black: #181818ff;
     /* Couleurs */
     --purple: #4d23be; /* couleur utilisée pour les sous titres*/
-    --blue: #346edb;
+    --blue: #346edb; /* couleur utilisée pour le mot de passe oublié et les liens sign up ou sign in*/
     --darkblue: #2b1055; /* couleur utilisée pour les titres*/
     --red: #AC1C47; /* couleur utilisée pour les background des boutons remove ou delete*/
     /* Dégradé de bleu à violet pour les boutons normaux*/
     --gradient: linear-gradient(94deg, rgba(89,161,226,1) 0%, rgba(55,81,197,1) 70%, rgba(77,35,190,1) 100%);
 }
-/* REGLES DE TEXTE ET DE DIMENSIONS:
-Les titres : text-transform: uppercase;
-             font-size :2.5em;
-
-les sous titres : font-size:1.8em;
-
-le texte: font-size:1.2em;
-
-les boutons :
-    text-transform: uppercase;
-    width: 180px;
-    height: 50px;
-    border-radius: 25px;
-    font-weight: 700;
-    font-size: 1em;
-    letter-spacing: 1.15px;
-    background: var(--gradient);
-    color: var(--extrawhite);
-    box-shadow: 8px 8px 16px var(--lightgrey),
-    -8px -8px 16px var(--extrawhite);
-    border: none;
-    outline: none;
-    cursor:pointer;
-
-
-les hovers des boutons :
-    background: var(--mediumgrey);
-}*/
 
 /* CLASSES PARTAGEES CSS */
 *{
@@ -70,7 +43,6 @@ h1{
     text-align: center;
     text-transform: uppercase;
     font-weight: 700;
-    font-family: 'Inter', sans-serif;
     font-size: 2.5em;
     line-height: 60px;
     padding: 30px 0;
@@ -78,42 +50,149 @@ h1{
 }
 
 h2{
-    font-family: 'Inter', sans-serif;
-    font-size: 2.5em;
-    line-height: 60px;
+    font-weight: 700;
+    font-size: 2em;
     color: var(--darkblue);
     text-transform: uppercase;
 }
 
 h3{
-    font-weight: 700;
-    margin-bottom: 15px;
-    font-size: 1.8em;
     color: var(--purple);
+    font-size: 1.5em;
+    margin-bottom: 10px;
 }
+
+h4{
+    color: var(--purple);
+    font-size: 1em;
+
+}
+
+
 p{
     font-family: 'Inter', sans-serif;
     font-size:1.2em;
+    color: var(--darkgrey);
+    text-align: justify;
 }
 
+/* COLONNE */
 .col{
     flex-direction: column;
+}
+/* LIGNE ROW */
 
+.row{
+    display: flex;
+    flex-direction: row;
 }
 
+/* QUANTITE PRODUIT*/
 .qty{
     font-family: 'Inter', sans-serif;
     font-size: 1em;
     color: var(--black);
 }
 
+/*  FLOAT */
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+/* TEXTE ALIGNEMENT */
+.txt_right{
+    text-align: right;
+}
+.txt_center{
+    text-align: center;
+}
+.txt_justify{
+    text-align: justify;
+}
 
 
+/* MARGES ET PADDINGS */
+.mb-25{
+    margin-bottom: 25px;
+}
+.mt-5{
+    margin-top: 5px;
+}
+.mr-40{
+    margin-right: 40px;
+}
+.ml-40{
+    margin-left: 40px;
+}
+.mt-30{
+    margin-top: 30px;
+}
+.mt-20{
+    margin-top: 20px;
+}
 
+/* BOUTONS */
+/* J'utilise la class .btn-form et je vise l'input qui sert de bouton dans mes formulaires */
+.btn-form input{
+    background: var(--gradient);
+    width: 180px;
+    height: 50px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 1em;
+    letter-spacing: 1.15px;
+    color: var(--extrawhite);
+    box-shadow: 8px 8px 16px var(--lightgrey),
+    -8px -8px 16px var(--extrawhite);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
 
+.btn-form input:hover{
+    background: var(--mediumgrey);
+}
 
+button{
+    text-decoration: none;
+    width: 180px;
+    height: 50px;
+    border-radius: 25px;
+    font-weight: 700;
+    letter-spacing: 1.15px;
+    background: var(--gradient);
+    color: var(--extrawhite);
+    box-shadow: 8px 8px 16px var(--lightgrey),
+    -8px -8px 16px var(--extrawhite);
+    border: none;
+    outline: none;
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+}
+button:hover{
+    background: var(--mediumgrey);
+}
 
-
+/* INPUTS ET ICONS DES FORMULAIRES */
+.user{
+    width: 320px;
+    border: none;
+    outline:none;
+    background-color: var(--whitebg);
+    transition: 0.25s ease;
+    border-radius: 8px;
+    padding: 20px 0 0 5px;
+    box-shadow: inset 8px 8px 8px var(--lightgrey),
+                inset -8px -8px 8px var(--extrawhite);
+}
+.small_icon{
+    margin-left: 15px;
+    width: 15px;
+}
 
 /*  DEBUT DE LA NAVBAR  */
 nav{

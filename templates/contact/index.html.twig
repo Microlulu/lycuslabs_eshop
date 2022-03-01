@@ -7,41 +7,49 @@
 		<div class="contact_container">
 			<div class="msg">
 				<div class="heading">
-					<h3>CONTACT</h3>
-					<h5>Do you have a project in mind?<br>
+					<h1>CONTACT</h1>
+					<h4>Do you have a project in mind?<br>
 						or a question?
 						Our professionals are at<br>
-						your disposal.</h5>
+						your disposal.</h4>
 				</div>
 				{{ form_start(contact_form) }}
 				<div class="user">
-
+					<img class="small_icon" src="{{ asset('images/svg/account.png') }}" alt="firstname" aria-label="enter your firstname">
 					{{ form_widget(contact_form.firstname) }}
 				</div>
 				<div class="user">
-
+					<img class="small_icon" src="{{ asset('images/svg/account.png') }}" alt="lastname" aria-label="enter your lastname">
 					{{ form_widget(contact_form.lastname) }}
 
 				</div>
 				<div class="user">
-
+					<img class="small_icon" src="{{ asset('images/svg/email.png') }}" alt="email" aria-label="enter your email">
 					{{ form_widget(contact_form.email) }}
 
 				</div>
-				<div class="user-message">
-
+				<div class="user-message" aria-label="write a message">
 					{{ form_widget(contact_form.message) }}
-
 				</div>
-				<div class="btn">
-					<input type="submit" name="" value="SUBMIT">
+				<div class="btn-form">
+			{# Le <input type="submit"> définit un bouton d'envoi qui soumet toutes les valeurs du formulaire#}
+					<input type="submit" name="submit" value="SUBMIT">
 				</div>
 				{{ form_end(contact_form) }}
 
 			</div>
 			<div class="image_contact">
-				<img src="{{ asset('images/ExcavatorGIF.gif') }}">
+				<img src="{{ asset('images/ExcavatorGIF.gif') }}" alt="truck 3d gif" aria-label="gif of a truck in 3d ">
 			</div>
+		</div>
+
+		<div class="form__icons">
+			{# ICI je viens mettre un target="_blank pour dire d'ouvrir dans une nouvelle fenêtre #}
+			{# L'attribut rel est réglé sur "noreferrer noopener" pour éviter d'éventuelles attaques malveillantes de la part des pages qu je lient.  #}
+			<a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/linkedin.svg') }}" alt="Linkedin" /></a>
+			<a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/instagram.svg') }}" alt="Instagram" /></a>
+			<a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/twitter.svg') }}" alt="Twitter" /></a>
+			<a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/fb.svg') }}" alt="Facebook" /></a>
 		</div>
 	</div>
 

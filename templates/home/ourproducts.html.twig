@@ -4,9 +4,9 @@
 
 {% block body %}
 
-    <div class="small-container single-product">
+    <div class="small-container single-product pt-50">
         <div class="product_container">
-            <div class="row">
+            <div class="wrap txt_justify">
                 <div class="col-2">
                     <div class="imgProd_Box">
                         <img src="{{ asset('images/products/' ~ product.image ) }}"
@@ -28,21 +28,20 @@
                     </div>
                 </div>
                 <div class="col-2">
-                    <p class="ariane"> Home / Products</p>
                     <h1>{{ product.title }}</h1>
                     <h3>Description</h3>
-                    <p>{{ product.description }}</p>
+                    <p class="mt-5">{{ product.description }}</p>
                     <br>
-                    <h2>{{ product.price }} €</h2>
+                    <h2 class="price_prod">{{ product.price }} €</h2>
                     <label class="qty">Quantity</label>
                     <input type="number" value="1">
-                    <a class="link" href="">ADD TO CART</a>
+                    <button aria-label="Add to Cart">ADD TO CART</button>
 
                 </div>
             </div>
-            <div class="row">
+            <div class="txt_center">
                 <h3>Additional information</h3>
-                <p class="margin-b">{{ product.descriptionadd }}</p>
+                <p class="mb-25 txt_justify">{{ product.descriptionadd }}</p>
             </div>
         </div>
     </div>

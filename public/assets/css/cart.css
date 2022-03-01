@@ -8,13 +8,6 @@
 }
 .wrapper_cart h1{
     padding: 30px 0;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-family: 'Inter', sans-serif;
-    font-size: 2.5em;
-    line-height: 60px;
-    color: var(--darkblue);
 }
 .project{
     display: flex;
@@ -27,15 +20,17 @@
     width: 100%;
     height: 200px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     transition: all .6s ease;
     box-shadow: inset 2px 2px 4px var(--lightgrey),
-    inset -2px -2px 4px var(--extrawhite);
+                inset -2px -2px 4px var(--extrawhite);
     border-radius: 25px;
 }
+/*ANIMATION SUR LES PRODUITS DU PANIER*/
 .box_article:hover{
     transform:scale(1.02);
 }
+
 .box_article img{
     width: 300px;
     height: 200px;
@@ -52,44 +47,24 @@
   margin-bottom: 30px;
   color: var(--darkblue);
 }
-.content_article h4{
-    margin-bottom: 10px;
-    color: var(--purple);
-    font-size: 1.2em;
-}
-.content_article button{
+
+.remove{
     position: absolute;
     justify-content: center;
     bottom: 20px;
     right: 20px;
-    cursor: pointer;
     width: 110px;
     height: 40px;
-    border-radius: 25px;
-    font-weight: 700;
-    font-size: 1em;
-    letter-spacing: 1.15px;
     background: var(--red);
-    color: var(--extrawhite);
-    box-shadow: 8px 8px 16px var(--lightgrey),
-    -8px -8px 16px var(--extrawhite);
-    border: none;
-    outline: none;
-    padding: 10px;
-    text-transform: uppercase;
-
-}
-.content_article button:hover {
-    background: var(--mediumgrey);
 }
 
 .content_article input{
-    font-family: 'Inter', sans-serif;
-    width: 50px;
+    width: 70px;
     height: 40px;
-    padding: 18px;
     font-size: 20px;
-    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left:10px;
     border:1px solid var(--blue);
 
 }
@@ -156,6 +131,7 @@
     font-weight: 700;
     color: var(--darkblue);
 }
+
 /* PARTIE RESPONSIVE DU PANIER*/
 @media screen  and (max-width: 700px){
     .content_article h3{
