@@ -5,7 +5,7 @@ let mountains_behind = document.getElementById('mountains_behind');
 let mountains_front = document.getElementById('mountains_front');
 let textMoto = document.getElementById('textMoto');
 let btnWhite = document.getElementById('btnWhite');
-let header = document.querySelector('header');
+//let header = document.querySelector('header');
 // pour faire un header // NAV BAR
 
 window.addEventListener('scroll',function (){
@@ -17,7 +17,7 @@ window.addEventListener('scroll',function (){
     textMoto.style.marginRight = value + 4 +'px';
     textMoto.style.marginTop = value + 1.5 +'px';
     btnWhite.style.marginTop = value + 1.5 +'px';
-    header.style.top = value + 0.5 +'px';
+    //header.style.top = value + 0.5 +'px';
     // pour faire disparaitre la navbar vers le haut quand je scroll
 
 

@@ -3,7 +3,8 @@
 {% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
-	<div class="box">
+	<div class="col">
+	<div class="box justify_cnt_center mb-25">
 		<div class="contact_container">
 			<div class="msg">
 				<div class="heading">
@@ -43,14 +44,10 @@
 			</div>
 		</div>
 
-		<div class="form__icons">
-			{# ICI je viens mettre un target="_blank pour dire d'ouvrir dans une nouvelle fenêtre #}
-			{# L'attribut rel est réglé sur "noreferrer noopener" pour éviter d'éventuelles attaques malveillantes de la part des pages qu je lient.  #}
-			<a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/linkedin.svg') }}" alt="Linkedin" /></a>
-			<a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/instagram.svg') }}" alt="Instagram" /></a>
-			<a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/twitter.svg') }}" alt="Twitter" /></a>
-			<a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/fb.svg') }}" alt="Facebook" /></a>
-		</div>
-	</div>
 
+	</div>
+	{% block footer %}
+		{% include 'footer.html.twig' %}
+	{% endblock %}
+	</div>
 {% endblock %}

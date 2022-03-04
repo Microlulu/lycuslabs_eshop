@@ -2,8 +2,8 @@
 {% block title %}BuyActionController!
 {% endblock %}
 {% block body %}
-
-    <div class="d-flex align-items-start">
+<h1>MY PROFILE</h1>
+    {#  <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <button class="nav-link active" id="button_adresses" data-bs-toggle="pill" data-bs-target="#button_adresses"
                     type="button" role="tab" aria-controls="button_adresses" aria-selected="true">My adresses
@@ -22,7 +22,7 @@
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="button_adresses_content" role="tabpanel"
                  aria-labelledby="button_adresses">
-                {# debut des cards #}
+                {# debut des cards
                 <div class="row">
                     {% for key, adresse in list_adresses %}
                         <div class="col-lg-3 col-md-6">
@@ -50,13 +50,16 @@
                 <div class="row">
                     <h4> Need assistance with your purchase?</h4>
 
-                    <a aria-current="contact" class="btn btn-secondary" href="{{ path('message_profil') }}">Contact us</a>
-
+                    <a aria-current="contact" class="btn btn-secondary" href="{{ path('message_profil') }}">Contact
+                        us</a>
                 </div>
-
-
-
             </div>
         </div>
-    </div>
+    </div>#}
+
+
+
+    {% block footer %}
+        {% include 'footer.html.twig' %}
+    {% endblock %}
 {% endblock %}

@@ -1,10 +1,9 @@
+/* IMPORT DU FICHIER STYLE.CSS*/
 @import url("style.css");
 
 .box{
-    top : 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position:absolute;
+    display: flex;
+    margin-top: 60px;
     background: var(--whitebg);
 }
 .contact_container{
@@ -79,19 +78,5 @@
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
 
-}
-
-/* RESEAUX SOCIAUX */
-.form__icon {
-    object-fit: contain;
-    width: 40px;
-    opacity: 0.5;
-    transition: 0.15s;
-    margin-top: 20px;
-}
-.form__icon:hover {
-    opacity: 1;
-    transition: 0.15s;
-    cursor: pointer;
 }
 

@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -19,17 +21,26 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('firstname')
-            ->add('lastname')
+            ->add('email', EmailType::class, [
+                'attr'=>['placeholder'=> "Email"],
+                'label'=>false
+            ])
+            ->add('firstname', TextType::class, [
+                'attr'=>['placeholder'=> "Firstname"],
+                'label'=>false
+            ])
+            ->add('lastname', TextType::class, [
+                'attr'=>['placeholder'=> "Lastname"],
+                'label'=>false
+            ])
                 // Ici je mets un repeatedType pour pouvoir que le mot de passe soit répeter 2x
             ->add('Password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options' => ['label' => false], 'attr'=>['placeholder'=>"Password"],
+                'second_options' => ['label' => false], 'attr'=>['placeholder' =>"Repeat Password"],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',

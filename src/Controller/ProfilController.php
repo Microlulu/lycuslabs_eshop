@@ -16,7 +16,7 @@ class ProfilController extends AbstractController
     public function index(Cart $cart, Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
-        return $this->render('profil/account.html.twig', [
+        return $this->render('profil/profil.html.twig', [
             'user' => $user,
             'list_adresses' => $this->getUser()->getAdresses(),
         ]);
@@ -49,7 +49,7 @@ class ProfilController extends AbstractController
             $manager->flush();
             return $this->redirectToRoute('profil');
         }
-        return $this->render('profil/account.html.twig', [
+        return $this->render('profil/profil.html.twig', [
             'form'=> $form->createView(),
 
         ]);

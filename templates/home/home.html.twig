@@ -5,12 +5,12 @@
 {% block body %}
 
 <section id="decor" class="decor sectionImg">
-    <img class="imgs" src="{{ asset('images/stars.png') }}" id="stars">
-    <img class="imgs" src="{{ asset('images/moon.png') }}" id="moon">
-    <img class="imgs" src="{{ asset('images/mountains_behind.png') }}" id="mountains_behind">
+    <img class="imgs" src="{{ asset('images/stars.png') }}" id="stars" alt="stars">
+    <img class="imgs" src="{{ asset('images/moon.png') }}" id="moon" alt="moon">
+    <img class="imgs" src="{{ asset('images/mountains_behind.png') }}" id="mountains_behind" alt="mountains">
     <p id="textMoto">Advanced simplicity</p>
     <a href="#sec" id="btnWhite">Explore</a>
-    <img class="imgs" src="{{ asset('images/mountains_front.png') }}" id="mountains_front">
+    <img class="imgs" src="{{ asset('images/mountains_front.png') }}" id="mountains_front" alt="mountains">
 </section>
 
     <div class="sec" id="sec">
@@ -21,4 +21,9 @@
             <br><br>
         </p>
     </div>
+    {% block footer %}
+        {% include 'footer.html.twig' %}
+    {% endblock %}
 {% endblock %}
+
+

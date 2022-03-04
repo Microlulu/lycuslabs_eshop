@@ -14,6 +14,7 @@
     --black: #181818ff;
     /* Couleurs */
     --purple: #4d23be; /* couleur utilisée pour les sous titres*/
+    --purpleshade: rgba(52,110,219,30%);
     --blue: #346edb; /* couleur utilisée pour le mot de passe oublié et les liens sign up ou sign in*/
     --darkblue: #2b1055; /* couleur utilisée pour les titres*/
     --red: #AC1C47; /* couleur utilisée pour les background des boutons remove ou delete*/
@@ -28,7 +29,6 @@
     box-sizing: border-box;
     user-select: none;
     scroll-behavior: smooth;
-
 }
 
 body{
@@ -75,6 +75,23 @@ p{
     color: var(--darkgrey);
     text-align: justify;
 }
+/* DEBUT DU FOOTER */
+ul{
+    list-style: none;
+
+}
+.footer_col a{
+    font-size: 1em;
+    color: var(--darkblue);
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+    padding-top: 10px;
+}
+
+.footer_col a:hover{
+    color: var(--blue);
+}
 
 /* COLONNE */
 .col{
@@ -111,11 +128,19 @@ p{
 .txt_justify{
     text-align: justify;
 }
-
-
+/* ALIGNEMENT CONTENT*/
+.align_item_center{
+    align-items: center;
+}
+.justify_cnt_center{
+    justify-content: center;
+}
 /* MARGES ET PADDINGS */
 .mb-25{
     margin-bottom: 25px;
+}
+.mb-10{
+    margin-bottom: 10px;
 }
 .mt-5{
     margin-top: 5px;
@@ -132,6 +157,7 @@ p{
 .mt-20{
     margin-top: 20px;
 }
+
 
 /* BOUTONS */
 /* J'utilise la class .btn-form et je vise l'input qui sert de bouton dans mes formulaires */
@@ -199,7 +225,7 @@ nav{
     background: var(--whitebg);
     z-index: 2000;
     margin-bottom: 5px;
-    box-shadow: 9px 9px 16px var(--lightgrey),
+    box-shadow: 9px 9px 16px var(--purpleshade),
     -9px -9px 16px var(--extrawhite);
 }
 nav:after{
@@ -217,7 +243,9 @@ nav .logo{
     font-family: 'Inter', sans-serif;
 }
 .mainMenu{
-    float:right;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     list-style: none;
     margin-right: 40px ;
     position: relative;
@@ -225,7 +253,6 @@ nav .logo{
 
 }
 .mainMenu li{
-    float: left;
     display: inline-block;
     background: var(--whitebg);
     margin: 0 5px;
@@ -300,33 +327,16 @@ nav .logo{
     }
 
     .mainMenu{
-        margin-right: 0;
-        float: left;
+        flex-direction: column;
+        justify-content: flex-start;
+        display: none;
     }
+
     nav .logo{
         padding-left: 30px;
         width: 100%;
     }
- /* nav ul li, nav ul ul li{
-        display: none;
 
-    }
-
-  */
-    .dropdown{
-        top: 70px;
-        position: static;
-        border-top: none;
-        float: none;
-        display: none;
-        opacity:1;
-        visibility: visible;
-    }
-
-
-    .mainMenu a:hover{
-      box-shadow: none;
-    }
 
 
 }

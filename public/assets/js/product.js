@@ -1,7 +1,7 @@
 const ProductImg = document.getElementById("ProductImg");
 const SmallImg = document.getElementsByClassName("small-img");
 
-SmallImg[0].onclick =function ()
+/*SmallImg[0].onclick =function ()
 {
     ProductImg.src = SmallImg[0].src;
 }
@@ -17,3 +17,4 @@ SmallImg[3].onclick =function ()
 {
     ProductImg.src = SmallImg[3].src;
 }
+*/

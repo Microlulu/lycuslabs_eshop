@@ -1,23 +1,11 @@
-/* BURGER MENU */
-
- /*   const openBurger = document.querySelector('#burger');
-    const mainMenu = document.querySelector('.mainMenu');
-    const closeMenu = document.querySelectorAll('#close');
-
-    // Toggle Navbar
-    openBurger.addEventListener('click',show);
-    closeMenu.addEventListener('click',close);
-
-
-function show(){
-    mainMenu.style.display = "block"
-    mainMenu.style.right = "0"
+/* FONCTION POUR LE MENU BURGER*/
+function myFunction() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
 }
-function close(){
-    mainMenu.style.right = "-100%"
-
-
-}
-*/
 
 

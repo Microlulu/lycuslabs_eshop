@@ -48,6 +48,7 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/profil.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/team.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/product.css') }}">
@@ -56,7 +57,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/payment.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
-
+        <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
     {% endblock %}
 
 
@@ -171,9 +172,9 @@
     <nav>
         <div class="logo">LycusLabs</div>
         {# IMAGE POUR OUVRIR NAVBAR #}
-        <img src="{{ asset('images/svg/bars-solid.svg') }}" alt="menu_burger" aria-label="open the menu" id="burger">
+        <img src="{{ asset('images/svg/bars-solid.svg') }}" alt="menu_burger" aria-label="open the menu" id="burger" onclick="myFunction();">
 
-        <ul class="mainMenu">
+        <ul class="mainMenu" id="myLinks">
             <li><a href="{{ path('home') }}" aria-label="home" >Home</a></li>
 
             <li>
@@ -189,12 +190,12 @@
 
             {# USER LOGGED PART #}
             {% if app.user %}
-            <li><a href="{{ path('profil') }}" aria-label="profil">Profil</a></li>
+            <li><a href="{{ path('profil') }}" aria-label="profile">Profile</a></li>
             <li><a href="{{ path('buy_action') }}" aria-label="cart"><img alt="cart" src="{{ asset('images/svg/shopping-cart.png') }}"></a></li>
             <li><a href="{{ path('app_logout') }}" aria-label="logout">Logout</a></li>
             {# ADMIN PART #}
             {% if is_granted('ROLE_ADMIN') %}
-            <li><a href="#">Admin</a></li>
+            <li><a href="{{ path('dashboard') }}">Admin</a></li>
             {% endif %}
             {% else %}
             <li><a href="{{ path('app_login') }}" aria-label="login" >Login</a></li>
@@ -202,7 +203,7 @@
             {% endif %}
 
             {# IMAGE POUR FERMER NAVBAR #}
-            <img alt="close" src="{{ asset('images/svg/xmark-solid.svg') }}" aria-label="close the menu" id="close">
+            <img alt="close" src="{{ asset('images/svg/xmark-solid.svg') }}" aria-label="close the menu" id="close" >
         </ul>
     </nav>
 {% endblock %}
@@ -212,9 +213,10 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('assets/js/script.js') }}"></script>
     <script src="{{ asset('assets/js/product.js') }}"></script>
     <script src="{{ asset('assets/js/home.js') }}"></script>
-    <script src="{{ asset('assets/js/script.js') }}"></script>
+
     <script>
         // Je crée un script pour mon bouton "products" : c'est un bouton dynamique qui prends en compte tous les produits existants et les affiches sous forme de dropdown.
         // À la demande de mon client, j'ai fait un bouton dynamique et pas de page affichant tous les produits comme les e-commerces traditionnels, car mon client est une start-up qui pour l'instant n'a qu'un seul produit.

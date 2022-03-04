@@ -3,7 +3,7 @@
 
  {% block body %}
 
-     <section>
+
          <h1>TEAM</h1>
          <div class="team_container">
              <div class="team-row">
@@ -11,7 +11,7 @@
                      <div class="member">
                          <img class="imgBox" src="{{ asset('images/team/' ~ member.photo ) }}" alt="{{ member.shortcut }}"/>
                          <h2>{{ member.firstname ~ ' ' ~ member.lastname }}</h2>
-                         <h3>{{ member.job }}</h3>
+                         <h4>{{ member.job }}</h4>
                          <p>
                              {{ member.description }}
                          </p>
@@ -19,7 +19,11 @@
                  {% endfor %}
              </div>
          </div>
-     </section>
 
+
+     <!-- /END OF THE SERVICES -->
+     {% block footer %}
+         {% include 'footer.html.twig' %}
+     {% endblock %}
 
  {% endblock %}

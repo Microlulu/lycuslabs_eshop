@@ -6,16 +6,17 @@
 
 
 <!-- START OF THE SERVICES -->
-
-
+<div class="col">
     <h1>SERVICES</h1>
     <div class="main_container">
         <div class="col">
             {% for item in services %}
                 <div>
                     {% if loop.index0 is even %}
+                        {# Je viens inclure un template gauche #}
                         {{ include ("services/service_template_1.html.twig") }}
                     {% else %}
+                        {# et un template droite #}
                         {{ include ("services/service_template_2.html.twig") }}
                     {% endif %}
                 </div>
@@ -23,7 +24,10 @@
         </div>
     </div>
 
-
-
     <!-- /END OF THE SERVICES -->
+    {% block footer %}
+        {% include 'footer.html.twig' %}
     {% endblock %}
+</div>
+
+{% endblock %}

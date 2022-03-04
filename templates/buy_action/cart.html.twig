@@ -11,7 +11,7 @@
                     <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
                     <div class="content_article">
                         <h3>NOM DU PRODUIT</h3>
-                        <h4>Price: 500€</h4>
+                        <h4 class="mb-10">Price: 500€</h4>
                         <label class="qty">Quantity</label>
                         <input type="number" value="1">
                         <button aria-label="remove" class="remove">REMOVE
@@ -23,7 +23,7 @@
                     <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
                     <div class="content_article">
                         <h3>NOM DU PRODUIT 4</h3>
-                        <h4>Price: 4500€</h4>
+                        <h4 class="mb-10">Price: 4500€</h4>
                         <label class="qty">Quantity</label>
                         <input type="number" value="1">
                         <button aria-label="remove" class="remove">REMOVE
@@ -35,7 +35,7 @@
                     <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
                     <div class="content_article">
                         <h3>NOM DU PRODUIT 3</h3>
-                        <h4>Price: 5500€</h4>
+                        <h4 class="mb-10">Price: 5500€</h4>
                         <label class="qty">Quantity</label>
                         <input type="number" value="1">
                         <button aria-label="remove" class="remove">REMOVE
@@ -58,5 +58,8 @@
             </div>
         </div>
     </div>
+    {% block footer %}
+        {% include 'footer.html.twig' %}
+    {% endblock %}
 
 {% endblock %}
