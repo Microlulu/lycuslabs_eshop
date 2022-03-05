@@ -1,0 +1,57 @@
+/* IMPORT DU FICHIER STYLE.CSS */
+@import url("style.css");
+.twentyFive{
+    width: 20%;
+}
+.seventyFive{
+    width: 80%;
+    margin-left: 6%;
+}
+
+.header{
+    position: fixed;
+    top:0%; left: 0;
+    background: var(--whitebg);
+    width: 20rem;
+    border-right: var(--border);
+    height: 100%;
+    padding:2rem;
+    text-align: center;
+}
+.header .navbar_user img{
+    width: 50px;
+}
+.header .navbar_user a{
+    display:block;
+    margin: 1.5rem 0;
+    width: auto;
+}
+.header .navbar_user a:hover{
+    background: var(--mediumgrey);
+}
+.header .navbar_user{
+    padding-top: 5rem;
+}
+
+#menu-btn{
+    position: fixed;
+    top:1.5rem; left: 2rem;
+    z-index: 1000;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    color:var(--black);
+    background: var(--whitebg);
+    display: none;
+}
+
+#menu-btn:hover{
+    color:var(--mediumgrey);
+    box-shadow: var(--box-shadow-inset);
+}
+

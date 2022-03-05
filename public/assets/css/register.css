@@ -18,8 +18,7 @@
     border-radius: 40px;
     margin: 20px;
     background: var(--whitebg);
-    box-shadow: 8px 8px 16px var(--lightgrey),
-    -8px -8px 16px var(--extrawhite);
+    box-shadow: var(--box-shadow);
 }
 .register-div h2{
     padding-top: 24px;

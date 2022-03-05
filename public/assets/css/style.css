@@ -12,6 +12,7 @@
     --mediumgrey: #a0a5a8ff; /* couleur utilisée pour les textes moins importants et pour les hovers des boutons(ex: fil d'ariane)*/
     --darkgrey: #7d7f79ff; /* couleur utilisée pour les textes*/
     --black: #181818ff;
+    --border:.1rem solid rgba(0,0,0,.2); /* bordure utilisée pour le profil user */
     /* Couleurs */
     --purple: #4d23be; /* couleur utilisée pour les sous titres*/
     --purpleshade: rgba(52,110,219,30%);
@@ -20,6 +21,10 @@
     --red: #AC1C47; /* couleur utilisée pour les background des boutons remove ou delete*/
     /* Dégradé de bleu à violet pour les boutons normaux*/
     --gradient: linear-gradient(94deg, rgba(89,161,226,1) 0%, rgba(55,81,197,1) 70%, rgba(77,35,190,1) 100%);
+    --box-shadow: 10px 10px 15px var(--lightgrey),
+                  -10px -10px 15px var(--extrawhite);
+    --box-shadow-inset: inset 8px 8px 15px var(--lightgrey),
+    inset -8px -8px 15px var(--extrawhite);
 }
 
 /* CLASSES PARTAGEES CSS */
@@ -157,7 +162,9 @@ ul{
 .mt-20{
     margin-top: 20px;
 }
-
+.pt-80{
+    padding-top: 80px;
+}
 
 /* BOUTONS */
 /* J'utilise la class .btn-form et je vise l'input qui sert de bouton dans mes formulaires */
@@ -170,8 +177,7 @@ ul{
     font-size: 1em;
     letter-spacing: 1.15px;
     color: var(--extrawhite);
-    box-shadow: 8px 8px 16px var(--lightgrey),
-    -8px -8px 16px var(--extrawhite);
+    box-shadow: var(--box-shadow);
     border: none;
     outline: none;
     cursor: pointer;
@@ -180,8 +186,7 @@ ul{
 .btn-form input:hover{
     background: var(--mediumgrey);
 }
-
-button{
+.button{
     text-decoration: none;
     width: 180px;
     height: 50px;
@@ -190,8 +195,7 @@ button{
     letter-spacing: 1.15px;
     background: var(--gradient);
     color: var(--extrawhite);
-    box-shadow: 8px 8px 16px var(--lightgrey),
-    -8px -8px 16px var(--extrawhite);
+    box-shadow: var(--box-shadow);
     border: none;
     outline: none;
     padding: 15px;
@@ -199,9 +203,33 @@ button{
     font-size: 1em;
     cursor: pointer;
 }
-button:hover{
+
+.button:hover{
     background: var(--mediumgrey);
 }
+
+.remove{
+    position: absolute;
+    justify-content: center;
+    bottom: 25px;
+    right: 20px;
+    width: 110px;
+    height: 40px;
+    font-weight: 700;
+    color: var(--darkgrey);
+    box-shadow: var(--box-shadow);
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px;
+}
+.remove:hover{
+    color: var(--blue);
+    box-shadow: var(--box-shadow-inset);
+}
+
 
 /* INPUTS ET ICONS DES FORMULAIRES */
 .user{
@@ -212,8 +240,7 @@ button:hover{
     transition: 0.25s ease;
     border-radius: 8px;
     padding: 20px 0 0 5px;
-    box-shadow: inset 8px 8px 8px var(--lightgrey),
-                inset -8px -8px 8px var(--extrawhite);
+    box-shadow: var(--box-shadow-inset);
 }
 .small_icon{
     margin-left: 15px;
@@ -222,11 +249,12 @@ button:hover{
 
 /*  DEBUT DE LA NAVBAR  */
 nav{
-    background: var(--whitebg);
+    position: absolute;width: 100%;
     z-index: 2000;
+    background: var(--whitebg);
     margin-bottom: 5px;
-    box-shadow: 9px 9px 16px var(--purpleshade),
-    -9px -9px 16px var(--extrawhite);
+    box-shadow: 10px 10px 15px var(--purpleshade),
+    -10px -10px 15px var(--extrawhite);
 }
 nav:after{
     content: '';
@@ -268,7 +296,7 @@ nav .logo{
     font-size: 18px;
     padding: 8px 15px;
 }
-/* Pour donner un effet de halo autour des boutons lorsqu'on on passe dessus*/
+/* Pour donner un effet de halo autour des boutons del la navbar lorsqu'on on passe dessus*/
 .mainMenu li a:hover{
     border-radius: 5px;
     color: var(--purple);
@@ -284,7 +312,7 @@ nav .logo{
 .mainMenu ul {
     position: absolute;
     top:90px ;
-    box-shadow: 9px 9px 16px var(--darkblue);
+    box-shadow: 10px 10px 15px var(--darkblue);
     opacity:0;
     visibility: hidden;
     transition:top .3s;

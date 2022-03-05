@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
-{% block title %}BuyActionController!
+{% block title %}Profile
 {% endblock %}
 {% block body %}
-<h1>MY PROFILE</h1>
+
     {#  <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <button class="nav-link active" id="button_adresses" data-bs-toggle="pill" data-bs-target="#button_adresses"
@@ -56,9 +56,118 @@
             </div>
         </div>
     </div>#}
+<div class="row pt-80">
+    <!-- Début de la section header user  -->
+    <div class="col twentyFive">
+    <header class="header">
+        <div class="navbar_user">
+            <img src="{{ asset('images/svg/profil.png') }}" alt="Dashboard">
+            <a class="button" href="#adresses">MY ADRESSES</a>
+            <a class="button" href="#orders">MY ORDERS</a>
+            <a class="button" href="#licenses">MY LICENSES</a>
+            <a class="button" href="#downloads">MY DOWNLOADS</a>
+            <a class="button" href="#support">SUPPORT</a>
+            <a class="button" href="#logout">LOGOUT</a>
+        </div>
+    </header>
+    <!-- Fin de la section header user  -->
+
+        {# BURGER MENU POUR PROFIL? #}
+    <img src="{{ asset('images/svg/bars-solid.svg') }}" alt="profile_menu_burger" aria-label="open the profile menu" id="menu-btn" onclick="myFunction();">
+    </div>
+
+ <div class="col seventyFive">
+    <h1>HELLO USER !</h1>
+    <p>From your dashboard you can easily check your recent orders, manage your billing adresses, download your softwares and activate them.</p>
+
+
+    <!-- Début de la section Adresses -->
+    <section class="adresse" id="adresses">
+        <h2>MY ADRESSES</h2>
+        <div class="box-container">
+            <div class="adresses_box">
+                <p>Selected by default</p>
+                <h3>FRISTNAME NAME</h3>
+                <p>Street number 77</p>
+                <p>57489</p>
+                <p>City</p>
+                <p>PAYS</p>
+                <a href="#">SELECT</a>
+                <a href="#">EDIT</a>
+                <a href="#">DELETE</a>
+            </div>
+
+            <div class="adresses_box">
+                <p>Selected by default</p>
+                <h3>FRISTNAME NAME</h3>
+                <p>Street number 77</p>
+                <p>57489</p>
+                <p>City</p>
+                <p>PAYS</p>
+                <a href="#">SELECT</a>
+                <a href="#">EDIT</a>
+                <a href="#">DELETE</a>
+            </div>
+
+            <div class="adresses_boxbox">
+                <p>Selected by default</p>
+                <h3>FRISTNAME NAME</h3>
+                <p>Street number 77</p>
+                <p>57489</p>
+                <p>City</p>
+                <p>PAYS</p>
+                <a href="#">SELECT</a>
+                <a href="#">EDIT</a>
+                <a href="#">DELETE</a>
+            </div>
+        </div>
+    </section>
+    <!-- fin de la section adresses -->
+
+
+    <!-- début de la section commandes  -->
+    <section class="orders" id="orders">
+        <h2>MY ORDERS</h2>
+
+
+    </section>
+    <!-- fin de la section commandes -->
 
 
 
+
+    <!-- Début de la section downloads  -->
+    <section class="licenses" id="licenses">
+        <h2>MY LICENCES</h2>
+
+
+
+    </section>
+    <!-- fin de la section licenses-->
+
+
+
+
+    <!-- Début de la section downloads  -->
+    <section class="downloads" id="downloads">
+        <h2>MY DOWNLOADS</h2>
+
+
+
+    </section>
+    <!-- fin de la section support/contact-->
+
+
+    <!-- Début de la section downloads  -->
+    <section class="support" id="support">
+        <h2>SUPPORT</h2>
+
+
+
+    </section>
+    <!-- fin de la section support/contact-->
+ </div>
+</div>
     {% block footer %}
         {% include 'footer.html.twig' %}
     {% endblock %}

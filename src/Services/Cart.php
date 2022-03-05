@@ -21,7 +21,7 @@ class Cart
 
     /**
      * function pour ajouter un produit au panier
-     * si le produit se trouve deja dans le panier, t'ajoute 1 a la quantité
+     * si le produit se trouve deja dans le panier, j'ajoute 1 a la quantité
      * sinon ajoute le produit x1
      */
     public function addCart($id)

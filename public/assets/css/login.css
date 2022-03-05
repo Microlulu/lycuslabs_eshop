@@ -16,8 +16,7 @@
     border-radius: 40px;
     margin: 20px;
     background: var(--whitebg);
-    box-shadow: 8px 8px 16px var(--lightgrey),
-    -8px -8px 16px var(--extrawhite);
+    box-shadow: var(--box-shadow);
 }
 .logo{
     margin: 0 auto;
@@ -26,10 +25,9 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    box-shadow: 0px 0px 2px var(--darkgrey),
-                0px 0px 0px 5px var(--extrawhite),
-                8px 8px 16px var(--lightgrey),
-                -8px -8px 16px var(--extrawhite);
+    box-shadow: 0 0 2px var(--darkgrey),
+                0 0 0 5px var(--extrawhite),
+                var(--box-shadow);
 }
 .login-div h2{
     padding-top: 24px;

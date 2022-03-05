@@ -25,8 +25,7 @@
     border-radius: 25px;
     cursor: pointer;
     max-width: 320px;
-    box-shadow: 9px 9px 16px var(--lightgrey),
-                -9px -9px 16px var(--extrawhite);
+    box-shadow: var(--box-shadow);
     transition: all 0.3s;
 }
 
@@ -41,10 +40,9 @@
     margin:0 auto;
     border-radius: 100px;
     overflow: hidden;
-    box-shadow: 0px 0px 2px var(--darkgrey),
-                0px 0px 0px 5px var(--extrawhite),
-                9px 9px 16px var(--lightgrey),
-                -9px -9px 16px var(--extrawhite);
+    box-shadow: 0 0 2px var(--darkgrey),
+                0 0 0 5px var(--extrawhite),
+                var(--box-shadow);
 }
 .imgBox img{
     display: block;

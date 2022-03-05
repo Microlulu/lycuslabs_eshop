@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}BuyAction{% endblock %}
+{% block title %}Confirmation order{% endblock %}
 
 {% block body %}
 <h3>Thank you for your order !</h3>
-<a href="{{ path('home') }}" class="btn btn-primary"> Continue shopping</a>
+    <p>You can now go to your Profile and download your product and enter your activation key.</p>
+<a href="{{ path('home') }}" class="button"> Continue shopping</a>
 {% endblock %}

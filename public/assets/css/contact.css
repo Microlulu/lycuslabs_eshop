@@ -7,8 +7,7 @@
     background: var(--whitebg);
 }
 .contact_container{
-    box-shadow: 10px 10px 15px var(--lightgrey),
-                -10px -10px 15px var(--extrawhite);
+    box-shadow: var(--box-shadow);
     width: 1000px;
     height: 600px;
     border-radius: 25px;
@@ -28,7 +27,6 @@
 .contact_container .msg .user{
     padding: 18px 0;
     margin: 10px 0 0 40px;
-
 }
 
 .contact_container .msg .user input{
@@ -55,8 +53,7 @@
     background-color: var(--whitebg);
     transition: 0.25s ease;
     border-radius: 8px;
-    box-shadow: inset 8px 8px 8px var(--lightgrey),
-    inset -8px -8px 8px var(--extrawhite);
+    box-shadow: var(--box-shadow-inset);
 }
 
 .contact_container .msg .btn-form{
