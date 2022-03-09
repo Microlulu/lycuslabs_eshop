@@ -140,6 +140,9 @@ ul{
 .mb-10{
     margin-bottom: 10px;
 }
+.mb-50{
+    margin-bottom: 50px;
+}
 .mt-5{
     margin-top: 5px;
 }
@@ -356,18 +359,6 @@ nav .logo{
         display: list-item;
         border-bottom: 1px solid var(--lightgrey) ;
     }
-    /*.mainMenu ul li a{
-        line-height: 50px;
-    }
-    /*
-     top:90px ;
-    box-shadow: 10px 10px 15px var(--darkblue);
-    opacity:0;
-    position: absolute;
-    transition:top .3s;
-    border-top: solid var(--purple);
-    background: var(--whitebg);
-    */
     nav .logo{
         padding-left: 30px;
         width: 100%;

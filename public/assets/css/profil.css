@@ -4,8 +4,7 @@
 .profile_container {
     background-color: #ecf0f1;
     width: 100%;
-  /*  justify-content: center;
-    align-items: center; */
+    justify-content: space-between;
 }
 
 .profile-row {
@@ -17,13 +16,12 @@
 
 /* NAV BAR USER PROFILE */
 .header {
-    flex: 1 1 250px;
+    width: 17%;
     margin: 20px;
     text-align: center;
     padding: 30px 20px;
     border-radius: 25px;
     cursor: pointer;
-    max-width: 320px;
     box-shadow: var(--box-shadow);
     transition: all 0.3s;
 }
@@ -43,19 +41,25 @@
 }
 
 .header .navbar_user {
+    width: fit-content;
+    margin: 0 auto;
     padding-top: 5rem;
 }
-
+.sections-content{
+    width: 75%;
+    margin: 0 auto;
+}
+.sections-content h1{
+    padding-bottom:0;
+}
 
 /* ADRESSES PART*/
 .adresses_box {
-    flex: 1 1 250px;
     margin: 20px;
     text-align: center;
     padding: 30px 20px;
     border-radius: 25px;
     cursor: pointer;
-    max-width: 320px;
     box-shadow: var(--box-shadow);
     transition: all 0.3s;
 
@@ -65,12 +69,32 @@
 }
 
 section{
+    width: 100%;
     text-align: center;
 }
-/* BOUTONS */
-.mb-50{
-    margin-bottom: 50px;
+
+.sections-row{
+    width: 100%;
 }
+/* BOUTONS */
+.button_inset{
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--darkgrey);
+    box-shadow: var(--box-shadow);
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 10px 30px;
+}
+.button_inset:hover{
+    color: var(--blue);
+    box-shadow: var(--box-shadow-inset);
+}
+
 
 
 /* TABLES*/
@@ -98,4 +122,39 @@ tr:nth-child(even) {
 /* IMGS DOWNLOADS */
 .img_downloads{
     width: 20px;
+}
+
+/*TARGETS POUR LE JAVASCRIPT*/
+#licenses{
+    display: none;
+}
+#orders{
+    display: none;
+}
+#support{
+    display: none;
+}
+#downloads{
+    display: none;
+}
+
+
+
+/* RESPONSIVE NAVBAR / BURGER */
+
+/* Extra small devices (phones, 600px and down) + kindle */
+@media only screen and (max-width: 600px), (max-width: 1020px) {
+    /* BURGER TOGGLE*/
+    .burger_m_u{
+        display: block;
+        height: 35px;
+        width: 35px;
+        right:40px;
+        top: 20px ;
+        position: absolute;
+        cursor: pointer;
+    }
+
+
+
 }
