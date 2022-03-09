@@ -26,7 +26,7 @@ class VoucherService {
     //Cette fonction prends comme paramètres : le code réduction que l'utilisateur va rentrer et l'utilisateur.
     //Je précise dans la fcnction que je veux un booléen : donc une réponse vrai ou fausse.
     function VerifyVoucher(string $code, User $user): bool {
-        // pour vériifier mon voucher, je créer une nouvelle datetime dans laquelle je viens stocker la date d'aujourd'hui dans la variable $dateNow.
+        // pour vérifier mon voucher, je créer une nouvelle datetime dans laquelle je viens stocker la date d'aujourd'hui dans la variable $dateNow.
         $dateNow = new \DateTimeImmutable();
         // Je viens ensuite chercher un $code dans mon VoucherRepository avec la methode findOneBy dans ma colonne 'couponcode' de ma base de données.
         $voucher = $this->voucherRepository->findOneBy(['couponcode' => $code]);

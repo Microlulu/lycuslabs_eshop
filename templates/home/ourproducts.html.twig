@@ -30,12 +30,14 @@
                 <div class="col-2 txt_center">
                     <h1>{{ product.title }}</h1>
                     <h3>Description</h3>
-                    <p class="mt-5">{{ product.description }}</p>
+                    <p class="mt-5 txt_justify">{{ product.description }}</p>
                     <br>
                     <h2 class="price_prod">{{ product.price }} €</h2>
-                    <label class="qty">Quantity</label>
-                    <input type="number" value="1">
-                    <button class="button" aria-label="Add to Cart">ADD TO CART</button>
+                    <form id="formAddCart">
+                        <label for="quantityProduct" class="qty">Quantity</label>
+                        <input id="quantityProduct" name="quantity" type="number" value="1">
+                        <button type="submit" class="button" aria-label="Add to Cart">ADD TO CART</button>
+                    </form>
 
                 </div>
             </div>
@@ -48,6 +50,23 @@
     {% block footer %}
         {% include 'footer.html.twig' %}
     {% endblock %}
+    <script>
+        document.getElementById("formAddCart").addEventListener("submit", function(event) {
 
+            console.log(document.getElementById("quantityProduct").value)
+            fetch("{{ path('AddToCart') }}", {
+                method: "POST",
+                body: JSON.stringify({
+                    'quantity': document.getElementById("quantityProduct").value,
+                    'idProduct': {{ product.id }}
+                })
+            }).then(response => {
+                return response.json()
+            }).then(product => {
+                console.log(product)
+            })
+            event.preventDefault()
+        })
+    </script>
 
 {% endblock %}

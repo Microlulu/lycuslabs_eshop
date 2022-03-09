@@ -17,17 +17,28 @@ class Cart
         $this->productRepository = $productRepository;
     }
 
+    /**
+     * function qui trouve le panier, s'il n'y a pas de panier, il en créer un vide
+     */
+    public function getCart()
+    {
+        return $this->session->get('cart', []);
+    }
 
+    public function setCart($data)
+    {
+        $this->session->set('cart', $data);
+    }
 
     /**
      * function pour ajouter un produit au panier
      * si le produit se trouve deja dans le panier, j'ajoute 1 a la quantité
      * sinon ajoute le produit x1
      */
-    public function addCart($id)
+    public function addCart($id, $quantity) //TO DO REMPLACER LES +1 PAR QUANTITE ET VOIR SI CA MARCHE + faire loop dans le panier
     {
         //je récupère le panier de la session, si le panier est non trouvé je crée un array panier
-        $cart = $this->session->get('cart', []);
+        $cart = $this->getCart();
         //Je vérifie sur l'id existe dans mon panier
         //si oui je rajoute 1 à la quantité
         if (!empty($cart[$id])) {
@@ -40,20 +51,8 @@ class Cart
             $cart[$id] = 1;
         }
         
-        $this->session->set('cart', $cart);
+        $this->setCart($cart);
     }
-
-
-
-    /**
-     * function qui trouve le panier, s'il n'y a pas de panier, il en créer un vide
-     */
-    public function getCart()
-    {
-        return $this->session->get('cart', []);
-    }
-
-
 
     /**
      * function pour supprimer un produit du panier
@@ -61,7 +60,7 @@ class Cart
     public function deleteProductCart($id)
     {
         //Je récupère le panier
-        $cart = $this->session->get('cart', []);
+        $cart = $this->getCart();
         // Je vérifie si l'id existe
         if (!empty($cart[$id])) {
             //Si oui je le supprime
@@ -69,7 +68,7 @@ class Cart
         }
    
         // je renvoie le nouveau panier dans la session
-        $this->session->set('cart', $cart);
+        $this->setCart($cart);
     }
 
 
@@ -79,7 +78,7 @@ class Cart
     public function deleteQuantityProduct($id)
     {
         // Je récupère le panier
-        $cart = $this->session->get('cart', []);
+        $cart = $this->getCart();
         // Je teste si la quantité est supérieure à 1
         if ($cart[$id] > 1) {
             // Si oui, j'enlève 1 a la quantité
@@ -89,7 +88,7 @@ class Cart
             //sinon supprime
             unset($cart[$id]);
         }
-        $this->session->set('cart', $cart);
+        $this->setCart($cart);
     }
 
 

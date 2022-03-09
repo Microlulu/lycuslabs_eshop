@@ -73,12 +73,10 @@ h4{
 
 }
 
-
 p{
     font-family: 'Inter', sans-serif;
     font-size:1.2em;
     color: var(--darkgrey);
-    text-align: justify;
 }
 /* DEBUT DU FOOTER */
 ul{

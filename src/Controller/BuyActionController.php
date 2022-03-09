@@ -6,13 +6,14 @@ use App\Services\OrderManager;
 use App\Services\Cart;
 use App\Repository\AdresseRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BuyActionController extends AbstractController
 {
-    #[Route('/buy/action', name: 'buy_action')]
+    #[Route('/buyAction', name: 'buy_action')]
     public function index(Cart $cart, AdresseRepository $adresseRepository): Response
     {
         $user=$this->getUser();
@@ -46,6 +47,13 @@ class BuyActionController extends AbstractController
         ]);
     }
 
+    #[Route('/buyAction/AddToCart', name: 'AddToCart', methods: ['POST'])]
+    public function AddToCart(Request $request, Cart $cart) {
+
+        $data = json_decode($request->getContent(), true);
+        $cart->addCart($data['idProduct'],$data['quantity']);
+        return $this->json($data);
+    }
 
 
 
