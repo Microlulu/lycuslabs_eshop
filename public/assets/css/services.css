@@ -43,3 +43,42 @@
     height: inherit;
     object-fit: cover;
 }
+.left_side{
+    float: left;
+    margin-left:40px;
+}
+.right_side{
+    float: right;
+    margin-right: 40px;
+}
+.text_left{
+    margin-top: 20px;
+}
+.text_right{
+    margin-bottom: 20px;
+}
+/* RESPONSIVE SERVICES */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px){
+
+    .main_container{
+        display: block;
+    }
+    .service_container{
+        width: 100%;
+        height: 100%;
+    }
+    .service_container_inset{
+        width: 100%;
+        height: 100%;
+        margin-bottom: 25px;
+
+    }
+    .left_side{
+        margin-left: 0;
+    }
+    .right_side{
+        margin-right: 0;
+    }
+}

@@ -55,120 +55,240 @@
                 </div>
             </div>
         </div>
-    </div>#}
-<div class="row pt-80">
-    <!-- Début de la section header user  -->
-    <div class="col twentyFive">
-    <header class="header">
-        <div class="navbar_user">
-            <img src="{{ asset('images/svg/profil.png') }}" alt="Dashboard">
-            <a class="button" href="#adresses">MY ADRESSES</a>
-            <a class="button" href="#orders">MY ORDERS</a>
-            <a class="button" href="#licenses">MY LICENSES</a>
-            <a class="button" href="#downloads">MY DOWNLOADS</a>
-            <a class="button" href="#support">SUPPORT</a>
-            <a class="button" href="#logout">LOGOUT</a>
-        </div>
-    </header>
-    <!-- Fin de la section header user  -->
+    </div> #}
+    <h1>HELLO USER !</h1>
+    <p class="txt_center">From your dashboard you can easily check your recent orders, manage your billing adresses,
+        download your softwares
+        and activate them.</p>
 
-        {# BURGER MENU POUR PROFIL? #}
-    <img src="{{ asset('images/svg/bars-solid.svg') }}" alt="profile_menu_burger" aria-label="open the profile menu" id="menu-btn" onclick="myFunction();">
+    <div class="profile_container">
+        <!-- Début de la section header user  -->
+        <div class="profile-row">
+            <header class="header col">
+                <div class="navbar_user">
+                    <img src="{{ asset('images/svg/profil.png') }}" alt="Dashboard">
+                    <a class="button" href="#adresses">MY ADRESSES</a>
+                    <a class="button" href="#orders">MY ORDERS</a>
+                    <a class="button" href="#licenses">MY LICENSES</a>
+                    <a class="button" href="#downloads">MY DOWNLOADS</a>
+                    <a class="button" href="#support">SUPPORT</a>
+                    <a class="button" href="#logout">LOGOUT</a>
+                </div>
+            </header>
+            <!-- Fin de la section header user  -->
+
+            {# BURGER MENU FOR NAV BAR PROFILE? #}
+            {# <img src="{{ asset('images/svg/bars-solid.svg') }}" alt="profile_menu_burger" aria-label="open the profile menu" id="menu-btn" onclick="myFunction();">
+    </div> #}
+
+
+            <!-- Début de la section Adresses -->
+            <div class="col">
+                <div class="row">
+                    <section class="adresse" id="adresses">
+                        <h2>MY ADRESSES</h2>
+                        <div class="box-container">
+                            <div class="row">
+                                <div class="adresses_box">
+                                    <p>Selected by default</p>
+                                    <h3>FRISTNAME NAME</h3>
+                                    <p>Street number 77</p>
+                                    <p>57489</p>
+                                    <p>City</p>
+                                    <p>PAYS</p>
+                                    <div class="row">
+                                        <a class="button mt-20 mb-10" href="#">SELECT</a>
+                                    </div>
+                                    <div class="row">
+                                        <a class="button_inset m-8" href="#">EDIT</a>
+                                        <a class="button_inset m-8" href="#">DELETE</a>
+                                    </div>
+                                </div>
+
+                                <div class="adresses_box">
+                                    <p>Selected by default</p>
+                                    <h3>FRISTNAME NAME</h3>
+                                    <p>Street number 77</p>
+                                    <p>57489</p>
+                                    <p>City</p>
+                                    <p>PAYS</p>
+                                    <div class="row">
+                                        <a class="button mt-20 mb-10" href="#">SELECT</a>
+                                    </div>
+                                    <div class="row">
+                                        <a class="button_inset m-8" href="#">EDIT</a>
+                                        <a class="button_inset m-8" href="#">DELETE</a>
+                                    </div>
+                                </div>
+
+                                <div class="adresses_box">
+                                    <p>Selected by default</p>
+                                    <h3>FRISTNAME NAME</h3>
+                                    <p>Street number 77</p>
+                                    <p>57489</p>
+                                    <p>City</p>
+                                    <p>PAYS</p>
+                                    <div class="row">
+                                        <a class="button mt-20 mb-10" href="#">SELECT</a>
+                                    </div>
+                                    <div class="row">
+                                        <a class="button_inset m-8" href="#">EDIT</a>
+                                        <a class="button_inset m-8" href="#">DELETE</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!-- fin de la section adresses -->
+
+
+                <!-- début de la section commandes  -->
+                <div class="row">
+                    <section class="orders" id="orders">
+                        <h2>MY ORDERS</h2>
+
+                        <table>
+                            <tr>
+                                <th>Reference</th>
+                                <th>Qty</th>
+                                <th>Product</th>
+                                <th>Date</th>
+                                <th>Price</th>
+                                <th>Invoice</th>
+                            </tr>
+                            <tr>
+                                <td>15f484f5s1fs</td>
+                                <td>2</td>
+                                <td>Product 1</td>
+                                <td>01/01/22</td>
+                                <td>2000 €</td>
+                                <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                         alt="Download invoice"></td>
+                            </tr>
+                            <tr>
+                                <td>1548281fs</td>
+                                <td>7</td>
+                                <td>Product 2</td>
+                                <td>01/01/22</td>
+                                <td>9000 €</td>
+                                <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                         alt="Download invoice"></td>
+                            </tr>
+                        </table>
+
+                    </section>
+                </div>
+                <!-- fin de la section commandes -->
+
+
+                <!-- Début de la section licenses  -->
+                <div class="row">
+                    <section class="licenses" id="licenses">
+                        <h2>MY LICENCES</h2>
+
+
+                    </section>
+
+                    <table>
+                        <tr>
+                            <th>0</th>
+                            <th>Product</th>
+                            <th>Activation Key</th>
+                            <th>Type</th>
+                            <th>Host ID</th>
+                            <th>Date Created</th>
+                            <th>Expiry Date</th>
+                            <th>V</th>
+
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>Product 1</td>
+                            <td>ADEE-FEFE-FDFD-FDFF-FDFD</td>
+                            <td>Node</td>
+                            <td>25:32:15:12:45</td>
+                            <td>25/12/22</td>
+                            <td>25/12/22</td>
+                            <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                     alt="Download invoice"></td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>Product 1</td>
+                            <td>ADEE-FEFE-FDFD-FDFF-FDFD</td>
+                            <td>Node</td>
+                            <td>25:32:15:12:45</td>
+                            <td>25/12/22</td>
+                            <td>25/12/22</td>
+                            <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                     alt="Download invoice"></td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>Product 1</td>
+                            <td>ADEE-FEFE-FDFD-FDFF-FDFD</td>
+                            <td>Node</td>
+                            <td>25:32:15:12:45</td>
+                            <td>25/12/22</td>
+                            <td>25/12/22</td>
+                            <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                     alt="Download invoice"></td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- fin de la section licenses-->
+
+
+                <!-- Début de la section downloads  -->
+                <div class="row">
+                    <section class="downloads" id="downloads">
+                        <h2>MY DOWNLOADS</h2>
+                        <table>
+                            <tr>
+                                <th>Product</th>
+                                <th>Version</th>
+                                <th>Plateform</th>
+                                <th>Download</th>
+                            </tr>
+                            <tr>
+                                <td>Product 2</td>
+                                <td>Select</td>
+                                <td>Select</td>
+                                <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                         alt="Download invoice"></td>
+                            </tr>
+                            <tr>
+                                <td>Product 2</td>
+                                <td>Select</td>
+                                <td>Select</td>
+                                <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                         alt="Download invoice"></td>
+                            </tr>
+                        </table>
+
+
+                    </section>
+                </div>
+                <!-- fin de la section downloads-->
+
+
+                <!-- Début de la section support/contact  -->
+                <div class="row">
+                    <section class="support" id="support">
+                        <h2>SUPPORT</h2>
+
+                        <h3 class="mb-50">NEED SOME HELP ABOUT YOUR PURCHASE?</h3>
+                        <a class="button">CONTACT US</a>
+                    </section>
+                </div>
+                <!-- fin de la section support/contact-->
+            </div>
+        </div>
     </div>
 
- <div class="col seventyFive">
-    <h1>HELLO USER !</h1>
-    <p>From your dashboard you can easily check your recent orders, manage your billing adresses, download your softwares and activate them.</p>
-
-
-    <!-- Début de la section Adresses -->
-    <section class="adresse" id="adresses">
-        <h2>MY ADRESSES</h2>
-        <div class="box-container">
-            <div class="adresses_box">
-                <p>Selected by default</p>
-                <h3>FRISTNAME NAME</h3>
-                <p>Street number 77</p>
-                <p>57489</p>
-                <p>City</p>
-                <p>PAYS</p>
-                <a href="#">SELECT</a>
-                <a href="#">EDIT</a>
-                <a href="#">DELETE</a>
-            </div>
-
-            <div class="adresses_box">
-                <p>Selected by default</p>
-                <h3>FRISTNAME NAME</h3>
-                <p>Street number 77</p>
-                <p>57489</p>
-                <p>City</p>
-                <p>PAYS</p>
-                <a href="#">SELECT</a>
-                <a href="#">EDIT</a>
-                <a href="#">DELETE</a>
-            </div>
-
-            <div class="adresses_boxbox">
-                <p>Selected by default</p>
-                <h3>FRISTNAME NAME</h3>
-                <p>Street number 77</p>
-                <p>57489</p>
-                <p>City</p>
-                <p>PAYS</p>
-                <a href="#">SELECT</a>
-                <a href="#">EDIT</a>
-                <a href="#">DELETE</a>
-            </div>
-        </div>
-    </section>
-    <!-- fin de la section adresses -->
-
-
-    <!-- début de la section commandes  -->
-    <section class="orders" id="orders">
-        <h2>MY ORDERS</h2>
-
-
-    </section>
-    <!-- fin de la section commandes -->
-
-
-
-
-    <!-- Début de la section downloads  -->
-    <section class="licenses" id="licenses">
-        <h2>MY LICENCES</h2>
-
-
-
-    </section>
-    <!-- fin de la section licenses-->
-
-
-
-
-    <!-- Début de la section downloads  -->
-    <section class="downloads" id="downloads">
-        <h2>MY DOWNLOADS</h2>
-
-
-
-    </section>
-    <!-- fin de la section support/contact-->
-
-
-    <!-- Début de la section downloads  -->
-    <section class="support" id="support">
-        <h2>SUPPORT</h2>
-
-
-
-    </section>
-    <!-- fin de la section support/contact-->
- </div>
-</div>
     {% block footer %}
         {% include 'footer.html.twig' %}
     {% endblock %}
+
 {% endblock %}

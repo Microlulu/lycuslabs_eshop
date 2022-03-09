@@ -2,32 +2,28 @@
 @import url("style.css");
 
 .footer_container{
-    max-width: 100vw;
+    max-width: 100%;
     margin: auto;
     box-shadow: 10px 10px 15px var(--purpleshade),
     -10px -10px 15px var(--extrawhite);
     padding: 50px 0 50px 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .footer{
-    z-index: 1900;
     margin-top: 75px;
-    padding: 0px 0 25px 0;
-    position: relative;
+    padding: 0 0 25px 0;
     background: var(--whitebg);
 }
 
 .footer_col{
-    width: 25%;
     padding: 0 50px;
 }
 
 .footer_col h4{
     text-transform: uppercase;
     margin-bottom: 20px;
-    position: relative;
 
 }
 
@@ -48,29 +44,44 @@
 }
 /* RESPONSIVE FOOTER */
 
-@media screen and (max-width: 945px){
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
     .footer_col{
-        width: 50%;
-        margin-bottom: 30px;
-    }
-}
-@media all and (min-width: 816px) and (max-width: 944px) {
-    .footer_col {
-        width: 100%;
-        margin-bottom: 30px;
-    }
-}
-/* TO DO*/
-@media all and (min-width: 720px ) and (max-width: 815px) {
-
-}
-@media only screen and (max-width: 350px) {
-    .footer_col {
-        width: 100%;
-        margin-bottom: 30px;
-        text-align: center;
+        padding: 30px;
     }
     .row{
+        justify-content: space-between;
+    }
+    .form__icon {
+        flex-wrap: wrap;
+    }
+
+    }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .footer_col {
+        padding: 10px;
+    }
+
+    .row {
+        justify-content: space-between;
+    }
+
+    .form__icon {
+        flex-wrap: wrap;
+    }
+
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .footer_col{
+        padding: 30px;
+    }
+    .row{
+        justify-content: space-between;
+    }
+    .form__icon {
         flex-wrap: wrap;
     }
 

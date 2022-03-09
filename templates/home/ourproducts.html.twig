@@ -6,8 +6,8 @@
 
     <div class="small-container single-product pt-50">
         <div class="product_container">
-            <div class="wrap txt_justify">
-                <div class="col-2">
+            <div class="product_info">
+                <div class="col-2 imgs_box">
                     <div class="imgProd_Box">
                         <img src="{{ asset('images/products/' ~ product.image ) }}"
                              alt="{{ product.image }}" id="productImg">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-2 txt_center">
                     <h1>{{ product.title }}</h1>
                     <h3>Description</h3>
                     <p class="mt-5">{{ product.description }}</p>

@@ -59,9 +59,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
-
     {% endblock %}
-
 
 
 </head>
@@ -172,78 +170,52 @@
 </nav>
     #}
     <nav>
-        <div class="logo">LycusLabs</div>
-        {# IMAGE POUR OUVRIR NAVBAR #}
-        <img src="{{ asset('images/svg/bars-solid.svg') }}" alt="menu_burger" aria-label="open the menu" id="burger" onclick="myFunction();">
+        <div class="row">
+            <div class="logo">LycusLabs</div>
+            {# IMAGE POUR OUVRIR NAVBAR #}
+            <img src="{{ asset('images/svg/bars-solid.svg') }}" class="burger_m" alt="menu_burger"
+                 aria-label="open the menu" id="burg-menu" onclick="burgerToggle()"/>
+            <ul class="mainMenu" id="myLinks">
+                <li><a href="{{ path('home') }}" aria-label="home">Home</a></li>
 
-        <ul class="mainMenu" id="myLinks">
-            <li><a href="{{ path('home') }}" aria-label="home" >Home</a></li>
-
-            <li>
-                <a id="navbarDropdown" aria-label="products">Products</a>
-                <ul  id="listsProducts" class="dropdown">
-                {# ICI COMMENCE LE BOUTON DYNAMIQUE DES PRODUITS VOIR BAS DE PAGE POUR JAVASCRIPT#}
-                </ul>
-            </li>
-            <li><a href="{{ path('our_services') }}" aria-label="services" >Services</a></li>
-            <li><a href="{{ path('team_members') }}" aria-label="team">Team</a></li>
-            <li><a href="{{ path('contact') }}" aria-label="contact">Contact</a></li>
+                <li class="dropdown">
+                    <a class="dropbtn" id="navbarDropdown" aria-label="products">Products</a>
+                    <ul id="listsProducts" class="dropdown_content">
+                        {# ICI COMMENCE LE BOUTON DYNAMIQUE DES PRODUITS VOIR BAS DE PAGE POUR JAVASCRIPT #}
+                    </ul>
+                </li>
+                <li><a href="{{ path('our_services') }}" aria-label="services">Services</a></li>
+                <li><a href="{{ path('team_members') }}" aria-label="team">Team</a></li>
+                <li><a href="{{ path('contact') }}" aria-label="contact">Contact</a></li>
 
 
-            {# USER LOGGED PART #}
-            {% if app.user %}
-            <li><a href="{{ path('profil') }}" aria-label="profile">Profile</a></li>
-            <li><a href="{{ path('buy_action') }}" aria-label="cart"><img alt="cart" src="{{ asset('images/svg/shopping-cart.png') }}"></a></li>
-            <li><a href="{{ path('app_logout') }}" aria-label="logout">Logout</a></li>
-            {# ADMIN PART #}
-            {% if is_granted('ROLE_ADMIN') %}
-            <li><a href="{{ path('dashboard') }}">Admin</a></li>
-            {% endif %}
-            {% else %}
-            <li><a href="{{ path('app_login') }}" aria-label="login" >Login</a></li>
-            <li><a href="{{ path('app_register') }}" aria-label="register" >Register</a></li>
-            {% endif %}
+                {# USER LOGGED PART #}
+                {% if app.user %}
+                    <li><a href="{{ path('profil') }}" aria-label="profile">Profile</a></li>
+                    <li><a href="{{ path('buy_action') }}" aria-label="cart"><img alt="cart" src="{{ asset('images/svg/shopping-cart.png') }}"></a></li>
+                    <li><a href="{{ path('app_logout') }}" aria-label="logout">Logout</a></li>
+                    {# ADMIN PART #}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('dashboard') }}">Admin</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{{ path('app_login') }}" aria-label="login">Login</a></li>
+                    <li><a href="{{ path('app_register') }}" aria-label="register">Register</a></li>
+                {% endif %}
 
-            {# IMAGE POUR FERMER NAVBAR #}
-            <img alt="close" src="{{ asset('images/svg/xmark-solid.svg') }}" aria-label="close the menu" id="close" >
-        </ul>
+            </ul>
+        </div>
     </nav>
 {% endblock %}
 
-<body>
+
 {% block body %}
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('assets/js/script.js') }}"></script>
-    <script src="{{ asset('assets/js/product.js') }}"></script>
-    <script src="{{ asset('assets/js/home.js') }}"></script>
-
-    <script>
-        // Je crée un script pour mon bouton "products" : c'est un bouton dynamique qui prends en compte tous les produits existants et les affiches sous forme de dropdown.
-        // À la demande de mon client, j'ai fait un bouton dynamique et pas de page affichant tous les produits comme les e-commerces traditionnels, car mon client est une start-up qui pour l'instant n'a qu'un seul produit.
-        // Cette startup n'a pas pour projet de faire un site avec beaucoup de produits, le CEO m'a dit qu'au grand maximum, il y aurait 5 produits et tous seront très différents des uns des autres, d'où sa demande de les séparer dans des pages bien distincte sans liens entre eux.
-        fetch('/api/products')
-            .then(response => {
-                return response.json()
-            })
-            .then(products => {
-                const listElement = document.getElementById("listsProducts");
-                // je crée un text vide et je dis dans ma boucle += qui veut dire ajoute, mais ne supprime pas l'ancien produit
-                let text = ""
-                for (index in products) {
-                    // et la je viens créer mon ma balise li dans lequel je mets un lien a et je viens faire ma boucle sur mes produits, je dis prends l'id d'un produit dans l'index Products et ajoute son titre et un + pour dire répète cette action dans un
-                    // autre li pour chaque produits
-                    text += "<li>" +
-                        "<a href='/ourproduct/" + products[index].id + "'>" + products[index].title + "</a>" +
-                        "</li>"
-                }
-                listElement.innerHTML = text
-            });
-    </script>
-
 {% endblock %}
 
-</body>
+
 
 </html>

@@ -1,57 +1,101 @@
 /* IMPORT DU FICHIER STYLE.CSS */
 @import url("style.css");
-.twentyFive{
-    width: 20%;
-}
-.seventyFive{
-    width: 80%;
-    margin-left: 6%;
+
+.profile_container {
+    background-color: #ecf0f1;
+    width: 100%;
+  /*  justify-content: center;
+    align-items: center; */
 }
 
-.header{
-    position: fixed;
-    top:0%; left: 0;
-    background: var(--whitebg);
-    width: 20rem;
-    border-right: var(--border);
-    height: 100%;
-    padding:2rem;
-    text-align: center;
+.profile-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 40px 0;
 }
-.header .navbar_user img{
+
+/* NAV BAR USER PROFILE */
+.header {
+    flex: 1 1 250px;
+    margin: 20px;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    max-width: 320px;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s;
+}
+
+.header .navbar_user img {
     width: 50px;
 }
-.header .navbar_user a{
-    display:block;
+
+.header .navbar_user a {
+    display: block;
     margin: 1.5rem 0;
     width: auto;
 }
-.header .navbar_user a:hover{
+
+.header .navbar_user a:hover {
     background: var(--mediumgrey);
 }
-.header .navbar_user{
+
+.header .navbar_user {
     padding-top: 5rem;
 }
 
-#menu-btn{
-    position: fixed;
-    top:1.5rem; left: 2rem;
-    z-index: 1000;
-    height: 5rem;
-    width: 5rem;
-    line-height: 5rem;
-    border-radius: 50%;
-    font-size: 2rem;
-    cursor: pointer;
-    box-shadow: var(--box-shadow);
+
+/* ADRESSES PART*/
+.adresses_box {
+    flex: 1 1 250px;
+    margin: 20px;
     text-align: center;
-    color:var(--black);
-    background: var(--whitebg);
-    display: none;
+    padding: 30px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    max-width: 320px;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s;
+
+}
+.adresses_box:hover {
+    transform: translateY(-20px);
 }
 
-#menu-btn:hover{
-    color:var(--mediumgrey);
-    box-shadow: var(--box-shadow-inset);
+section{
+    text-align: center;
+}
+/* BOUTONS */
+.mb-50{
+    margin-bottom: 50px;
 }
 
+
+/* TABLES*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+th{
+    color: var(--purple);
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+td, th {
+    border: 1px solid var(--mediumgrey);
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: var(--lightgrey);
+}
+
+/* IMGS DOWNLOADS */
+.img_downloads{
+    width: 20px;
+}

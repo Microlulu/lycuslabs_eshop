@@ -44,8 +44,8 @@
 }
 .content_article h3{
     margin-top: 10px;
-  margin-bottom: 30px;
-  color: var(--darkblue);
+    margin-bottom: 30px;
+    color: var(--darkblue);
 }
 
 .content_article input{
@@ -79,7 +79,6 @@
 }
 .right_bar a{
     align-self: flex-end;
-    position: absolute;
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
@@ -110,10 +109,6 @@
     border:1px solid var(--blue);
 
 }
-.relative{
-    position: relative;
-}
-
 .total_price{
     font-size: 1.2em;
     font-weight: 700;

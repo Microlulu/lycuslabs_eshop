@@ -2,10 +2,7 @@
 @import url("style.css");
 
 .team_container{
-    position: relative;
     background-color: #ecf0f1;
-    max-height: 100vh;
-    display: flex;
     justify-content: center;
     align-items: center;
 
@@ -25,6 +22,7 @@
     border-radius: 25px;
     cursor: pointer;
     max-width: 320px;
+    background: var(--whitebg);
     box-shadow: var(--box-shadow);
     transition: all 0.3s;
 }
