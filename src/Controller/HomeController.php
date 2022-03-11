@@ -25,6 +25,7 @@ class HomeController extends AbstractController
             'services' => $servicesRepository->findAll(),
             'category' => $categoryRepository->findAll(),
             'items_cart' => $cart->getCountCart()
+
         ]);
     }
 

@@ -25,6 +25,18 @@
     box-shadow: var(--box-shadow-inset);
     border-radius: 25px;
 }
+.update{
+    justify-content: center;
+    width: fit-content;
+    color: var(--darkgrey);
+    box-shadow: var(--box-shadow);
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px;
+}
 /*ANIMATION SUR LES PRODUITS DU PANIER*/
 .box_article:hover{
     transform:scale(1.02);

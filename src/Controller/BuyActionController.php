@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ProductRepository;
 use App\Services\OrderManager;
 use App\Services\Cart;
 use App\Repository\AdresseRepository;
@@ -14,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BuyActionController extends AbstractController
 {
     #[Route('/buyAction', name: 'buy_action')]
-    public function index(Cart $cart, AdresseRepository $adresseRepository): Response
+    public function index(Cart $cart, AdresseRepository $adresseRepository, ProductRepository $productRepository): Response
     {
         $user=$this->getUser();
         // je vérifie que l'user a bien renseigné son adresse
@@ -44,10 +45,11 @@ class BuyActionController extends AbstractController
         # ToDo: verifier si il n'y a pas de bug
 
         return $this->render('buy_action/cart.html.twig', [
-             // j'envoie à la vue buy_action dans le fichier buy_action/index.html.twig le detail du panier
+             // j'envoie à la vue buy_action dans le fichier buy_action/cart.html.twig le detail du panier
              'cart' => $cart->getDetailCart(),
              'totalcart' => $cart->getTotalCart(),
              'adresse' => $adresse,
+
         ]);
     }
 

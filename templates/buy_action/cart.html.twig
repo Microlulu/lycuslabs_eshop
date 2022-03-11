@@ -6,31 +6,33 @@
     <div class="wrapper_cart">
         <h1>Shopping Cart</h1>
         <div class="project">
-            {% for item in cart %}
             <div class="shop">
-                <div class="box_article">
-                    <img src="{{ asset('images/products/' ~ item.product.image) }}" alt="imageProduit">
-                    <div class="content_article">
-                        <h3>{{ item['product'].title }}</h3>
-                        <h4 class="mb-10"><td>{{ item ['total'] }}</h4>
-                        <label class="qty">{{ item ['quantity'] }}</label>
-                        <input type="number" value="1">
-                        <button aria-label="remove" class="remove">REMOVE
-                        </button>
+                {% for item in cart %}
+                    <div class="box_article">
+                        <img src="{{ asset('images/products/' ~ item.product.image) }}" alt="imageProduit">
+                        <div class="content_article">
+                            <h3>{{ item['product'].title }}</h3>
+                            <h4 class="mb-10">
+                                <td>{{ item ['total'] }} €
+                            </h4>
+                            <label class="qty">Quantity : x {{ item ['quantity'] }}</label>
+                            <input type="number" value="1">
+                            <button aria-label="update" class="update">UPDATE
+                                <button aria-label="remove" class="remove">REMOVE
+                                </button>
+                        </div>
                     </div>
-                </div>
-
+                {% endfor %}
             </div>
-            {% endfor %}
             {# COTE DROIT DU PANIER #}
             <div class="right_bar">
-                    <p><span>Subtotal</span> <span> 7000 €</span></p>
-                    <hr>
-                    <p><span>Coupon Code</span> <input placeholder="DISCOUNT20"></p>
-                    <hr>
-                    <p class="total_price"><span>TOTAL</span> <span>7000€</span></p>
+                <p><span>Subtotal</span> <span> 7000 €</span></p>
+                <hr>
+                <p><span>Coupon Code</span> <input placeholder="DISCOUNT20"></p>
+                <hr>
+                <p class="total_price"><span>TOTAL</span> <span>7000 €</span></p>
 
-                    <a href="payment.html.twig">Checkout</a>
+                <a href="payment.html.twig">Checkout</a>
             </div>
         </div>
     </div>
