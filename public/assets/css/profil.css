@@ -35,7 +35,9 @@
     margin: 1.5rem 0;
     width: auto;
 }
-
+.adresses_box .button{
+    margin: 10px auto;
+}
 .header .navbar_user a:hover {
     background: var(--mediumgrey);
 }
@@ -55,19 +57,22 @@
 
 /* ADRESSES PART*/
 .adresses_box {
-    margin: 20px;
+    margin: 30px;
     text-align: center;
     padding: 30px 20px;
     border-radius: 25px;
     cursor: pointer;
     box-shadow: var(--box-shadow);
+    background: var(--whitebg);
     transition: all 0.3s;
 
 }
 .adresses_box:hover {
     transform: translateY(-20px);
 }
-
+.adresses_box h3{
+    margin-top: 20px;
+}
 section{
     width: 100%;
     text-align: center;
@@ -119,11 +124,19 @@ tr:nth-child(even) {
     background-color: var(--lightgrey);
 }
 
-/* IMGS DOWNLOADS */
+/* IMGS*/
 .img_downloads{
     width: 20px;
 }
-
+.img_sort{
+    width: 10px;
+    height: 10px;
+}
+.img_sorted{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 /*TARGETS POUR LE JAVASCRIPT*/
 #licenses{
     display: none;
@@ -138,23 +151,24 @@ tr:nth-child(even) {
     display: none;
 }
 
+/* ACTIVE BUTTON FOR NAVBAR USER */
+.button.active{
+    background: var(--mediumgrey);
+}
 
-
-/* RESPONSIVE NAVBAR / BURGER */
-
+/* RESPONSIVE PROFILE */
 /* Extra small devices (phones, 600px and down) + kindle */
 @media only screen and (max-width: 600px), (max-width: 1020px) {
-    /* BURGER TOGGLE*/
-    .burger_m_u{
-        display: block;
-        height: 35px;
-        width: 35px;
-        right:40px;
-        top: 20px ;
-        position: absolute;
-        cursor: pointer;
+   .header{
+       width:80%;
+       margin: 0 auto;
+       text-align: center;
+   }
+    .profile_container{
+        justify-content: center;
     }
-
-
-
+   .sections-row{
+       justify-content: center;
+   }
 }
+

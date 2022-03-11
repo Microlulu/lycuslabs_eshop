@@ -34,12 +34,10 @@
 					<td>{{ voucher.couponcode }}</td>
 					<td>
 						<a href="{{ path('voucher_show', {'id': voucher.id}) }}">
-							<i class="far fa-eye">
-								show</i>
+							SHOW
 						</a>
 						<a href="{{ path('voucher_edit', {'id': voucher.id}) }}">
-							<i class="far fa-edit">
-								edit</i>
+							EDIT
 						</a>
 					</td>
 				</tr>
@@ -51,5 +49,5 @@
 		</tbody>
 	</table>
 
-	<a class="btn btn-primary" href="{{ path('voucher_new') }}">Create new</a>
+	<a class="button" href="{{ path('voucher_new') }}">Create new</a>
 {% endblock %}

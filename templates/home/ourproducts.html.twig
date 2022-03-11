@@ -51,16 +51,28 @@
         {% include 'footer.html.twig' %}
     {% endblock %}
     <script>
-        document.getElementById("formAddCart").addEventListener("submit", function(event) {
+        /* FONCTION POUR AJOUTER AU PANIER + AJOUTER AVEC LA QUANTITE CHOISIE PAR L'UTILISATEUR */
 
-            console.log(document.getElementById("quantityProduct").value)
+        // Je recupère le formulaire de l'html par sont ID (#formAddCart) je lui mets un event listener
+        // qui attends 2 paramètres (le submit et l'évenement)
+        document.getElementById("formAddCart").addEventListener("submit", function(event) {
+            console.log(document.getElementById("quantityProduct").value,
+            // J'utilise ensuite la méthode fetch() qui est disponible dans la portée globale et donne l'instruction aux navigateurs web d'envoyer une requête à une URL.
+            // Faire un Fetch me permettra de demander une ressource de manière asynchrone (désynchronisé/qui ne suit pas le mouvement/la vitesse imposé)
+            // Utilisez la méthode fetch() sert a renvoyer une promesse qui se résout en un objet Response.
+            //La méthode fetch() ne requiert qu'un seul paramètre, à savoir l'URL de la ressource que je souhaite récupérer (en l'occurance la méthode : Path: AddToCart)
             fetch("{{ path('AddToCart') }}", {
                 method: "POST",
                 body: JSON.stringify({
                     'quantity': document.getElementById("quantityProduct").value,
                     'idProduct': {{ product.id }}
                 })
+                // La méthode fetch() renvoie une promesse (Promise), ce qui me permets d'utiliser les méthodes then() ou catch() pour la gérer.
+                // Lorsque la requête est terminée, la ressource est disponible. À ce moment-là, la promesse sera résolue en un objet réponse (Response).
+                // L'objet Response est l'enveloppe/le container de l'API pour la ressource récupérée.
             }).then(response => {
+                // Pour obtenir les données réelles, il faut appelez l'une des méthodes de l'objet Response, par exemple text() ou json().
+                // Ces méthodes sont résolues dans les données réelles.
                 return response.json()
             }).then(product => {
                 console.log(product)

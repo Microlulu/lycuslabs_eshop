@@ -22,35 +22,33 @@ class Cart
      */
     public function getCart()
     {
+        // récupérè la session qui se nomme "cart" si il n'existe pas renvoie un tableau vide une session est un tableau
         return $this->session->get('cart', []);
     }
 
     public function setCart($data)
     {
+        // on va attribuer une valeur dans la session qui a le nom cart pour la remplir avec nos data
         $this->session->set('cart', $data);
     }
 
     /**
      * function pour ajouter un produit au panier
-     * si le produit se trouve deja dans le panier, j'ajoute 1 a la quantité
+     * si le produit se trouve deja dans le panier, j'ajoute la quantité que l'utilisateur va rentrer
      * sinon ajoute le produit x1
      */
-    public function addCart($id, $quantity) //TO DO REMPLACER LES +1 PAR QUANTITE ET VOIR SI CA MARCHE + faire loop dans le panier
+    public function addCart($id, $quantity)
     {
-        //je récupère le panier de la session, si le panier est non trouvé je crée un array panier
+        // on attribue une session (session du nom: 'cart') a notre variable $cart qui est un tableau
         $cart = $this->getCart();
-        //Je vérifie sur l'id existe dans mon panier
-        //si oui je rajoute 1 à la quantité
-        if (!empty($cart[$id])) {
-            //Je rajoute 1 à la quantité
-            $cart[$id] = $cart[$id] + 1;
-            // ou $panier[$id] +=
 
+        // si à l'index/$id de notre tableau/session n'est pas vide on rajoute a notre index la quantité supplémentaire
+        if (!empty($cart[$id])) {
+            $cart[$id] = $cart[$id] + $quantity;
+            // sinon c'est vide donc on créer un nouveau emplacement/index dans notre tableau
         } else {
-            // Sinon je creer une key $id avec la valeur 1
-            $cart[$id] = 1;
+            $cart[$id] = $quantity;
         }
-        
         $this->setCart($cart);
     }
 
@@ -120,7 +118,7 @@ class Cart
             //je teste si le produit est toujours disponible en bdd
             if ($product) {
                 //Je remplie le nouveau tableau avec l'objet produit
-                $detail_panier[] = [
+                $detail_cart[] = [
                     'product' => $product,
                     'quantity' => $quantity,
                     'total' => $quantity * $product->getPrice()

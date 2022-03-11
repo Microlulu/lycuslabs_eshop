@@ -1,5 +1,5 @@
 
-/* BOUTON POUR PRODUITS DYNAMIQUE UTILISANT LA BASE DE DONNEE*/
+/* BOUTON DROPDOWN DANS LA NAVBAR PRINCIPALE POUR PRODUITS (BOUTON DYNAMIQUE UTILISANT LA BASE DE DONNEE)*/
     // Je crée un script pour mon bouton "products" : c'est un bouton dynamique qui prends en compte tous les produits existants et les affiches sous forme de dropdown.
     // À la demande de mon client, j'ai fait un bouton dynamique et pas de page affichant tous les produits comme les e-commerces traditionnels, car mon client est une start-up qui pour l'instant n'a qu'un seul produit.
     // Cette startup n'a pas pour projet de faire un site avec beaucoup de produits, le CEO m'a dit qu'au grand maximum, il y aurait 5 produits et tous seront très différents des uns des autres, d'où sa demande de les séparer dans des pages bien distincte sans liens entre eux.
@@ -36,11 +36,28 @@ function burgerToggle() {
 
 /* NAVBAR DE L'UTILISATEUR DANS LA PAGE PROFILE : BOUTONS */
 function showSection(button){
-    //Je crée une fonction qui montrera les sections quand le boutons correspondant a la section sera cliqué.
+    // Je crée une fonction qui montrera les sections quand le boutons correspondant à la section sera cliqué
+    // ET qui laissera le bouton cliqué en gris pour pouvoir se repérer dans la page profile plus simplement
+
+    /* POUR LA COULEUR GRISE*/
+    // Je récupère l'id du bouton
    let buttonID =  button.id;
-   //Pour chaque boutons :je prends l'id du boutons et je prends la section associée (l'élement) et je dis :
+    // Je récupère ensuite tout les boutons ayant la classe "button"
+    let allButtons = document.getElementsByClassName("button");
+    // Je fais une loop sur les boutons
+    for(let i = 0; i<allButtons.length; i++){
+        // Si les boutons contiennent la classe active => supprime la classe active
+        if(allButtons[i].classList.contains("active")){
+            allButtons[i].classList.remove("active");
+        }
+    }
+    // Je récupère le bouton cliqué et je lui ajoute la classe active
+    button.classList.add("active");
+
+    /* POUR SWITCHER DE SECTION EN CLIQUANT SUR LES BOUTONS*/
+    // Pour chaque bouton :je prends l'id du bouton et je prends la section associée (element) et je dis :
     // display block sur la section que je veux afficher et display none sur toutes les autres.
-    // et je repète l'opération pour chaque bouton.
+    // et je répète l'opération pour chaque bouton.
     if(buttonID=="address-btn"){
        document.getElementById("adresses").style.display="block";
        document.getElementById("orders").style.display="none";
@@ -77,15 +94,6 @@ function showSection(button){
        document.getElementById("support").style.display="block";
    }
 }
-/* NAVBAR UTILISATEUR : MENU BURGER TOGGLE */
-/*function burgerToggleUser() {
-    let x = document.getElementById("myNavbar");
-    if (x.style.display == "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
-}
-*/
+
 
 

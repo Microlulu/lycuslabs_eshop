@@ -35,7 +35,7 @@
                 <td>{{ user.country }}</td>
                 <td>{{ user.telephone }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}"><i class="far fa-eye"> show</i></a>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">SHOW</a>
                 </td>
             </tr>
         {% else %}
@@ -46,5 +46,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('user_new') }}">Create new</a>
+    <a class="button" href="{{ path('user_new') }}">Create new</a>
 {% endblock %}

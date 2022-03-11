@@ -3,7 +3,7 @@
 {% block title %}Order index{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="forms_container">
     <h1>All the orders - index</h1>
 
     <table class="table">
@@ -39,7 +39,7 @@
                 <td>{{ order.telephone }}</td>
                 <td>{{ order.total }}</td>
                 <td>
-                    <a href="{{ path('order_show', {'id': order.id}) }}"><i class="far fa-eye">show</i></a>
+                    <a href="{{ path('order_show', {'id': order.id}) }}">SHOW</a>
                 </td>
             </tr>
         {% else %}

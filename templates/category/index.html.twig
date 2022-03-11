@@ -5,7 +5,7 @@
 
 {% block body %}
     <h1>All categories</h1>
-<div class="container">
+<div class="forms_container">
     <table class="table">
         <thead>
             <tr>
@@ -24,8 +24,8 @@
                 <td>{{ category.createdat ? category.createdat|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ category.updatedat ? category.updatedat|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}"><i class="far fa-eye"> show</i></a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}"><i class="far fa-edit"> edit</i></a>
+                    <a href="{{ path('category_show', {'id': category.id}) }}">SHOW</a>
+                    <a href="{{ path('category_edit', {'id': category.id}) }}">EDIT</a>
                 </td>
             </tr>
         {% else %}
@@ -36,6 +36,6 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('category_new') }}">Create new</a>
+    <a class="button" href="{{ path('category_new') }}">Create new</a>
 </div>
 {% endblock %}

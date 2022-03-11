@@ -8,7 +8,7 @@
     -10px -10px 15px var(--extrawhite);
     padding: 50px 0 50px 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .footer{
@@ -50,7 +50,7 @@
         padding: 30px;
     }
     .row{
-        justify-content: space-between;
+        justify-content: center;
     }
     .form__icon {
         flex-wrap: wrap;
@@ -65,7 +65,7 @@
     }
 
     .row {
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .form__icon {
@@ -79,7 +79,7 @@
         padding: 30px;
     }
     .row{
-        justify-content: space-between;
+        justify-content: center;
     }
     .form__icon {
         flex-wrap: wrap;

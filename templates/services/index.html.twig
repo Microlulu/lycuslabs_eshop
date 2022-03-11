@@ -27,8 +27,8 @@
                 <td>{{ service.shortcut}}</td>
                 <td>{{ service.text |length > 50 ? service.text|slice(0, 50) ~ '...' : service.text }}</td>
                 <td>
-                    <a href="{{ path('service_show', {'id': service.id}) }}"><i class="far fa-eye"> show</i></a>
-                    <a href="{{ path('service_edit', {'id': service.id}) }}"><i class="far fa-edit"> edit</i></a>
+                    <a href="{{ path('service_show', {'id': service.id}) }}">SHOW</a>
+                    <a href="{{ path('service_edit', {'id': service.id}) }}">EDIT</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +39,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('service_new') }}">Create new</a>
+    <a class="button" href="{{ path('service_new') }}">Create new</a>
 {% endblock %}

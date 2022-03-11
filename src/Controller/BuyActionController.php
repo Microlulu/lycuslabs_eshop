@@ -33,25 +33,35 @@ class BuyActionController extends AbstractController
         if($adresse_final){
             $adresse = $adresse_final;
         }else{
-            // sinon il envoie a la vue l'adresse de la table user
+            // sinon il envoie à la vue l'adresse de la table user
             $adresse = $this->getUser();
         }
+
+        //dd($cart->getDetailCart());
+        # ToDo: Verifier que nous envoyons les produits dans notre vue que tout correspond
+        # ToDo: Afficher ces informations dans la vue/view
+        # ToDo: verifier que les produits sont bien ajouter dans la fonction addToCart à notre session
+        # ToDo: verifier si il n'y a pas de bug
 
         return $this->render('buy_action/cart.html.twig', [
              // j'envoie à la vue buy_action dans le fichier buy_action/index.html.twig le detail du panier
              'cart' => $cart->getDetailCart(),
              'totalcart' => $cart->getTotalCart(),
              'adresse' => $adresse,
-
-
         ]);
     }
 
+    /* FONCTION POUR AJOUTER AU PANIER AVEC UNE QUANTITE */
+    // J'utilise la methode POST pour sécuriser et sécurisé mes données envoyées
     #[Route('/buyAction/AddToCart', name: 'AddToCart', methods: ['POST'])]
+    //Je pase a ma fonction deux arguments : la requet et le panier
     public function AddToCart(Request $request, Cart $cart) {
-
+        // La fonction json_decode() est une fonction intégrée à PHP qui est utilisée pour décoder une chaîne JSON. Elle convertit une chaîne encodée JSON en une variable PHP.
+        // Je lui dis donc décode le JSON et mets le contenu de ma requète dans la variable $data
         $data = json_decode($request->getContent(), true);
+        // Je dis ensuite : quand on ajoute au panier on doit prendre 2 paramètres en compte : l'id du produit et la quantité
         $cart->addCart($data['idProduct'],$data['quantity']);
+        // retourne ensuite la chaine de caractère JSON avec toutes les données.
         return $this->json($data);
     }
 

@@ -29,8 +29,8 @@
                 <td>{{ member.job }}</td>
                 <td>{{ member.description |length > 100 ? member.description|slice(0, 100) ~ '...' : member.description }}</td>
                 <td>
-                    <a href="{{ path('team_show', {'id': member.id}) }}"><i class="far fa-eyes"> show</i></a>
-                    <a href="{{ path('team_edit', {'id': member.id}) }}"><i class="far fa-edit"> edit</i></a>
+                    <a href="{{ path('team_show', {'id': member.id}) }}">SHOW</a>
+                    <a href="{{ path('team_edit', {'id': member.id}) }}">EDIT</a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('team_new') }}">Create new</a>
+    <a class="button" href="{{ path('team_new') }}">Create new</a>
 {% endblock %}

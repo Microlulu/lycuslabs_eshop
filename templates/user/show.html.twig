@@ -49,10 +49,9 @@
             </tr>
         </tbody>
     </table>
+    <a class="button m-20" href="{{ path('user_edit', {'id': user.id}) }}">EDIT</a>
 
-    <a class="btn btn-secondary" href="{{ path('user_index') }}">back to list</a>
-
-    <a class="btn btn-primary" href="{{ path('user_edit', {'id': user.id}) }}"><i class="far fa-edit"> edit</i></a>
+    <a class="button_inset" href="{{ path('user_index') }}">back to list</a>
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}

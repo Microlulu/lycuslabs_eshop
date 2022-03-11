@@ -3,25 +3,12 @@
 {% block title %}New Adresse{% endblock %}
 
 {% block body %}
-{{ include("partials/title_section.html.twig", {'name':'Add Address'}) }}
-    <div class="login_register_wrap section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-md-10">
-                    <div class="login_wrap">
-                        <div class="padding_eight_all bg-white">
-                            <div class="heading_s1">
-                                <h3>Add Address</h3>
-                            </div>
-                            <div class="content">
-                                {{ include('adresse/_form.html.twig') }}
-                                <a class="btn btn_border-fill btn-block m-t2" href="{{ path('profil') }}">Back to profil</a>
-                            </div>                           
-                        </div>
-                    </div>
-                </div>
+    <h1>Add Address</h1>
+    <div class="forms_container">
+            <div class="col">
+                {{ include('adresse/_form.html.twig') }}
+                <a class="button_inset" href="{{ path('profil') }}">Back to profil</a>
             </div>
-        </div>
     </div>
 
 

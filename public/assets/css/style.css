@@ -106,8 +106,8 @@ ul{
 .row{
     display: flex;
     flex-wrap: wrap;
-    /*flex-direction: row;*/
 }
+
 
 /* QUANTITE PRODUIT*/
 .qty{
@@ -156,7 +156,9 @@ ul{
 .m-8{
     margin: 8px;
 }
-
+.m-20{
+    margin: 20px;
+}
 /* BOUTONS */
 /* J'utilise la class .btn-form et je vise l'input qui sert de bouton dans mes formulaires */
 .btn-form input{

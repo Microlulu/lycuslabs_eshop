@@ -4,27 +4,16 @@
 {% endblock %}
 
 {% block body %}
+    <h1>Edit my address</h1>
 
-	{{ include("partials/title_section.html.twig", {'name':'Edit Address'}) }}
-	<div class="login_register_wrap section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-xl-6 col-md-10">
-					<div class="login_wrap">
-						<div class="padding_eight_all bg-white">
-							<div class="heading_s1">
-								<h3>Edit Address</h3>
-							</div>
-							<div class="content">
-								{{ include('adresse/_form.html.twig', {'button_label': 'Update'}) }}
-								<a class="btn btn-secondary" href="{{ path('profil') }}">Back to profil</a>
-							</div>
+    <div class="forms_container">
+        <div class="col">
+                {{ include('adresse/_form.html.twig', {'button_label': 'Update'}) }}
+                <br>
+                <a class="button_inset" href="{{ path('profil') }}">Back to profil</a>
+        </div>
+    </div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 
 {% endblock %}

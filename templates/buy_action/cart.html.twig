@@ -6,37 +6,14 @@
     <div class="wrapper_cart">
         <h1>Shopping Cart</h1>
         <div class="project">
+            {% for item in cart %}
             <div class="shop">
                 <div class="box_article">
-                    <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
+                    <img src="{{ asset('images/products/' ~ item.product.image) }}" alt="imageProduit">
                     <div class="content_article">
-                        <h3>NOM DU PRODUIT</h3>
-                        <h4 class="mb-10">Price: 500€</h4>
-                        <label class="qty">Quantity</label>
-                        <input type="number" value="1">
-                        <button aria-label="remove" class="remove">REMOVE
-                        </button>
-                    </div>
-                </div>
-
-                <div class="box_article">
-                    <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
-                    <div class="content_article">
-                        <h3>NOM DU PRODUIT 4</h3>
-                        <h4 class="mb-10">Price: 4500€</h4>
-                        <label class="qty">Quantity</label>
-                        <input type="number" value="1">
-                        <button aria-label="remove" class="remove">REMOVE
-                        </button>
-                    </div>
-                </div>
-
-                <div class="box_article">
-                    <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
-                    <div class="content_article">
-                        <h3>NOM DU PRODUIT 3</h3>
-                        <h4 class="mb-10">Price: 5500€</h4>
-                        <label class="qty">Quantity</label>
+                        <h3>{{ item['product'].title }}</h3>
+                        <h4 class="mb-10"><td>{{ item ['total'] }}</h4>
+                        <label class="qty">{{ item ['quantity'] }}</label>
                         <input type="number" value="1">
                         <button aria-label="remove" class="remove">REMOVE
                         </button>
@@ -44,6 +21,7 @@
                 </div>
 
             </div>
+            {% endfor %}
             {# COTE DROIT DU PANIER #}
             <div class="right_bar">
                     <p><span>Subtotal</span> <span> 7000 €</span></p>

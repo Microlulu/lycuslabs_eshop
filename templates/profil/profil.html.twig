@@ -3,59 +3,6 @@
 {% endblock %}
 {% block body %}
 
-    {#  <div class="d-flex align-items-start">
-        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <button class="nav-link active" id="button_adresses" data-bs-toggle="pill" data-bs-target="#button_adresses"
-                    type="button" role="tab" aria-controls="button_adresses" aria-selected="true">My adresses
-            </button>
-            <button class="nav-link" id="button_orders" data-bs-toggle="pill" data-bs-target="#button_orders"
-                    type="button" role="tab" aria-controls="button_orders" aria-selected="false">My orders
-            </button>
-            <button class="nav-link" id="button_contactus" data-bs-toggle="pill" data-bs-target="#button_contactus"
-                    type="button" role="tab" aria-controls="button_contact" aria-selected="false">Contact us
-            </button>
-            <button class="nav-link" id="button_logout" data-bs-toggle="pill" data-bs-target="#button_logout"
-                    type="button" role="tab" aria-controls="button_logout" aria-selected="false">Logout
-            </button>
-        </div>
-
-        <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="button_adresses_content" role="tabpanel"
-                 aria-labelledby="button_adresses">
-                {# debut des cards
-                <div class="row">
-                    {% for key, adresse in list_adresses %}
-                        <div class="col-lg-3 col-md-6">
-                            <div class="card">
-                                <a href="" class="btn btn-primary">Choose</a>
-                                <div class="card-body" style="width: 35rem;">
-                                    <h5 class="card-title">Address #{{ key+1 }}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">{{ adresse.firstName }}  {{ adresse.lastName }}</h6>
-                                    <p class="card-text">{{ adresse.adresse }}</p>
-                                    <p class="card-text">{{ adresse.zipcode }}</p>
-                                    <p class="card-text">{{ adresse.city }}</p>
-                                    <p class="card-text">{{ adresse.country }}</p>
-                                    <a href="{{ path('adresse_edit', {'id': adresse.id}) }}" class="btn btn-success">Edit</a>
-                                    <a href="{{ path('adresse_delete', {'id': adresse.id}) }}" class="btn btn-danger">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="tab-pane fade" id="button_orders_content" role="tabpanel" aria-labelledby="button_orders">...
-            </div>
-            <div class="tab-pane fade" id="button_contactus_content" role="tabpanel" aria-labelledby="button_contactus">
-                // Debut du formulaire de contact des utilisateurs connecté
-                <div class="row">
-                    <h4> Need assistance with your purchase?</h4>
-
-                    <a aria-current="contact" class="btn btn-secondary" href="{{ path('message_profil') }}">Contact
-                        us</a>
-                </div>
-            </div>
-        </div>
-    </div> #}
 
     <div class="profile_container row mt-20">
         <!-- Début de la section header user  -->
@@ -63,80 +10,47 @@
         <header class="header row">
             <div class="navbar_user" id="MyNavbar">
                 <img src="{{ asset('images/svg/profil.png') }}" alt="Dashboard">
-                <a class="button" href="#" id="address-btn" onclick="showSection(this);">MY ADRESSES</a>
+                <a class="button active" href="#" id="address-btn" onclick="showSection(this);">MY ADRESSES</a>
                 <a class="button" href="#" id="orders-btn" onclick="showSection(this);">MY ORDERS</a>
                 <a class="button" href="#" id="licences-btn" onclick="showSection(this);">MY LICENSES</a>
                 <a class="button" href="#" id="downloads-btn" onclick="showSection(this);">MY DOWNLOADS</a>
                 <a class="button" href="#" id="support-btn" onclick="showSection(this);">SUPPORT</a>
-                <a class="button" href="#">LOGOUT</a>
+                <a class="button" href="{{ path('app_logout') }}">LOGOUT</a>
             </div>
         </header>
         <!-- Fin de la section header user  -->
 
-        {# BURGER MENU POUR LA NAVBAR UTILISATEUR #}
-        {# IMAGE POUR OUVRIR NAVBAR #}
-        {#  <img src="{{ asset('images/svg/bars-solid.svg') }}" class="burger_m_u" alt="menu_burger_profile"
-             aria-label="open the profile menu" id="burg-menu_user" onclick="burgerToggleUser()"/> #}
-
-
         <!-- Début de la section Adresses -->
         <div class="row sections-content">
             <div class="sections-row">
-                <h1>HELLO USER !</h1>
+                <h1 class="mb-50">HELLO {{ app.user.firstName }} !</h1>
             </div>
             <div class="row sections-row" id="adresses">
                 <section class="adresse">
                     <div class="row">
-                        <div class="adresses_box">
-                            <p>Selected by default</p>
-                            <h3>FIRSTNAME NAME</h3>
-                            <p>Street number 77</p>
-                            <p>57489</p>
-                            <p>City</p>
-                            <p>PAYS</p>
-                            <div class="row">
-                                <a class="button mt-20 mb-50" href="#">SELECT</a>
-                            </div>
-                            <div class="row">
-                                <a class="button_inset m-8" href="#">EDIT</a>
-                                <a class="button_inset m-8" href="#">DELETE</a>
-                            </div>
-                        </div>
-
-                        <div class="adresses_box">
-                            <p>Selected by default</p>
-                            <h3>FRISTNAME NAME</h3>
-                            <p>Street number 77</p>
-                            <p>57489</p>
-                            <p>City</p>
-                            <p>PAYS</p>
-                            <div class="row">
-                                <a class="button mt-20 mb-50" href="#">SELECT</a>
-                            </div>
-                            <div class="row">
-                                <a class="button_inset m-8" href="#">EDIT</a>
-                                <a class="button_inset m-8" href="#">DELETE</a>
-                            </div>
-                        </div>
-
-                        <div class="adresses_box">
-                            <div class="sections-row txt_center">
+                        <a href="{{ path('adresse_new') }}" class="button">Create address</a>
+                    </div>
+                    <div class="mt-30 row">
+                        {% for key, adresse in list_adresses %}
+                            <div class="adresses_box">
+                                <span>Address : #{{ key+1 }}</span>
                                 <p>Selected by default</p>
-                                <h3>FRISTNAME NAME</h3>
-                                <p>Street number 77</p>
-                                <p>57489</p>
-                                <p>City</p>
-                                <p>PAYS</p>
+                                <h3>{{ adresse.firstName }}  {{ adresse.lastName }}</h3>
+                                <p>{{ adresse.company }}</p>
+                                <p>{{ adresse.vatnumber }}</p>
+                                <p>{{ adresse.adresse }}</p>
+                                <p>{{ adresse.zipcode }}</p>
+                                <p>{{ adresse.city }}</p>
+                                <p>{{ adresse.country }}</p>
                                 <div class="row">
-                                <a class="button mt-20 mb-50" href="#">SELECT</a>
+                                    <a class="button mt-20 mb-50" href="#">SELECT</a>
+                                </div>
+                                <div class="row">
+                                    <a class="button_inset m-8" href="{{ path('adresse_edit', {'id': adresse.id}) }}">EDIT</a>
+                                    {{ include('adresse/_delete_form.html.twig') }}
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <a class="button_inset m-8" href="#">EDIT</a>
-                                <a class="button_inset m-8" href="#">DELETE</a>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </section>
             </div>
@@ -152,8 +66,15 @@
                             <th>Reference</th>
                             <th>Qty</th>
                             <th>Product</th>
-                            <th>Date</th>
-                            <th>Price</th>
+                            <th>Date
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
+                            </th>
+                            <th>Price
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
                             <th>Invoice</th>
                         </tr>
                         <tr>
@@ -186,14 +107,42 @@
                 <section>
                     <table>
                         <tr>
+                            {#  {% if licence.active == true %}
+
+                                <th> icon - green here</th>
+                            {% elseif licence.active == false %}
+                                <th> icon - grey or whatever color here</th>
+                            {% else %}
+
+                            {% endif %} #}
                             <th>0</th>
-                            <th>Product</th>
+                            <th>Product
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
+                            </th>
                             <th>Activation Key</th>
-                            <th>Type</th>
-                            <th>Host ID</th>
-                            <th>Date Created</th>
-                            <th>Expiry Date</th>
-                            <th>V</th>
+                            <th>Type
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
+                            </th>
+                            <th>Host ID
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
+                            </th>
+                            <th>Date Created
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
+                            </th>
+                            <th>Expiry Date
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
+                            </th>
+                            <th></th>
 
                         </tr>
                         <tr>
@@ -205,7 +154,7 @@
                             <td>25/12/22</td>
                             <td>25/12/22</td>
                             <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
-                                     alt="Download invoice"></td>
+                                     alt="Download text"></td>
                         </tr>
                         <tr>
                             <td>0</td>
@@ -216,7 +165,7 @@
                             <td>25/12/22</td>
                             <td>25/12/22</td>
                             <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
-                                     alt="Download invoice"></td>
+                                     alt="Download text"></td>
                         </tr>
                         <tr>
                             <td>0</td>
@@ -227,7 +176,7 @@
                             <td>25/12/22</td>
                             <td>25/12/22</td>
                             <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
-                                     alt="Download invoice"></td>
+                                     alt="Download text"></td>
                         </tr>
                     </table>
 
@@ -250,15 +199,31 @@
                         </tr>
                         <tr>
                             <td>Product 2</td>
-                            <td>Select</td>
-                            <td>Select</td>
+                            <td>Select
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
+                            </td>
+                            <td>Select
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
+                            </td>
                             <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
                                      alt="Download invoice"></td>
                         </tr>
                         <tr>
                             <td>Product 2</td>
-                            <td>Select</td>
-                            <td>Select</td>
+                            <td>Select
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
+                            </td>
+                            <td>Select
+                                <button class="img_sorted">
+                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
+                                </button>
+                            </td>
                             <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
                                      alt="Download invoice"></td>
                         </tr>
@@ -275,7 +240,7 @@
                 <section>
 
                     <h3 class="mb-50">NEED SOME HELP ABOUT YOUR PURCHASE?</h3>
-                    <a class="button">CONTACT US</a>
+                    <a href="{{ path('message_profil') }}" class="button">CONTACT US</a>
                 </section>
             </div>
             <!-- fin de la section support/contact-->
