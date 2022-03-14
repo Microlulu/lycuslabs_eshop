@@ -27,8 +27,12 @@
 }
 .update{
     justify-content: center;
-    width: fit-content;
+    width: 85px;
+    height: 30px;
+    font-weight: 700;
     color: var(--darkgrey);
+    margin-left: 10px;
+    background: var(--whitebg);
     box-shadow: var(--box-shadow);
     border: none;
     outline: none;
@@ -36,6 +40,10 @@
     font-size: 1em;
     cursor: pointer;
     border-radius: 25px;
+}
+.update:hover{
+    color: var(--blue);
+    box-shadow: var(--box-shadow-inset);
 }
 /*ANIMATION SUR LES PRODUITS DU PANIER*/
 .box_article:hover{
@@ -125,38 +133,4 @@
     font-size: 1.2em;
     font-weight: 700;
     color: var(--darkblue);
-}
-
-/* PARTIE RESPONSIVE DU PANIER*/
-@media screen  and (max-width: 700px){
-    .content_article h3{
-        margin-bottom: 15px;
-    }
-    .content_article h4{
-        margin-bottom: 20px;
-    }
-    .remove{
-        display: none;
-    }
-    .box_article{
-        height: 150px;
-    }
-    .box_article img{
-        height: 150px;
-        width: 200px;
-    }
-}
-@media screen and (max-width: 900px){
-    .project{
-        flex-direction: column;
-    }
-    .right_bar{
-        margin-left: 0;
-        margin-bottom: 20px;
-    }
-}
-@media  screen and (max-width: 1250px){
-    .wrapper_cart{
-        max-width: 95% ;
-    }
 }

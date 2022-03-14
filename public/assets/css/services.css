@@ -57,28 +57,3 @@
 .text_right{
     margin-bottom: 20px;
 }
-/* RESPONSIVE SERVICES */
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px){
-
-    .main_container{
-        display: block;
-    }
-    .service_container{
-        width: 100%;
-        height: 100%;
-    }
-    .service_container_inset{
-        width: 100%;
-        height: 100%;
-        margin-bottom: 25px;
-
-    }
-    .left_side{
-        margin-left: 0;
-    }
-    .right_side{
-        margin-right: 0;
-    }
-}

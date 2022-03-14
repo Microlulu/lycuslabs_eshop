@@ -16,7 +16,7 @@
 
 /* NAV BAR USER PROFILE */
 .header {
-    width: 17%;
+    width: 20%;
     margin: 20px;
     text-align: center;
     padding: 30px 20px;
@@ -79,7 +79,9 @@ section{
 }
 
 .sections-row{
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
+
 }
 /* BOUTONS */
 .button_inset{
@@ -99,7 +101,9 @@ section{
     color: var(--blue);
     box-shadow: var(--box-shadow-inset);
 }
-
+.button{
+    margin: 0 auto;
+}
 
 
 /* TABLES*/
@@ -151,24 +155,56 @@ tr:nth-child(even) {
     display: none;
 }
 
-/* ACTIVE BUTTON FOR NAVBAR USER */
+/* ACTIVE BUTTON POUR NAVBAR USER */
 .button.active{
     background: var(--mediumgrey);
 }
 
-/* RESPONSIVE PROFILE */
-/* Extra small devices (phones, 600px and down) + kindle */
-@media only screen and (max-width: 600px), (max-width: 1020px) {
-   .header{
-       width:80%;
-       margin: 0 auto;
-       text-align: center;
-   }
-    .profile_container{
-        justify-content: center;
-    }
-   .sections-row{
-       justify-content: center;
-   }
+
+/* FORUMULAIRE CONTACT PROFIL */
+
+.message_profile_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.message_container{
+    box-shadow: var(--box-shadow-inset);
+    width: fit-content;
+    margin-top: 70px;
+    padding: 30px 30px;
+    border-radius: 25px;
+}
+.message_container h4{
+    margin-bottom: 20px;
+}
+.formProfileMessage{
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    font-size: 1.2em;
+    width: 450px;
+    padding: 20px 30px 100px 40px;
+    margin: 2px 0;
+    letter-spacing: 0.15px;
+    border: none;
+    background-color: var(--whitebg);
+    transition: 0.25s ease;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow-inset);
+}
+.profile_message_input{
+    width: 450px;
+    letter-spacing: 0.15px;
+    margin: 10px 0;
+    border: none;
+    outline:none;
+    background-color: var(--whitebg);
+    transition: 0.25s ease;
+    border-radius: 8px;
+    padding: 20px 30px 20px 40px;
+    font-size: 1.2em;
+    box-shadow: var(--box-shadow-inset);
 }
 

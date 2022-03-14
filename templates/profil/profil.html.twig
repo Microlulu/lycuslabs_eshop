@@ -7,7 +7,7 @@
     <div class="profile_container row mt-20">
         <!-- Début de la section header user  -->
 
-        <header class="header row">
+        <header class="header">
             <div class="navbar_user" id="MyNavbar">
                 <img src="{{ asset('images/svg/profil.png') }}" alt="Dashboard">
                 <a class="button active" href="#" id="address-btn" onclick="showSection(this);">MY ADRESSES</a>
@@ -42,10 +42,10 @@
                                 <p>{{ adresse.zipcode }}</p>
                                 <p>{{ adresse.city }}</p>
                                 <p>{{ adresse.country }}</p>
-                                <div class="row">
+                                <div class="row btn_row">
                                     <a class="button mt-20 mb-50" href="#">SELECT</a>
                                 </div>
-                                <div class="row">
+                                <div class="row btn_row">
                                     <a class="button_inset m-8" href="{{ path('adresse_edit', {'id': adresse.id}) }}">EDIT</a>
                                     {{ include('adresse/_delete_form.html.twig') }}
                                 </div>
@@ -96,7 +96,52 @@
                                      alt="Download invoice"></td>
                         </tr>
                     </table>
-
+                    {# Design pour la partie responsive (téléphones, tablettes..) #}
+                    <div class="container_responsive_profile">
+                        <h4>Reference :</h4>
+                        <p>CFEDGBGVF</p>
+                        <h4>Qty :</h4>
+                        <p>x 2</p>
+                        <h4>Product :</h4>
+                        <p>Produit 1</p>
+                        <h4>Date :</h4>
+                        <p>12.15.25</p>
+                        <h4>Price</h4>
+                        <p>150 €</p>
+                        <h4>Invoice : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                          alt="Download invoice">
+                        </h4>
+                    </div>
+                    <div class="container_responsive_profile">
+                        <h4>Reference :</h4>
+                        <p>CFEDGBGVF</p>
+                        <h4>Qty :</h4>
+                        <p>x 2</p>
+                        <h4>Product :</h4>
+                        <p>Produit 1</p>
+                        <h4>Date :</h4>
+                        <p>12.15.25</p>
+                        <h4>Price</h4>
+                        <p>150 €</p>
+                        <h4>Invoice : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                           alt="Download invoice">
+                        </h4>
+                    </div>
+                    <div class="container_responsive_profile">
+                        <h4>Reference :</h4>
+                        <p>CFEDGBGVF</p>
+                        <h4>Qty :</h4>
+                        <p>x 2</p>
+                        <h4>Product :</h4>
+                        <p>Produit 1</p>
+                        <h4>Date :</h4>
+                        <p>12.15.25</p>
+                        <h4>Price</h4>
+                        <p>150 €</p>
+                        <h4>Invoice : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                           alt="Download invoice">
+                        </h4>
+                    </div>
                 </section>
             </div>
             <!-- fin de la section commandes -->
@@ -179,7 +224,61 @@
                                      alt="Download text"></td>
                         </tr>
                     </table>
-
+                    {# Design pour la partie responsive (téléphones, tablettes..) #}
+                    <div class="container_responsive_profile">
+                        <p>0</p>
+                        <h4>Product :</h4>
+                        <p>Product 1</p>
+                        <h4>Activation Key :</h4>
+                        <p>ADEE-FEFE-FDFD-FDFF-FDFD</p>
+                        <h4>Type :</h4>
+                        <p>Node</p>
+                        <h4>Host ID :</h4>
+                        <p>25:32:15:12:45</p>
+                        <h4>Date Created</h4>
+                        <p>25/12/22</p>
+                        <h4>Expiry Date</h4>
+                        <p>25/12/22</p>
+                        <h4>Licence : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                           alt="Download invoice">
+                        </h4>
+                    </div>
+                    <div class="container_responsive_profile">
+                        <p>0</p>
+                        <h4>Product :</h4>
+                        <p>Product 1</p>
+                        <h4>Activation Key :</h4>
+                        <p>ADEE-FEFE-FDFD-FDFF-FDFD</p>
+                        <h4>Type :</h4>
+                        <p>Node</p>
+                        <h4>Host ID :</h4>
+                        <p>25:32:15:12:45</p>
+                        <h4>Date Created</h4>
+                        <p>25/12/22</p>
+                        <h4>Expiry Date</h4>
+                        <p>25/12/22</p>
+                        <h4>Licence : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                           alt="Download invoice">
+                        </h4>
+                    </div>
+                    <div class="container_responsive_profile">
+                        <p>0</p>
+                        <h4>Product :</h4>
+                        <p>Product 1</p>
+                        <h4>Activation Key :</h4>
+                        <p>ADEE-FEFE-FDFD-FDFF-FDFD</p>
+                        <h4>Type :</h4>
+                        <p>Node</p>
+                        <h4>Host ID :</h4>
+                        <p>25:32:15:12:45</p>
+                        <h4>Date Created</h4>
+                        <p>25/12/22</p>
+                        <h4>Expiry Date</h4>
+                        <p>25/12/22</p>
+                        <h4>Licence : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                                           alt="Download invoice">
+                        </h4>
+                    </div>
                 </section>
 
 
@@ -228,7 +327,14 @@
                                      alt="Download invoice"></td>
                         </tr>
                     </table>
-
+                    {# Design pour la partie responsive (téléphones, tablettes..) #}
+                    <div class="container_responsive_profile">
+                        <h4>Product :</h4>
+                        <p>Product 1</p>
+                        <h4>Platform :</h4>
+                        <p>Windows, Mac and Linux</p>
+                        <h4>Download : Available on a desktop version</h4>
+                    </div>
 
                 </section>
             </div>

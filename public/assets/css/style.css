@@ -215,6 +215,7 @@ ul{
     font-size: 1em;
     cursor: pointer;
     border-radius: 25px;
+    background: var(--whitebg);
 }
 .remove:hover{
     color: var(--blue);
@@ -260,6 +261,8 @@ nav .logo{
     display: flex;
     flex-direction: row;
     list-style: none;
+    width: 80%;
+    justify-content: flex-end;
 }
 .mainMenu li{
     list-style: none;
@@ -313,58 +316,4 @@ nav .logo{
 .burger_m{
     display: none;
 }
-
-/* RESPONSIVE NAVBAR / BURGER */
-
-/* Extra small devices (phones, 600px and down) + kindle */
-@media only screen and (max-width: 600px), (max-width: 1020px) {
-    /* BURGER TOGGLE*/
-    .burger_m{
-        display: block;
-        height: 35px;
-        width: 35px;
-        right:40px;
-        top: 20px ;
-        position: absolute;
-        cursor: pointer;
-    }
-
-    .mainMenu{
-        display: none;
-        flex-direction: column;
-        text-align: center;
-        background: var(--whitebg);
-        width: 100%;
-        position: absolute;
-        top: 70px;
-    }
-
-    .mainMenu ul {
-        position: relative;
-        display: none;
-        top:0 !important;
-        width: 60%;
-        margin: 0 auto;
-        border-top: solid var(--purple);
-    }
-    .mainMenu ul:hover > ul{
-        top: 0 !important;
-    }
-    .dropbtn:hover +  ul{
-        display: block !important;
-    }
-    .mainMenu ul li{
-        margin: 0;
-        width: 100%;
-        display: list-item;
-        border-bottom: 1px solid var(--lightgrey) ;
-    }
-    nav .logo{
-        padding-left: 30px;
-        width: 100%;
-    }
-
-}
-
-
 

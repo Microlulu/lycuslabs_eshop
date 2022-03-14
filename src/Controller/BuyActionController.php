@@ -39,8 +39,8 @@ class BuyActionController extends AbstractController
         }
 
         //dd($cart->getDetailCart());
-        # ToDo: Verifier que nous envoyons les produits dans notre vue que tout correspond
-        # ToDo: Afficher ces informations dans la vue/view
+        # ToDo: Verifier que nous envoyons les produits dans notre vue que tout correspond OK
+        # ToDo: Afficher ces informations dans la vue/view OK
         # ToDo: verifier que les produits sont bien ajouter dans la fonction addToCart à notre session
         # ToDo: verifier si il n'y a pas de bug
 
@@ -49,6 +49,8 @@ class BuyActionController extends AbstractController
              'cart' => $cart->getDetailCart(),
              'totalcart' => $cart->getTotalCart(),
              'adresse' => $adresse,
+             'deletecart'=> $cart->getTotalCart(),
+             'deleteQty'=> $cart->deleteQuantityProduct()
 
         ]);
     }

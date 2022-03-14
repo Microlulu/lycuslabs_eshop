@@ -95,5 +95,20 @@ function showSection(button){
    }
 }
 
+/* FONCTION POUR VOIR DANS MON CODE TOUS LES TAGS UTILISES */
+/* Le but de cette fonction est d'enlever le * dans mon CSS et d'optimisé le class * uniquement avec les tags dont je me sers sans englober tous les tags.*/
+/* Pour me servir de cette fonction il faut que je rajoute un paragraphe dans mon HTML comprenant l'id "allTagsUsed" <p id="allTagsUsed"></p>*/
 
+// Je crée une constante collection et je viens récupérer tous les tags
+const collection = document.getElementsByTagName("*");
+// Je précise que je veux un texte.
+let text = ""
+// Et je viens créer une boucle qui prendra un par un tous les tags et les affichera dans mon paragraphe sous forme de texte.
+for (let i = 0; i < collection.length; i++) {
+    // Ma boucle signifie : prends l'index et commence à zéro, prends toute la longueur de la collection (donc tous les tags) et ajoute +1 a chaque fois que tu en trouves un.
+    text += collection[i].tagName + "<br>";
+    // Dispose les tags de ma collection en utilisant leur nom de tags et rajoute un <br> à fin de chaque tag pour que ça soit plus lisible.
+}
+document.getElementById("allTagsUsed").innerHTML = text;
+// Prends l'id "AllTagsUsed" dans mon HTML et donne le texte que j'ai demandé.
 
