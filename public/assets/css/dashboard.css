@@ -1,0 +1,32 @@
+/* IMPORT DU FICHIER STYLE.CSS */
+@import url("style.css");
+
+.left-dash{
+    width: 20%;
+    height: 1000px;
+}
+.right-dash{
+    width: 80%;
+    height: 1000px;
+    text-align: center;
+}
+
+.navbar_admin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.header_admin{
+    width: 90%;
+    margin: 20px;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s;
+    height: 100%;
+}
+.navbar_admin > .button{
+  margin: 20px auto !important;
+}

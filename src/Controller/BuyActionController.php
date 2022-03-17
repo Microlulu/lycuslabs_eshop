@@ -17,14 +17,6 @@ class BuyActionController extends AbstractController
     #[Route('/buyAction', name: 'buy_action')]
     public function index(Cart $cart, AdresseRepository $adresseRepository, ProductRepository $productRepository): Response
     {
-        $user=$this->getUser();
-        // je vérifie que l'user a bien renseigné son adresse
-        // sinon je renvoie vers la methode qui change l'adresse
-
-        // if(!$user->getAdresse()){
-        //     return $this->redirectToRoute('change_adresse_profil');
-        // }
-
         // je récupère l'adresse finale de "livraison" par default
         $adresse_final = $adresseRepository->findOneBy([
             'user_id' => $this->getUser(),
@@ -38,20 +30,15 @@ class BuyActionController extends AbstractController
             $adresse = $this->getUser();
         }
 
-        //dd($cart->getDetailCart());
-        # ToDo: Verifier que nous envoyons les produits dans notre vue que tout correspond OK
-        # ToDo: Afficher ces informations dans la vue/view OK
-        # ToDo: verifier que les produits sont bien ajouter dans la fonction addToCart à notre session
-        # ToDo: verifier si il n'y a pas de bug
+        # ToDo: Appliquer le voucher via un formulaire symfony (sans mapper d'entity) mettre un input voucher string ok
+        # ToDo: vérifier que le voucher est valide et à appliquer au bon moment
+        # toDo: simuler et créer l'order et orderDetail (sur un autre controller et appliquer la réduction du voucher si il y a)
 
         return $this->render('buy_action/cart.html.twig', [
              // j'envoie à la vue buy_action dans le fichier buy_action/cart.html.twig le detail du panier
              'cart' => $cart->getDetailCart(),
              'totalcart' => $cart->getTotalCart(),
              'adresse' => $adresse,
-             'deletecart'=> $cart->getTotalCart(),
-             'deleteQty'=> $cart->deleteQuantityProduct()
-
         ]);
     }
 
@@ -69,6 +56,17 @@ class BuyActionController extends AbstractController
         return $this->json($data);
     }
 
+    #[Route('/buyAction/modifyQuantity', name: 'modify_quantity', methods: ['POST'])]
+    public function updateQuantity(Request $request, Cart $cart) {
+        $data = json_decode($request->getContent(), true);
+        $cart->addCart($data['idProduct'], $data['quantity'], true);
+    }
+
+    #[Route('/buyAction/deleteProduct', name: 'delete_product', methods: ['POST'])]
+    public function deleteProduct(Request $request, Cart $cart) {
+        $data = json_decode($request->getContent(), true);
+        $cart->deleteProductCart($data['idProduct']);
+    }
 
 
     #[Route('/order_confirmation', name: 'order_cart', methods: ['GET'])]

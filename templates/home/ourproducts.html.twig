@@ -71,13 +71,13 @@
                         // La méthode fetch() renvoie une promesse (Promise), ce qui me permets d'utiliser les méthodes then() ou catch() pour la gérer.
                         // Lorsque la requête est terminée, la ressource est disponible. À ce moment-là, la promesse sera résolue en un objet réponse (Response).
                         // L'objet Response est l'enveloppe/le container de l'API pour la ressource récupérée.
-                    }).then(response => {
+                    })//.then(response => {
                         // Pour obtenir les données réelles, il faut appelez l'une des méthodes de l'objet Response, par exemple text() ou json().
                         // Ces méthodes sont résolues dans les données réelles.
-                        return response.json()
-                    }).then(product => {
-                        console.log(product)
-                    })
+                       // return response.json()
+                   // }).then(product => {
+                       // console.log(product)
+                   // })
                 )
                 event.preventDefault()
             })

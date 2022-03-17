@@ -2,11 +2,30 @@
 
 {% block title %}Dashboard Admin!{% endblock %}
 
-{% block body %}
-<h1>DASHBOARD</h1>
+            {% block body %}
 
+    <h1>DASHBOARD</h1>
+    <div class="row">
+        <div class="left-dash">
+            <div class="navbar_admin header_admin">
+                <a class="button active" href="#">MY ADRESSES</a>
+                <a class="button" href="#">MY ORDERS</a>
+                <a class="button" href="#">MY LICENSES</a>
+                <a class="button" href="#">MY DOWNLOADS</a>
+                <a class="button" href="#">SUPPORT</a>
+                <a class="button" href="#">MY LICENSES</a>
+                <a class="button" href="#">MY DOWNLOADS</a>
+                <a class="button" href="#">SUPPORT</a>
+                <a class="button" href="{{ path('app_logout') }}">LOGOUT</a>
+            </div>
+        </div>
+        <div class="right-dash">
+
+        </div>
+    </div>
+            {% endblock %}
 
     {% block footer %}
         {% include 'footer.html.twig' %}
     {% endblock %}
-{% endblock %}
+

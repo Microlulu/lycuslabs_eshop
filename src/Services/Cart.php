@@ -37,18 +37,29 @@ class Cart
      * si le produit se trouve deja dans le panier, j'ajoute la quantité que l'utilisateur va rentrer
      * sinon ajoute le produit x1
      */
-    public function addCart($id, $quantity)
+    // ici j'attribue un boolean que je set a false car il n'est pas obligatoire
+    public function addCart($id, $quantity ,bool $replaceQuantity = false)
     {
         // on attribue une session (session du nom: 'cart') a notre variable $cart qui est un tableau
         $cart = $this->getCart();
 
-        // si à l'index/$id de notre tableau/session n'est pas vide on rajoute a notre index la quantité supplémentaire
-        if (!empty($cart[$id])) {
-            $cart[$id] = $cart[$id] + $quantity;
-            // sinon c'est vide donc on créer un nouveau emplacement/index dans notre tableau
+        // si on ne demande pas le replacement de la quantité on execute l'agorithme de base
+        if(!$replaceQuantity) {
+            // si à l'index/$id de notre tableau/session n'est pas vide on rajoute a notre index la quantité supplémentaire
+            if (!empty($cart[$id])) {
+                $cart[$id] = $cart[$id] + $quantity;
+                // sinon c'est vide donc on créer un nouveau emplacement/index dans notre tableau
+            } else {
+                $cart[$id] = $quantity;
+            }
+            // Si on demande le remplacement on verifie qu'il y'a l'emplaccement dans le cart
         } else {
-            $cart[$id] = $quantity;
+            if (!empty($cart[$id])) {
+                //On remplace l'ancienne quantité par la nouvelle
+                $cart[$id] = $quantity;
+            }
         }
+    // J'enregistre
         $this->setCart($cart);
     }
 
@@ -64,7 +75,6 @@ class Cart
             //Si oui je le supprime
             unset($cart[$id]);
         }
-   
         // je renvoie le nouveau panier dans la session
         $this->setCart($cart);
     }
@@ -73,18 +83,18 @@ class Cart
     /**
      * function pour soustraire 1 à la quantité
      */
-    public function deleteQuantityProduct($id)
+    public function deleteQuantityProduct($index)
     {
         // Je récupère le panier
         $cart = $this->getCart();
         // Je teste si la quantité est supérieure à 1
-        if ($cart[$id] > 1) {
+        if ($cart[$index] > 1) {
             // Si oui, j'enlève 1 a la quantité
-            $cart[$id] = $cart[$id] - 1;
+            $cart[$index] = $cart[$index] - 1;
             // ou panier[$id] --;
         } else {
             //sinon supprime
-            unset($cart[$id]);
+            unset($cart[$index]);
         }
         $this->setCart($cart);
     }
@@ -148,10 +158,8 @@ class Cart
 
   /**
      * Methode pour compter le nombres de produits présent dans le panier
-     *
+     * ToDo : pastille avec nombre de produits dans le cart
      */
-
-
     public function getCountCart(){
         return count($this->getDetailCart());
     }

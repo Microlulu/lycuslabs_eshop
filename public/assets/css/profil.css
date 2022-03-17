@@ -103,14 +103,15 @@ section{
 }
 .button{
     margin: 0 auto;
+    text-align: center;
 }
 
 
 /* TABLES*/
 table {
     border-collapse: collapse;
-    width: 100%;
-
+    width: 80%;
+    margin: 50px auto;
 }
 th{
     color: var(--purple);
@@ -122,6 +123,8 @@ td, th {
     border: 1px solid var(--mediumgrey);
     text-align: left;
     padding: 8px;
+    max-width: 100px;
+    overflow-wrap: anywhere;
 }
 
 tr:nth-child(even) {

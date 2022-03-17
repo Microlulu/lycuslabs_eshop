@@ -7,26 +7,34 @@
         <h1>Shopping Cart</h1>
         <div class="project">
             <div class="shop">
-                {% for item in cart %}
+                {% if cart|length > 0 %}
+                {% for key, item in cart %}
                     <div class="box_article">
                         <img src="{{ asset('images/products/' ~ item.product.image) }}" alt="imageProduit">
                         <div class="content_article">
                             <h3>{{ item['product'].title }}</h3>
                             <h4 class="mb-10">
-                                <td>{{ item ['total'] }} €
+                                {{ item ['total'] }} €
                             </h4>
-                            <label class="qty">Quantity : x {{ item ['quantity'] }}</label>
-                            <input type="number" value="1">
-                            <button aria-label="update" class="update">UPDATE
-                                <button aria-label="remove" class="remove">REMOVE
-                                </button>
+                            <label class="qty">Quantity : x</label>
+                            <input id="updateQuantity{{ key }}" type="number" value="{{ item ['quantity'] }}">
+                            <button onclick="onUpdateButton({{ item.product.id }}, 'updateQuantity{{ key }}')"
+                                    aria-label="update" class="update">UPDATE
+                            </button>
+                            <button onclick="onDeleteButton({{ item.product.id }})" aria-label="remove" class="remove">
+                                REMOVE
+                            </button>
                         </div>
                     </div>
                 {% endfor %}
+                {% else %}
+                    <hr>
+                    <h4 class="mt-20">Your cart is empty !</h4>
+                {% endif %}
             </div>
             {# COTE DROIT DU PANIER #}
             <div class="right_bar">
-                <p><span>Subtotal</span> <span> 7000 €</span></p>
+                <p><span>Subtotal</span> <span> {{ totalcart }} €</span></p>
                 <hr>
                 <p><span>Coupon Code</span> <input placeholder="DISCOUNT20"></p>
                 <hr>
@@ -36,8 +44,34 @@
             </div>
         </div>
     </div>
+
+
     {% block footer %}
         {% include 'footer.html.twig' %}
     {% endblock %}
+    <script>
+        function onUpdateButton(idProduct, idInput) {
+            const quantity = document.getElementById(idInput).value
+            fetch("/buyAction/modifyQuantity", {
+                method: "POST",
+                body: JSON.stringify({
+                    'idProduct': idProduct,
+                    'quantity': quantity
+                })
+                // /!\ pour apres récupérer la réponse du serveur pour actualiser la page
+                // La méthode fetch() renvoie une promesse (Promise), ce qui me permets d'utiliser les méthodes then() ou catch() pour la gérer.
+                // Lorsque la requête est terminée, la ressource est disponible. À ce moment-là, la promesse sera résolue en un objet réponse (Response).
+                // L'objet Response est l'enveloppe/le container de l'API pour la ressource récupérée.
+            })
+        }
 
+        function onDeleteButton(idProduct) {
+            fetch("/buyAction/deleteProduct", {
+                method: "POST",
+                body: JSON.stringify({
+                    'idProduct': idProduct,
+                })
+            })
+        }
+    </script>
 {% endblock %}

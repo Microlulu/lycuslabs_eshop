@@ -42,6 +42,7 @@ body{
     background-color:var(--whitebg);
     color: var(--darkgrey);
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
 h1{
@@ -245,8 +246,8 @@ nav{
     height: 70px;
     background: var(--whitebg);
     margin-bottom: 5px;
-    box-shadow: 10px 10px 15px var(--purpleshade),
-    -10px -10px 15px var(--extrawhite);
+    box-shadow: 0 15px 10px -15px var(--purpleshade);
+    z-index: 1000;
 }
 
 nav .logo{
@@ -298,8 +299,9 @@ nav .logo{
     transition:top .3s;
     border-top: solid var(--purple);
     background: var(--whitebg);
+    z-index: 1000;
 }
-.mainMenu li:hover > ul {
+.mainMenu li:hover:focus-within > ul {
     top:70px ;
     opacity: 1;
 }
