@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Entity\Adresse;
 use App\Form\AdresseType;
 use App\Repository\AdresseRepository;
+use App\Services\Cart;
 use App\Services\DefaultAdresseService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,7 +28,7 @@ class AdresseController extends AbstractController
 
      //CREER UNE NOUVELLE ADRESSE UTILISATEUR
     #[Route('/new_adresse', name: 'adresse_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Cart $cart, Request $request, EntityManagerInterface $entityManager): Response
     {
         // je récupère l'utilisateur
         $user =$this->getUser();
@@ -48,7 +49,12 @@ class AdresseController extends AbstractController
 
             $entityManager->persist($adresse);
             $entityManager->flush();
-            //Je renvoie l'utilisateur sur sa vue profil
+            //Je renvoie l'utilisateur sur sa vue profil s'il n'a pas de produit dans son panier.
+            // Si il a des produits dans son panier je le redirige vers le panier.
+            if ($cart->get()){
+                return $this->redirectToRoute('payment', [], Response::HTTP_SEE_OTHER);
+
+            }
             return $this->redirectToRoute('profil', [], Response::HTTP_SEE_OTHER);
         }
 

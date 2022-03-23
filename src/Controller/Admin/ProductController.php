@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\ImagesProductRepository;
 use DateTime;
 use App\Entity\Product;
 use App\Entity\Category;
@@ -17,10 +18,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProductController extends AbstractController
 {
     #[Route('/product_index', name: 'product_index', methods: ['GET'])]
-    public function index(ProductRepository $productRepository): Response
+    public function index(ProductRepository $productRepository, ImagesProductRepository $imagesProductRepository): Response
     {
         return $this->render('product/index.html.twig', [
             'products' => $productRepository->findAll(),
+            'imagesproduct' => $imagesProductRepository->findAll()
         ]);
     }
 

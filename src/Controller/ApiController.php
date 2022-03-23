@@ -27,8 +27,9 @@ class ApiController extends AbstractController{
      * Le construct permet d'initialiser ta classe apicontroller et de charger le ou les repository
      * une fois le repository accédé on le met dans notre variable global pour pouvoir y accéder partout
      * 
-     * @param ProductRepository $productRepository
+     * @param ProductRepository $productRepository;
      */
+
     function __construct(ApiConstructorService $apiService, ProductRepository $productRepository) {
         $this->productRepository = $productRepository;
         $this->apiService = $apiService;

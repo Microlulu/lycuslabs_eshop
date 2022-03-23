@@ -10,7 +10,7 @@
                 {% if cart|length > 0 %}
                 {% for key, item in cart %}
                     <div class="box_article">
-                        <img src="{{ asset('images/products/' ~ item.product.image) }}" alt="imageProduit">
+                        <img src="{{ asset('images/products/' ~ item.product.image) }}" alt="{{ item.product.shortcut }}">
                         <div class="content_article">
                             <h3>{{ item['product'].title }}</h3>
                             <h4 class="mb-10">
@@ -18,10 +18,10 @@
                             </h4>
                             <label class="qty">Quantity : x</label>
                             <input id="updateQuantity{{ key }}" type="number" value="{{ item ['quantity'] }}">
-                            <button onclick="onUpdateButton({{ item.product.id }}, 'updateQuantity{{ key }}')"
+                            <button onclick="onUpdateButton('{{ path('modify_quantity') }}', {{ item.product.id }}, 'updateQuantity{{ key }}')"
                                     aria-label="update" class="update">UPDATE
                             </button>
-                            <button onclick="onDeleteButton({{ item.product.id }})" aria-label="remove" class="remove">
+                            <button onclick="onDeleteButton('{{ path('delete_product') }}', {{ item.product.id }})" aria-label="remove" class="remove">
                                 REMOVE
                             </button>
                         </div>
@@ -33,14 +33,22 @@
                 {% endif %}
             </div>
             {# COTE DROIT DU PANIER #}
+            <div class="col ml-20">
             <div class="right_bar">
                 <p><span>Subtotal</span> <span> {{ totalcart }} €</span></p>
                 <hr>
-                <p><span>Coupon Code</span> <input placeholder="DISCOUNT20"></p>
-                <hr>
-                <p class="total_price"><span>TOTAL</span> <span>7000 €</span></p>
+                {{ form_start(form)  }}
 
-                <a href="payment.html.twig">Checkout</a>
+                {{ form_end(form) }}
+                <p class="codeValid">DISCOUNT20: -15% </p>
+                <p class="codeWrong">This coupon is not valid.</p>
+                <hr>
+
+                <p class="total_price"><span>TOTAL</span> <span>{{ totalcart }}</span></p>
+
+                <a class="button" href="{{ path('payment') }}">Checkout</a>
+            </div>
+            <button class="button_delete mt-20" onclick="onDeleteCart('{{ path('delete_cart') }}')">DELETE CART</button>
             </div>
         </div>
     </div>
@@ -50,9 +58,9 @@
         {% include 'footer.html.twig' %}
     {% endblock %}
     <script>
-        function onUpdateButton(idProduct, idInput) {
+        function onUpdateButton(url, idProduct, idInput) {
             const quantity = document.getElementById(idInput).value
-            fetch("/buyAction/modifyQuantity", {
+            fetch(url, {
                 method: "POST",
                 body: JSON.stringify({
                     'idProduct': idProduct,
@@ -65,13 +73,27 @@
             })
         }
 
-        function onDeleteButton(idProduct) {
-            fetch("/buyAction/deleteProduct", {
+        function onDeleteButton(url, idProduct) {
+            fetch(url, {
                 method: "POST",
                 body: JSON.stringify({
                     'idProduct': idProduct,
                 })
             })
         }
+
+        function onDeleteCart(url){
+            fetch(url, {
+                method:"POST",
+            })
+        }
+
+        function onVoucherApply(url){
+            fetch(url, {
+                method:"POST",
+
+            })
+        }
+
     </script>
 {% endblock %}

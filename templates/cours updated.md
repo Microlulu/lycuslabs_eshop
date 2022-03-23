@@ -1,6 +1,6 @@
 # Cours Symfony
 
-Mandy Ibéné - 2022/01/17
+Lucile DEBUCHY - 18/03/2022
 
 - [Cours Symfony](#cours-symfony)
   - [Créer un nouveau projet](#créer-un-nouveau-projet)

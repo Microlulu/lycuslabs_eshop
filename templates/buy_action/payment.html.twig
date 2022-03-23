@@ -7,54 +7,45 @@
         <h1>Checkout</h1>
         <div class="project">
             <div class="shop">
-                <div class="box_article">
-                    <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
+                {% if cart|length > 0 %}
+                <div class="box_payment">
+                    {% for product in cart %}
+                <img src="{{ asset('images/products/' ~ product.product.image) }}"
+                     alt="{{ product.product.shortcut }}">
+                    <div class="content_payment">
+                        <div class="row">
+                            <h3>{{ product['product'].title }}</h3>
+                            <h3 class="left_side">x {{ product ['quantity'] }}</h3>
+                        </div>
+                        <h4>{{ product ['total'] }} €</h4>
+                    </div>
+                    {% endfor %}
+
                 </div>
-                <div class="content_article">
-                    <h3>NOM DU PRODUIT</h3>
-                    <h4>Price: 500€</h4>
-                    <p class="qty">Quantity: <input value="1"></p>
-                    <button class="remove">REMOVE
-                    </button>
-                </div>
-                <div class="box_article">
-                    <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
-                </div>
-                <div class="content_article">
-                    <h3>NOM DU PRODUIT 4</h3>
-                    <h4>Price: 4500€</h4>
-                    <p class="qty">Quantity: <input value="1"></p>
-                    <button class="remove">REMOVE
-                    </button>
-                </div>
-                <div class="box_article">
-                    <img src="{{ asset('images/products/6203b36fcaaab.jpg') }}" alt="#">
-                </div>
-                <div class="content_article">
-                    <h3>NOM DU PRODUIT 3</h3>
-                    <h4>Price: 5500€</h4>
-                    <p class="qty">Quantity: <input value="1"></p>
-                    <button class="remove">REMOVE
-                    </button>
-                </div>
+                {% else %}
+                    <hr>
+                    <h4 class="mt-20">Your cart is empty !</h4>
+                {% endif %}
             </div>
+
             {# COTE DROIT DU PANIER #}
             <div class="right_bar_adresse">
                 <p><span>Subtotal</span> <span> 7000 €</span></p>
                 <hr>
-                <p><span>Coupon Code</span> <input placeholder="DISCOUNT20"></p>
+                <p class="codeValid">Coupon Code DISCOUNT20 : -15%</p>
                 <hr>
-                <p class="total_price"><span>TOTAL</span> <span>7000€</span></p>
-                <h5>Delivery</h5>
-                <p><span>Email :</span> <span>user's email here</span></p>
-                <p>Firstname + Lastname user</p>
-                <p>Adresse</p>
-                <p>Zipcode</p>
-                <p>City</p>
-                <p>Country</p>
-                <a href="payment.html.twig">Edit</a>
+                <p class="total_price mt-20"><span>TOTAL</span> <span>7000€</span></p>
+                <h3>Delivery</h3>
+                <div class="small_card">
+                    {% set formhtml %}
+                        {{ form(form2) }}
+                    {% endset %}
+                    {# Avec le replace je viens remplacer les [br] de ma public function dans mon entity AdressesType par des
+                    </br> html et le raw veut dire interprete moi le html #}
+                    {{ formhtml|replace({'[br]' : '</br>'})|raw }}
 
-                <a href="payment.html.twig">Checkout</a>
+                </div>
+                <a class="button" href="#">Checkout</a>
             </div>
         </div>
     </div>

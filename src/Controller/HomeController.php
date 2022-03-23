@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ImagesProductRepository;
 use App\Services\Cart;
 use App\Entity\Product;
 use App\Repository\CarouselRepository;
@@ -31,11 +32,11 @@ class HomeController extends AbstractController
 
 
     #[Route('/ourproduct/{id}', name: 'our_products', methods: ['GET'])]
-    public function showEachProduct(Product $product): Response
+    public function showEachProduct(Product $product,ImagesProductRepository $imagesProductRepository): Response
     {
+
         return $this->render('home/ourproducts.html.twig', [
             'product' => $product,
-
         ]);
     }
 }

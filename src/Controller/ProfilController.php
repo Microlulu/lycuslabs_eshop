@@ -23,7 +23,7 @@ class ProfilController extends AbstractController
     }
 
 
-
+    // Cette fonction sert à ajouter une adresse de livraison par défaut.
     #[Route('/change-adresse-profil', name: 'change_adresse_profil')]
     public function changeAdresse(Request $request, EntityManagerInterface $manager): Response
     {

@@ -97,6 +97,7 @@ ul{
     color: var(--blue);
 }
 
+
 /* COLONNE */
 .col{
     display: flex;
@@ -150,6 +151,9 @@ ul{
 }
 .mt-20{
     margin-top: 20px;
+}
+.ml-20{
+    margin-left: 20px;
 }
 .pt-80{
     padding-top: 80px;
@@ -299,11 +303,12 @@ nav .logo{
     transition:top .3s;
     border-top: solid var(--purple);
     background: var(--whitebg);
-    z-index: 1000;
+    z-index: 2000;
 }
-.mainMenu li:hover:focus-within > ul {
+.mainMenu li:hover > ul {
     top:70px ;
     opacity: 1;
+
 }
 .mainMenu ul li{
     margin: 0;

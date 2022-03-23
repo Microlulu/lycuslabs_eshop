@@ -3,16 +3,18 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-    {# {% if error %}
-            <div class="danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+<form method="post">
+
+{% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
         {% if app.user %}
-            <div class="logged">
+            <div>
                 You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
             </div>
         {% endif %}
-    #}
+
     <h1> Welcome back!</h1>
     <div class="login_main_container">
         <div class="login-div">
@@ -31,12 +33,13 @@
                     <img class="small_icon" src="{{ asset('images/svg/lock.png') }}"  alt="password" aria-label="enter your password">
                 </div>
             </div>
-            <button class="mt-30" aria-label="login">LOGIN</button>
+            <button class="mt-30" aria-label="login" >LOGIN</button>
             <div class="link">
-                <a href="#">Forgot password?</a> or <a href="#">Sign up</a>
+                <a href="#">Forgot password?</a> or <a href="{{ path('app_register') }}">Sign up</a>
             </div>
         </div>
     </div>
+</form>
 
 
 

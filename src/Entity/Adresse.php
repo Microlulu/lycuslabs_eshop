@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AdresseRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: AdresseRepository::class)]
 class Adresse
@@ -75,6 +76,11 @@ class Adresse
         $this->lastname = $lastname;
 
         return $this;
+    }
+
+     #[Pure] public function  __toString()
+    {
+          return $this->getAdresse().'[br]'.$this->getZipcode().' - '.$this->getCity();
     }
 
     public function getCompany(): ?string

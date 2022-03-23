@@ -10,21 +10,15 @@
                 <div class="col-2 imgs_box">
                     <div class="imgProd_Box">
                         <img src="{{ asset('images/products/' ~ product.image ) }}"
-                             alt="{{ product.image }}" id="productImg">
+                             alt="{{ product.shortcut }}" id="productImg">
                     </div>
                     <div class="small-img-row">
+                        {% for image in product.imagesProducts %}
                         <div class="small-img-col">
-                            <img src="{{ asset('images/products/' ~ product.image ) }}"
-                                 alt="{{ product.image }}" class="small-img">
+                            <img src="{{ asset('images/products/' ~ image.image ) }}"
+                                 alt="{{ image.alt }}" class="small-img">
                         </div>
-                        <div class="small-img-col">
-                            <img src="{{ asset('images/products/' ~ product.image ) }}"
-                                 alt="{{ product.image }}" class="small-img">
-                        </div>
-                        <div class="small-img-col">
-                            <img src="{{ asset('images/products/' ~ product.image ) }}"
-                                 alt="{{ product.image }}" class="small-img">
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="col-2 txt_center">

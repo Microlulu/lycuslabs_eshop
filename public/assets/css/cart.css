@@ -81,13 +81,13 @@
 /* PARTIE DROITE DU PANIER*/
 .right_bar{
     flex: 30%;
-    margin-left:20px;
     padding: 20px;
-    height: 400px;
+    height: fit-content;
     border-radius: 15px;
     background-color: var(--whitebg);
     box-shadow: var(--box-shadow);
-}
+    text-align: center;
+    }
 .right_bar hr{
     margin-bottom: 25px;
 }
@@ -127,10 +127,48 @@
     padding: 18px;
     font-size: 1em;
     border:1px solid var(--blue);
-
 }
+
+.button_delete{
+    align-items: center;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--darkgrey);
+    box-shadow: var(--box-shadow);
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 10px 30px;
+    margin-top: 10px;
+}
+.button_delete:hover{
+    color: var(--blue);
+    box-shadow: var(--box-shadow-inset);
+}
+.project>.col{
+    align-items: center;
+}
+.project>.col>a{
+    width: fit-content;
+    margin-top: 40px;
+}
+
 .total_price{
     font-size: 1.2em;
     font-weight: 700;
     color: var(--darkblue);
+}
+
+.codeValid{
+    margin-top: 15px;
+    color: var(--blue);
+    text-align: left;
+}
+.codeWrong{
+    margin-top: 15px;
+    color: red;
+    text-align: left;
 }
