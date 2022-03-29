@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entity\Voucher;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 // cette classe sert a gerer le panier
@@ -22,14 +23,32 @@ class Cart
      */
     public function getCart()
     {
-        // récupérè la session qui se nomme "cart" si il n'existe pas renvoie un tableau vide une session est un tableau
+        // récupére la session qui se nomme "cart" s'il n'existe pas renvoie un tableau vide une session est un tableau
         return $this->session->get('cart', []);
     }
 
     public function setCart($data)
     {
-        // on va attribuer une valeur dans la session qui a le nom cart pour la remplir avec nos data
+        // on va attribuer une valeur dans la session qui a le nom cart pour la remplir avec nos datas
         $this->session->set('cart', $data);
+    }
+
+    /**
+     * function qui permets de récupérer la préparation de commande.
+     * Elle est similaire a la fonction getCart() si dessus
+     */
+    public function getOrderPrepare()
+    {
+        // récupére la session qui se nomme "orderPrepare" s'il n'existe pas renvoie un tableau vide une session est un tableau
+        return $this->session->get('orderPrepare', []);
+    }
+    /** Function qui permets de setter la préparation de commande.
+     * Elle est similaire a la fonction setCart() s dessus
+     */
+    public function setOrderPrepare($data)
+    {
+        // on va attribuer une valeur dans la session qui a le nom orderPrepare pour la remplir avec nos datas
+        $this->session->set('orderPrepare', $data);
     }
 
     /**
@@ -152,7 +171,6 @@ class Cart
         foreach ($cart as $row) {
             $totalcart = $totalcart + $row['total'];
         }
-
         return $totalcart;
     }
 
@@ -162,6 +180,28 @@ class Cart
      */
     public function getCountCart(){
         return count($this->getDetailCart());
+    }
+
+
+    /* ICI je viens préciser plusieurs choses afin de faire mon panier proprement.
+     Je viens passer des paramètres, d'abord un array pour avoir la liste de mes produits,
+    ensuite je viens dure que le total est un float et que cette variable correspond au total de
+    mes produits avec les réductions.
+    Et ensuite je précise que le type de retour est void, cela signifie littéralement que je ne retourne rien.
+    Je spécifie un type de retour pour ne rien renvoyer ou sinon j'obtiendrai une erreur
+    */
+    /**
+     * @param array $productList
+     * @param float $total total des produits avec réductions
+     * @return void
+     */
+    // Dans ma function je n'oublie as de re-declarer les paramètres et de préciser que le voucher peut être null !
+    public function prepareOrder(array $productList, float $total, Voucher $voucher = null) {
+
+    }
+
+    public function getPrepareOrder() {
+
     }
 }
 

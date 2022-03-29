@@ -80,7 +80,7 @@ class Adresse
 
      #[Pure] public function  __toString()
     {
-          return $this->getAdresse().'[br]'.$this->getZipcode().' - '.$this->getCity();
+          return $this->getFirstname().' '.$this->getLastname().'[br]'.$this->getAdresse().'[br]'.$this->getZipcode().' - '.$this->getCity().'[br]';
     }
 
     public function getCompany(): ?string

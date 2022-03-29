@@ -51,11 +51,10 @@ class AdresseController extends AbstractController
             $entityManager->flush();
             //Je renvoie l'utilisateur sur sa vue profil s'il n'a pas de produit dans son panier.
             // Si il a des produits dans son panier je le redirige vers le panier.
-            if ($cart->get()){
-                return $this->redirectToRoute('payment', [], Response::HTTP_SEE_OTHER);
-
+            if (!empty($cart->getCart())){
+                return $this->redirectToRoute('payment');
             }
-            return $this->redirectToRoute('profil', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('profil');
         }
 
         return $this->renderForm('adresse/new.html.twig', [

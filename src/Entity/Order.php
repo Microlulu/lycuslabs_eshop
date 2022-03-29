@@ -56,6 +56,9 @@ class Order
     #[ORM\Column(type: 'boolean')]
     private $delivery;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $company;
+
     public function __construct()
     {
         $this->detailOrders = new ArrayCollection();
@@ -236,6 +239,18 @@ class Order
     public function setDelivery(bool $delivery): self
     {
         $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?string $company): self
+    {
+        $this->company = $company;
 
         return $this;
     }

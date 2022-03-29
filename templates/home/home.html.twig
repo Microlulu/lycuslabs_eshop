@@ -4,7 +4,7 @@
 
 {% block body %}
 
-{# TO DO : CAROUSEL IMAGES #}
+    {# TO DO : CAROUSEL IMAGES #}
 
     <div class="slider">
         <img class="slider_img" src="{{ asset('images/banner1.jpg') }}" alt="lycuslabs slider1">
@@ -19,10 +19,55 @@
     <div class="sec" id="sec">
         <h1>ABOUT US</h1>
         <p>Lycus Labs provides 3D modeling solutions and custom software plugins to businesses.<br>
-            The modeling solutions are not intended for a specific market. Indeed, the company aims to provide solutions to different fields such as architecture, video games, machinery, etc.<br>
-            The software plugins, on the other hand, are intended for artists and users of 3D modeling and rendering software.
+            The modeling solutions are not intended for a specific market. Indeed, the company aims to provide solutions
+            to different fields such as architecture, video games, machinery, etc.<br>
+            The software plugins, on the other hand, are intended for artists and users of 3D modeling and rendering
+            software.
             <br><br>
         </p>
+    </div>
+    <div class="row mt-20">
+        <div class="skill">
+            <h3>Exceptionally Efficient</h3>
+            <p>Get a viable product in the least amount of time possible. Sugar coating can always be done later.
+                Staying focused on what is important is our way of keeping things efficient.</p>
+        </div>
+        <div class="skill">
+            <h3>Deeply Committed</h3>
+            <p>We are committed in ensuring your products success because we are strong believers that your success is
+                our success.</p>
+        </div>
+        <div class="skill">
+            <h3>Highly Skilled</h3>
+            <p>Our team has mathematicians and Engineers from various disciplines with one thing in common they all are
+                skilled at what they do. </p>
+        </div>
+    </div>
+
+    <div class="presentation-one">
+        <div class="presentation_content">
+            <div class="col txt-presentation-right">
+                <h2>The CG software development specialists</h2>
+                <p class="mt-30">Software development with a focus 3D is at the heart of what we do. From 3D pipelines to the state
+                    of
+                    the art in 3D algorithm development - we have done it all. </p>
+                <p class="mt-20">We are experts in computer graphics - mathematicians and engineers with computer
+                    graphics
+                    as the focus.</p>
+            </div>
+            <img class="img_presentation left_side" src="{{ asset('images/DrillGIF.gif') }}" alt="Drill gif">
+        </div>
+    </div>
+    <div class="presentation-two">
+        <div class="presentation_content">
+            <img class="img_presentation right_side" src="{{ asset('images/TruckGIF.gif') }}" alt="Truck gif">
+            <div class="col txt-presentation-left">
+                <h2>Extremely driven</h2>
+                <p class="white mt-30">We do what we do with a passion. we all love what we do and our work shows it.</p>
+                <p class=" white mt-20">Need a hand with a complex 3D pipeline or a want a geometric algorithm prototyped.
+                    Reach out to us and we will find a solution.</p>
+            </div>
+        </div>
     </div>
 
     {# TO DO TESTIMONIES #}

@@ -24,58 +24,8 @@ class OrderType extends AbstractType
                 'choices' => $user->getAdresses(),
                 'multiple' => false,
                 'expanded' => true
-            ])
-            ->add('fullname', options:[
-                'label' => 'Or create a new one',
-                'attr'=> [
-                    'placeholder' => 'Fullname'
-                ]
-            ])
-            ->add('vat_number', options: [
-                'label' => false,
-                'attr'=> [
-                'placeholder' => 'VAT Number'
-                    ]
-            ])
-            ->add('adresse', options: [
-                'label' => false,
-                'attr'=> [
-                    'placeholder' => 'Address'
-                ]
-            ])
-            ->add('zipcode', options: [
-                'label' => false,
-                'attr'=> [
-                    'placeholder' => 'Zipcode'
-                ]
-            ])
-            ->add('city', options: [
-                'label' => false,
-                'attr'=> [
-                    'placeholder' => 'City'
-                ]
-            ])
-            ->add('country', options: [
-                'label' => false,
-                'attr'=> [
-                    'placeholder' => 'Country'
-                ]
-            ])
-            ->add('telephone', options: [
-                'label' => false,
-                'attr'=> [
-                    'placeholder' => 'Phone Number'
-                ]
-            ])
-            ->add('submit', SubmitType::class, options: [
-                'label' => false,
-                'attr'=> [
-                    'class' => "button_inset"
-                ]
-            ])
+            ]);
 
-
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

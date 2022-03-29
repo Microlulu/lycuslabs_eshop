@@ -13,7 +13,7 @@
     display: flex;
 }
 .shop{
-    flex: 75%;
+    flex: 65%;
 }
 .box_article{
     display: flex;
@@ -80,7 +80,7 @@
 }
 /* PARTIE DROITE DU PANIER*/
 .right_bar{
-    flex: 30%;
+    flex: 35%;
     padding: 20px;
     height: fit-content;
     border-radius: 15px;
@@ -143,6 +143,7 @@
     border-radius: 25px;
     padding: 10px 30px;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 .button_delete:hover{
     color: var(--blue);

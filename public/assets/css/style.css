@@ -9,7 +9,7 @@
     --whitebg: #edf0f1ff; /* couleur utilisée pour le background*/
     /* Nuances de gris */
     --lightgrey: #d3dce7ff; /* couleur utilisée pour les ombres des cadres neumorphisme*/
-    --mediumgrey: #a0a5a8ff; /* couleur utilisée pour les textes moins importants et pour les hovers des boutons(ex: fil d'ariane)*/
+    --mediumgrey: #a0a5a8ff; /* couleur utilisée pour les textes moins importants et pour les hovers des boutons*/
     --darkgrey: #7d7f79ff; /* couleur utilisée pour les textes*/
     --black: #181818ff;
     --border:.1rem solid rgba(0,0,0,.2); /* bordure utilisée pour le profil user */
@@ -43,12 +43,13 @@ body{
     color: var(--darkgrey);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    font-weight: 300;
 }
 
 h1{
     text-align: center;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 2.5em;
     line-height: 60px;
     padding: 30px 0;
@@ -56,7 +57,7 @@ h1{
 }
 
 h2{
-    font-weight: 700;
+    font-weight: 600;
     font-size: 2em;
     color: var(--darkblue);
     text-transform: uppercase;
@@ -66,16 +67,18 @@ h3{
     color: var(--purple);
     font-size: 1.5em;
     margin-bottom: 10px;
+    font-weight: 400;
 }
 
 h4{
     color: var(--purple);
     font-size: 1em;
+    font-weight: 400;
 
 }
 
 p{
-    font-family: 'Inter', sans-serif;
+    font-weight: 300;
     font-size:1.2em;
     color: var(--darkgrey);
 }

@@ -6,46 +6,57 @@
     <div class="wrapper_cart">
         <h1>Checkout</h1>
         <div class="project">
-            <div class="shop">
-                {% if cart|length > 0 %}
-                <div class="box_payment">
-                    {% for product in cart %}
-                <img src="{{ asset('images/products/' ~ product.product.image) }}"
-                     alt="{{ product.product.shortcut }}">
-                    <div class="content_payment">
-                        <div class="row">
-                            <h3>{{ product['product'].title }}</h3>
-                            <h3 class="left_side">x {{ product ['quantity'] }}</h3>
-                        </div>
-                        <h4>{{ product ['total'] }} €</h4>
-                    </div>
-                    {% endfor %}
-
-                </div>
-                {% else %}
-                    <hr>
-                    <h4 class="mt-20">Your cart is empty !</h4>
-                {% endif %}
-            </div>
-
-            {# COTE DROIT DU PANIER #}
-            <div class="right_bar_adresse">
-                <p><span>Subtotal</span> <span> 7000 €</span></p>
+            <div class="container_content_cart">
+                <p><span>Subtotal</span> <span class="right_side">7000 €</span></p>
                 <hr>
-                <p class="codeValid">Coupon Code DISCOUNT20 : -15%</p>
+                <p class="codeValid">Coupon Code : DISCOUNT20 <span class="right_side">-15%</span></p>
                 <hr>
-                <p class="total_price mt-20"><span>TOTAL</span> <span>7000€</span></p>
-                <h3>Delivery</h3>
+                <p class="total_price mt-20"><span>TOTAL</span> <span class="right_side">7000€</span></p>
+                <hr>
+                <div class="container_delivery">
+                <h3>DELIVERY</h3>
                 <div class="small_card">
                     {% set formhtml %}
-                        {{ form(form2) }}
+                        {{ form_start(form2, {action:path('recap_order')}) }}
+                        {{ form_end(form2) }}
                     {% endset %}
                     {# Avec le replace je viens remplacer les [br] de ma public function dans mon entity AdressesType par des
                     </br> html et le raw veut dire interprete moi le html #}
                     {{ formhtml|replace({'[br]' : '</br>'})|raw }}
 
                 </div>
-                <a class="button" href="#">Checkout</a>
+                <a class="button" href="#">PAY NOW</a>
+                </div>
+
+
+            </div>
+
+            {# COTE DROIT DU PANIER #}
+            <div class="right_bar_products">
+                <h3>SUMMARY</h3>
+                {% if cart|length > 0 %}
+                    {% for product in cart %}
+
+                        <div class="box_payment">
+                            <img src="{{ asset('images/products/' ~ product.product.image) }}"
+                                 alt="{{ product.product.shortcut }}">
+                            <div class="content_payment">
+
+                                    <div class="row">
+                                    <h4>{{ product['product'].title }} </h4>
+                                    <h5 class="nb_Prod">x {{ product ['quantity'] }}</h5>
+                                    </div>
+                                    <h4 class="left">{{ product ['total'] }} €</h4>
+
+                            </div>
+
+                    </div>
+                    {% endfor %}
+
+                {% else %}
+                    <hr>
+                    <h4 class="mt-20">Your cart is empty !</h4>
+                {% endif %}
             </div>
         </div>
     </div>

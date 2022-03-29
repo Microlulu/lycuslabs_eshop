@@ -7,8 +7,8 @@
         <h1>Shopping Cart</h1>
         <div class="project">
             <div class="shop">
-                {% if cart|length > 0 %}
-                {% for key, item in cart %}
+                {% if cart.detailCart|length > 0 %}
+                {% for key, item in cart.detailCart %}
                     <div class="box_article">
                         <img src="{{ asset('images/products/' ~ item.product.image) }}" alt="{{ item.product.shortcut }}">
                         <div class="content_article">
@@ -35,17 +35,25 @@
             {# COTE DROIT DU PANIER #}
             <div class="col ml-20">
             <div class="right_bar">
-                <p><span>Subtotal</span> <span> {{ totalcart }} €</span></p>
+                <p><span>Subtotal</span> <span> {{ cart.totalCart }} €</span></p>
                 <hr>
                 {{ form_start(form)  }}
-
+                    {{ form_row(form.couponCode) }}
+                    {{ form_row(form.submit) }}
                 {{ form_end(form) }}
-                <p class="codeValid">DISCOUNT20: -15% </p>
-                <p class="codeWrong">This coupon is not valid.</p>
+                {% if voucher is not null %}
+                    <p class="codeValid">{{ voucher.name}} -{{ voucher.discount }}% </p>
+                {% endif %}
+                {% if errorCode is not null %}
+                <p class="codeWrong">{{ errorCode }}</p>
+                {% endif %}
                 <hr>
 
-                <p class="total_price"><span>TOTAL</span> <span>{{ totalcart }}</span></p>
-
+                {% if voucher is null %}
+                <p class="total_price"><span>TOTAL</span> <span>{{ cart.totalCart }} €</span></p>
+                {% else %}
+                    <p class="total_price"><span>TOTAL</span> <span>{{ cart.totalCart - (cart.totalCart * voucher.discount / 100) }}</span></p>
+                {% endif %}
                 <a class="button" href="{{ path('payment') }}">Checkout</a>
             </div>
             <button class="button_delete mt-20" onclick="onDeleteCart('{{ path('delete_cart') }}')">DELETE CART</button>
@@ -70,6 +78,8 @@
                 // La méthode fetch() renvoie une promesse (Promise), ce qui me permets d'utiliser les méthodes then() ou catch() pour la gérer.
                 // Lorsque la requête est terminée, la ressource est disponible. À ce moment-là, la promesse sera résolue en un objet réponse (Response).
                 // L'objet Response est l'enveloppe/le container de l'API pour la ressource récupérée.
+            }).then(() => {
+                location.reload()
             })
         }
 
@@ -79,12 +89,16 @@
                 body: JSON.stringify({
                     'idProduct': idProduct,
                 })
+            }).then(() => {
+                location.reload()
             })
         }
 
         function onDeleteCart(url){
             fetch(url, {
                 method:"POST",
+            }).then(() => {
+                location.reload()
             })
         }
 
@@ -92,6 +106,8 @@
             fetch(url, {
                 method:"POST",
 
+            }).then(() => {
+                location.reload()
             })
         }
 

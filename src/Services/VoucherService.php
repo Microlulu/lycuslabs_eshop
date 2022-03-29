@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Entity\UsedVoucher;
 use App\Entity\User;
+use App\Entity\Voucher;
 use App\Repository\UsedVoucherRepository;
 use App\Repository\VoucherRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,15 +26,13 @@ class VoucherService {
     //Je créer une fonction pour vérifier si mon voucher peut être utilisé.
     //Cette fonction prends comme paramètres : le code réduction que l'utilisateur va rentrer et l'utilisateur.
     //Je précise dans la fcnction que je veux un booléen : donc une réponse vrai ou fausse.
-    function VerifyVoucher(string $code, User $user): bool {
+    function VerifyVoucher(Voucher $voucher, User $user): bool {
         // pour vérifier mon voucher, je créer une nouvelle datetime dans laquelle je viens stocker la date d'aujourd'hui dans la variable $dateNow.
         $dateNow = new \DateTimeImmutable();
-        // Je viens ensuite chercher un $code dans mon VoucherRepository avec la methode findOneBy dans ma colonne 'couponcode' de ma base de données.
-        $voucher = $this->voucherRepository->findOneBy(['couponcode' => $code]);
         // Si le voucher est null return false (c'est a dire si la base de données et vide).
         // Pour la sécurité je rajoute également la variable $user. Je lui précise que si l'utilisateur est également null (pas connecté) il faut retourner faux.
-        // DONC : voucher et user null? = false
-        if ($voucher == null && $user == null){
+        // DONC : voucher ou user null? = false
+        if ($voucher == null || $user == null){
             return false;
         }else{
             // Je viens ensuite vérifier la date du voucher :
@@ -58,11 +57,9 @@ class VoucherService {
     }
 
 // La fonction ApplyVoucher prends comme paramètre le code de réduction et l'utilisateur.
-    function ApplyVoucher($code, User $user ){
+    function ApplyVoucher(Voucher $voucher, User $user ){
         //Je viens créer la date d'aujourd'hui avec une nouvelle Datetime.
         $dateNow = new \DateTimeImmutable();
-        //Je lui dit qu'il faut qu'il cherche un $code dans la colonne 'couponcode' de mon voucherRepository de ma base de donnée et qu'il faut qu'il la stock dans la variable $voucher.
-        $voucher = $this->voucherRepository->findOneBy(['couponcode' => $code]);
         //Je viens ensuite créer un nouvel objet : UsedVoucher (voucher utilisé)
         $usedVoucher = new UsedVoucher();
         //Je lui dit set la date d'aujourd'hui a mon usedVoucher
@@ -77,6 +74,7 @@ class VoucherService {
         $this->entityManager->flush();
     }
 
+    // Function pour créer un voucher.
     function CreateVoucher(){
 
     }
