@@ -1,12 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block title %}Product index{% endblock %}
 
-{% block body %}
-    <h1>All Products - index</h1>
+{% block contain %}
+    <div class="right-dash">
+        <h1>All Products - index</h1>
 
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Title</th>
@@ -19,31 +20,32 @@
                 <th>Updated date</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.title }}</td>
-                <td>{{ product.shortcut }}</td>
-                <td>{{ product.description |length > 50 ? product.description|slice(0, 50) ~ '...' : product.description }}</td>
-                <td>{{ product.descriptionadd |length > 50 ? product.descriptionadd|slice(0, 50) ~ '...' : product.descriptionadd}}</td>
-                <td>{{ product.price }} €</td>
-                <td><img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.shortcut }}" style="width:80px"></td>
-                <td>{{ product.createdat ? product.createdat|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ product.updatedat ? product.updatedat|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('product_show', {'id': product.id}) }}">SHOW</a>
-                    <a href="{{ path('product_edit', {'id': product.id}) }}">EDIT</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.shortcut }}</td>
+                    <td>{{ product.description |length > 50 ? product.description|slice(0, 50) ~ '...' : product.description }}</td>
+                    <td>{{ product.descriptionadd |length > 50 ? product.descriptionadd|slice(0, 50) ~ '...' : product.descriptionadd}}</td>
+                    <td>{{ product.price }} €</td>
+                    <td><img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.shortcut }}" style="width:80px"></td>
+                    <td>{{ product.createdat ? product.createdat|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ product.updatedat ? product.updatedat|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a href="{{ path('product_show', {'id': product.id}) }}">SHOW</a>
+                        <a href="{{ path('product_edit', {'id': product.id}) }}">EDIT</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a class="button" href="{{ path('product_new') }}">Create new</a>
+        <a class="button" href="{{ path('product_new') }}">Create new</a>
+    </div>
 {% endblock %}

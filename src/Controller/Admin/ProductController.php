@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/product')]
 class ProductController extends AbstractController
 {
+
     #[Route('/product_index', name: 'product_index', methods: ['GET'])]
     public function index(ProductRepository $productRepository, ImagesProductRepository $imagesProductRepository): Response
     {

@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block title %}Voucher index
 {% endblock %}
 
-{% block body %}
+{% block contain %}
 	<h1>Voucher index</h1>
     <p>Explications :</p>
 	{% for message in app.flashes('message') %}

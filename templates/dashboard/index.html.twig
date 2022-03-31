@@ -1,32 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block title %}Dashboard Admin!{% endblock %}
 
-            {% block body %}
+{% block contain %}
+    ICI je sios ic,dincoek,fief
+{% endblock %}
 
-    <h1>DASHBOARD</h1>
-    <div class="row">
-        <div class="left-dash">
-            <div class="navbar_admin header_admin">
-                <a class="button active" href="#">USERS</a>
-                <a class="button" href="#">ORDERS</a>
-                <a class="button" href="#">LICENSES</a>
-                <a class="button" href="#">PRODUCTS</a>
-                <a class="button" href="#">CATEGORIES</a>
-                <a class="button" href="#">SERVICES</a>
-                <a class="button" href="#">VOUCHERS</a>
-                <a class="button" href="#">TEAM</a>
-                <a class="button" href="#">CAROUSEL</a>
-                <a class="button" href="{{ path('app_logout') }}">LOGOUT</a>
-            </div>
-        </div>
-        <div class="right-dash">
-
-        </div>
-    </div>
-            {% endblock %}
-
-    {% block footer %}
-        {% include 'footer.html.twig' %}
-    {% endblock %}
+{% block footer %}
+    {% include 'footer.html.twig' %}
+{% endblock %}
 

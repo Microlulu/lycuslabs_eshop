@@ -20,44 +20,20 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private $user_id;
 
-    #[ORM\Column(type: 'string', length: 300)]
-    private $fullname;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $reference;
 
     #[ORM\Column(type: 'datetime')]
     private $date_order;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'text')]
     private $adresse;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $zipcode;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $city;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $country;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $telephone;
-
-    #[ORM\Column(type: 'float')]
-    private $total;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $vat_number;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $reference;
 
     #[ORM\OneToMany(mappedBy: 'order_id', targetEntity: DetailOrder::class, orphanRemoval: true)]
     private $detailOrders;
 
     #[ORM\Column(type: 'boolean')]
     private $delivery;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $company;
 
     public function __construct()
     {
@@ -77,18 +53,6 @@ class Order
     public function setUserId(?User $user_id): self
     {
         $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    public function getFullname(): ?string
-    {
-        return $this->fullname;
-    }
-
-    public function setFullname(string $fullname): self
-    {
-        $this->fullname = $fullname;
 
         return $this;
     }
@@ -113,78 +77,6 @@ class Order
     public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    public function getZipcode(): ?string
-    {
-        return $this->zipcode;
-    }
-
-    public function setZipcode(string $zipcode): self
-    {
-        $this->zipcode = $zipcode;
-
-        return $this;
-    }
-
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    public function setCity(string $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(string $country): self
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    public function getTelephone(): ?string
-    {
-        return $this->telephone;
-    }
-
-    public function setTelephone(?string $telephone): self
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
-
-    public function getTotal(): ?float
-    {
-        return $this->total;
-    }
-
-    public function setTotal(float $total): self
-    {
-        $this->total = $total;
-
-        return $this;
-    }
-
-    public function getVatNumber(): ?string
-    {
-        return $this->vat_number;
-    }
-
-    public function setVatNumber(?string $vat_number): self
-    {
-        $this->vat_number = $vat_number;
 
         return $this;
     }
@@ -239,18 +131,6 @@ class Order
     public function setDelivery(bool $delivery): self
     {
         $this->delivery = $delivery;
-
-        return $this;
-    }
-
-    public function getCompany(): ?string
-    {
-        return $this->company;
-    }
-
-    public function setCompany(?string $company): self
-    {
-        $this->company = $company;
 
         return $this;
     }

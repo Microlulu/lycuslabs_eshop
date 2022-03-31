@@ -14,18 +14,17 @@
                 <p class="total_price mt-20"><span>TOTAL</span> <span class="right_side">7000€</span></p>
                 <hr>
                 <div class="container_delivery">
-                <h3>DELIVERY</h3>
-                <div class="small_card">
-                    {% set formhtml %}
-                        {{ form_start(form2, {action:path('recap_order')}) }}
-                        {{ form_end(form2) }}
-                    {% endset %}
-                    {# Avec le replace je viens remplacer les [br] de ma public function dans mon entity AdressesType par des
+                    <h3>DELIVERY</h3>
+                    <div class="small_card">
+                        {% set formhtml %}
+                            {{ form_start(form2, {action:path('recap_order')}) }}
+                            {{ form_end(form2) }}
+                        {% endset %}
+                        {# Avec le replace je viens remplacer les [br] de ma public function dans mon entity AdressesType par des
                     </br> html et le raw veut dire interprete moi le html #}
-                    {{ formhtml|replace({'[br]' : '</br>'})|raw }}
+                        {{ formhtml|replace({'[br]' : '</br>'})|raw }}
 
-                </div>
-                <a class="button" href="#">PAY NOW</a>
+                    </div>
                 </div>
 
 
@@ -42,15 +41,15 @@
                                  alt="{{ product.product.shortcut }}">
                             <div class="content_payment">
 
-                                    <div class="row">
+                                <div class="row">
                                     <h4>{{ product['product'].title }} </h4>
                                     <h5 class="nb_Prod">x {{ product ['quantity'] }}</h5>
-                                    </div>
-                                    <h4 class="left">{{ product ['total'] }} €</h4>
+                                </div>
+                                <h4 class="left">{{ product ['total'] }} €</h4>
 
                             </div>
 
-                    </div>
+                        </div>
                     {% endfor %}
 
                 {% else %}

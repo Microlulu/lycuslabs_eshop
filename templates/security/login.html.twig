@@ -26,12 +26,15 @@
             <h2>LOGIN</h2>
             <h4 class="txt_center">Access to your account</h4>
             <div class="fields">
+                <!-- créer un form -->
                 <div class="user">
                     <img class="small_icon" src="{{ asset('images/svg/email.png') }}" alt="email" aria-label="enter your email">
                 </div>
                 <div class="user">
                     <img class="small_icon" src="{{ asset('images/svg/lock.png') }}"  alt="password" aria-label="enter your password">
                 </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
             </div>
             <button class="mt-30" aria-label="login" >LOGIN</button>
             <div class="link">

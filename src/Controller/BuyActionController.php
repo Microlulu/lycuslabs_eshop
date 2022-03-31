@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\DetailOrder;
 use App\Entity\Order;
 use App\Form\DiscountCartType;
 use App\Form\OrderType;
@@ -68,7 +69,7 @@ class BuyActionController extends AbstractController
             //Je lui dit qu'il faut qu'il cherche un $code dans la colonne 'couponcode' de mon voucherRepository de ma base de donnée et qu'il faut qu'il la stock dans la variable $voucher.
             $voucher = $this->voucherRepository->findOneBy(['couponcode' => $couponCode]);
             if ($voucher != null && $this->voucherService->VerifyVoucher($voucher, $this->getUser())) {
-
+                $this->cart->prepareOrder($this->cart->getDetailCart(), $this->cart->getTotalCart(), $voucher);
                 return $this->render('buy_action/cart.html.twig', [
                     // j'envoie à la vue buy_action dans le fichier buy_action/cart.html.twig le panier, le formulaire pour pouvoir rentrer le voucher, le voucher s'il y en a un, mais aussi le message d'erreur pour pouvoir faire ma condition
                     // dans la vue du cart,
@@ -90,7 +91,7 @@ class BuyActionController extends AbstractController
         # Todo : payment
         # ToDo : page admin php?
         # Todo : select adresse par default?
-
+        $this->cart->prepareOrder($this->cart->getDetailCart(), $this->cart->getTotalCart());
         return $this->render('buy_action/cart.html.twig', [
             // j'envoie à la vue buy_action dans le fichier buy_action/cart.html.twig le detail du panier
             'cart' => $this->cart,
@@ -232,16 +233,28 @@ class BuyActionController extends AbstractController
 
             // J'enregistre la commande
             $order = new Order();
-            $order->setUserId($this->getUserId());
+            $order->setUserId($this->getUser());
             $order->setDateOrder($date_order);
-            $order->setFullname($delivery->getFirstname() .' '.$delivery->getLastname());
-            $order->setDelivery($delivery_content);
+            $order->setAdresse($delivery_content);
             $order->SetDelivery(false);
 
-            foreach ($cart->getOrderPrepare() as $product){
-                dd($product);
+            $this->entityManager->persist($order);
+
+            $allInformationProduct = $cart->getOrderPrepare();
+            foreach ($allInformationProduct['products'] as $product) {
+                $detailOrder = new DetailOrder();
+
+                $detailOrder->setOrderId($order);
+                $detailOrder->setPrice($product['product']->getPrice());
+                $detailOrder->setQuantity($product['quantity']);
+                $detailOrder->setTotal($product['total']);
+                $detailOrder->setTitle($product['product']->getTitle());
+                $detailOrder->setVoucher($allInformationProduct['voucher']->getDiscount());
+
+                $this->entityManager->persist($detailOrder);
             }
 
+            $this->entityManager->flush();
 
             // J'enregistre les produits
         }

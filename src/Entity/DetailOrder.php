@@ -20,9 +20,6 @@ class DetailOrder
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $reference;
-
     #[ORM\Column(type: 'integer')]
     private $quantity;
 
@@ -60,18 +57,6 @@ class DetailOrder
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getReference(): ?string
-    {
-        return $this->reference;
-    }
-
-    public function setReference(string $reference): self
-    {
-        $this->reference = $reference;
 
         return $this;
     }

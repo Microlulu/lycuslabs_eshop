@@ -197,11 +197,12 @@ class Cart
      */
     // Dans ma function je n'oublie as de re-declarer les paramètres et de préciser que le voucher peut être null !
     public function prepareOrder(array $productList, float $total, Voucher $voucher = null) {
-
-    }
-
-    public function getPrepareOrder() {
-
+        $data = [
+            'products' => $productList,
+            'total' => $total,
+            'voucher' => $voucher
+        ];
+        $this->setOrderPrepare($data);
     }
 }
 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- SEO GOOGLE -->
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}Lycus labs : Plugins for Autodesk and 3D Visualizations
+        {% endblock %}
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, all">
+    <meta name="description"
+          content="Lycus labs creates software and computer visualization solutions for computer graphics industry">
+    <meta name="keywords"
+          content="Software plugins, graphics industry, Autodesk plugins, 3d visualization, solutions technological, Computer Sciences, Software engineer senior">
+    <script type="application/ld+json">
+
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.lycuslabs.com/"
+            },
+            "headline": "Lycus labs creates software and computer visualization solutions for computer graphics industry",
+            "image": [
+                "https://lycuslabs.com/Lycuslabslogo.svg"
+            ],
+            "datePublished": "2022-30-03T08:00:00+08:00",
+            "dateModified": "2022-30-03T09:20:00+08:00",
+            "author": {
+                "@type": "Person",
+                "name": "Lucile DEBUCHY",
+                "url": "https://www.lucile-debuchy.com/"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "https://www.lycuslabs.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://lycuslabs.com/Lycuslabslogo.svg",
+                    "alt": "Lycuslabs Logo"
+                }
+            }
+        }
+    </script>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/profil.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/forms.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/team.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/product.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/services.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/cart.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/payment.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/slick-theme.css') }}">
+    {% endblock %}
+
+
+</head>
+
+
+{% block body %}
+    {% set current_path = app.request.get('_route') %}
+    <h1>Dashboard</h1>
+    <h3>subtitle</h3>
+    <div class="row">
+        <div class="left-dash">
+            <div class="navbar_admin header_admin">
+                <a class="button {% if current_path == 'user_index' %}active {% endif %}" href="{{ path('user_index')}}">USERS</a>
+                <a class="button {% if current_path == 'order_index' %}active {% endif %}" href="{{ path('order_index')}}">ORDERS</a>
+                <a class="button {% if current_path == 'something' %}active {% endif %}" href="#">LICENSES</a>
+                <a class="button {% if current_path == 'product_index' %}active {% endif %}" href="{{ path('product_index')}}">PRODUCTS</a>
+                <a class="button {% if current_path == 'category_index' %}active {% endif %}" href="{{ path('category_index')}}">CATEGORIES</a>
+                <a class="button {% if current_path == 'services_index' %}active {% endif %}" href="{{ path('services_index')}}">SERVICES</a>
+                <a class="button {% if current_path == 'voucher_index' %}active {% endif %}" href="{{ path('voucher_index')}}">VOUCHERS</a>
+                <a class="button {% if current_path == 'team_index' %}active {% endif %}" href="{{ path('team_index')}}">TEAM</a>
+                <a class="button {% if current_path == 'carousel_index' %}active {% endif %}" href="{{ path('carousel_index')}}">CAROUSEL</a>
+                <a class="button" href="{{ path('app_logout') }}">LOGOUT</a>
+            </div>
+        </div>
+        <div class="right-dash">
+            {% block contain %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ asset('assets/js/slick.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.slider').slick({
+                infinite: true,
+                dots: true,
+                arrows: true,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                fade: true,
+                fadeSpeed: 1000
+            });
+        });
+    </script>
+
+{% endblock %}
+
+
+
+</html>
