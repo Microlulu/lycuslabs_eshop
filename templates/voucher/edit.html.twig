@@ -6,8 +6,11 @@
     <h1>Edit Voucher</h1>
 
     {{ include('voucher/_form.html.twig', {'button_label': 'Update'}) }}
+<div class="buttons_panel">
+    <div class="row">
+        {{ include('voucher/_delete_form.html.twig') }}
 
-    <a class="button_inset" href="{{ path('voucher_index') }}">back to list</a>
-
-    {{ include('voucher/_delete_form.html.twig') }}
+        <a class="button_inset_back" href="{{ path('voucher_index') }}">back to list</a>
+    </div>
+</div>
 {% endblock %}

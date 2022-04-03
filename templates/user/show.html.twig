@@ -27,31 +27,14 @@
                 <th>Lastname</th>
                 <td>{{ user.lastname }}</td>
             </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ user.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Zipcode</th>
-                <td>{{ user.zipcode }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ user.city }}</td>
-            </tr>
-            <tr>
-                <th>Country</th>
-                <td>{{ user.country }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ user.telephone }}</td>
-            </tr>
         </tbody>
     </table>
-    <a class="button m-20" href="{{ path('user_edit', {'id': user.id}) }}">EDIT</a>
+<div class="buttons_panel">
+    <div class="row">
+   <!-- <a class="button_edit" href="{{ path('user_edit', {'id': user.id}) }}">EDIT</a> -->
+        {{ include('user/_delete_form.html.twig') }}
 
-    <a class="button_inset" href="{{ path('user_index') }}">back to list</a>
-
-    {{ include('user/_delete_form.html.twig') }}
+    <a class="button_inset_back" href="{{ path('user_index') }}">back to list</a>
+    </div>
+</div>
 {% endblock %}

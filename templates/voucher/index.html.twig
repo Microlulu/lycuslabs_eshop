@@ -1,11 +1,10 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}Voucher index
+{% block title %}Vouchers
 {% endblock %}
 
 {% block contain %}
-	<h1>Voucher index</h1>
-    <p>Explications :</p>
+	<h2>Voucher index</h2>
 	{% for message in app.flashes('message') %}
 		<div class="alert alert-warning">
 			{{ message }}
@@ -33,10 +32,10 @@
 					<td>{{ voucher.dateEnd ? voucher.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
 					<td>{{ voucher.couponcode }}</td>
 					<td>
-						<a href="{{ path('voucher_show', {'id': voucher.id}) }}">
+						<a class="button_dash" href="{{ path('voucher_show', {'id': voucher.id}) }}">
 							SHOW
 						</a>
-						<a href="{{ path('voucher_edit', {'id': voucher.id}) }}">
+						<a class="button_dash" href="{{ path('voucher_edit', {'id': voucher.id}) }}">
 							EDIT
 						</a>
 					</td>

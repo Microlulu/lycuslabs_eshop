@@ -4,10 +4,14 @@
 
 {% block body %}
     <h1>Edit Product</h1>
-
+    <section>
+        <div class="card_dash">
     {{ include('product/_form.html.twig', {'button_label': 'Update'}) }}
+
+        {{ include('product/_delete_form.html.twig') }}
 
     <a class="button_inset" href="{{ path('product_index') }}">back to list</a>
 
-    {{ include('product/_delete_form.html.twig') }}
+    </div>
+    </section>
 {% endblock %}

@@ -1,10 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Users{% endblock %}
 
-{% block body %}
-    <h1>All Users - index</h1>
-
+{% block contain %}
+    <h2>Users</h2>
     <table class="table">
         <thead>
             <tr>
@@ -13,11 +12,6 @@
                 <th>Roles</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
-                <th>Adresse</th>
-                <th>Zipcode</th>
-                <th>City</th>
-                <th>Country</th>
-                <th>Telephone</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -29,13 +23,8 @@
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>{{ user.firstname }}</td>
                 <td>{{ user.lastname }}</td>
-                <td>{{ user.adresse }}</td>
-                <td>{{ user.zipcode }}</td>
-                <td>{{ user.city }}</td>
-                <td>{{ user.country }}</td>
-                <td>{{ user.telephone }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">SHOW</a>
+                    <a class="button_dash" href="{{ path('user_show', {'id': user.id}) }}">SHOW</a>
                 </td>
             </tr>
         {% else %}
@@ -46,5 +35,4 @@
         </tbody>
     </table>
 
-    <a class="button" href="{{ path('user_new') }}">Create new</a>
 {% endblock %}

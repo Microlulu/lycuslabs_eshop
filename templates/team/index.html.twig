@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
-{% block title %}Team index{% endblock %}
+{% block title %}Team{% endblock %}
 
-{% block body %}
-    <h1>Team index</h1>
+{% block contain %}
+    <h2>Team</h2>
 
     <table class="table">
         <thead>
@@ -29,8 +29,8 @@
                 <td>{{ member.job }}</td>
                 <td>{{ member.description |length > 100 ? member.description|slice(0, 100) ~ '...' : member.description }}</td>
                 <td>
-                    <a href="{{ path('team_show', {'id': member.id}) }}">SHOW</a>
-                    <a href="{{ path('team_edit', {'id': member.id}) }}">EDIT</a>
+                    <a class="button_dash" href="{{ path('team_show', {'id': member.id}) }}">SHOW</a>
+                    <a class="button_dash" href="{{ path('team_edit', {'id': member.id}) }}">EDIT</a>
                 </td>
             </tr>
         {% else %}

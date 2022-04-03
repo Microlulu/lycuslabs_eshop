@@ -1,10 +1,9 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}Order index{% endblock %}
+{% block title %}Orders{% endblock %}
 
-{% block body %}
-<div class="forms_container">
-    <h1>All the orders - index</h1>
+{% block contain %}
+    <h2>Orders</h2>
 
     <table class="table">
         <thead>
@@ -39,7 +38,7 @@
                 <td>{{ order.telephone }}</td>
                 <td>{{ order.total }}</td>
                 <td>
-                    <a href="{{ path('order_show', {'id': order.id}) }}">SHOW</a>
+                    <a class="button_dash" href="{{ path('order_show', {'id': order.id}) }}">SHOW</a>
                 </td>
             </tr>
         {% else %}
@@ -49,5 +48,4 @@
         {% endfor %}
         </tbody>
     </table>
-    </div>
 {% endblock %}

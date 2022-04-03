@@ -33,9 +33,13 @@
             </tr>
         </tbody>
     </table>
-    <a class="button m-20" href="{{ path('voucher_edit', {'id': voucher.id}) }}">EDIT</a>
+<div class="buttons_panel">
+    <div class="row">
+    <a class="button_edit" href="{{ path('voucher_edit', {'id': voucher.id}) }}">EDIT</a>
+        {{ include('voucher/_delete_form.html.twig') }}
 
-    <a class="button_inset" href="{{ path('voucher_index') }}">back to list</a>
+    <a class="button_inset_back" href="{{ path('voucher_index') }}">back to list</a>
 
-    {{ include('voucher/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}

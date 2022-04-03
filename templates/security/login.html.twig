@@ -3,17 +3,6 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
-
-{% if error %}
-            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-
-        {% if app.user %}
-            <div>
-                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-            </div>
-        {% endif %}
 
     <h1> Welcome back!</h1>
     <div class="login_main_container">
@@ -26,23 +15,45 @@
             <h2>LOGIN</h2>
             <h4 class="txt_center">Access to your account</h4>
             <div class="fields">
-                <!-- créer un form -->
-                <div class="user">
-                    <img class="small_icon" src="{{ asset('images/svg/email.png') }}" alt="email" aria-label="enter your email">
-                </div>
-                <div class="user">
-                    <img class="small_icon" src="{{ asset('images/svg/lock.png') }}"  alt="password" aria-label="enter your password">
-                </div>
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
 
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.username }}, <a
+                                    href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+                    <div class="user">
+                    <div class="row">
+                        <img class="small_icon_register" src="{{ asset('images/svg/email.png') }}" alt="email" aria-label="enter your email">
+                    <input placeholder="Email" type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                           autocomplete="email" required autofocus >
+                    </div>
+                    </div>
+                    <div class="user">
+                        <div class="row">
+                            <img class="small_icon_register" src="{{ asset('images/svg/lock.png') }}" alt="password" aria-label="enter your password">
+                            <input placeholder="Password" alt="password" aria-label="enter your password" type="password"
+                           name="password" id="inputPassword" autocomplete="current-password" required>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        </div>
+                    </div>
+                    <button class="mt-30 button" aria-label="login" type="submit">LOGIN</button>
+
+                </form>
             </div>
-            <button class="mt-30" aria-label="login" >LOGIN</button>
+
+
             <div class="link">
                 <a href="#">Forgot password?</a> or <a href="{{ path('app_register') }}">Sign up</a>
+
             </div>
         </div>
     </div>
-</form>
 
 
 

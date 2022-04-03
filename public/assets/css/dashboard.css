@@ -7,7 +7,7 @@
 }
 .right-dash{
     width: 80%;
-    height: 1000px;
+    height: 100%;
     text-align: center;
 }
 
@@ -29,4 +29,81 @@
 }
 .navbar_admin > .button{
   margin: 20px auto !important;
+}
+
+.button_dash {
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--darkgrey);
+    background-color: var(--whitebg);
+    box-shadow: 10px 10px 15px var(--lightgrey),
+    -4px -5px 10px var(--lightgrey);
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 2px 3px;
+}
+.button_dash:hover{
+    box-shadow: inset 4px 5px 9px var(--lightgrey),
+    inset -8px -8px 15px var(--extrawhite);
+}
+.buttons_panel{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    text-align: center;
+}
+.button_inset_back {
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--darkgrey);
+    box-shadow: var(--box-shadow);
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 10px 30px;
+    margin: 0 40px;
+    height: 43px;
+}
+
+.button_edit {
+    text-decoration: none;
+    width: 180px;
+    height: 50px;
+    border-radius: 25px;
+    font-weight: 700;
+    background: var(--gradient);
+    color: var(--extrawhite);
+    box-shadow: var(--box-shadow);
+    border: none;
+    outline: none;
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.card_dash{
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    height: fit-content;
+    width: fit-content;
+    padding: 50px;
+    border-radius: 25px;
+}
+section{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
 }

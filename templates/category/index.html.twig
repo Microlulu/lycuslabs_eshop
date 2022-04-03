@@ -1,11 +1,10 @@
 
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Categories{% endblock %}
 
 {% block contain %}
-    <h1>All categories</h1>
-<div class="forms_container">
+    <h2>Categories</h2>
     <table class="table">
         <thead>
             <tr>
@@ -24,8 +23,8 @@
                 <td>{{ category.createdat ? category.createdat|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ category.updatedat ? category.updatedat|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">SHOW</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">EDIT</a>
+                    <a class="button_dash" href="{{ path('category_show', {'id': category.id}) }}">SHOW</a>
+                    <a class="button_dash" href="{{ path('category_edit', {'id': category.id}) }}">EDIT</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +36,4 @@
     </table>
 
     <a class="button" href="{{ path('category_new') }}">Create new</a>
-</div>
 {% endblock %}

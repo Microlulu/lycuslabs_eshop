@@ -64,15 +64,50 @@
         <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/slick-theme.css') }}">
     {% endblock %}
-
-
 </head>
+{% block navbar %}
+    <nav>
+        <div class="row">
+            <div class="logo">LYCUSLABS</div>
+            {# IMAGE POUR OUVRIR NAVBAR #}
+            <img src="{{ asset('images/svg/bars-solid.svg') }}" class="burger_m" alt="menu_burger"
+                 aria-label="open the menu" id="burg-menu" onclick="burgerToggle()"/>
+            <ul class="mainMenu" id="myLinks">
+                <li><a href="{{ path('home') }}" aria-label="home">Home</a></li>
 
+                <li class="dropdown">
+                    <a class="dropbtn" id="navbarDropdown" aria-label="products">Products</a>
+                    <ul id="listsProducts" class="dropdown_content">
+                        {# ICI COMMENCE LE BOUTON DYNAMIQUE DES PRODUITS VOIR BAS DE PAGE POUR JAVASCRIPT #}
+                    </ul>
+                </li>
+                <li><a href="{{ path('our_services') }}" aria-label="services">Services</a></li>
+                <li><a href="{{ path('team_members') }}" aria-label="team">Team</a></li>
+                <li><a href="{{ path('contact') }}" aria-label="contact">Contact</a></li>
+
+
+                {# USER LOGGED PART #}
+                {% if app.user %}
+                    <li><a href="{{ path('profil') }}" aria-label="profile">Profile</a></li>
+                    <li><a href="{{ path('buy_action') }}" aria-label="cart"><img alt="cart" src="{{ asset('images/svg/shopping-cart.png') }}"></a></li>
+                    <li><a href="{{ path('app_logout') }}" aria-label="logout">Logout</a></li>
+                    {# ADMIN PART #}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('dashboard') }}">Admin</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{{ path('app_login') }}" aria-label="login">Login</a></li>
+                    <li><a href="{{ path('app_register') }}" aria-label="register">Register</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
 
 {% block body %}
     {% set current_path = app.request.get('_route') %}
     <h1>Dashboard</h1>
-    <h3>subtitle</h3>
     <div class="row">
         <div class="left-dash">
             <div class="navbar_admin header_admin">

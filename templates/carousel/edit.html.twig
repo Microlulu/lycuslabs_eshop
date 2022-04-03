@@ -6,8 +6,12 @@
     <h1>Edit Carousel</h1>
 
     {{ include('carousel/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a class= "button_inset" href="{{ path('carousel_index') }}">back to list</a>
-
+    <div class="buttons_panel">
+        <div class="row">
     {{ include('carousel/_delete_form.html.twig') }}
+
+    <a class= "button_inset_back" href="{{ path('carousel_index') }}">back to list</a>
+
+    </div>
+    </div>
 {% endblock %}

@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
-{% block title %}Carousel index{% endblock %}
+{% block title %}Carousel{% endblock %}
 
-{% block body %}
-    <h1>Carousel index</h1>
+{% block contain %}
+    <h1>Images Carousel </h1>
 
     <table class="table">
         <thead>
@@ -23,8 +23,8 @@
                 <td>{{ carousel.title }}</td>
                 <td>{{ carousel.text }}</td>
                 <td>
-                    <a href="{{ path('carousel_show', {'id': carousel.id}) }}">SHOW</a>
-                    <a href="{{ path('carousel_edit', {'id': carousel.id}) }}">EDIT</a>
+                    <a class="button_dash" href="{{ path('carousel_show', {'id': carousel.id}) }}">SHOW</a>
+                    <a class="button_dash" href="{{ path('carousel_edit', {'id': carousel.id}) }}">EDIT</a>
                 </td>
             </tr>
         {% else %}

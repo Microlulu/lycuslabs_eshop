@@ -16,35 +16,42 @@
             <h4 class="txt_center">Welcome aboard !</h4>
             {{ form_start(registrationForm) }}
             <div class="fields">
-                <div class="row">
+
                     <div class="user">
-                        <img class="small_icon" src="{{ asset('images/svg/account.png') }}" alt="email"
-                             aria-label="enter your firstname">
+                        <div class="row">
+                        <img class="small_icon_register" src="{{ asset('images/svg/account.png') }}" alt="firstname" aria-label="enter your firstname">
                         {{ form_row(registrationForm.firstname) }}
+                        </div>
                     </div>
-                    <div class="user ml-40">
-                        <img class="small_icon" src="{{ asset('images/svg/account.png') }}" alt="lastname"
-                             aria-label="enter your Lastname">
-                        {{ form_row(registrationForm.lastname) }}
-                    </div>
-                </div>
-                <div class="txt_center">
-                <div class="user">
-                    <img class="small_icon" src="{{ asset('images/svg/email.png') }}" alt="email"
-                         aria-label="enter your email">
-                    {{ form_row(registrationForm.email) }}
-                </div>
-                </div>
-                <div class="row">
                     <div class="user">
-                        <img class="small_icon" src="{{ asset('images/svg/lock.png') }}" alt="password"
-                             aria-label="enter your password">
-                        {{ form_row(registrationForm.Password, {label: 'Password'}) }}
+                        <div class="row">
+                        <img class="small_icon_register" src="{{ asset('images/svg/account.png') }}" alt="lastname" aria-label="enter your lastname">
+                        {{ form_row(registrationForm.lastname) }}
+                        </div>
+                    </div>
+
+                <div class="user">
+                    <div class="row">
+                    <img class="small_icon_register" src="{{ asset('images/svg/email.png') }}" alt="email" aria-label="enter your email">
+                    {{ form_row(registrationForm.email) }}
                     </div>
                 </div>
+                    <div class="user">
+                        <div class="row">
+                            <img class="small_icon_register" src="{{ asset('images/svg/lock.png') }}" alt="email" aria-label="enter your password">
+                        {{ form_row(registrationForm.Password.first) }}
+                        </div>
+                    </div>
+                <div class="user">
+                    <div class="row">
+                        <img class="small_icon_register" src="{{ asset('images/svg/lock.png') }}" alt="email" aria-label="repeat your password">
+                    {{ form_row(registrationForm.Password.second) }}
+                    </div>
+                </div>
+
                 {{ form_row(registrationForm.agreeTerms) }}
-            </div>
-            <button class="mt-20" aria-label="login">LOGIN</button>
+
+            <button class="mt-20 button" aria-label="login">LOGIN</button>
             {{ form_end(registrationForm) }}
 
             <div class="link">

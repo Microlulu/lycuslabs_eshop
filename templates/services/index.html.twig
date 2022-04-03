@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
-{% block title %}Services index{% endblock %}
+{% block title %}Services{% endblock %}
 
-{% block body %}
-    <h1>Services index</h1>
+{% block contain %}
+    <h2>Services</h2>
 
     <table class="table">
         <thead>
@@ -27,8 +27,8 @@
                 <td>{{ service.shortcut}}</td>
                 <td>{{ service.text |length > 50 ? service.text|slice(0, 50) ~ '...' : service.text }}</td>
                 <td>
-                    <a href="{{ path('service_show', {'id': service.id}) }}">SHOW</a>
-                    <a href="{{ path('service_edit', {'id': service.id}) }}">EDIT</a>
+                    <a class="button_dash" href="{{ path('service_show', {'id': service.id}) }}">SHOW</a>
+                    <a class="button_dash" href="{{ path('service_edit', {'id': service.id}) }}">EDIT</a>
                 </td>
             </tr>
         {% else %}
