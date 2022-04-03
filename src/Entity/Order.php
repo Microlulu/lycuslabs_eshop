@@ -35,6 +35,9 @@ class Order
     #[ORM\Column(type: 'boolean')]
     private $delivery;
 
+    #[ORM\Column(type: 'float', nullable: true)]
+    private $voucher;
+
     public function __construct()
     {
         $this->detailOrders = new ArrayCollection();
@@ -131,6 +134,18 @@ class Order
     public function setDelivery(bool $delivery): self
     {
         $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    public function getVoucher(): ?float
+    {
+        return $this->voucher;
+    }
+
+    public function setVoucher(?float $voucher): self
+    {
+        $this->voucher = $voucher;
 
         return $this;
     }

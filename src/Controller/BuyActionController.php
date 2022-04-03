@@ -12,8 +12,10 @@ use App\Repository\VoucherRepository;
 use App\Services\OrderManager;
 use App\Services\Cart;
 use App\Repository\AdresseRepository;
+use App\Services\Stripe\StripeApi\OverRidingApi;
 use App\Services\VoucherService;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,17 +32,21 @@ class BuyActionController extends AbstractController
     // Je fais une construct pour initialiser/parameter mes datas avant de les utiliser.
     // J'appelle mon Entity Manager, le cart, les adresses, le Repository des Vouchers et le Repository des Voucher utilisés...ect
     //
+    private OverRidingApi $stripeApi;
+
     public function __construct (
         EntityManagerInterface $entityManager,
         VoucherRepository $voucherRepository,
         AdresseRepository $adresseRepository,
         Cart $cart,
-        VoucherService $voucherService) {
+        VoucherService $voucherService,
+        OverRidingApi $stripeApi) {
         $this->entityManager = $entityManager;
         $this->voucherRepository = $voucherRepository;
         $this->adresseRepository = $adresseRepository;
         $this->cart = $cart;
         $this->voucherService = $voucherService;
+        $this->stripeApi = $stripeApi;
     }
     /** Pour le cart principal. (vue des produits, du coupon code ect.... */
     #[Route('/buyAction', name: 'buy_action')]
@@ -193,7 +199,7 @@ class BuyActionController extends AbstractController
 
         return $this->render('buy_action/payment.html.twig',[
             'form2' => $form2->createView(),
-            'cart' => $cart->getDetailCart()
+            'cart' => $this->cart
         ]);
     }
 
@@ -204,9 +210,8 @@ class BuyActionController extends AbstractController
     #[Route('/buyAction/recap_order', name: 'recap_order', methods: ['GET','POST'])]
     public function RecapOrder( Request $request, OrderManager $orderManager, Cart $cart, EntityManagerInterface $manager): Response
     {
-
         /* Le form2 me permets de récupérer les adresses présentes dans mon profil utilisateur*/
-        $form2 =$this->createForm(OrderType::class, null, [
+        $form2 = $this->createForm(OrderType::class, null, [
             'user' =>$this->getUser()
         ]);
         $form2->handleRequest($request);
@@ -231,16 +236,22 @@ class BuyActionController extends AbstractController
                 $delivery_content .= '<br/>'. $delivery->getVatNumber();
             }
 
+            $allInformationProduct = $cart->getOrderPrepare();
+
             // J'enregistre la commande
+            $date = new \DateTime();
+
             $order = new Order();
+            $order->setReference($date->format("dmy")."-".uniqid());
             $order->setUserId($this->getUser());
             $order->setDateOrder($date_order);
             $order->setAdresse($delivery_content);
             $order->SetDelivery(false);
+            $order->setVoucher($allInformationProduct['voucher']?->getDiscount());
 
             $this->entityManager->persist($order);
 
-            $allInformationProduct = $cart->getOrderPrepare();
+            $lines_items = [];
             foreach ($allInformationProduct['products'] as $product) {
                 $detailOrder = new DetailOrder();
 
@@ -249,13 +260,12 @@ class BuyActionController extends AbstractController
                 $detailOrder->setQuantity($product['quantity']);
                 $detailOrder->setTotal($product['total']);
                 $detailOrder->setTitle($product['product']->getTitle());
-                $detailOrder->setVoucher($allInformationProduct['voucher']->getDiscount());
 
                 $this->entityManager->persist($detailOrder);
+
+                $lines_items[] = $this->prepareIntent($detailOrder);
             }
-
             $this->entityManager->flush();
-
             // J'enregistre les produits
         }
         return $this->render('buy_action/add.html.twig',[
@@ -263,5 +273,24 @@ class BuyActionController extends AbstractController
         ]);
     }
 
+    private function prepareIntent(DetailOrder $detailOrder) {
+        return [
+            'price_data' => [
+                'currency' => 'eur',
+                'product_data' => [
+                    'name' => $detailOrder->getTitle(),
+                ],
+                'unit_amount' => $detailOrder->getPrice(),
+            ],
+            'quantity' => $detailOrder->getQuantity(),
+        ];
+    }
+
+    #[Route('/buyAction/recap_order', name: 'recap_order', methods: ['GET','POST'])]
+    public function stripeIntent(): Response {
+        $checkoutStripe = $this->stripeApi->paymentIntent($this->getUser()->getEmail(), $lines_items);
+        $response = new JsonResponse(['id' => $checkoutStripe->id]);
+        return $response;
+    }
 }
 

@@ -29,9 +29,6 @@ class DetailOrder
     #[ORM\Column(type: 'float')]
     private $total;
 
-    #[ORM\Column(type: 'float', nullable: true)]
-    private $voucher;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -93,18 +90,6 @@ class DetailOrder
     public function setTotal(float $total): self
     {
         $this->total = $total;
-
-        return $this;
-    }
-
-    public function getVoucher(): ?float
-    {
-        return $this->voucher;
-    }
-
-    public function setVoucher(?float $voucher): self
-    {
-        $this->voucher = $voucher;
 
         return $this;
     }

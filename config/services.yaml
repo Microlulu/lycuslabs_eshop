@@ -9,6 +9,8 @@ parameters:
     upload_dir_team: '%kernel.project_dir%/public/images/team/'
     upload_dir_services: '%kernel.project_dir%/public/images/services/'
     upload_dir_carousel: '%kernel.project_dir%/public/images/carousel/'
+    stripePublicKey: "pk_test_51KkSNbEWJcWFXkdR2nre8RRT0zTwWgtoaGUNI4hATJrGELNx27bNw6v4pPzJYaxtvdbMTiELJ62F4NrBsqyztHgw00WwGQ4XOP"
+    stripeSecretKey: "sk_test_51KkSNbEWJcWFXkdRudHfgqOppy6zAoQ2vgCzUYVrZVuC7jgg3gjyixjmNCSdFm1Kl4isrOIWGLX4D2u4Haw2v5hC00ebi12Qe6"
 
 services:
     # default configuration for services in *this* file
