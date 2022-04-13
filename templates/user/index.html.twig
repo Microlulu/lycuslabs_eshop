@@ -3,7 +3,9 @@
 {% block title %}Users{% endblock %}
 
 {% block contain %}
-    <h2>Users</h2>
+<article class="dash_contain">
+
+<h2>Users</h2>
     <table class="table">
         <thead>
             <tr>
@@ -25,6 +27,8 @@
                 <td>{{ user.lastname }}</td>
                 <td>
                     <a class="button_dash" href="{{ path('user_show', {'id': user.id}) }}">SHOW</a>
+                    <a href="{{ path('user_delete', {'id': user.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
+
                 </td>
             </tr>
         {% else %}
@@ -34,5 +38,37 @@
         {% endfor %}
         </tbody>
     </table>
+</article>
 
+    <h4 class="mobile_responsive">
+        Please use a Desktop version to access to your admin panel !
+    </h4>
+
+    <aside class="responsive_table">
+            {% for user in users %}
+                <br>
+                <div class="row">
+        <h4>Id</h4> - <h4>{{ user.id }}</h4>
+                </div>
+                <div class="row">
+                <h4>Email</h4> - <h4>{{ user.email }}</h4>
+                </div>
+                <div class="row">
+                <h4>Roles</h4> - <h4>{{ user.roles ? user.roles|json_encode : '' }}</h4>
+                </div>
+                <div class="row">
+                <h4>Firstname</h4> - <h4>{{ user.firstname }}</h4>
+                </div>
+                <div class="row">
+                <h4>Lastname</h4> - <h4>{{ user.lastname }}</h4>
+                </div>
+            <div class="row">
+        <h4>Actions</h4> - <a class="button_dash" href="{{ path('user_show', {'id': user.id}) }}">SHOW</a> - <a href="{{ path('user_delete', {'id': user.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
+            </div>
+                <br>
+                <hr>
+            {% else %}
+                <p>no records found</p>
+        {% endfor %}
+    </aside>
 {% endblock %}

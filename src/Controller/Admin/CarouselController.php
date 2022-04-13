@@ -118,7 +118,7 @@ class CarouselController extends AbstractController
         ]);
     }
 
-    #[Route('/carousel_delete{id}', name: 'carousel_delete', methods: ['POST'])]
+    #[Route('/carousel_delete{id}', name: 'carousel_delete', methods: ['GET','POST'])]
     public function delete(Request $request, Carousel $carousel, EntityManagerInterface $entityManager): Response
     {
         $entityManager->remove($carousel);

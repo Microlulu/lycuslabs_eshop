@@ -110,7 +110,7 @@ section{
 /* TABLES*/
 table {
     border-collapse: collapse;
-    width: 80%;
+    width: 95%;
     margin: 50px auto;
 }
 th{
@@ -174,7 +174,7 @@ tr:nth-child(even) {
     justify-content: center;
 }
 .message_container{
-    box-shadow: var(--box-shadow-inset);
+    box-shadow: var(--box-shadow);
     width: fit-content;
     margin-top: 70px;
     padding: 30px 30px;

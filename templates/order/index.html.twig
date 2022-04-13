@@ -3,7 +3,8 @@
 {% block title %}Orders{% endblock %}
 
 {% block contain %}
-    <h2>Orders</h2>
+<article class="dash_contain">
+<h2>Orders</h2>
 
     <table class="table">
         <thead>
@@ -13,14 +14,12 @@
                 <th>Vat_number</th>
                 <th>Reference</th>
                 <th>Date_order</th>
-                <th>Adresse</th>
+                <th>Address</th>
                 <th>Zipcode</th>
                 <th>City</th>
                 <th>Country</th>
                 <th>Telephone</th>
                 <th>Total</th>
-
-
             </tr>
         </thead>
         <tbody>
@@ -48,4 +47,54 @@
         {% endfor %}
         </tbody>
     </table>
+</article>
+    <h4 class="mobile_responsive">
+        Please use a Desktop version to access to your admin panel !
+    </h4>
+
+    <aside class="responsive_table">
+        {% for order in orders %}
+            <br>
+            <div class="row">
+                <h4>Id</h4> - <h4>{{ order.id }}</h4>
+            </div>
+            <div class="row">
+                <h4>Fullname</h4> - <h4>{{ order.fullname }}</h4>
+            </div>
+            <div class="row">
+                <h4>Vat Number</h4> - <h4>{{ order.vatNumber }}</h4>
+            </div>
+            <div class="row">
+                <h4>Reference</h4> - <h4>{{ order.reference }}</h4>
+            </div>
+            <div class="row">
+                <h4>Date Order</h4> - <h4>{{ order.dateOrder ? order.dateOrder|date('Y-m-d H:i:s') : '' }}</h4>
+            </div>
+            <div class="row">
+                <h4>Address</h4> - <h4>{{ order.adresse }}</h4>
+            </div>
+            <div class="row">
+                <h4>Zipcode</h4> - <h4>{{ order.zipcode }}</h4>
+            </div>
+            <div class="row">
+                <h4>City</h4> - <h4>{{ order.city }}</h4>
+            </div>
+            <div class="row">
+                <h4>Country</h4> - <h4>{{ order.country }}</h4>
+            </div>
+            <div class="row">
+                <h4>Telephone</h4> - <h4>{{ order.telephone }}</h4>
+            </div>
+            <div class="row">
+                <h4>Total</h4> - <h4>{{ order.total }}</h4>
+            </div>
+            <div class="row">
+                <h4>Actions</h4> - <a class="button_dash" href="{{ path('order_show', {'id': order.id}) }}">SHOW</a>
+            </div>
+            <br>
+            <hr>
+        {% else %}
+            <p>no records found</p>
+        {% endfor %}
+    </aside>
 {% endblock %}

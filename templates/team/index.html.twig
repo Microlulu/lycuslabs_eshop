@@ -3,7 +3,9 @@
 {% block title %}Team{% endblock %}
 
 {% block contain %}
-    <h2>Team</h2>
+<article class="dash_contain">
+
+<h2>Team</h2>
 
     <table class="table">
         <thead>
@@ -24,13 +26,14 @@
                 <td>{{ member.id }}</td>
                 <td>{{ member.firstname }}</td>
                 <td>{{ member.lastname }}</td>
-                <td><img src="{{ asset('images/team/' ~ member.photo) }}" alt="{{ member.shortcut }}" style="width:80px"></td>
+                <td><img src="{{ asset('images/team/' ~ member.photo) }}" alt="{{ member.shortcut }}" style="width: 90px;"></td>
                 <td>{{ member.shortcut }}</td>
                 <td>{{ member.job }}</td>
                 <td>{{ member.description |length > 100 ? member.description|slice(0, 100) ~ '...' : member.description }}</td>
                 <td>
                     <a class="button_dash" href="{{ path('team_show', {'id': member.id}) }}">SHOW</a>
                     <a class="button_dash" href="{{ path('team_edit', {'id': member.id}) }}">EDIT</a>
+                    <a href="{{ path('team_delete', {'id': member.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
                 </td>
             </tr>
         {% else %}
@@ -40,6 +43,51 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="button-desk">
+        <a class="button" href="{{ path('team_new') }}">Create new</a>
+    </div>
+</article>
+    <h4 class="mobile_responsive">
+        Please use a Desktop version to access to your admin panel !
+    </h4>
 
-    <a class="button" href="{{ path('team_new') }}">Create new</a>
+    <aside class="responsive_table">
+        {% for member in teams %}
+            <br>
+            <div class="row">
+                <h4>Id</h4> - <h4>{{ member.id }}</h4>
+            </div>
+            <div class="row">
+                <h4>Firstname</h4> - <h4>{{ member.firstname }}</h4>
+            </div>
+            <div class="row">
+                <h4>Lastname</h4> - <h4>{{ member.lastname }}</h4>
+            </div>
+            <div class="row">
+                <img src="{{ asset('images/team/' ~ member.photo) }}" alt="{{ member.shortcut }}" style="width:150px;">
+            </div>
+            <div class="row">
+                <h4>Shortcut</h4> - <h4>{{ member.shortcut }}</h4>
+            </div>
+            <div class="row">
+                <h4>Job</h4> - <h4>{{ member.job }}</h4>
+            </div>
+            <div class="row">
+                <h4>Description</h4> - <h4>{{ member.description |length > 50 ? member.description|slice(0, 50) ~ '...' : member.description }}</h4>
+            </div>
+            <div class="row">
+                <h4>Actions</h4> -  <a class="button_dash" href="{{ path('team_show', {'id': member.id}) }}">SHOW</a> -
+                <a class="button_dash" href="{{ path('team_edit', {'id': member.id}) }}">EDIT</a> -
+                <a href="{{ path('team_delete', {'id': member.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
+            </div>
+            <br>
+            <hr>
+        {% else %}
+            <p>There is no member in the team yet !</p>
+        {% endfor %}
+        <div class="button-mob mt-30">
+            <a class="button" href="{{ path('team_new') }}">Create new</a>
+        </div>
+    </aside>
 {% endblock %}
+

@@ -3,11 +3,15 @@
 {% block title %}Edit Team{% endblock %}
 
 {% block body %}
-    <h1>Edit Team</h1>
+        <h1>Edit Team</h1>
+        <section>
+            <div class="card_dash"
+            {{ include('team/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('team/_form.html.twig', {'button_label': 'Update'}) }}
+            <a class="button_inset" href="{{ path('team_index') }}">back to list</a>
 
-    <a class="button_inset" href="{{ path('team_index') }}">back to list</a>
-
-    {{ include('team/_delete_form.html.twig') }}
+            {{ include('team/_delete_form.html.twig') }}
+            </div>
+         </section>
+    </div>
 {% endblock %}

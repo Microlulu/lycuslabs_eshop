@@ -107,7 +107,6 @@
 
 {% block body %}
     {% set current_path = app.request.get('_route') %}
-    <h1>Dashboard</h1>
     <div class="row">
         <div class="left-dash">
             <div class="navbar_admin header_admin">
@@ -124,6 +123,7 @@
             </div>
         </div>
         <div class="right-dash">
+            <h1>Dashboard</h1>
             {% block contain %}
             {% endblock %}
         </div>

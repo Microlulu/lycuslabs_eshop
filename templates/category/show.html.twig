@@ -16,18 +16,58 @@
                 <td>{{ category.name }}</td>
             </tr>
             <tr>
-                <th>Createdat</th>
+                <th>Created at</th>
                 <td>{{ category.createdat ? category.createdat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Updatedat</th>
+                <th>Updated at</th>
                 <td>{{ category.updatedat ? category.updatedat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
-    <a class="button m-20" href="{{ path('category_edit', {'id': category.id}) }}">EDIT</a>
 
-    <a class="button_inset" href="{{ path('category_index') }}">back to list</a>
 
-    {{ include('category/_delete_form.html.twig') }}
+
+
+    <div class="button-desk">
+        <div class="buttons_panel">
+            <div class="row">
+                <a class="button_edit" href="{{ path('category_edit', {'id': category.id}) }}">EDIT</a>
+                {{ include('category/_delete_form.html.twig') }}
+                <a class="button_inset_back" href="{{ path('category_index') }}">back to list</a>
+            </div>
+        </div>
+    </div>
+
+
+    <aside class="responsive_table">
+        <br>
+        <div class="row">
+            <h4>Id</h4> - <h4>{{ category.id }}</h4>
+        </div>
+        <div class="row">
+            <h4>Name</h4> - <h4>{{ category.name }}</h4>
+        </div>
+
+        <div class="row">
+            <h4>Created at</h4> - <h4>{{ category.createdat ? category.createdat|date('Y-m-d H:i:s') : '' }}</h4>
+        </div>
+        <div class="row">
+            <h4>Updated at</h4> - <h4>{{ category.updatedat ? category.updatedat|date('Y-m-d H:i:s') : '' }}</h4>
+        </div>
+
+        <br>
+        <hr>
+
+        <div class="button-mob mt-30">
+            <div class="buttons_panel">
+                <div class="row">
+                    <a class="button_edit" href="{{ path('category_edit', {'id': category.id}) }}">EDIT</a>
+                    {{ include('category/_delete_form.html.twig') }}
+                    <a class="button_inset_back" href="{{ path('category_index') }}">back to list</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
 {% endblock %}

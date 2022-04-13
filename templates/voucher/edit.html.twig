@@ -4,6 +4,9 @@
 
 {% block body %}
     <h1>Edit Voucher</h1>
+<section>
+    <div class="card_dash">
+
 
     {{ include('voucher/_form.html.twig', {'button_label': 'Update'}) }}
 <div class="buttons_panel">
@@ -13,4 +16,6 @@
         <a class="button_inset_back" href="{{ path('voucher_index') }}">back to list</a>
     </div>
 </div>
+    </div>
+</section>
 {% endblock %}

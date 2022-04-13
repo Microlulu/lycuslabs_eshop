@@ -6,9 +6,9 @@
             <div class="footer_col">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Our services</a></li>
-                    <li><a href="#">Our team</a></li>
+                    <li><a href="#sec">About us</a></li>
+                    <li><a href="{{ path('our_services') }}">Our services</a></li>
+                    <li><a href="{{ path('team_members') }}">Our team</a></li>
                     <li><a href="#">Terms of use</a></li>
                     <li><a href="#">Terms of sales</a></li>
                     <li><a href="#">Privacy policy</a></li>
@@ -26,7 +26,7 @@
             <div class="footer_col">
                 <h4>Get help</h4>
                 <ul>
-                    <li><a href="#">Contact us</a></li>
+                    <li><a href="{{ path('contact') }}">Contact us</a></li>
                     <li><a href="#">Returns</a></li>
 
                 </ul>
@@ -37,10 +37,10 @@
                 <div class="form__icons row">
                     <!-- {# ICI je viens mettre un target="_blank pour dire d'ouvrir dans une nouvelle fenêtre #}
                     {# L'attribut rel est réglé sur "noreferrer noopener" pour éviter d'éventuelles attaques malveillantes de la part des pages qu je lient.  #} -->
-                    <a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/linkedin.svg') }}" aria-label="linkedin" alt="Linkedin" /></a>
-                    <a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/instagram.svg') }}" aria-label="intagram" alt="Instagram" /></a>
-                    <a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/twitter.svg') }}" aria-label="twitter" alt="Twitter" /></a>
-                    <a href="#" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/fb.svg') }}" aria-label="facebook" alt="Facebook" /></a>
+                    <a href="https://www.linkedin.com/in/alamgir-nasir/" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/linkedin.svg') }}" aria-label="linkedin" alt="Linkedin" /></a>
+                    <a href="https://www.instagram.com/lycuslabs_official/" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/instagram.svg') }}" aria-label="intagram" alt="Instagram" /></a>
+                    <a href="https://twitter.com/lycuslabs1" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/twitter.svg') }}" aria-label="twitter" alt="Twitter" /></a>
+                    <a href="https://www.facebook.com/Lycuslabs-110344684975440" target="_blank" rel="noopener noreffer"><img class="form__icon" src="{{ asset('images/svg/fb.svg') }}" aria-label="facebook" alt="Facebook" /></a>
                 </div>
 
             </div>

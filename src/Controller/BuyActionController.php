@@ -14,6 +14,7 @@ use App\Services\Cart;
 use App\Repository\AdresseRepository;
 use App\Services\Stripe\StripeApi\OverRidingApi;
 use App\Services\VoucherService;
+use ContainerLeuUHcx\getOrder2Service;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,13 +35,14 @@ class BuyActionController extends AbstractController
     //
     private OverRidingApi $stripeApi;
 
-    public function __construct (
+    public function __construct(
         EntityManagerInterface $entityManager,
-        VoucherRepository $voucherRepository,
-        AdresseRepository $adresseRepository,
-        Cart $cart,
-        VoucherService $voucherService,
-        OverRidingApi $stripeApi) {
+        VoucherRepository      $voucherRepository,
+        AdresseRepository      $adresseRepository,
+        Cart                   $cart,
+        VoucherService         $voucherService,
+        OverRidingApi          $stripeApi)
+    {
         $this->entityManager = $entityManager;
         $this->voucherRepository = $voucherRepository;
         $this->adresseRepository = $adresseRepository;
@@ -48,65 +50,8 @@ class BuyActionController extends AbstractController
         $this->voucherService = $voucherService;
         $this->stripeApi = $stripeApi;
     }
-    /** Pour le cart principal. (vue des produits, du coupon code ect.... */
-    #[Route('/buyAction', name: 'buy_action')]
-    public function index(Request $request): Response
-    {
 
-        // je récupère l'adresse finale de "livraison" par default
-        $adresse_final = $this->adresseRepository->findOneBy([
-            'user_id' => $this->getUser(),
-            'delivery' => true,
-        ]);
-        // s'il trouve une adresse avec true a la livraison elle passe sur la vue
-        if ($adresse_final) {
-            $adresse = $adresse_final;
-        } else {
-            // sinon il envoie à la vue l'adresse de la table user
-            $adresse = $this->getUser();
-        }
-
-        $form = $this->createForm(DiscountCartType::class);
-        $form->handleRequest($request);
-        // Je précise ici que la variable $errorCode peut être null parce que le coupon code et valide ou il peut ne pas il y avoir de coupon code du tout !
-        $errorCode = null;
-        if ($form->isSubmitted() && $form->isValid()) {
-            $couponCode = $form->get('couponCode')->getData();
-            //Je lui dit qu'il faut qu'il cherche un $code dans la colonne 'couponcode' de mon voucherRepository de ma base de donnée et qu'il faut qu'il la stock dans la variable $voucher.
-            $voucher = $this->voucherRepository->findOneBy(['couponcode' => $couponCode]);
-            if ($voucher != null && $this->voucherService->VerifyVoucher($voucher, $this->getUser())) {
-                $this->cart->prepareOrder($this->cart->getDetailCart(), $this->cart->getTotalCart(), $voucher);
-                return $this->render('buy_action/cart.html.twig', [
-                    // j'envoie à la vue buy_action dans le fichier buy_action/cart.html.twig le panier, le formulaire pour pouvoir rentrer le voucher, le voucher s'il y en a un, mais aussi le message d'erreur pour pouvoir faire ma condition
-                    // dans la vue du cart,
-                    'cart' => $this->cart,
-                    'voucher' => $voucher,
-                    'adresse' => $adresse,
-                    'errorCode' => $errorCode,
-                    'form' => $form->createView(),
-                ]);
-            } else {
-                // Je précise ici que si mon voucher n'est pas valide grace a la methode VerifyVoucher je lui mets un message d'erreur.
-                $errorCode = "This coupon is not valid.";
-            }
-
-        }
-
-        # ToDo: page payment (function qui recupère le cart et le renvoi sur la page payment?)
-        # Todo : l'order(order detail)
-        # Todo : payment
-        # ToDo : page admin php?
-        # Todo : select adresse par default?
-        $this->cart->prepareOrder($this->cart->getDetailCart(), $this->cart->getTotalCart());
-        return $this->render('buy_action/cart.html.twig', [
-            // j'envoie à la vue buy_action dans le fichier buy_action/cart.html.twig le detail du panier
-            'cart' => $this->cart,
-            'voucher' => null,
-            'adresse' => $adresse,
-            'errorCode' => $errorCode,
-            'form' => $form->createView(),
-        ]);
-    }
+    // DEBUT DES FONCTIONNALITEES PRINCIPALE POUR LE PANIER
 
     /** Pour ajouter au panier avec une quantité */
     // J'utilise la methode POST pour sécuriser et sécurisé mes données envoyées
@@ -148,32 +93,7 @@ class BuyActionController extends AbstractController
         // je retourne un message pour moi pour faire mes vérifications et dire que mon produit a bien été retiré.
     }
 
-    /*
-    #[Route('/buyAction/order_confirmation', name: 'order_cart', methods: ['GET'])]
-    public function orderCart(OrderManager $orderManager, Cart $cart): Response
-    {
-        $order = $orderManager->getOrder($cart);
-        $this->manager->persist($order);
-        $detailsCart = $cart->getDetailCart();
 
-
-        foreach ($detailsCart as $line_cart) {
-            $detailsCart = $orderManager->getDetailOrder($order, $line_cart);
-            $manager->persist($detailsCart);
-        }
-
-        $manager->flush();
-        // TO DO : rediriger vers une page apres l'achat
-        return $this->render('buy_action/order_confirmation.html.twig', [
-        'order' => $order,
-
-        ]);
-
-    }
-
-    // TO DO Modules de paiements
-
-    */
     /** Pour supprimer le panier */
     #[Route('/buyAction/deleteCart', name: 'delete_cart', methods: ['POST'])]
     public function deleteCart(OrderManager $orderManager, Cart $cart, EntityManagerInterface $manager): Response
@@ -183,97 +103,135 @@ class BuyActionController extends AbstractController
         return $this->json("cart deleted");
     }
 
+    // FIN DES FONCTIONNALITEES DU PANIER
 
-    /** Pour la page CHECKOUT (récapitulatif du panier et selection des adresses de l'utilisateur avant de payer */
-    #[Route('/buyAction/payment', name: 'payment', methods: ['GET','POST'])]
-    public function Payment( Request $request, OrderManager $orderManager, Cart $cart, EntityManagerInterface $manager): Response
+
+
+
+
+    // ICI JE VAIS FAIRE UN SYSTEME DE VALIDATION DU PANIER EN 3 ETAPES
+    // 1 ERE PAGE : PANIER STANDARD OU L'UTILISATEUR PEUT VOIR CES PRODUITS SELECTIONNES, AJOUTER UN CODE PROMO, ET MODIFIER/SUPPRIMER LES PRODUITS DE SON PANIER OU SUPPRIMER ENTIEREMENT SON CONTENU
+    // 2 EME PAGE : RECAPITULATIF DU TOTAL, DU CODE PROMO ET DES PRODUITS ET FORMULAIRE POUR SELECTIONNER SON ADRESSE DE LIVRAISON
+    // 3 EME PAGE (Dernière page) : RECAPITULATIF FINAL DE LA COMMANDE : PRODUITS, TOTAL, CODE PROMO, ADRESSE + BOUTON PAIEMENT
+    // APRES PAIEMENT : PAGE DE CONFIRMATION DE COMMANDE
+
+    /** 1ERE PAGE DU PANIER: "SHOPPING CART". (vue des produits, formulaire pour le coupon code et total) */
+    #[Route('/buyAction', name: 'buy_action')]
+    public function index(Request $request): Response
     {
+        // je récupère l'adresse finale de "livraison" par default
+        $adresse_final = $this->adresseRepository->findOneBy([
+            'user_id' => $this->getUser(),
+            'delivery' => true,
+        ]);
+        // s'il trouve une adresse avec true a la livraison elle passe sur la vue
+        if ($adresse_final) {
+            $adresse = $adresse_final;
+        } else {
+            // sinon il envoie à la vue l'adresse de la table user
+            $adresse = $this->getUser();
+        }
 
-        if (!$this->getUser()->getAdresses()->getValues()){
+        $form = $this->createForm(DiscountCartType::class);
+        $form->handleRequest($request);
+        // Je précise ici que la variable $errorCode peut être null parce que le coupon code et valide ou il peut ne pas il y avoir de coupon code du tout !
+        $errorCode = null;
+        if ($form->isSubmitted() && $form->isValid()) {
+            $couponCode = $form->get('couponCode')->getData();
+            //Je lui dit qu'il faut qu'il cherche un $code dans la colonne 'couponcode' de mon voucherRepository de ma base de donnée et qu'il faut qu'il la stock dans la variable $voucher.
+            $voucher = $this->voucherRepository->findOneBy(['couponcode' => $couponCode]);
+            if ($voucher != null && $this->voucherService->VerifyVoucher($voucher, $this->getUser())) {
+                $this->cart->prepareOrder($this->cart->getDetailCart(), $this->cart->getTotalCart(), $voucher);
+                return $this->render('buy_action/cart.html.twig', [
+                    // j'envoie à la vue buy_action dans le fichier buy_action/cart.html.twig le panier, le formulaire pour pouvoir rentrer le voucher, le voucher s'il y en a un, mais aussi le message d'erreur pour pouvoir faire ma condition
+                    // dans la vue du cart,
+                    'cart' => $this->cart,
+                    'voucher' => $voucher,
+                    'adresse' => $adresse,
+                    'errorCode' => $errorCode,
+                    'form' => $form->createView(),
+                ]);
+            } else {
+                // Je précise ici que si mon voucher n'est pas valide grace a la methode VerifyVoucher je lui mets un message d'erreur.
+                $errorCode = "This coupon is not valid.";
+            }
+
+        }
+
+        # Todo : payment
+        # Todo : select adresse par default?
+        $this->cart->prepareOrder($this->cart->getDetailCart(), $this->cart->getTotalCart());
+        return $this->render('buy_action/cart.html.twig', [
+            // j'envoie à la vue buy_action dans le fichier buy_action/cart.html.twig le detail du panier
+            'cart' => $this->cart,
+            'voucher' => null,
+            'adresse' => $adresse,
+            'errorCode' => $errorCode,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    /** 2 EME PAGE DU PANIER : CHOOSE YOUR ADDRESS
+     * (récapitulatif des produits, du total et du coupon code si il y'en a un + selection des adresses de l'utilisateur avant de payer)
+     */
+    #[Route('/buyAction/choose_address_cart', name: 'choose_address_cart', methods: ['GET', 'POST'])]
+    // Lorsque je fais un formulaire je n'oublie pas de toujours injecter la dépendance Request pour pouvoir utiliser le formulaire
+    public function Payment(Request $request, OrderManager $orderManager, Cart $cart, EntityManagerInterface $manager): Response
+    {
+        if (!$this->getUser()->getAdresses()->getValues()) {
             return $this->redirectToRoute('adresse_new');
         }
         /* Le form2 me permets de récupérer les adresses présentes dans mon profil utilisateur*/
-        $form2 =$this->createForm(OrderType::class, null, [
-            'user' =>$this->getUser()
-        ]);
-
-        return $this->render('buy_action/payment.html.twig',[
-            'form2' => $form2->createView(),
-            'cart' => $this->cart
-        ]);
-    }
-
-
-
-    /** Cette fonction est un récapitulatif de la commande et enregistre les infos dans la bases de données */
-    /* Lorsque je fais un formulaire je n'oublie pas de toujours injecter la dépendance Request pour pouvoir utiliser le formulaire */
-    #[Route('/buyAction/recap_order', name: 'recap_order', methods: ['GET','POST'])]
-    public function RecapOrder( Request $request, OrderManager $orderManager, Cart $cart, EntityManagerInterface $manager): Response
-    {
-        /* Le form2 me permets de récupérer les adresses présentes dans mon profil utilisateur*/
         $form2 = $this->createForm(OrderType::class, null, [
-            'user' =>$this->getUser()
+            'user' => $this->getUser()
         ]);
-        $form2->handleRequest($request);
 
-        if ($form2->isSubmitted() && $form2->isValid()){
-            $date_order = new \DateTime();
+        if ($form2->isSubmitted() && $form2->isValid()) {
             $delivery = $form2->get('adresses')->getData();
-            $delivery_content = $delivery->getFirstname() .' '.$delivery->getLastname();
+            $delivery_content = $delivery->getFirstname() . ' ' . $delivery->getLastname();
             // Ici j'ajoute une condition pour dire que si l'user a renseigné un numéro de téléphone ajoute le, sinon pas la peine.
-            if ($delivery->getTelephone()){
-                $delivery_content .= '<br/>'. $delivery->getTelephone();
+            if ($delivery->getTelephone()) {
+                $delivery_content .= '<br/>' . $delivery->getTelephone();
             }
-            $delivery_content .= '<br/>'. $delivery->getAdresse();
-            $delivery_content .= '<br/>'. $delivery->getZipcode().' - '. $delivery->getCity();
-            $delivery_content .= '<br/>'. $delivery->getCountry();
+            $delivery_content .= '<br/>' . $delivery->getAdresse();
+            $delivery_content .= '<br/>' . $delivery->getZipcode() . ' - ' . $delivery->getCity();
+            $delivery_content .= '<br/>' . $delivery->getCountry();
             /* Ici je mets 2 conditions pour dire que s'il y a une company, un numéro de taxe
             renseigné, ajoute les, sinon pas la peine.*/
-            if ($delivery->getCompany()){
-            $delivery_content .= '<br/>'. $delivery->getCompany();
+            if ($delivery->getCompany()) {
+                $delivery_content .= '<br/>' . $delivery->getCompany();
             }
-            if ($delivery->getVatNumber()){
-                $delivery_content .= '<br/>'. $delivery->getVatNumber();
+            if ($delivery->getVatNumber()) {
+                $delivery_content .= '<br/>' . $delivery->getVatNumber();
             }
-
-            $allInformationProduct = $cart->getOrderPrepare();
-
-            // J'enregistre la commande
-            $date = new \DateTime();
-
-            $order = new Order();
-            $order->setReference($date->format("dmy")."-".uniqid());
-            $order->setUserId($this->getUser());
-            $order->setDateOrder($date_order);
-            $order->setAdresse($delivery_content);
-            $order->SetDelivery(false);
-            $order->setVoucher($allInformationProduct['voucher']?->getDiscount());
-
-            $this->entityManager->persist($order);
-
-            $lines_items = [];
-            foreach ($allInformationProduct['products'] as $product) {
-                $detailOrder = new DetailOrder();
-
-                $detailOrder->setOrderId($order);
-                $detailOrder->setPrice($product['product']->getPrice());
-                $detailOrder->setQuantity($product['quantity']);
-                $detailOrder->setTotal($product['total']);
-                $detailOrder->setTitle($product['product']->getTitle());
-
-                $this->entityManager->persist($detailOrder);
-
-                $lines_items[] = $this->prepareIntent($detailOrder);
-            }
-            $this->entityManager->flush();
-            // J'enregistre les produits
+            // set de l'adresse et si c'est valide au moment de cliquer sur le bouton je vais sur la page suivante qui et le récapitulatif de ma commande avant achat définitif
+            $this->cart->setAdresseforOrder($delivery);
+            $this->redirectToRoute('recap_order');
         }
-        return $this->render('buy_action/add.html.twig',[
-            'cart' => $cart->getDetailCart()
+        return $this->render('buy_action/choose_address.html.twig', [
+            'form2' => $form2->createView(),
+            'data' => $this->cart->getOrderPrepare(),
+            'cart' => $this->cart->getCart()
         ]);
     }
 
-    private function prepareIntent(DetailOrder $detailOrder) {
+
+    /** 3 EME PAGE DU PANIER : ORDER SUMMARY !
+     * Cette fonction est un récapitulatif de la commande avant achat
+     * Cette fonction récupère le voucher ou le coupon de code si il y'en a un, l'adresse de l'utilisateur, la liste des produits du panier
+     */
+    #[Route('/buyAction/recap_order', name: 'recap_order', methods: ['GET', 'POST'])]
+    public function RecapOrder(Request $request, OrderManager $orderManager, Cart $cart, EntityManagerInterface $manager): Response
+    {
+        return $this->render('buy_action/recap_order.html.twig', [
+            'data' => $this->cart->getOrderPrepare(),
+            'cart' => $this->cart->getCart(),
+        ]);
+    }
+
+    private function prepareIntent(DetailOrder $detailOrder)
+    {
         return [
             'price_data' => [
                 'currency' => 'eur',
@@ -286,11 +244,70 @@ class BuyActionController extends AbstractController
         ];
     }
 
-    #[Route('/buyAction/recap_order', name: 'recap_order', methods: ['GET','POST'])]
-    public function stripeIntent(): Response {
-        $checkoutStripe = $this->stripeApi->paymentIntent($this->getUser()->getEmail(), $lines_items);
-        $response = new JsonResponse(['id' => $checkoutStripe->id]);
-        return $response;
+    /*** Cette fonction sera utilisée pour enregistrer les infos de la commande dans la base de données.
+    Elle est utilisée à la fin de toutes les actions utilisateur parce que la commande doit être enregistré au moment du paiement pour ne pas créer de problème avec les vouchers*/
+    #[Route('/buyAction/valid_order', name: 'valid_order', methods: ['GET', 'POST'])]
+    public function stripeIntent()
+    {
+        /*
+        $allInformationProduct = $cart->getOrderPrepare();
+        // J'enregistre la commande
+        $date_order = new \DateTime();
+        // J'enregistre les produits dans une nouvelle commande
+        $order = new Order();
+        $order->setReference($date_order->format("dmy")."-".uniqid());
+        $order->setUserId($this->getUser());
+        $order->setDateOrder($date_order);
+        $order->setAdresse($delivery_content);
+        $order->SetDelivery(false);
+        $order->setVoucher($allInformationProduct['voucher']?->getDiscount());
+        // Je préenregistre dans la base de donnée
+        $this->entityManager->persist($order);
+
+        $lines_items = [];
+        foreach ($allInformationProduct['products'] as $product) {
+            // Je crée un nouveau détail de commande a chaque nouvelle commande qui reprendra les infos principales
+            // L'id de l'order, le prix de chaque élément(produit), la quantité, le total final et le nom du produit
+            $detailOrder = new DetailOrder();
+
+            $detailOrder->setOrderId($order);
+            $detailOrder->setPrice($product['product']->getPrice());
+            $detailOrder->setQuantity($product['quantity']);
+            $detailOrder->setTotal($product['total']);
+            $detailOrder->setTitle($product['product']->getTitle());
+            // Je préenregistre dans la base de donnée
+            $this->entityManager->persist($detailOrder);
+
+            $lines_items[] = $this->prepareIntent($detailOrder);
+        }
+        // J'envoie toutes les données dans la base de donnée (j'enregistre order et orderdetail)
+        $this->entityManager->flush();*/
     }
+
+    /*
+// Après paiement, redirection sur une page de confirmation d'achat/commande
+#[Route('/buyAction/order_confirmation', name: 'confirm_order', methods: ['GET'])]
+public function orderCart(OrderManager $orderManager, Cart $cart): Response
+{
+    $order = $orderManager->getOrder($cart);
+    $this->manager->persist($order);
+    $detailsCart = $cart->getDetailCart();
+
+    foreach ($detailsCart as $line_cart) {
+        $detailsCart = $orderManager->getDetailOrder($order, $line_cart);
+        $manager->persist($detailsCart);
+    }
+
+    $manager->flush();
+    // TO DO : rediriger vers une page apres l'achat
+    return $this->render('buy_action/order_confirmation.html.twig', [
+    'order' => $order,
+
+    ]);
+
 }
+*/
+}
+
+
 

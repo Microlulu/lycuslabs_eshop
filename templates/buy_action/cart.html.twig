@@ -17,7 +17,7 @@
                                 {{ item ['total'] }} €
                             </h4>
                             <label class="qty">Quantity : x</label>
-                            <input id="updateQuantity{{ key }}" type="number" value="{{ item ['quantity'] }}">
+                            <input aria-label="Quantity" id="updateQuantity{{ key }}" type="number" value="{{ item ['quantity'] }}">
                             <button onclick="onUpdateButton('{{ path('modify_quantity') }}', {{ item.product.id }}, 'updateQuantity{{ key }}')"
                                     aria-label="update" class="update">UPDATE
                             </button>
@@ -52,9 +52,9 @@
                 {% if voucher is null %}
                 <p class="total_price"><span>TOTAL</span> <span>{{ cart.totalCart }} €</span></p>
                 {% else %}
-                    <p class="total_price"><span>TOTAL</span> <span>{{ cart.totalCart - (cart.totalCart * voucher.discount / 100) }}</span></p>
+                    <p class="total_price"><span>TOTAL</span> <span>{{ cart.totalCart - (cart.totalCart * voucher.discount / 100) }}€</span></p>
                 {% endif %}
-                <a class="button" href="{{ path('payment') }}">Checkout</a>
+                <a class="button" href="{{ path('choose_address_cart') }}">Checkout</a>
             </div>
             <button class="button_delete mt-20" onclick="onDeleteCart('{{ path('delete_cart') }}')">DELETE CART</button>
             </div>

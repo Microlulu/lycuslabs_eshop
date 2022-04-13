@@ -308,10 +308,12 @@ nav .logo{
     background: var(--whitebg);
     z-index: 2000;
 }
+
 .mainMenu li:hover > ul {
     top:70px ;
+    animation-duration: 2s;
+    animation-timing-function: ease;
     opacity: 1;
-
 }
 .mainMenu ul li{
     margin: 0;

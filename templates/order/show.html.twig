@@ -54,7 +54,53 @@
             <tr>
         </tbody>
     </table>
-
-    <a class="button_inset" href="{{ path('order_index') }}">back to list</a>
+    <div class="button-desk">
+        <a class="button_inset" href="{{ path('order_index') }}">back to list</a>
+    </div>
 </div>
+
+
+    <aside class="responsive_table">
+            <br>
+            <div class="row">
+                <h4>Id</h4> - <h4>{{ order.id }}</h4>
+            </div>
+            <div class="row">
+                <h4>Fullname</h4> - <h4>{{ order.user.fullname }}</h4>
+            </div>
+            <div class="row">
+                <h4>Vat number</h4> - <h4>{{ order.vatNumber }}</h4>
+            </div>
+            <div class="row">
+                <h4>Reference</h4><h4>{{ order.reference }}</h4>
+            </div>
+            <div class="row">
+                <h4>Date_order</h4><h4>{{ order.dateOrder ? order.dateOrder|date('Y-m-d H:i:s') : '' }}</h4>
+            </div>
+            <div class="row">
+                <h4>Adresse</h4> - <h4>{{ order.adresse }}</h4>
+            </div>
+        <div class="row">
+            <h4>Zipcode</h4> - <h4>{{ order.zipcode }}</h4>
+        </div>
+        <div class="row">
+            <h4>City</h4> - <h4>{{ order.city }}</h4>
+        </div>
+        <div class="row">
+            <h4>Country</h4> - <h4>{{ order.country }}</h4>
+        </div>
+        <div class="row">
+            <h4>Telephone</h4> - <h4>{{ order.telephone }}</h4>
+        </div>
+        <div class="row">
+            <h4>Total</h4> - <h4>{{ order.total }}</h4>
+        </div>
+
+            <br>
+            <hr>
+
+        <div class="button-mob mt-30">
+            <a class="button_inset" href="{{ path('order_index') }}">back to list</a>
+        </div>
+    </aside>
 {% endblock %}

@@ -117,7 +117,7 @@ class ServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/services_delete{id}', name: 'services_delete', methods: ['POST'])]
+    #[Route('/services_delete{id}', name: 'services_delete', methods: ['GET','POST'])]
     public function delete(Request $request, Services $service, EntityManagerInterface $entityManager): Response
     {
         $entityManager->remove($service);

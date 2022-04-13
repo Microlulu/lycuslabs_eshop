@@ -73,7 +73,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user_delete{id}', name: 'user_delete', methods: ['POST'])]
+    #[Route('/user_delete{id}', name: 'user_delete', methods: ['GET','POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {

@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th>Photo</th>
-                <td><img src="{{ asset('images/team/' ~ team.photo) }}" alt="{{ team.shortcut }}" style="width:100px"></td>
+                <td><img src="{{ asset('images/team/' ~ team.photo) }}" alt="{{ team.shortcut }}" style="width:90px"></td>
             </tr>
             <tr>
                 <th>Job</th>
@@ -33,9 +33,56 @@
             </tr>
         </tbody>
     </table>
-    <a class="button m-20" href="{{ path('team_edit', {'id': team.id}) }}">EDIT</a>
 
-    <a class="button_inset" href="{{ path('team_index') }}">back to list</a>
 
-    {{ include('team/_delete_form.html.twig') }}
+    <div class="button-desk">
+        <div class="buttons_panel">
+            <div class="row">
+                <a class="button_edit" href="{{ path('team_edit', {'id': team.id}) }}">EDIT</a>
+
+                <a class="button_inset_back" href="{{ path('team_index') }}">back to list</a>
+
+                {{ include('team/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+
+
+    <aside class="responsive_table">
+        <br>
+        <div class="row">
+            <h4>Id</h4> - <h4>{{ team.id }}</h4>
+        </div>
+        <div class="row">
+            <h4>Firstname</h4> - <h4>{{ team.firstname }}</h4>
+        </div>
+        <div class="row">
+            <h4>Lastname</h4> - <h4>{{ team.lastname }}</h4>
+        </div>
+
+        <div class="row">
+            <img src="{{ asset('images/team/' ~ team.photo) }}" alt="{{ team.shortcut }}" style="width:150px">
+        </div>
+        <div class="row">
+            <h4>Job</h4> - <h4>{{ team.job }}</h4>
+        </div>
+        <div class="row" style="margin: 0 40px;">
+            <h4>Description</h4> - <h4>{{ team.description }}</h4>
+        </div>
+
+        <br>
+        <hr>
+
+        <div class="button-mob mt-30">
+            <div class="buttons_panel">
+                <div class="row">
+                    <a class="button_edit" href="{{ path('team_edit', {'id': team.id}) }}">EDIT</a>
+                    {{ include('team/_delete_form.html.twig') }}
+
+                    <a class="button_inset_back" href="{{ path('team_index') }}">back to list</a>
+                </div>
+            </div>
+
+        </div>
+    </aside>
 {% endblock %}

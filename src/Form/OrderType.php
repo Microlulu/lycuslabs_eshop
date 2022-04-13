@@ -29,7 +29,7 @@ class OrderType extends AbstractType
         ->add('submit', SubmitType::class, [
             'label' => "Checkout",
             'attr' => [
-                'class' => 'button'
+                'class' => 'button mt-20'
             ]
         ]);
 

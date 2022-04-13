@@ -14,7 +14,7 @@
         <tr>
             <th>Image</th>
             <td><img src="{{ asset('images/carousel/' ~ carousel.image) }}" alt="{{ carousel.shortcut }}"
-                     style="width:200px"></td>
+                     style="width:90px"></td>
         </tr>
         <tr>
             <th>Title</th>
@@ -26,13 +26,52 @@
         </tr>
         </tbody>
     </table>
-    <div class="buttons_panel">
-    <div class="row">
-        <a class="button_edit" href="{{ path('carousel_edit', {'id': carousel.id}) }}">EDIT</a>
 
-    {{ include('carousel/_delete_form.html.twig') }}
 
-    <a class="button_inset_back" href="{{ path('carousel_index') }}">BACK TO LIST</a>
+
+    <div class="button-desk">
+        <div class="buttons_panel">
+            <div class="row">
+                <a class="button_edit" href="{{ path('carousel_edit', {'id': carousel.id}) }}">EDIT</a>
+
+                {{ include('carousel/_delete_form.html.twig') }}
+
+                <a class="button_inset_back" href="{{ path('carousel_index') }}">BACK TO LIST</a>
+            </div>
+        </div>
     </div>
-    </div>
+
+
+    <aside class="responsive_table">
+        <br>
+        <div class="row">
+            <h4>Id</h4> - <h4>{{ carousel.id }}</h4>
+        </div>
+        <div class="row">
+            <h4>Title</h4> - <h4>{{ carousel.title }}</h4>
+        </div>
+
+        <div class="row">
+            <img src="{{ asset('images/carousel/' ~ carousel.image) }}" alt="{{ carousel.shortcut }}"
+                 style="width:150px">
+        </div>
+        <div class="row">
+            <h4>Text</h4> - <h4>{{ carousel.text }}</h4>
+        </div>
+
+        <br>
+        <hr>
+
+        <div class="button-mob mt-30">
+            <div class="buttons_panel">
+                <div class="row">
+                    <a class="button_edit" href="{{ path('carousel_edit', {'id': carousel.id}) }}">EDIT</a>
+
+                    {{ include('carousel/_delete_form.html.twig') }}
+
+                    <a class="button_inset_back" href="{{ path('carousel_index') }}">BACK TO LIST</a>
+                </div>
+            </div>
+        </div>
+    </aside>
 {% endblock %}

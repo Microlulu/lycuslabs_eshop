@@ -4,7 +4,9 @@
 {% block title %}Categories{% endblock %}
 
 {% block contain %}
-    <h2>Categories</h2>
+<article class="dash_contain">
+
+<h2>Categories</h2>
     <table class="table">
         <thead>
             <tr>
@@ -25,6 +27,7 @@
                 <td>
                     <a class="button_dash" href="{{ path('category_show', {'id': category.id}) }}">SHOW</a>
                     <a class="button_dash" href="{{ path('category_edit', {'id': category.id}) }}">EDIT</a>
+                    <a href="{{ path('category_delete', {'id': category.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
                 </td>
             </tr>
         {% else %}
@@ -34,6 +37,41 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="button-desk">
+        <a class="button" href="{{ path('category_new') }}">Create new</a>
+    </div>
+</article>
+    <h4 class="mobile_responsive">
+        Please use a Desktop version to access to your admin panel !
+    </h4>
 
-    <a class="button" href="{{ path('category_new') }}">Create new</a>
+    <aside class="responsive_table">
+        {% for category in categories %}
+            <br>
+            <div class="row">
+                <h4>Id</h4> - <h4>{{ category.id }}</h4>
+            </div>
+            <div class="row">
+               <h4>Name</h4> - <h4>{{ category.name }}</h4>
+            </div>
+            <div class="row">
+                <h4>Created at</h4> - <h4>{{ category.createdat ? category.createdat|date('Y-m-d H:i:s') : '' }}</h4>
+            </div>
+            <div class="row">
+                <h4>Updated at</h4> - <h4>{{ category.updatedat ? category.updatedat|date('Y-m-d H:i:s') : '' }}</h4>
+            </div>
+            <div class="row">
+                <h4>Actions</h4> - <a class="button_dash" href="{{ path('category_show', {'id': category.id}) }}">SHOW</a> -
+                <a class="button_dash" href="{{ path('category_edit', {'id': category.id}) }}">EDIT</a> -
+                <a href="{{ path('category_delete', {'id': category.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
+            </div>
+            <br>
+            <hr>
+        {% else %}
+            <p>There is no categories registered yet !</p>
+        {% endfor %}
+        <div class="button-mob mt-30">
+            <a class="button" href="{{ path('category_new') }}">Create new</a>
+        </div>
+    </aside>
 {% endblock %}

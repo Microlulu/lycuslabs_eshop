@@ -33,27 +33,76 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td><img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.shortcut }}" style="width:200px"></td>
+                <td><img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.shortcut }}" style="width:100px;"></td>
             </tr>
             <tr>
-                <th>Createdat</th>
+                <th>Created at</th>
                 <td>{{ product.createdat ? product.createdat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Updatedat</th>
+                <th>Updated at</th>
                 <td>{{ product.updatedat ? product.updatedat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
 
         </tbody>
     </table>
-<div class="buttons_panel">
-    <div class="row">
-    <a class="button_edit" href="{{ path('product_edit', {'id': product.id}) }}">EDIT</a>
-        {{ include('product/_delete_form.html.twig') }}
 
-    <a class="button_inset_back" href="{{ path('product_index') }}">back to list</a>
+    <div class="button-desk">
+        <div class="buttons_panel">
+            <div class="row">
+                <a class="button_edit" href="{{ path('product_edit', {'id': product.id}) }}">EDIT</a>
+                {{ include('product/_delete_form.html.twig') }}
 
-
+                <a class="button_inset_back" href="{{ path('product_index') }}">back to list</a>
+            </div>
+        </div>
     </div>
-</div>
+
+
+    <aside class="responsive_table">
+        <br>
+        <div class="row">
+            <h4>Id</h4> - <h4>{{ product.id }}</h4>
+        </div>
+        <div class="row">
+            <h4>Title</h4> - <h4>{{ product.title }}</h4>
+        </div>
+        <div class="row">
+            <h4>Shortcut</h4> - <h4>{{ product.shortcut }}</h4>
+        </div>
+        <div class="row" style="margin: 0 40px">
+            <h4>Description</h4> - <h4>{{ product.description }}</h4>
+        </div>
+        <br>
+        <div class="row" style="margin: 0 40px">
+            <h4>Description Additional</h4> - <h4>{{ product.descriptionadd }}</h4>
+        </div>
+
+        <div class="row">
+            <h4>Price</h4> - <h4>{{ product.price }}</h4>
+        </div>
+        <div class="row">
+            <img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.shortcut }}" style="width:150px;">
+        </div>
+        <div class="row">
+            <h4>Created at</h4> - <h4>{{ product.createdat ? product.createdat|date('Y-m-d H:i:s') : '' }}</h4>
+        </div>
+        <div class="row">
+            <h4>Updated at</h4> - <h4>{{ product.updatedat ? product.updatedat|date('Y-m-d H:i:s') : '' }}</h4>
+        </div>
+
+        <br>
+        <hr>
+
+        <div class="button-mob mt-30">
+            <div class="buttons_panel">
+                <div class="row">
+                    <a class="button_edit" href="{{ path('product_edit', {'id': product.id}) }}">EDIT</a>
+                    {{ include('product/_delete_form.html.twig') }}
+
+                    <a class="button_inset_back" href="{{ path('product_index') }}">back to list</a>
+                </div>
+            </div>
+        </div>
+    </aside>
 {% endblock %}

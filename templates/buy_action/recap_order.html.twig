@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order Summary{% endblock %}
+
+{% block body %}
+
+    <h1>Order Summary</h1>
+    <article class="checkout_container">
+        <h3 class="info">Please review all your information before the checkout !</h3>
+
+
+        <h3 class="mt-20">MY ADDRESS</h3>
+        {% for adresse in data.adresse %}
+            {{ adresse|raw }}
+            <h3>{{ adresse.firstName }}  {{ adresse.lastName }}</h3>
+            <p>{{ adresse.company }}</p>
+            <p>{{ adresse.vatnumber }}</p>
+            <p>{{ adresse.adresse }}</p>
+            <p>{{ adresse.zipcode }}</p>
+            <p>{{ adresse.city }}</p>
+            <p>{{ adresse.country }}</p>
+            {% endfor %}
+
+        <h3 class="mt-20">MY PRODUCTS</h3>
+            <table>
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+            </tr>
+                {% for key,product in data.products %}
+            <tr>
+                <td>{{ product.product.title }} </td>
+                <td>x {{ product.quantity}}</td>
+                <td>{{ product.total}} €</td>
+            </tr>
+                {% endfor %}
+            </table>
+        <p class="mt-20">Subtotal : {{ data.total }} €</p>
+        {% if data.voucher is not null %}
+            <p class="codeValid">Coupon Code : {{ data.voucher.name }} -{{ data.voucher.discount }}</p>
+            <hr>
+            <p class="total_price mt-20"> TOTAL : {{ data.total - (data.total * data.voucher.discount / 100) }}€</p>
+        {% else %}
+            <p class="total_price mt-20">TOTAL {{ data.total }} € </p>
+        {% endif %}
+        <form action="" method="POST">
+            <button class="button mt-20" type="submit" id="checkout-button">PAY</button>
+        </form>
+    </article>
+    {% block footer %}
+        {% include 'footer.html.twig' %}
+    {% endblock %}
+{% endblock %}

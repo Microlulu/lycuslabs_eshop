@@ -4,7 +4,9 @@
 {% endblock %}
 
 {% block contain %}
-	<h2>Voucher index</h2>
+<article class="dash_contain">
+
+<h2>Voucher index</h2>
 	{% for message in app.flashes('message') %}
 		<div class="alert alert-warning">
 			{{ message }}
@@ -38,6 +40,8 @@
 						<a class="button_dash" href="{{ path('voucher_edit', {'id': voucher.id}) }}">
 							EDIT
 						</a>
+						<a href="{{ path('voucher_delete', {'id': voucher.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
+
 					</td>
 				</tr>
 			{% else %}
@@ -47,6 +51,54 @@
 			{% endfor %}
 		</tbody>
 	</table>
+	<div class="button-desk">
+		<a class="button" href="{{ path('voucher_new') }}">Create new</a>
+	</div>
+</article>
+	<h4 class="mobile_responsive">
+		Please use a Desktop version to access to your admin panel !
+	</h4>
 
-	<a class="button" href="{{ path('voucher_new') }}">Create new</a>
+	<aside class="responsive_table">
+		{% for voucher in vouchers %}
+			<br>
+			<div class="row">
+				<h4>Id</h4> - <h4>{{ voucher.id }}</h4>
+			</div>
+			<div class="row">
+				<h4>Discount</h4> - <h4>{{ voucher.discount }}</h4>
+			</div>
+			<div class="row">
+				<h4>Name</h4> - <h4>{{ voucher.name }}</h4>
+			</div>
+			<div class="row">
+				<h4>Date_start</h4><h4>{{ voucher.dateStart ? voucher.dateStart|date('Y-m-d H:i:s') : '' }}</h4>
+			</div>
+			<div class="row">
+				<h4>Date_end</h4><h4>{{ voucher.dateEnd ? voucher.dateEnd|date('Y-m-d H:i:s') : '' }}</h4>
+			</div>
+			<div class="row">
+				<h4>Coupon Code</h4> - <h4>{{ voucher.couponcode }}</h4>
+			</div>
+
+			<div class="row">
+				<h4>Actions</h4> - <a class="button_dash" href="{{ path('voucher_show', {'id': voucher.id}) }}">
+					SHOW
+				</a> -
+				<a class="button_dash" href="{{ path('voucher_edit', {'id': voucher.id}) }}">
+					EDIT
+				</a> -
+				<a href="{{ path('voucher_delete', {'id': voucher.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
+
+			</div>
+			<br>
+			<hr>
+		{% else %}
+			<p>There is no voucher registered yet !</p>
+		{% endfor %}
+		<div class="button-mob mt-30">
+			<a class="button" href="{{ path('voucher_new') }}">Create new</a>
+		</div>
+	</aside>
 {% endblock %}
+

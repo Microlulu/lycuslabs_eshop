@@ -71,7 +71,7 @@ class VoucherController extends AbstractController
         ]);
     }
 
-    #[Route('/voucher_delete{id}', name: 'voucher_delete', methods: ['POST'])]
+    #[Route('/voucher_delete{id}', name: 'voucher_delete', methods: ['GET','POST'])]
     public function delete(Request $request, Voucher $voucher, EntityManagerInterface $entityManager): Response
     {
 

@@ -29,12 +29,48 @@
             </tr>
         </tbody>
     </table>
-<div class="buttons_panel">
-    <div class="row">
-   <!-- <a class="button_edit" href="{{ path('user_edit', {'id': user.id}) }}">EDIT</a> -->
-        {{ include('user/_delete_form.html.twig') }}
 
-    <a class="button_inset_back" href="{{ path('user_index') }}">back to list</a>
+    <div class="button-desk">
+        <div class="buttons_panel">
+            <div class="row">
+                <!-- <a class="button_edit" href="{{ path('user_edit', {'id': user.id}) }}">EDIT</a> -->
+                {{ include('user/_delete_form.html.twig') }}
+
+                <a class="button_inset_back" href="{{ path('user_index') }}">back to list</a>
+            </div>
+        </div>
     </div>
-</div>
+
+
+    <aside class="responsive_table">
+        <br>
+        <div class="row">
+            <h4>Id</h4> - <h4>{{ user.id }}</h4>
+        </div>
+        <div class="row">
+            <h4>Email</h4> - <h4>{{ user.email }}</h4>
+        </div>
+        <div class="row">
+            <h4>Roles</h4> - <h4>{{ user.roles ? user.roles|json_encode : '' }}</h4>
+        </div>
+        <div class="row">
+            <h4>Firstname</h4> - <h4>{{ user.firstname }}</h4>
+        </div>
+        <div class="row">
+            <h4>Lastname</h4><h4>{{ user.lastname }}</h4>
+        </div>
+
+        <br>
+        <hr>
+        <div class="button-mob mt-30">
+            <div class="buttons_panel">
+                <div class="row">
+                    <!-- <a class="button_edit" href="{{ path('user_edit', {'id': user.id}) }}">EDIT</a> -->
+                    {{ include('user/_delete_form.html.twig') }}
+
+                    <a class="button_inset_back" href="{{ path('user_index') }}">back to list</a>
+                </div>
+            </div>
+        </div>
+    </aside>
 {% endblock %}

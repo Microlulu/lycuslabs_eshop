@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choose your address{% endblock %}
+
+{% block body %}
+    <div class="wrapper_cart">
+        <h1>Choose your address</h1>
+        <div class="project">
+            <div class="container_content_cart">
+                    <p><span>Subtotal</span> <span class="right_side">{{ data.total }}€</span></p>
+                    <hr>
+                {% if data.voucher is not null %}
+
+                    <p class="codeValid">Coupon Code : {{ data.voucher.name }} <span
+                                class="right_side"> -{{ data.voucher.discount }}% </span></p>
+                    <hr>
+                    <p class="total_price mt-20"><span>TOTAL</span> <span
+                                class="right_side">{{ data.total - (data.total * data.voucher.discount / 100) }}€</span>
+                    </p>
+                    {% else %}
+                        <p class="total_price mt-20"><span>TOTAL</span> <span
+                                    class="right_side">{{ data.total }} €</span></p>
+                    {% endif %}
+
+                    <hr>
+                    <div class="container_delivery">
+                        <h3>DELIVERY</h3>
+                        <div class="small_card">
+                            {% set formhtml %}
+                                {{ form_start(form2) }}
+                                {{ form_end(form2) }}
+                            {% endset %}
+                            {# Avec le replace je viens remplacer les [br] de ma public function dans mon entity AdressesType par des
+                    </br> html et le raw veut dire interprete moi le html #}
+                            {{ formhtml|replace({'[br]' : '</br>'})|raw }}
+
+                        </div>
+                    </div>
+            </div>
+
+            {# COTE DROIT DU PANIER #}
+            <div class="right_bar_products">
+                <h3>SUMMARY</h3>
+                {% if data|length > 0 %}
+                    {% for product in data.products %}
+
+                        <div class="box_payment">
+                            <img src="{{ asset('images/products/' ~ product.product.image) }}"
+                                 alt="{{ product.product.shortcut }}">
+                            <div class="content_payment">
+
+                                <div class="row">
+                                    <h4>{{ product['product'].title }} </h4>
+                                    <h5 class="nb_Prod">x {{ product ['quantity'] }}</h5>
+                                </div>
+                                <h4 class="left">{{ product ['total'] }} €</h4>
+
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+                {% else %}
+                    <hr>
+                    <h4 class="mt-20">Your cart is empty !</h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% block footer %}
+        {% include 'footer.html.twig' %}
+    {% endblock %}
+{% endblock %}

@@ -3,8 +3,10 @@
 {% block title %}Edit Carousel{% endblock %}
 
 {% block body %}
-    <h1>Edit Carousel</h1>
 
+<h1>Edit Carousel</h1>
+<section>
+    <div class="card_dash">
     {{ include('carousel/_form.html.twig', {'button_label': 'Update'}) }}
     <div class="buttons_panel">
         <div class="row">
@@ -12,6 +14,8 @@
 
     <a class= "button_inset_back" href="{{ path('carousel_index') }}">back to list</a>
 
+        </div>
     </div>
-    </div>
+        </div>
+</section>
 {% endblock %}

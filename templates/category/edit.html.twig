@@ -4,10 +4,18 @@
 
 {% block body %}
     <h1>Edit Category</h1>
+<section>
+    <div class="card_dash">
 
     {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+<div class="buttons_panel">
+    <div class="row">
+        {{ include('category/_delete_form.html.twig') }}
 
-    <a class= "button_inset" href="{{ path('category_index') }}">back to list</a>
+        <a class= "button_inset_back" href="{{ path('category_index') }}">back to list</a>
 
-    {{ include('category/_delete_form.html.twig') }}
+    </div>
+</div>
+    </div>
+</section>
 {% endblock %}

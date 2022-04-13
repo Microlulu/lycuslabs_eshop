@@ -3,7 +3,9 @@
 {% block title %}Products{% endblock %}
 
 {% block contain %}
-        <h2>Products</h2>
+<article class="dash_contain">
+
+<h2>Products</h2>
 
         <table class="table">
             <thead>
@@ -29,12 +31,14 @@
                     <td>{{ product.description |length > 50 ? product.description|slice(0, 50) ~ '...' : product.description }}</td>
                     <td>{{ product.descriptionadd |length > 50 ? product.descriptionadd|slice(0, 50) ~ '...' : product.descriptionadd}}</td>
                     <td>{{ product.price }} €</td>
-                    <td><img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.shortcut }}" style="width:80px"></td>
+                    <td><img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.shortcut }}" style="width: 90px;"></td>
                     <td>{{ product.createdat ? product.createdat|date('Y-m-d H:i:s') : '' }}</td>
                     <td>{{ product.updatedat ? product.updatedat|date('Y-m-d H:i:s') : '' }}</td>
                     <td>
                         <a class="button_dash" href="{{ path('product_show', {'id': product.id}) }}">SHOW</a>
                         <a class="button_dash" href="{{ path('product_edit', {'id': product.id}) }}">EDIT</a>
+                        <a href="{{ path('product_delete', {'id': product.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
+
                     </td>
                 </tr>
             {% else %}
@@ -44,6 +48,58 @@
             {% endfor %}
             </tbody>
         </table>
-
+<div class="button-desk">
         <a class="button" href="{{ path('product_new') }}">Create new</a>
+</div>
+</article>
+    <h4 class="mobile_responsive">
+        Please use a Desktop version to access to your admin panel !
+    </h4>
+
+    <aside class="responsive_table">
+        {% for product in products %}
+            <br>
+            <div class="row">
+                <h4>Id</h4> - <h4>{{ product.id }}</h4>
+            </div>
+            <div class="row">
+                <h4>Title</h4> - <h4>{{ product.title }}</h4>
+            </div>
+            <div class="row">
+                <h4>Shortcut</h4> - <h4>{{ product.shortcut }}</h4>
+            </div>
+            <div class="row" style="margin: 0 40px">
+                <h4>Description</h4> - <h4>{{ product.description |length > 50 ? product.description|slice(0, 50) ~ '...' : product.description }}</h4>
+            </div>
+            <div class="row" style="margin: 0 40px">
+                <h4>Description additional</h4> - <h4>{{ product.descriptionadd |length > 50 ? product.descriptionadd|slice(0, 50) ~ '...' : product.descriptionadd}}</h4>
+            </div>
+            <div class="row">
+                <h4>Price</h4> - <h4>{{ product.price }} €</h4>
+            </div>
+            <div class="row">
+                <img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.shortcut }}" style="width: 150px;">
+            </div>
+            <div class="row">
+                <h4>Created at</h4> - <h4>{{ product.createdat ? product.createdat|date('Y-m-d H:i:s') : '' }}</h4>
+            </div>
+            <div class="row">
+                <h4>Updated at</h4> - <h4>{{ product.updatedat ? product.updatedat|date('Y-m-d H:i:s') : '' }}</h4>
+            </div>
+            <div class="row">
+                <h4>Actions</h4> -  <a class="button_dash" href="{{ path('product_show', {'id': product.id}) }}">SHOW</a> -
+                <a class="button_dash" href="{{ path('product_edit', {'id': product.id}) }}">EDIT</a> -
+                <a href="{{ path('product_delete', {'id': product.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
+
+            </div>
+            <br>
+            <hr>
+        {% else %}
+            <p>There is no categories registered yet !</p>
+        {% endfor %}
+        <div class="button-mob mt-30">
+            <a class="button" href="{{ path('product_new') }}">Create new</a>
+        </div>
+    </aside>
 {% endblock %}
+

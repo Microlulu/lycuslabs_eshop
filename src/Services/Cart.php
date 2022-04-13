@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entity\Adresse;
 use App\Entity\Voucher;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -9,8 +10,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class Cart
 {
-    private $session;
-    private $productRepository;
+    private SessionInterface $session;
+    private ProductRepository $productRepository;
 
     public function __construct(SessionInterface $session, ProductRepository $productRepository)
     {
@@ -153,6 +154,7 @@ class Cart
                     'total' => $quantity * $product->getPrice()
                 ];
             }
+
         }
         //je renvoie le nouveau panier avec la quantité, les produits et le prix
         return $detail_cart;
@@ -200,9 +202,17 @@ class Cart
         $data = [
             'products' => $productList,
             'total' => $total,
-            'voucher' => $voucher
+            'voucher' => $voucher,
+            'adresse'=> null
         ];
         $this->setOrderPrepare($data);
+    }
+
+    public function setAdresseforOrder($adresse)
+    {
+        $prepareOrder = $this->getOrderPrepare();
+        $prepareOrder['adresse'] = $adresse;
+        $this->setOrderPrepare($prepareOrder);
     }
 }
 

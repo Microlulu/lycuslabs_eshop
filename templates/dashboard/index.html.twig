@@ -1,16 +1,18 @@
 {% extends 'base_admin.html.twig' %}
 
 {% block title %}Dashboard Admin!{% endblock %}
-
 {% block contain %}
+    <article class="dash_contain">
     <h3>Hello, {{ app.user.firstName }} !</h3>
-    <h4>Here you can manage the website!
-
+    <h4 class="desktop-responsive">Here you can manage the website!
         You can see all users and orders placed.
         You can generate discount codes and create and edit categories, products, services, team members, and carousel images. </h4>
+        <h4 class="mobile_responsive ">
+                Please use a Desktop version to access to your admin panel !
+        </h4>
+    </article>
+
 {% endblock %}
 
-{% block footer %}
-    {% include 'footer.html.twig' %}
-{% endblock %}
+
 
