@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ImagesServices index{% endblock %}
+
+{% block body %}
+    <h1>ImagesServices index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Alt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for images_service in images_services %}
+            <tr>
+                <td>{{ images_service.id }}</td>
+                <td>{{ images_service.image }}</td>
+                <td>{{ images_service.alt }}</td>
+                <td>
+                    <a href="{{ path('images_services_show', {'id': images_service.id}) }}">show</a>
+                    <a href="{{ path('images_services_edit', {'id': images_service.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('images_services_new') }}">Create new</a>
+{% endblock %}

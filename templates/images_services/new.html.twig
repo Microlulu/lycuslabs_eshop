@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ImagesServices{% endblock %}
+
+{% block body %}
+    <h1>Create new ImagesServices</h1>
+
+    {{ include('images_services/_form.html.twig') }}
+
+    <a href="{{ path('images_services_index') }}">back to list</a>
+{% endblock %}

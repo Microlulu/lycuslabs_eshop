@@ -1,6 +1,6 @@
 /* Extra small phones */
 @media only screen
-and (min-device-width: 319px)
+and (min-device-width: 280px)
 and (max-device-width: 640px)
 and (-webkit-min-device-pixel-ratio: 2) {
     /* PROFILE */
@@ -21,6 +21,34 @@ and (-webkit-min-device-pixel-ratio: 2) {
     }
     .btn_row{
         flex-direction: column;
+    }
+    /*HOME*/
+    .txt-presentation-right{
+        text-align: center;
+        justify-content: center;
+        width: 271px;
+    }
+    .txt-presentation-left{
+        text-align: center;
+        justify-content: center;
+        width: 271px;
+    }
+    .skill {
+        width: 100%;
+    }
+    .presentation_content {
+        justify-content: center;
+        align-items: center;
+        /* display: flex; */
+        flex-wrap: wrap;
+    }
+    .img_presentation {
+        width: 165px;
+        margin-right: 0;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        border-radius: 50%;
+        box-shadow: 0 0 2px var(--darkgrey), 0 0 0 5px var(--extrawhite);
     }
     /*CAROUSEL*/
     .slider{
@@ -231,6 +259,25 @@ and (-webkit-min-device-pixel-ratio: 1) {
     .slider{
         display: none !important;
     }
+    /*HOME*/
+    .skill {
+        margin-left: 0;
+        width: 100%;
+    }
+    .txt-presentation-right {
+        width: 80%;
+        margin: 10% 0 10% 0;
+        text-align: center;
+    }
+    .txt-presentation-left {
+        width: 80%;
+        margin: 10% 0 10% 0;
+        text-align: center;
+    }
+    .img_presentation {
+        width: 337px;
+        margin: 8% 0 5% 0;
+    }
     /* DASHBOARD ADMIN*/
     .left-dash{
         width: 100%;
@@ -396,6 +443,21 @@ and (-webkit-min-device-pixel-ratio: 1) {
     .container_responsive_profile p{
         margin-bottom: 10px;
     }
+    /* HOME*/
+    .txt-presentation-right {
+        width: 80%;
+        margin: 10% 0 10% 0;
+        text-align: center;
+    }
+    .txt-presentation-left {
+        width: 80%;
+        margin: 10% 0 10% 0;
+        text-align: center;
+    }
+    .img_presentation {
+        width: 337px;
+        margin: 5% 0 5% 0;
+    }
     /* DASHBOARD ADMIN*/
     .left-dash{
         width: 35%;
@@ -434,6 +496,11 @@ and (-webkit-min-device-pixel-ratio: 1) {
     /* CART */
     .wrapper_cart{
         max-width: 95% ;
+    }
+    /*HOME*/
+    .skill {
+        width: 80%;
+        margin: 2% auto;
     }
     /* PRODUCTS */
     .product_container{
@@ -520,6 +587,10 @@ and (-webkit-min-device-pixel-ratio: 1) {
         margin: 0 auto;
 
     }
+    /* HOME*/
+    .skill{
+        margin-left: 40px
+    }
     .container_responsive_profile{
         display: none;
     }
@@ -597,7 +668,12 @@ and (-webkit-min-device-pixel-ratio: 1) {
     .responsive_table{
         display: none;
     }
+    /*HOME*/
+    .skill{
+        margin-left: 40px
+    }
 }
+
 
 /* XXL screens */
 @media screen
@@ -616,6 +692,10 @@ and (-webkit-min-device-pixel-ratio: 1) {
     }
     .responsive_table{
         display: none;
+    }
+    /*HOME*/
+    .skill{
+        margin-left: 40px
     }
 }
 
