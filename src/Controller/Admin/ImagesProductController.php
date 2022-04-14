@@ -38,7 +38,7 @@ class ImagesProductController extends AbstractController
                 // je déplace l'image vers mon serveur
                 $image->move(
                 //Premier argument : l'emplacement de l'image (là où la stocker), upload_dir est déclarée dans /config/services.yaml
-                    $this->getParameter('upload_dir_images_products'),
+                    $this->getParameter('upload_dir_products'),
                     //Deuxième argument : le nouveau nom de l'image
                     $image_new_name
                 );
@@ -88,12 +88,12 @@ class ImagesProductController extends AbstractController
                 // je déplace l'image vers mon serveur
                 $image->move(
                 //Premier argument : l'emplacement de l'image
-                    $this->getParameter('upload_dir_images_products'),
+                    $this->getParameter('upload_dir_products'),
                     //Deuxième argument : le nouveau nom de l'image
                     $image_new_name
                 );
 
-                $filename = $this->getParameter('upload_dir_images_products') . $old_name_image;
+                $filename = $this->getParameter('upload_dir_products') . $old_name_image;
                 if (file_exists($filename)) {
                     unlink($filename);
                 }

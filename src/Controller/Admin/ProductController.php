@@ -19,11 +19,11 @@ class ProductController extends AbstractController
 {
 
     #[Route('/product_index', name: 'product_index', methods: ['GET'])]
-    public function index(ProductRepository $productRepository, ImagesProductRepository $imagesProductRepository): Response
+    public function index( ProductRepository $productRepository, ImagesProductRepository $imagesProductRepository): Response
     {
         return $this->render('product/index.html.twig', [
             'products' => $productRepository->findAll(),
-            'imagesproduct' => $imagesProductRepository->findAll()
+            'imagesproduct' => $imagesProductRepository->findAll(),
         ]);
     }
 
@@ -66,6 +66,7 @@ class ProductController extends AbstractController
 
         return $this->renderForm('product/new.html.twig', [
             'product' => $product,
+
             'form' => $form,
 
         ]);

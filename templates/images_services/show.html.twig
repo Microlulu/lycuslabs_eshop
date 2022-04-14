@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ImagesServices{% endblock %}
+{% block title %}Images Services{% endblock %}
 
 {% block body %}
-    <h1>ImagesServices</h1>
+    <h1>Images of Services</h1>
 
     <table class="table">
         <tbody>
@@ -13,7 +13,8 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ images_service.image }}</td>
+                <td><img src="{{ asset('images/services/' ~ images_service.image) }}" alt="{{ images_service.alt }}" style="width:150px;">
+                </td>
             </tr>
             <tr>
                 <th>Alt</th>
@@ -22,9 +23,41 @@
         </tbody>
     </table>
 
-    <a href="{{ path('images_services_index') }}">back to list</a>
+    <div class="button-desk">
+        <div class="buttons_panel">
+            <div class="row">
+                <a class="button_edit" href="{{ path('images_services_edit', {'id': images_service.id}) }}">edit</a>
+                {{ include('images_services/_delete_form.html.twig') }}
+                <a class="button_inset_back" href="{{ path('images_services_index') }}">back to list</a>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('images_services_edit', {'id': images_service.id}) }}">edit</a>
 
-    {{ include('images_services/_delete_form.html.twig') }}
+
+    <aside class="responsive_table">
+        <br>
+        <div class="row">
+            <h4>Id</h4> - <h4>{{ images_service.id }}</h4>
+        </div>
+        <div class="row">
+            <img src="{{ asset('images/services/' ~ images_service.image) }}" alt="{{ images_service.alt }}" style="width:150px;">
+        </div>
+        <div class="row">
+            <h4>Shortcut</h4> - <h4>{{ images_service.alt }}</h4>
+        </div>
+
+        <br>
+        <hr>
+
+        <div class="button-mob mt-30">
+            <div class="buttons_panel">
+                <div class="row">
+                    <a class="button_edit" href="{{ path('images_services_edit', {'id': images_service.id}) }}">EDIT</a>
+                    {{ include('images_services/_delete_form.html.twig') }}
+                    <a class="button_inset_back" href="{{ path('images_services_index') }}">back to list</a>
+                </div>
+            </div>
+        </div>
+    </aside>
 {% endblock %}

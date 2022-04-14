@@ -6,7 +6,6 @@
 parameters:
     upload_dir: '%kernel.project_dir%/public/images/'
     upload_dir_products: '%kernel.project_dir%/public/images/products/'
-    upload_dir_images_products : '%kernel.project_dir%/public/images/images_products/'
     upload_dir_team: '%kernel.project_dir%/public/images/team/'
     upload_dir_services: '%kernel.project_dir%/public/images/services/'
     upload_dir_carousel: '%kernel.project_dir%/public/images/carousel/'

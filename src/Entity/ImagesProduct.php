@@ -13,7 +13,7 @@ class ImagesProduct
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $image;
 
     #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'imagesProducts')]
@@ -33,7 +33,7 @@ class ImagesProduct
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
