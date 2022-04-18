@@ -6,7 +6,7 @@
 
 {% block body %}
     <aside class="info_container">
-        <h2>Website Terms of Use</h2>
+        <h1>Website Terms of Use</h1>
 
         <p>Version 1.0</p>
 
@@ -24,7 +24,7 @@
 
         <p>These terms require the use of arbitration Section 10.2 on an individual basis to resolve disputes and also
             limit the remedies available to you in the event of a dispute. These Terms of Use were created with the help
-            of the <a href="https://www.termsofusegenerator.net">Terms Of Use Generator</a>.</p>
+            of the <a href="https://www.termsofusegenerator.net" class="link-design">Terms Of Use Generator</a>.</p>
     </aside>
 
     <aside class="info_container">
@@ -96,9 +96,9 @@
         <ul>
             <li>
                 <p>Google</p>
-                <p>
-                    <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a>
-                </p>
+
+                    <a href="https://policies.google.com/technologies/ads" class="link-design">Google Policies</a>
+
             </li>
         </ul>
     </aside>
@@ -117,6 +117,8 @@
         <p>Some jurisdictions do not allow the exclusion of implied warranties, so the above exclusion may not apply to
             you.  Some jurisdictions do not allow limitations on how long an implied warranty lasts, so the above
             limitation may not apply to you.</p>
+    </aside>
+        <aside class="info_container">
 
         <h2>Limitation on Liability</h2>
 
@@ -145,6 +147,8 @@
             whatsoever to you for any termination of your rights under these Terms.  Even after your rights under these
             Terms are terminated, the following provisions of these Terms will remain in effect: Sections 2 through 2.5,
             Section 3 and Sections 4 through 10.</p>
+    </aside>
+        <aside class="info_container">
 
         <h2>Copyright Policy.</h2>
 
@@ -156,18 +160,18 @@
             the allegedly infringing material removed, the following information in the form of a written notification
             (pursuant to 17 U.S.C. § 512(c)) must be provided to our designated Copyright Agent:</p>
 
-        <ul>
-            <li>your physical or electronic signature;</li>
-            <li>identification of the copyrighted work(s) that you claim to have been infringed;</li>
-            <li>identification of the material on our services that you claim is infringing and that you request us to
+        <ul class="mt-20 mb-10">
+            <li> - your physical or electronic signature;</li>
+            <li> - identification of the copyrighted work(s) that you claim to have been infringed;</li>
+            <li> - identification of the material on our services that you claim is infringing and that you request us to
                 remove;
             </li>
-            <li>sufficient information to permit us to locate such material;</li>
-            <li>your address, telephone number, and e-mail address;</li>
-            <li>a statement that you have a good faith belief that use of the objectionable material is not authorized
+            <li> - sufficient information to permit us to locate such material;</li>
+            <li> - your address, telephone number, and e-mail address;</li>
+            <li> - a statement that you have a good faith belief that use of the objectionable material is not authorized
                 by the copyright owner, its agent, or under the law; and
             </li>
-            <li>a statement that the information in the notification is accurate, and under penalty of perjury, that you
+            <li> - a statement that the information in the notification is accurate, and under penalty of perjury, that you
                 are either the owner of the copyright that has allegedly been infringed or that you are authorized to
                 act on behalf of the copyright owner.
             </li>
@@ -341,4 +345,7 @@
 
         <p>Email: info@lycuslabs.com</p>
     </aside>
+    {% block footer %}
+        {% include 'footer.html.twig' %}
+    {% endblock %}
 {% endblock %}

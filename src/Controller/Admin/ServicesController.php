@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Services;
 use App\Form\ServicesType;
+use App\Repository\ImagesServicesRepository;
 use App\Repository\ServicesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -131,11 +132,11 @@ class ServicesController extends AbstractController
     }
 
     #[Route('/our_services', name: 'our_services', methods: ['GET'])]
-    public function OurServices(ServicesRepository $servicesRepository): Response
+    public function OurServices(ServicesRepository $servicesRepository, ImagesServicesRepository $imagesServicesRepository): Response
     {
         return $this->render('services/ourservices.html.twig', [
             'services' => $servicesRepository->findAll(),
-
+            'images' => $imagesServicesRepository->findAll()
         ]);
     }
     

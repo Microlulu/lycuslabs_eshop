@@ -11,6 +11,14 @@
             <div class="imgServ_Box">
                 <img src="{{ asset('images/services/' ~ item.image) }}" alt="{{ item.shortcut }}">
             </div>
+            <div class="small-img-row mt-20">
+                {% for image in images %}
+                    <div class="small-img-col">
+                        <img src="{{ asset('images/services/' ~ image.image ) }}"
+                             alt="{{ image.alt }}" class="small-img">
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </article>

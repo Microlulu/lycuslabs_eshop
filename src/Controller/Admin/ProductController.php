@@ -152,4 +152,6 @@ class ProductController extends AbstractController
     }
 
 
+    //ToDo : FAIRE BOUTON DYNAMIQUE SUR LE FOOTER POUR LES PRODUITS
+
 }
