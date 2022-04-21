@@ -32,7 +32,7 @@ class ImagesProductType extends AbstractType
             ])
             ->add('product_id', EntityType::class, [
                 'class'=> Product::class,
-                'choice_label'=>'name',
+                'choice_label'=>'image',
                 'label' => false,
                 'attr'=> [
                     'placeholder'=> "Shortcut",

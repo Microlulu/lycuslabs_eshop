@@ -18,6 +18,7 @@ class ServicesController extends AbstractController
     #[Route('/services_index', name: 'services_index', methods: ['GET'])]
     public function index(ServicesRepository $servicesRepository): Response
     {
+
         return $this->render('services/index.html.twig', [
             'services' => $servicesRepository->findAll(),
 
@@ -136,7 +137,7 @@ class ServicesController extends AbstractController
     {
         return $this->render('services/ourservices.html.twig', [
             'services' => $servicesRepository->findAll(),
-            'images' => $imagesServicesRepository->findAll()
+
         ]);
     }
     

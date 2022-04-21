@@ -20,7 +20,7 @@
         {% for images_product in images_products %}
             <tr>
                 <td>{{ images_product.id }}</td>
-                <td><img src="{{ asset('images/products/' ~ images_product.image) }}" alt="{{ images_product.alt }}" style="width: 150px;">
+                <td><img src="{{ asset('images/products/' ~ images_product.image) }}" alt="{{ images_product.alt }}" style="width: 120px">
                 </td>
                 <td>{{ images_product.alt }}</td>
                 <td>
@@ -51,7 +51,7 @@
                 <h4>Id</h4> - <h4>{{ images_product.id }}</h4>
             </div>
             <div class="row">
-                <img src="{{ asset('images/products/' ~ images_product.image) }}" alt="{{ images_product.alt }}" style="width: 150px;">
+                <img src="{{ asset('images/products/' ~ images_product.image) }}" alt="{{ images_product.alt }}"  style="width: 120px">
             </div>
             <div class="row">
                 <h4>Shortcut</h4> - <h4>{{ images_product.alt }}</h4>
@@ -61,7 +61,6 @@
                 <a class="button_dash" href="{{ path('images_product_show', {'id': images_product.id}) }}">SHOW</a> -
                 <a class="button_dash" href="{{ path('images_product_edit', {'id': images_product.id}) }}">EDIT</a> -
                 <a href="{{ path('images_product_delete', {'id': images_product.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
-
             </div>
             <br>
             <hr>

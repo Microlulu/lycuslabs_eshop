@@ -17,14 +17,16 @@
             </tr>
         </thead>
         <tbody>
-        {% for images_service in images_services %}
+        {% for image_service in images_services %}
             <tr>
-                <td>{{ images_service.id }}</td>
-                <td><img src="{{ asset('images/service/' ~ images_service.image) }}" alt="{{ images_service.alt }}" style="width: 150px;"></td>
-                <td>{{ images_service.alt }}</td>
+                <td>{{ image_service.id }}</td>
+                <td><img src="{{ asset('images/services/' ~ image_service.image) }}" alt="{{ image_service.alt }}" style="width: 120px;"></td>
+                <td>{{ image_service.alt }}</td>
                 <td>
-                    <a class="button_dash" href="{{ path('images_services_show', {'id': images_service.id}) }}">SHOW</a>
-                    <a class="button_dash" href="{{ path('images_services_edit', {'id': images_service.id}) }}">EDIT</a>
+                    <a class="button_dash" href="{{ path('images_services_show', {'id': image_service.id}) }}">SHOW</a>
+                    <a class="button_dash" href="{{ path('images_services_edit', {'id': image_service.id}) }}">EDIT</a>
+                    <a href="{{ path('images_services_delete', {'id': image_service.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
+
                 </td>
             </tr>
         {% else %}
@@ -49,7 +51,7 @@
                 <h4>Id</h4> - <h4>{{ images_service.id }}</h4>
             </div>
             <div class="row">
-                <img src="{{ asset('images/service/' ~ images_service.image) }}" alt="{{ images_service.alt }}" style="width: 150px;">
+                <img src="{{ asset('images/service/' ~ images_service.image) }}" alt="{{ images_service.alt }}" style="width: 120px">
             </div>
             <div class="row">
                 <h4>Shortcut</h4> - <h4>{{ images_service.alt }}</h4>
@@ -58,8 +60,6 @@
                 <h4>Actions</h4> -
                 <a class="button_dash" href="{{ path('images_services_show', {'id': images_service.id}) }}">SHOW</a> -
                 <a class="button_dash" href="{{ path('images_services_edit', {'id': images_service.id}) }}">EDIT</a> -
-                <a href="{{ path('images_services_delete', {'id': images_services.id}) }}"><img id="bin" alt="bin" src="{{ asset('images/svg/bin.png') }}"></a>
-
             </div>
             <br>
             <hr>

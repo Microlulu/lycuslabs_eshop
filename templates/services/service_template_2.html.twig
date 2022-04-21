@@ -4,21 +4,21 @@
             <h2>{{ item.title }}</h2>
             <h3>{{ item.subtitle }}</h3>
         </div>
-        <div class="row">
+        <div class="row"  id="right-serv">
             <div class="text_right">
                 <p>{{ item.text }}</p>
             </div>
             <div class="imgServ_Box">
                 <img src="{{ asset('images/services/' ~ item.image) }}" alt="{{ item.shortcut }}">
             </div>
-            <div class="small-img-row mt-20">
-                {% for image in images %}
+                 <div class="small-img-row mt-20">
+                {% for image in item.imagesServices %}
                     <div class="small-img-col">
                         <img src="{{ asset('images/services/' ~ image.image ) }}"
-                             alt="{{ image.alt }}" class="small-img">
+                             alt="{{ image.alt }}" class="small-img_serv">
                     </div>
-                {% endfor %}
-            </div>
+                 {% endfor %}
+                 </div>
         </div>
     </div>
 </article>

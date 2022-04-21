@@ -95,7 +95,19 @@ function showSection(button){
    }
 }
 
-
+/* FONCTION PUR CHANGER LARGE IMAGE PAR PETITES (pour page products)*/
+function showImage(image){
+    var mainImage = document.getElementById('productImg');
+    mainImage.src = image;
+}
+function toggleThumbnails(){
+    var thumbnails = document.getElementById('thumbnails');
+    if(thumbnails.style.display == 'block'){
+        thumbnails.style.display = 'none';
+    } else {
+        thumbnails.style.display = 'block';
+    }
+}
 
 
 /* FONCTION POUR VOIR DANS MON CODE TOUS LES TAGS UTILISES */

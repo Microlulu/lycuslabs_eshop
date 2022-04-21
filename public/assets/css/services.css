@@ -57,3 +57,14 @@
 .text_right{
     margin-bottom: 20px;
 }
+
+.small-img_serv {
+    border-radius: 15px;
+    margin: 0 25px 0 0;
+    width: 150px;
+    box-shadow: 0 0 2px var(--darkgrey), 0 0 0 5px var(--extrawhite), var(--box-shadow);
+}
+#right-serv{
+    display: flex;
+    justify-content: flex-end;
+}

@@ -573,7 +573,14 @@ and (-webkit-min-device-pixel-ratio: 1) {
     .user{
         width: 310px;
     }
-
+    /* SERVICES */
+    .small-img_serv {
+        flex-wrap: wrap;
+        border-radius: 15px;
+        margin: 0 10px 0 0;
+        width: 83px;
+        box-shadow: 0 0 2px var(--darkgrey), 0 0 0 5px var(--extrawhite), var(--box-shadow);
+    }
 }
 
 /* Big screens */
@@ -587,6 +594,14 @@ and (-webkit-min-device-pixel-ratio: 1) {
         margin: 0 auto;
 
     }
+    /* SERVICES */
+    .small-img_serv {
+        border-radius: 15px;
+        margin: 0 25px 0 0;
+        width: 125px;
+        box-shadow: 0 0 2px var(--darkgrey), 0 0 0 5px var(--extrawhite), var(--box-shadow);
+    }
+
     /* HOME*/
     .skill{
         margin-left: 40px

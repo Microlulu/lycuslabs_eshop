@@ -101,6 +101,7 @@ class ImagesServicesController extends AbstractController
                 $image_new_name = $old_name_image;
             }
             // j'enregistre l'image dans la BDD avec le nouveau nom
+            $imagesService->setImage($image_new_name);
             $entityManager->flush();
 
             return $this->redirectToRoute('images_services_index', [], Response::HTTP_SEE_OTHER);
@@ -112,19 +113,19 @@ class ImagesServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'images_services_delete', methods: ['POST'])]
+    #[Route('/images_service_delete{id}', name: 'images_services_delete', methods: ['POST'])]
     public function delete(Request $request, ImagesServices $imagesService, EntityManagerInterface $entityManager): Response
     {
-
-            $entityManager->remove($imagesService);
-            $entityManager->flush();
-            $filename = $this->isCsrfTokenValid('delete'.$imagesService->getId(), $request->request->get('_token'));
-
+        $filename = $this->isCsrfTokenValid('delete'.$imagesService->getId(), $request->request->get('_token'));
 
         //Je vérifie si mon fichier existe
         if(file_exists($filename)){
             unlink($filename);
         }
+        $entityManager->remove($imagesService);
+        $entityManager->flush();
+
+
 
         return $this->redirectToRoute('images_services_index', [], Response::HTTP_SEE_OTHER);
     }

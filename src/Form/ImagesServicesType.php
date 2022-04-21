@@ -32,7 +32,7 @@ class ImagesServicesType extends AbstractType
             ])
             ->add('service_id', EntityType::class, [
                 'class'=> Services::class,
-                'choice_label'=>'name',
+                'choice_label'=>'image',
                 'label' => false,
                 'attr'=> [
                     'placeholder'=> "Shortcut",
