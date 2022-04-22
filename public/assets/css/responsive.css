@@ -136,6 +136,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
         height: 150px;
         width: 200px;
     }
+    /* CART CHOOSE ADDRESS */
+    .project{
+        flex-direction: column;
+    }
 
     /* SERVICES */
     .main_container{
