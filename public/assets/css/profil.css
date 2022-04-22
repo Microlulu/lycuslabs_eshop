@@ -171,11 +171,18 @@ tr:nth-child(even) {
     height: 100%;
     display: flex;
     text-align: center;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+}
+.message_profile_container > .button_inset_back{
+    width: fit-content;
+    height: fit-content;
+    margin-top: 20px;
 }
 .message_container{
     box-shadow: var(--box-shadow);
-    width: fit-content;
+    min-width: 280px;
     margin-top: 70px;
     padding: 30px 30px;
     border-radius: 25px;
@@ -187,8 +194,8 @@ tr:nth-child(even) {
     font-family: 'Inter', sans-serif;
     outline: none;
     font-size: 1.2em;
-    width: 450px;
-    padding: 20px 30px 100px 40px;
+    width: 470px;
+    padding: 20px 30px 70px 40px;
     margin: 2px 0;
     letter-spacing: 0.15px;
     border: none;
@@ -198,7 +205,7 @@ tr:nth-child(even) {
     box-shadow: var(--box-shadow-inset);
 }
 .profile_message_input{
-    width: 450px;
+    width: 470px;
     letter-spacing: 0.15px;
     margin: 10px 0;
     border: none;

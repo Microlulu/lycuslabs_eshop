@@ -22,6 +22,17 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .btn_row{
         flex-direction: column;
     }
+    .message_profile_container{
+        width: 270px;
+        margin: 0 auto;
+
+    }
+    .formProfileMessage{
+        width: 270px;
+    }
+    .profile_message_input{
+        width: 270px;
+    }
     /*HOME*/
     .txt-presentation-right{
         text-align: center;
@@ -240,7 +251,16 @@ and (-webkit-min-device-pixel-ratio: 1) {
     .button{
         margin: 0 auto;
     }
-
+    .message_profile_container {
+        width: 620px;
+        margin: 0 auto;
+    }
+    .formProfileMessage{
+        width: 420px;
+    }
+    .profile_message_input{
+        width: 420px;
+    }
     /* Ne pas afficher les tables dans le profil et afficher le template responsive */
     table{
         display: none;
@@ -414,7 +434,16 @@ and (-webkit-min-device-pixel-ratio: 1) {
     .sections-content{
         width: 60%;
     }
-
+    .message_profile_container {
+        width: 700px;
+        margin: 0 auto;
+    }
+    .formProfileMessage{
+        width: 500px;
+    }
+    .profile_message_input{
+        width: 500px;
+    }
     .sections-row{
         width: 60%;
         margin: 0 auto;
@@ -581,6 +610,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
         width: 83px;
         box-shadow: 0 0 2px var(--darkgrey), 0 0 0 5px var(--extrawhite), var(--box-shadow);
     }
+
 }
 
 /* Big screens */
@@ -593,6 +623,16 @@ and (-webkit-min-device-pixel-ratio: 1) {
         width: 70%;
         margin: 0 auto;
 
+    }
+    .message_profile_container {
+        width: 700px;
+        margin: 0 auto;
+    }
+    .formProfileMessage{
+        width: 500px;
+    }
+    .profile_message_input{
+        width: 500px;
     }
     /* SERVICES */
     .small-img_serv {
@@ -673,6 +713,16 @@ and (-webkit-min-device-pixel-ratio: 1) {
     .container_responsive_profile{
         display: none;
     }
+    .message_profile_container {
+        width: 1000px;
+        margin: 0 auto;
+    }
+    .formProfileMessage{
+        width: 600px;
+    }
+    .profile_message_input{
+        width: 600px;
+    }
     .header {
         width: 17%;
     }
@@ -697,6 +747,16 @@ and (-webkit-min-device-pixel-ratio: 1) {
     /* PROFIL */
     .container_responsive_profile{
         display: none;
+    }
+    .message_profile_container {
+        width: 1000px;
+        margin: 0 auto;
+    }
+    .formProfileMessage{
+        width: 600px;
+    }
+    .profile_message_input{
+        width: 600px;
     }
     .header {
         width: 17%;

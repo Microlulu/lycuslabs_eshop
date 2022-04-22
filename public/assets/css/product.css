@@ -50,7 +50,7 @@
 }
 .imgProd_Box img{
     display: block;
-    width: inherit;
+    width: 100%;
     height: inherit;
     object-fit: cover;
     padding: 50px 0;
