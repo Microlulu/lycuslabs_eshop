@@ -24,6 +24,7 @@
 
 .small-img-row{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 .imgProd_Box{
@@ -37,6 +38,9 @@
 }
 .small-img{
     border-radius: 15px;
+    width: 150px;
+    height: 100px;
+    margin-top: 15px;
     box-shadow: 0 0 2px var(--darkgrey),
                 0 0 0 5px var(--extrawhite),
                 var(--box-shadow);
@@ -57,10 +61,10 @@
 }
 
 .small-img-col{
-    flex-basis: 24%;
     cursor: pointer;
 }
 .single-product .col-2 img{
+    margin-right: 10px;
     padding: 0;
 }
 .single-product .col-2{

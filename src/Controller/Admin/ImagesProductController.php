@@ -116,16 +116,16 @@ class ImagesProductController extends AbstractController
 
     #[Route('/images_product_delete{id}', name: 'images_product_delete', methods: ['POST'])]
     public function delete(Request $request, ImagesProduct $imagesProduct, EntityManagerInterface $entityManager): Response
+
     {
+        $entityManager->remove($imagesProduct);
+        $entityManager->flush();
         $filename = $this->isCsrfTokenValid('delete'.$imagesProduct->getId(), $request->request->get('_token'));
 
             //Je vérifie si mon fichier existe
         if(file_exists($filename)){
             unlink($filename);
         }
-
-        $entityManager->remove($imagesProduct);
-        $entityManager->flush();
 
 
         return $this->redirectToRoute('images_product_index', [], Response::HTTP_SEE_OTHER);

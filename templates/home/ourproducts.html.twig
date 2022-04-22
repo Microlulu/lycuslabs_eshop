@@ -10,7 +10,7 @@
                 <div class="col-2 imgs_box">
                     <div class="imgProd_Box" onclick="toggleThumbnails()">
                         <img src="{{ asset('images/products/' ~ product.image ) }}"
-                             alt="{{ product.shortcut }}" id="productImg" style="width: 100%;">
+                             alt="{{ product.shortcut }}" id="productImg">
                     </div>
                     <div class="small-img-row">
                         {% for image in product.imagesProducts %}

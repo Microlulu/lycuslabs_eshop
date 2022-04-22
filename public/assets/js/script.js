@@ -109,6 +109,34 @@ function toggleThumbnails(){
     }
 }
 
+/* FONCTION PUR CHANGER LARGE IMAGE PAR PETITES (pour page services template 1 (coté gauche)*/
+function showService(image){
+    var mainImage = document.getElementById('serviceImg');
+    mainImage.src = image;
+}
+function toggleThumbsServ(){
+    var thumbserv = document.getElementById('thumbserv');
+    if(thumbserv.style.display == 'block'){
+        thumbserv.style.display = 'none';
+    } else {
+        thumbserv.style.display = 'block';
+    }
+}
+
+/* FONCTION PUR CHANGER LARGE IMAGE PAR PETITES (pour page services template 2 (coté droit)*/
+function showServiceDroit(image){
+    var mainImage = document.getElementById('servicedroitImg');
+    mainImage.src = image;
+}
+function toggleThumbsServDroit(){
+    var thumbservdroit = document.getElementById('thumbservdroit');
+    if(thumbservdroit.style.display == 'block'){
+        thumbservdroit.style.display = 'none';
+    } else {
+        thumbservdroit.style.display = 'block';
+    }
+}
+
 
 /* FONCTION POUR VOIR DANS MON CODE TOUS LES TAGS UTILISES */
 /* Le but de cette fonction est d'enlever le * dans mon CSS et d'optimisé le class * uniquement avec les tags dont je me sers sans englober tous les tags.*/
