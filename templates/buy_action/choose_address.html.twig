@@ -4,27 +4,27 @@
 
 {% block body %}
     <div class="wrapper_cart">
-        <h1>Choose your address</h1>
+        <h1>{% trans %}Choose your address{% endtrans %}</h1>
         <div class="project">
             <div class="container_content_cart">
-                    <p><span>Subtotal</span> <span class="right_side">{{ data.total }}€</span></p>
+                    <p><span>{% trans %}Subtotal{% endtrans %}</span> <span class="right_side">{{ data.total }}€</span></p>
                     <hr>
                 {% if data.voucher is not null %}
 
-                    <p class="codeValid">Coupon Code : {{ data.voucher.name }} <span
+                    <p class="codeValid">{% trans %}Coupon Code {% endtrans %}: {{ data.voucher.name }} <span
                                 class="right_side"> -{{ data.voucher.discount }}% </span></p>
                     <hr>
-                    <p class="total_price mt-20"><span>TOTAL</span> <span
+                    <p class="total_price mt-20"><span>{% trans %}TOTAL{% endtrans %}</span> <span
                                 class="right_side">{{ data.total - (data.total * data.voucher.discount / 100) }}€</span>
                     </p>
                     {% else %}
-                        <p class="total_price mt-20"><span>TOTAL</span> <span
+                        <p class="total_price mt-20"><span>{% trans %}TOTAL{% endtrans %}</span> <span
                                     class="right_side">{{ data.total }} €</span></p>
                     {% endif %}
 
                     <hr>
                     <div class="container_delivery">
-                        <h3>DELIVERY</h3>
+                        <h3>{% trans %}DELIVERY{% endtrans %}</h3>
                         <div class="small_card">
                             {% set formhtml %}
                                 {{ form_start(form2) }}
@@ -40,7 +40,7 @@
 
             {# COTE DROIT DU PANIER #}
             <div class="right_bar_products">
-                <h3>SUMMARY</h3>
+                <h3>{% trans %}SUMMARY{% endtrans %}</h3>
                 {% if data|length > 0 %}
                     {% for product in data.products %}
 
@@ -62,7 +62,7 @@
 
                 {% else %}
                     <hr>
-                    <h4 class="mt-20">Your cart is empty !</h4>
+                    <h4 class="mt-20">{% trans %}Your cart is empty !{% endtrans %}</h4>
                 {% endif %}
             </div>
         </div>

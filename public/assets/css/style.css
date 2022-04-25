@@ -292,6 +292,10 @@ nav .logo{
     box-shadow: 0 0 5px var(--blue),
                 0 0 5px var(--blue);
 }
+/* PAS DE HALO AUTOUR DES DRAPEAUX DE LA NAVBAR*/
+.mainMenu li:first-child a:hover{
+    box-shadow: none;
+}
 /* Pas de halo autour des boutons du dropdown*/
 .mainMenu ul li a:hover {
     color: var(--purple);

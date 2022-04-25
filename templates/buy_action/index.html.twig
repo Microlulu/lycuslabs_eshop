@@ -7,27 +7,27 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6 mt-5">
-				<p>Firstname:
+				<p>{% trans %}Firstname :{% endtrans %}
 					{{ adresse.firstname }}</p>
-				<p>Lastname:
+				<p>{% trans %}Lastname :{% endtrans %}
 					{{ adresse.lastname }}</p>
 				<hr>
-				<h5>Delivery adresse :</h5>
+				<h5>{% trans %}Delivery adresse :{% endtrans %}</h5>
 				<p>{{ adresse.adresse}}</p>
-				<p>Zipcode :{{ adresse.zipcode}}</p>
-				<p>City :
+				<p>{% trans %}Zipcode :{{ adresse.zipcode}}</p>
+				<p>{% trans %}City :{% endtrans %}
 					{{ adresse.city}}</p>
-				<p>Country :
+				<p>{% trans %}Country :{% endtrans %}
 					{{ adresse.country}}</p>
-				<a class="btn btn-success mt-5" href="{{ path('order_cart') }}">Confirm</a>
+				<a class="btn btn-success mt-5" href="{{ path('order_cart') }}">{% trans %}Confirm{% endtrans %}</a>
 			</div>
 			<div class="col-6">
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">Image</th>
-							<th scope="col">Name</th>
-							<th scope="col">Total</th>
+							<th scope="col">{% trans %}Image{% endtrans %}</th>
+							<th scope="col">{% trans %}Name{% endtrans %}</th>
+							<th scope="col">{% trans %}Total{% endtrans %}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -42,7 +42,7 @@
 						{% endfor %}
 					</tbody>
 				</table>
-				<h5>Total of your cart : €</h5>
+				<h5>{% trans %}Total of your cart : €{% endtrans %}</h5>
 
 
 			</div>

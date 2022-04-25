@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h1> Welcome back!</h1>
+    <h1>{% trans %} Welcome back!{% endtrans %}</h1>
     <div class="login_main_container">
         <div class="login-div">
             <div class="logo_login">
@@ -12,8 +12,8 @@
                     <img src="{{ asset('images/TruckGIF.gif') }}" alt="menu_burger" aria-label="LycusLabs logo">
                 </div>
             </div>
-            <h2>LOGIN</h2>
-            <h4 class="txt_center">Access to your account</h4>
+            <h2>{% trans %}LOGIN{% endtrans %}</h2>
+            <h4 class="txt_center">{% trans %}Access to your account{% endtrans %}</h4>
             <div class="fields">
                 <form method="post">
                     {% if error %}
@@ -22,7 +22,7 @@
 
                     {% if app.user %}
                         <div class="mb-3">
-                            You are logged in as {{ app.user.username }}, <a
+                            {% trans %}You are logged in as{% endtrans %} {{ app.user.username }}, <a
                                     href="{{ path('app_logout') }}">Logout</a>
                         </div>
                     {% endif %}
@@ -42,14 +42,14 @@
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         </div>
                     </div>
-                    <button class="mt-30 button" aria-label="login" type="submit">LOGIN</button>
+                    <button class="mt-30 button" aria-label="login" type="submit">{% trans %}LOGIN{% endtrans %}</button>
 
                 </form>
             </div>
 
 
             <div class="link">
-                <a href="#">Forgot password?</a> or <a href="{{ path('app_register') }}">Sign up</a>
+                <a href="#">{% trans %}Forgot password?{% endtrans %}</a>{% trans %} or{% endtrans %} <a href="{{ path('app_register') }}">{% trans %}Sign up{% endtrans %}</a>
 
             </div>
         </div>

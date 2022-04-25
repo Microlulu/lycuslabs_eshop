@@ -1,9 +1,9 @@
-<h1>Hi!</h1>
+<h1>{% trans %}Hi!{% endtrans %}</h1>
 
-<p>To reset your password on LycusLabs.com, please visit the following link</p>
+<p>{% trans %}To reset your password on LycusLabs.com, please visit the following link{% endtrans %}</p>
 
 <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
 
-<p>This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+<p>{% trans %}This link will expire in {% endtrans %}{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
 
-<p>Cheers!</p>
+<p>{% trans %}Cheers!{% endtrans %}</p>

@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="wrapper_cart">
-        <h1>Shopping Cart</h1>
+        <h1>{% trans %}Shopping Cart{% endtrans %}</h1>
         <div class="project">
             <div class="shop">
                 {% if cart.detailCart|length > 0 %}
@@ -16,26 +16,26 @@
                             <h4 class="mb-10">
                                 {{ item ['total'] }} €
                             </h4>
-                            <label class="qty">Quantity : x</label>
+                            <label class="qty">{% trans %}Quantity {% endtrans %}: x</label>
                             <input aria-label="Quantity" id="updateQuantity{{ key }}" type="number" value="{{ item ['quantity'] }}">
                             <button onclick="onUpdateButton('{{ path('modify_quantity') }}', {{ item.product.id }}, 'updateQuantity{{ key }}')"
-                                    aria-label="update" class="update">UPDATE
+                                    aria-label="update" class="update">{% trans %}UPDATE{% endtrans %}
                             </button>
                             <button onclick="onDeleteButton('{{ path('delete_product') }}', {{ item.product.id }})" aria-label="remove" class="remove">
-                                REMOVE
+                                {% trans %}REMOVE{% endtrans %}
                             </button>
                         </div>
                     </div>
                 {% endfor %}
                 {% else %}
                     <hr>
-                    <h4 class="mt-20">Your cart is empty !</h4>
+                    <h4 class="mt-20">{% trans %}Your cart is empty !{% endtrans %}</h4>
                 {% endif %}
             </div>
             {# COTE DROIT DU PANIER #}
             <div class="col ml-20">
             <div class="right_bar">
-                <p><span>Subtotal</span> <span> {{ cart.totalCart }} €</span></p>
+                <p><span>{% trans %}Subtotal{% endtrans %}</span> <span> {{ cart.totalCart }} €</span></p>
                 <hr>
                 {{ form_start(form)  }}
                     {{ form_row(form.couponCode) }}
@@ -50,13 +50,13 @@
                 <hr>
 
                 {% if voucher is null %}
-                <p class="total_price"><span>TOTAL</span> <span>{{ cart.totalCart }} €</span></p>
+                <p class="total_price"><span>{% trans %}TOTAL{% endtrans %}</span> <span>{{ cart.totalCart }} €</span></p>
                 {% else %}
-                    <p class="total_price"><span>TOTAL</span> <span>{{ cart.totalCart - (cart.totalCart * voucher.discount / 100) }}€</span></p>
+                    <p class="total_price"><span>{% trans %}TOTAL{% endtrans %}</span> <span>{{ cart.totalCart - (cart.totalCart * voucher.discount / 100) }}€</span></p>
                 {% endif %}
-                <a class="button" href="{{ path('choose_address_cart') }}">Checkout</a>
+                <a class="button" href="{{ path('choose_address_cart') }}">{% trans %}Checkout{% endtrans %}</a>
             </div>
-            <button class="button_delete mt-20" onclick="onDeleteCart('{{ path('delete_cart') }}')">DELETE CART</button>
+            <button class="button_delete mt-20" onclick="onDeleteCart('{{ path('delete_cart') }}')">{% trans %}DELETE CART{% endtrans %}</button>
             </div>
         </div>
     </div>

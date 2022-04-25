@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h1> Create an account</h1>
+    <h1> {% trans %}Create an account{% endtrans %}</h1>
     <div class="register_main_container">
         <div class="register-div">
             <div class="logo_login">
@@ -12,8 +12,8 @@
                     <img src="{{ asset('images/PredatorGIF.gif') }}" alt="menu_burger" aria-label="LycusLabs logo">
                 </div>
             </div>
-            <h2>REGISTER</h2>
-            <h4 class="txt_center">Welcome aboard !</h4>
+            <h2>{% trans %}REGISTER{% endtrans %}</h2>
+            <h4 class="txt_center">{% trans %}Welcome aboard !{% endtrans %}</h4>
             {{ form_start(registrationForm) }}
             <div class="fields">
 
@@ -51,11 +51,11 @@
 
                 {{ form_row(registrationForm.agreeTerms) }}
 
-            <button class="mt-20 button" aria-label="login">LOGIN</button>
+            <button class="mt-20 button" aria-label="login">{% trans %}LOGIN{% endtrans %}</button>
             {{ form_end(registrationForm) }}
 
             <div class="link">
-                Already have an account?<a href="#"> Sign in</a>
+                {% trans %}Already have an account?{% endtrans %}<a href="#"> {% trans %}Sign in{% endtrans %}</a>
             </div>
         </div>
     </div>

@@ -10,12 +10,12 @@
         <header class="header">
             <div class="navbar_user" id="MyNavbar">
                 <img src="{{ asset('images/svg/profil.png') }}" alt="Dashboard">
-                <a class="button active" href="#" id="address-btn" onclick="showSection(this);">MY ADRESSES</a>
-                <a class="button" href="#" id="orders-btn" onclick="showSection(this);">MY ORDERS</a>
-                <a class="button" href="#" id="licences-btn" onclick="showSection(this);">MY LICENSES</a>
-                <a class="button" href="#" id="downloads-btn" onclick="showSection(this);">MY DOWNLOADS</a>
-                <a class="button" href="#" id="support-btn" onclick="showSection(this);">SUPPORT</a>
-                <a class="button" href="{{ path('app_logout') }}">LOGOUT</a>
+                <a class="button active" href="#" id="address-btn" onclick="showSection(this);">{% trans %}MY ADRESSES{% endtrans %}</a>
+                <a class="button" href="#" id="orders-btn" onclick="showSection(this);">{% trans %}MY ORDERS{% endtrans %}</a>
+                <a class="button" href="#" id="licences-btn" onclick="showSection(this);">{% trans %}MY LICENSES{% endtrans %}</a>
+                <a class="button" href="#" id="downloads-btn" onclick="showSection(this);">{% trans %}MY DOWNLOADS{% endtrans %}</a>
+                <a class="button" href="#" id="support-btn" onclick="showSection(this);">{% trans %}SUPPORT{% endtrans %}</a>
+                <a class="button" href="{{ path('app_logout') }}">{% trans %}LOGOUT{% endtrans %}</a>
             </div>
         </header>
         <!-- Fin de la section header user  -->
@@ -23,12 +23,12 @@
         <!-- Début de la section Adresses -->
         <div class="row sections-content">
             <div class="sections-row">
-                <h1 class="mb-50">HELLO {{ app.user.firstName }} !</h1>
+                <h1 class="mb-50">{% trans %}HELLO{% endtrans %} {{ app.user.firstName }} !</h1>
             </div>
             <div class="row sections-row" id="adresses">
                 <section class="adresse">
                     <div class="row">
-                        <a href="{{ path('adresse_new') }}" class="button">Create address</a>
+                        <a href="{{ path('adresse_new') }}" class="button">{% trans %}Create address{% endtrans %}</a>
                     </div>
                     <div class="mt-30 row">
                         {% for key, adresse in list_adresses %}
@@ -42,10 +42,10 @@
                                 <p>{{ adresse.city }}</p>
                                 <p>{{ adresse.country }}</p>
                                 <div class="row btn_row">
-                                    <a class="button mt-20 mb-50" href="#">SELECT</a>
+                                    <a class="button mt-20 mb-50" href="#">{% trans %}SELECT{% endtrans %}</a>
                                 </div>
                                 <div class="row btn_row">
-                                    <a class="button_inset m-8" href="{{ path('adresse_edit', {'id': adresse.id}) }}">EDIT</a>
+                                    <a class="button_inset m-8" href="{{ path('adresse_edit', {'id': adresse.id}) }}">{% trans %}EDIT{% endtrans %}</a>
                                     {{ include('adresse/_delete_form.html.twig') }}
                                 </div>
                             </div>

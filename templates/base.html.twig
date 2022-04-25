@@ -77,31 +77,39 @@
             <img src="{{ asset('images/svg/bars-solid.svg') }}" class="burger_m" alt="menu_burger"
                  aria-label="open the menu" id="burg-menu" onclick="burgerToggle()"/>
             <ul class="mainMenu" id="myLinks">
-                <li><a href="{{ path('home') }}" aria-label="home">Home</a></li>
+                <!-- Je fais une boucle sur mes drapeaux et je lui dit que si ma langue n'est pas celle active dans ma requete locale montre les autres drapeaux
+                Si la langue active est par exemple l'anglais, ne montre pas le drapeau anglais, montre les autres drapeaux-->
+                {% for locale in locales %}
+                    {% if locale != app.request.locale %}
+                <li><a href="{{ path('change-locale', {'locale': locale}) }}" aria-label="change language"><img style="width: 25px; margin-top: 22px" src="{{ asset('images/svg/'~locale~'.png') }}" alt="{{ locale }}"></a></li>
+                    {% endif %}
+                {% endfor %}
+                <li><a href="{{ path('home') }}" aria-label="home">{% trans %}Home{% endtrans %}</a></li>
 
                 <li class="dropdown">
-                    <a class="dropbtn" id="navbarDropdown" aria-label="products">Products</a>
+                    <a class="dropbtn" id="navbarDropdown" aria-label="products">{% trans %}Products{% endtrans %}</a>
                     <ul id="listsProducts" class="dropdown_content">
                         {# ICI COMMENCE LE BOUTON DYNAMIQUE DES PRODUITS VOIR BAS DE PAGE POUR JAVASCRIPT #}
                     </ul>
                 </li>
-                <li><a href="{{ path('our_services') }}" aria-label="services">Services</a></li>
-                <li><a href="{{ path('team_members') }}" aria-label="team">Team</a></li>
-                <li><a href="{{ path('contact') }}" aria-label="contact">Contact</a></li>
+                <li><a href="{{ path('our_services') }}" aria-label="services">{% trans %}Services{% endtrans %}</a></li>
+                <li><a href="{{ path('team_members') }}" aria-label="team">{% trans %}Team{% endtrans %}</a></li>
+                <li><a href="{{ path('contact') }}" aria-label="contact">{% trans %}Contact{% endtrans %}</a></li>
 
 
                 {# USER LOGGED PART #}
                 {% if app.user %}
-                    <li><a href="{{ path('profil') }}" aria-label="profile">Profile</a></li>
+                    <li><a href="{{ path('profil') }}" aria-label="profile">{% trans %}Profile{% endtrans %}</a></li>
                     <li><a href="{{ path('buy_action') }}" aria-label="cart"><img alt="cart" src="{{ asset('images/svg/shopping-cart.png') }}"></a></li>
-                    <li><a href="{{ path('app_logout') }}" aria-label="logout">Logout</a></li>
+                    <li><a href="{{ path('app_logout') }}" aria-label="logout">{% trans %}Logout{% endtrans %}</a></li>
+
                     {# ADMIN PART #}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li><a href="{{ path('dashboard') }}">Admin</a></li>
                     {% endif %}
                 {% else %}
-                    <li><a href="{{ path('app_login') }}" aria-label="login">Login</a></li>
-                    <li><a href="{{ path('app_register') }}" aria-label="register">Register</a></li>
+                    <li><a href="{{ path('app_login') }}" aria-label="login">{% trans %}Login{% endtrans %}</a></li>
+                    <li><a href="{{ path('app_register') }}" aria-label="register">{% trans %}Register{% endtrans %}</a></li>
                 {% endif %}
 
             </ul>

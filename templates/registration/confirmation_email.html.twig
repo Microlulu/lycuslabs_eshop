@@ -1,11 +1,11 @@
-<h1>Hi! Welcome to LycusLabs website !</h1>
-<h2>Please confirm your email!</h2>
+<h1>{% trans %}Hi! Welcome to LycusLabs website !{% endtrans %}</h1>
+<h2>{% trans %}Please confirm your email!{% endtrans %}</h2>
 <p>
-    Please confirm your email address by clicking the following link: <br><br>
-    <a href="{{ signedUrl }}">Confirm my Email</a>.
-    This link will expire in {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+    {% trans %}Please confirm your email address by clicking the following link:{% endtrans %} <br><br>
+    <a href="{{ signedUrl }}">{% trans %}Confirm my Email{% endtrans %}</a>.
+    {% trans %}This link will expire in {% endtrans %}{{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
 </p>
 
 <p>
-    Cheers!
+    {% trans %}Cheers!{% endtrans %}
 </p>
