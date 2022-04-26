@@ -84,6 +84,7 @@
                 <li><a href="{{ path('change-locale', {'locale': locale}) }}" aria-label="change language"><img style="width: 25px; margin-top: 22px" src="{{ asset('images/svg/'~locale~'.png') }}" alt="{{ locale }}"></a></li>
                     {% endif %}
                 {% endfor %}
+
                 <li><a href="{{ path('home') }}" aria-label="home">{% trans %}Home{% endtrans %}</a></li>
 
                 <li class="dropdown">

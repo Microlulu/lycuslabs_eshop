@@ -296,6 +296,10 @@ nav .logo{
 .mainMenu li:first-child a:hover{
     box-shadow: none;
 }
+.mainMenu li:nth-child(2) a:hover{
+    box-shadow: none;
+}
+
 /* Pas de halo autour des boutons du dropdown*/
 .mainMenu ul li a:hover {
     color: var(--purple);
