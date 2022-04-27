@@ -24,7 +24,7 @@
                 <div class="col-2 txt_center">
                     <h1>{{ product.title }}</h1>
                     <h3>{% trans %}Description{% endtrans %}</h3>
-                    <p class="mt-5 txt_justify">{{ product.description|trans }}</p>
+                    <p class="mt-5 txt_justify">{{ product.description }}</p>
                     <br>
                     <h2 class="price_prod">{{ product.price }} €</h2>
                     <form id="formAddCart">
@@ -37,7 +37,7 @@
             </div>
             <div class="txt_center">
                 <h3>{% trans %}Additional information{% endtrans %}</h3>
-                <p class="mb-25 txt_justify">{{ product.descriptionadd|trans }}</p>
+                <p class="mb-25 txt_justify">{{ product.descriptionadd }}</p>
             </div>
         </div>
     </div>

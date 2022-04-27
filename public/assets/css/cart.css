@@ -27,7 +27,8 @@
 }
 .update{
     justify-content: center;
-    width: 85px;
+    width: fit-content;
+    padding: 0 20px;
     height: 30px;
     font-weight: 700;
     color: var(--darkgrey);

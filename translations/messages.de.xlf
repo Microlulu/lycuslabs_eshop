@@ -1153,7 +1153,7 @@
       </trans-unit>
       <trans-unit id="j2lpcLd" resname="ADD TO CART">
         <source>ADD TO CART</source>
-        <target>IN DEN WARENKORB FÜGEN</target>
+        <target>IN DEN WARENKORB</target>
       </trans-unit>
       <trans-unit id="pC8kFDU" resname="Additional information">
         <source>Additional information</source>
@@ -1197,7 +1197,7 @@
       </trans-unit>
       <trans-unit id="RkFSrQy" resname="Create address">
         <source>Create address</source>
-        <target>Eine Adresse erstellen</target>
+        <target>NEUE ADRESSE</target>
       </trans-unit>
       <trans-unit id="bkJhaVr" resname="SELECT">
         <source>SELECT</source>
@@ -1633,7 +1633,7 @@
       </trans-unit>
       <trans-unit id="tLWAqa2" resname="About us">
         <source>About us</source>
-        <target>über uns</target>
+        <target>Über uns</target>
       </trans-unit>
       <trans-unit id="CQruTLW" resname="Our services">
         <source>Our services</source>

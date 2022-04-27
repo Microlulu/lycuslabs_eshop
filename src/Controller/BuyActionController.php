@@ -12,6 +12,7 @@ use App\Repository\VoucherRepository;
 use App\Services\OrderManager;
 use App\Services\Cart;
 use App\Repository\AdresseRepository;
+use App\Services\PdfService;
 use App\Services\Stripe\StripeApi\OverRidingApi;
 use App\Services\VoucherService;
 use ContainerLeuUHcx\getOrder2Service;
@@ -307,6 +308,20 @@ public function orderCart(OrderManager $orderManager, Cart $cart): Response
 
 }
 */
+
+
+    //APRES PAIEMENT ET CONFIRMATION DE COMMANDE ON PEUT GENERER LA FACTURE QUI SERA TÉLÉCHARGEABLE DEPUIS LE PROFIL UTILISATEUR
+    // contenant les informations relatives à sa commande
+   /* #[Route('/buyAction/invoice/{id}', name: 'invoice', methods: ['GET'])]
+    public function invoice(Order $order, PdfService $pdf): Response
+    {
+
+       $html = return $this->render('buy_action/recap_order.html.twig',['order' => $order ]);
+
+              $pdf->ShowPdfFile($html);
+
+    }*/
+
 }
 
 

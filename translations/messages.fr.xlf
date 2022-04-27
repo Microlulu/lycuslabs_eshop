@@ -1178,7 +1178,7 @@
       </trans-unit>
       <trans-unit id="3QRFROf" resname="MY LICENSES">
         <source>MY LICENSES</source>
-        <target>MES LICENSES</target>
+        <target>MES LICENCES</target>
       </trans-unit>
       <trans-unit id="p6dl9XB" resname="MY DOWNLOADS">
         <source>MY DOWNLOADS</source>
@@ -1198,7 +1198,7 @@
       </trans-unit>
       <trans-unit id="RkFSrQy" resname="Create address">
         <source>Create address</source>
-        <target>Créer une adresse</target>
+        <target>Créer adresse</target>
       </trans-unit>
       <trans-unit id="bkJhaVr" resname="SELECT">
         <source>SELECT</source>
@@ -1372,7 +1372,7 @@
       </trans-unit>
       <trans-unit id="wBHWCXv" resname="License">
         <source>License</source>
-        <target>License</target>
+        <target>Licence</target>
       </trans-unit>
       <trans-unit id="oDwAoYW" resname="Unless otherwise stated, Lycus Labs and/or its licensors own the intellectual property rights for all material on lycuslabs.com. All intellectual property rights are reserved. You may access this from lycuslabs.com for your own personal use subjected to restrictions set in these terms and conditions.">
         <source>Unless otherwise stated, Lycus Labs and/or its licensors own the intellectual property rights for all material on lycuslabs.com. All intellectual property rights are reserved. You may access this from lycuslabs.com for your own personal use subjected to restrictions set in these terms and conditions.</source>
