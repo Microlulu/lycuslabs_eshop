@@ -38,6 +38,9 @@ class Order
     #[ORM\Column(type: 'float', nullable: true)]
     private $voucher;
 
+    #[ORM\Column(type: 'float')]
+    private $totalPrice;
+
     public function __construct()
     {
         $this->detailOrders = new ArrayCollection();
@@ -146,6 +149,18 @@ class Order
     public function setVoucher(?float $voucher): self
     {
         $this->voucher = $voucher;
+
+        return $this;
+    }
+
+    public function getTotalPrice(): ?float
+    {
+        return $this->totalPrice;
+    }
+
+    public function setTotalPrice(float $totalPrice): self
+    {
+        $this->totalPrice = $totalPrice;
 
         return $this;
     }
