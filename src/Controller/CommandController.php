@@ -45,6 +45,9 @@ class CommandController extends AbstractController
         $html = $this->renderView('command/pdf_command.html.twig', [
             'command' => $order_selected
         ]);
+        return $this->render('command/pdf_command.html.twig', [
+            'command' => $order_selected
+        ]);
 
         $this->pdfService->generateHTMLAndFile($html);
 

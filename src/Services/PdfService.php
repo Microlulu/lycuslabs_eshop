@@ -37,7 +37,7 @@ class PdfService
 
     public function generateHTMLAndFile($html) {
 // Configure Dompdf according to your needs
-        $pdfOptions = new Options();
+        $pdfOptions = new Options(['isRemoteEnabled' => true]);
 
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
