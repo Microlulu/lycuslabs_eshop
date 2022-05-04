@@ -1718,6 +1718,130 @@
                             cliquez sur l'un des liens ou l'une des publicités de tiers, les conditions et les politiques du tiers concerné s'appliquent,
                             y compris les pratiques du tiers en matière de confidentialité et de collecte de données.</target>
       </trans-unit>
+      <trans-unit id="cb_Qk1." resname="Reference">
+        <source>Reference</source>
+        <target>Référence</target>
+      </trans-unit>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="uDIALaK" resname="Invoice">
+        <source>Invoice</source>
+        <target>Facture</target>
+      </trans-unit>
+      <trans-unit id="1XgW4X6" resname="Reference :">
+        <source>Reference :</source>
+        <target>Référence :</target>
+      </trans-unit>
+      <trans-unit id="jnPM7oq" resname="Date :">
+        <source>Date :</source>
+        <target>Date :</target>
+      </trans-unit>
+      <trans-unit id="v8.3qbB" resname="Invoice :">
+        <source>Invoice :</source>
+        <target>Facture :</target>
+      </trans-unit>
+      <trans-unit id="GF_NsyJ" resname="Hello">
+        <source>Hello</source>
+        <target>Bonjour</target>
+      </trans-unit>
+      <trans-unit id="9qVgktF" resname="Here you can manage the website!&#10;        You can see all users and orders placed.&#10;        You can generate discount codes and create and edit categories, products, services, team members, and carousel images.">
+        <source>Here you can manage the website!
+        You can see all users and orders placed.
+        You can generate discount codes and create and edit categories, products, services, team members, and carousel images.</source>
+        <target>Ici, vous pouvez gérer le site Web !
+          Vous pouvez voir tous les utilisateurs et les commandes passées.
+          Vous pouvez générer des codes de réduction et créer et modifier les catégories, les produits, les services, les membres de l'équipe et les images du carrousel.</target>
+      </trans-unit>
+      <trans-unit id="j3kFVeR" resname="Please use a Desktop version to access to your admin panel !">
+        <source>Please use a Desktop version to access to your admin panel !</source>
+        <target>Veuillez utiliser une version Desktop pour accéder à votre panneau d'administration !</target>
+      </trans-unit>
+      <trans-unit id="4Cqrbmb" resname="Activation Key">
+        <source>Activation Key</source>
+        <target>Clé d'activation</target>
+      </trans-unit>
+      <trans-unit id="Xg03ju2" resname="Host ID">
+        <source>Host ID</source>
+        <target>ID de l'hôte</target>
+      </trans-unit>
+      <trans-unit id=".7JiOq0" resname="Date Created">
+        <source>Date Created</source>
+        <target>Date de création</target>
+      </trans-unit>
+      <trans-unit id="1gDmKmh" resname="Expiry Date">
+        <source>Expiry Date</source>
+        <target>Date d'expiration</target>
+      </trans-unit>
+      <trans-unit id="suzngOJ" resname="Product :">
+        <source>Product :</source>
+          <target>Produit :</target>
+      </trans-unit>
+      <trans-unit id="PgvdnVj" resname="Activation Key :">
+        <source>Activation Key :</source>
+        <target>Clé d'activation :</target>
+      </trans-unit>
+      <trans-unit id="h_f1tg5" resname="Type :">
+        <source>Type :</source>
+        <target>Type :</target>
+      </trans-unit>
+      <trans-unit id="DvXk5ZK" resname="ost ID :">
+        <source>Host ID :</source>
+        <target>ID de l'hôte :</target>
+      </trans-unit>
+      <trans-unit id="cFr8vMJ" resname="Licence :">
+        <source>Licence :</source>
+        <target>License :</target>
+      </trans-unit>
+      <trans-unit id="vG77Sk8" resname="Host ID :">
+        <source>Host ID :</source>
+        <target>ID de l'hôte :</target>
+      </trans-unit>
+      <trans-unit id="3RZ5Bd4" resname="Version">
+        <source>Version</source>
+        <target>Version</target>
+      </trans-unit>
+      <trans-unit id="bWNBq_u" resname="Plateform">
+        <source>Plateform</source>
+        <target>Plateforme</target>
+      </trans-unit>
+      <trans-unit id="1ur_gjW" resname="Download">
+        <source>Download</source>
+        <target>Téléchargement</target>
+      </trans-unit>
+      <trans-unit id="6xZwtyv" resname="Selected :">
+        <source>Selected :</source>
+        <target>Sélectionné :</target>
+      </trans-unit>
+      <trans-unit id="bFPV3E4" resname="--Choose your version--">
+        <source>--Choose your version--</source>
+        <target>--Choisir votre version--</target>
+      </trans-unit>
+      <trans-unit id="MPXtCND" resname="--Choose your plateform--">
+        <source>--Choose your plateform--</source>
+        <target>--Choisir votre plateforme--</target>
+      </trans-unit>
+      <trans-unit id="t98Uups" resname="Platform :">
+        <source>Platform :</source>
+        <target>Plateforme :</target>
+      </trans-unit>
+      <trans-unit id="HuFztfm" resname="Windows, Mac and Linux">
+        <source>Windows, Mac and Linux</source>
+        <target>Windows, Mac et Linux</target>
+      </trans-unit>
+      <trans-unit id="3RSqcYa" resname="Download : Available on a desktop version">
+        <source>Download : Available on a desktop version</source>
+        <target>Téléchargement : Disponible sur ordinateur</target>
+      </trans-unit>
+      <trans-unit id="dIp9riO" resname="NEED SOME HELP ABOUT YOUR PURCHASE?">
+        <source>NEED SOME HELP ABOUT YOUR PURCHASE?</source>
+        <target>BESOIN D'AIDE A PROPOS DE VOTRE COMMANDE?</target>
+      </trans-unit>
+      <trans-unit id="JHfFTiS" resname="CONTACT US">
+        <source>CONTACT US</source>
+        <target>CONTACTEZ NOUS</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

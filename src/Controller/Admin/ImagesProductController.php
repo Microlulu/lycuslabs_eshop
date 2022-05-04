@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/images/product')]
 class ImagesProductController extends AbstractController
 {
-    #[Route('/', name: 'images_product_index', methods: ['GET'])]
+    #[Route('/images_product_index', name: 'images_product_index', methods: ['GET'])]
     public function index(ImagesProductRepository $imagesProductRepository): Response
     {
         return $this->render('images_product/index.html.twig', [
@@ -22,7 +22,7 @@ class ImagesProductController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'images_product_new', methods: ['GET', 'POST'])]
+    #[Route('/images_product_new', name: 'images_product_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $imagesProduct = new ImagesProduct();
@@ -62,7 +62,7 @@ class ImagesProductController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'images_product_show', methods: ['GET'])]
+    #[Route('/{id}/images_product_show', name: 'images_product_show', methods: ['GET'])]
     public function show(ImagesProduct $imagesProduct): Response
     {
         return $this->render('images_product/show.html.twig', [
@@ -70,7 +70,7 @@ class ImagesProductController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'images_product_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/images_product_edit', name: 'images_product_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ImagesProduct $imagesProduct, EntityManagerInterface $entityManager): Response
     {
         // je récupère l'ancienne image pour pouvoir la setter avec le produit
@@ -114,7 +114,7 @@ class ImagesProductController extends AbstractController
         ]);
     }
 
-    #[Route('/images_product_delete{id}', name: 'images_product_delete', methods: ['POST'])]
+    #[Route('/{id}/images_product_delete', name: 'images_product_delete', methods: ['GET','POST'])]
     public function delete(Request $request, ImagesProduct $imagesProduct, EntityManagerInterface $entityManager): Response
 
     {

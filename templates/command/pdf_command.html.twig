@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Invoice</title>
 
-    <style type="text/css">
+    <style>
         * {
             font-family: Verdana, Arial, sans-serif;
         }
@@ -26,11 +26,10 @@
 
 <table width="100%">
     <tr>
-        <td valign="top"><img src="{{ asset('images/moon.png') }}" alt="" width="150"/></td>
+        <td valign="top"><img src="{{ asset('images/Lycuslabslogo.svg') }}" alt="Lycuslabs logo" width="150"/></td>
         <td align="right">
             <h3>Lycuslabs</h3>
             <h5>Advanced simplicity</h5>
-            <p>{{ command.reference }}</p>
             <pre>
                 Mr Muhammad Alamgir NASIR
                 Rosenbergstrasse 77,
@@ -45,8 +44,10 @@
 
 <table width="100%">
     <tr>
-        <td><strong>From:</strong> Linblum - Barrio teatral</td>
-        <td><strong>To:</strong> Linblum - Barrio Comercial</td>
+        <td><strong>From:</strong> Lycuslabs </td>
+        <td><strong>To:</strong> {{  command.adresse }}</td>
+        <td> Date : {{ command.date_order }}</td>
+        <td> Ref : {{ command.reference }}</td>
     </tr>
 
 </table>
@@ -59,18 +60,18 @@
         <th>#</th>
         <th>Description</th>
         <th>Quantity</th>
-        <th>Unit Price $</th>
-        <th>Total $</th>
+        <th>Price €</th>
+        <th>Total €</th>
     </tr>
     </thead>
     <tbody>
     {% for detail in command.detailOrders %}
         <tr>
             <th scope="row">1</th>
-            <td>{{detail.title}}</td>
-            <td align="right">1</td>
-            <td align="right">1400.00</td>
-            <td align="right">1400.00</td>
+            <td>{{ detail.title }}</td>
+            <td>{{ detail.quantity }}</td>
+            <td>{{ detail.price }}</td>
+            <td>{{ detail.total }}</td>
         </tr>
     {% endfor%}
     </tbody>
@@ -78,18 +79,18 @@
     <tfoot>
     <tr>
         <td colspan="3"></td>
-        <td align="right">Subtotal $</td>
-        <td align="right">1635.00</td>
+        <td>Subtotal</td>
+        <td>1635.00 €</td>
     </tr>
     <tr>
         <td colspan="3"></td>
-        <td align="right">Tax $</td>
-        <td align="right">294.3</td>
+        <td>Discount / Coupon Code</td>
+        <td>{{ command.voucher }} </td>
     </tr>
     <tr>
         <td colspan="3"></td>
-        <td align="right">Total $</td>
-        <td align="right" class="gray">$ 1929.3</td>
+        <td>Total </td>
+        <td class="gray">{{ command.totalPrice}} €</td>
     </tr>
     </tfoot>
 </table>

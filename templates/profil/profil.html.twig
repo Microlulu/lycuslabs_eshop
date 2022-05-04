@@ -68,7 +68,9 @@
                 <section>
                     <table>
                         <tr>
-                            {#  {% if licence.active == true %}
+                            {#
+                            EXEMPLE BOUCLE POUR LICENCES
+                            {% if licence.active == true %}
 
                                 <th> icon - green here</th>
                             {% elseif licence.active == false %}
@@ -77,28 +79,28 @@
 
                             {% endif %} #}
                             <th>0</th>
-                            <th>Product
+                            <th>{% trans %}Product{% endtrans %}
                                 <button class="img_sorted">
                                     <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
                                 </button>
                             </th>
-                            <th>Activation Key</th>
+                            <th>{% trans %}Activation Key{% endtrans %}</th>
                             <th>Type
                                 <button class="img_sorted">
                                     <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
                                 </button>
                             </th>
-                            <th>Host ID
+                            <th>{% trans %}Host ID{% endtrans %}
                                 <button class="img_sorted">
                                     <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
                                 </button>
                             </th>
-                            <th>Date Created
+                            <th>{% trans %}Date Created{% endtrans %}
                                 <button class="img_sorted">
                                     <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
                                 </button>
                             </th>
-                            <th>Expiry Date
+                            <th>{% trans %}Expiry Date{% endtrans %}
                                 <button class="img_sorted">
                                     <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
                                 </button>
@@ -143,55 +145,55 @@
                     {# Design pour la partie responsive (téléphones, tablettes..) #}
                     <div class="container_responsive_profile">
                         <p>0</p>
-                        <h4>Product :</h4>
+                        <h4>{% trans %}Product :{% endtrans %}</h4>
                         <p>Product 1</p>
-                        <h4>Activation Key :</h4>
+                        <h4>{% trans %}Activation Key :{% endtrans %}</h4>
                         <p>ADEE-FEFE-FDFD-FDFF-FDFD</p>
-                        <h4>Type :</h4>
+                        <h4>{% trans %}Type :{% endtrans %}</h4>
                         <p>Node</p>
-                        <h4>Host ID :</h4>
+                        <h4>{% trans %}Host ID :{% endtrans %}</h4>
                         <p>25:32:15:12:45</p>
-                        <h4>Date Created</h4>
+                        <h4>{% trans %}Date Created{% endtrans %}</h4>
                         <p>25/12/22</p>
-                        <h4>Expiry Date</h4>
+                        <h4>{% trans %}Expiry Date{% endtrans %}</h4>
                         <p>25/12/22</p>
-                        <h4>Licence : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                        <h4>{% trans %}Licence :{% endtrans %} <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
                                            alt="Download invoice">
                         </h4>
                     </div>
                     <div class="container_responsive_profile">
                         <p>0</p>
-                        <h4>Product :</h4>
+                        <h4>{% trans %}Product :{% endtrans %}</h4>
                         <p>Product 1</p>
-                        <h4>Activation Key :</h4>
+                        <h4>{% trans %}Activation Key :{% endtrans %}</h4>
                         <p>ADEE-FEFE-FDFD-FDFF-FDFD</p>
-                        <h4>Type :</h4>
+                        <h4>{% trans %}Type :{% endtrans %}</h4>
                         <p>Node</p>
-                        <h4>Host ID :</h4>
+                        <h4>{% trans %}Host ID :{% endtrans %}</h4>
                         <p>25:32:15:12:45</p>
-                        <h4>Date Created</h4>
+                        <h4>{% trans %}Date Created{% endtrans %}</h4>
                         <p>25/12/22</p>
-                        <h4>Expiry Date</h4>
+                        <h4>{% trans %}Expiry Date{% endtrans %}</h4>
                         <p>25/12/22</p>
-                        <h4>Licence : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                        <h4>{% trans %}Licence :{% endtrans %} <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
                                            alt="Download invoice">
                         </h4>
                     </div>
                     <div class="container_responsive_profile">
                         <p>0</p>
-                        <h4>Product :</h4>
+                        <h4>{% trans %}Product :{% endtrans %}</h4>
                         <p>Product 1</p>
-                        <h4>Activation Key :</h4>
+                        <h4>{% trans %}Activation Key :{% endtrans %}</h4>
                         <p>ADEE-FEFE-FDFD-FDFF-FDFD</p>
-                        <h4>Type :</h4>
+                        <h4>{% trans %}Type :{% endtrans %}</h4>
                         <p>Node</p>
-                        <h4>Host ID :</h4>
+                        <h4>{% trans %}Host ID :{% endtrans %}</h4>
                         <p>25:32:15:12:45</p>
-                        <h4>Date Created</h4>
+                        <h4>{% trans %}Date Created{% endtrans %}</h4>
                         <p>25/12/22</p>
-                        <h4>Expiry Date</h4>
+                        <h4>{% trans %}Expiry Date{% endtrans %}</h4>
                         <p>25/12/22</p>
-                        <h4>Licence : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+                        <h4>{% trans %}Licence :{% endtrans %} <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
                                            alt="Download invoice">
                         </h4>
                     </div>
@@ -207,37 +209,60 @@
                 <section>
                     <table>
                         <tr>
-                            <th>Product</th>
-                            <th>Version</th>
-                            <th>Plateform</th>
-                            <th>Download</th>
+                            <th>{% trans %}Product{% endtrans %}</th>
+                            <th>{% trans %}Version{% endtrans %}</th>
+                            <th>{% trans %}Plateform{% endtrans %}</th>
+                            <th>{% trans %}Download{% endtrans %}</th>
                         </tr>
                         <tr>
                             <td>Product 2</td>
-                            <td>Select
-                                <button class="img_sorted">
-                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
-                                </button>
+                            <td>
+                                <label for="version-select">{% trans %}Selected : {% endtrans %}</label>
+
+                                <select name="version" id="version-select">
+                                    <option value="">{% trans %}--Choose your version--{% endtrans %}</option>
+                                    <option value="versionone">Version 1</option>
+                                    <option value="versiontwo">Version 2</option>
+                                    <option value="veersionthree">Version 3</option>
+                                </select>
                             </td>
-                            <td>Select
-                                <button class="img_sorted">
-                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
-                                </button>
+
+
+
+                            <td>
+                                <label for="platform-select">{% trans %}Selected : {% endtrans %}</label>
+
+                                <select name="plteform" id="plateform-select">
+                                    <option value="">{% trans %}--Choose your plateform--{% endtrans %}</option>
+                                    <option value="windows">Windows</option>
+                                    <option value="mac">Mac</option>
+                                    <option value="linux">Linux</option>
+                                </select>
                             </td>
                             <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
                                      alt="Download invoice"></td>
                         </tr>
                         <tr>
                             <td>Product 2</td>
-                            <td>Select
-                                <button class="img_sorted">
-                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
-                                </button>
+                            <td>
+                                <label for="version-select">{% trans %}Selected : {% endtrans %}</label>
+
+                                <select name="version" id="version-select">
+                                    <option value="">{% trans %}--Choose your version--{% endtrans %}</option>
+                                    <option value="versionone">Version 1</option>
+                                    <option value="versiontwo">Version 2</option>
+                                    <option value="veersionthree">Version 3</option>
+                                </select>
                             </td>
-                            <td>Select
-                                <button class="img_sorted">
-                                    <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
-                                </button>
+                            <td>
+                                <label for="platform-select">{% trans %}Selected : {% endtrans %}</label>
+
+                                <select name="plteform" id="plateform-select">
+                                    <option value="">{% trans %}--Choose your plateform--{% endtrans %}</option>
+                                    <option value="windows">Windows</option>
+                                    <option value="mac">Mac</option>
+                                    <option value="linux">Linux</option>
+                                </select>
                             </td>
                             <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
                                      alt="Download invoice"></td>
@@ -245,11 +270,11 @@
                     </table>
                     {# Design pour la partie responsive (téléphones, tablettes..) #}
                     <div class="container_responsive_profile">
-                        <h4>Product :</h4>
+                        <h4>{% trans %}Product :{% endtrans %}</h4>
                         <p>Product 1</p>
-                        <h4>Platform :</h4>
-                        <p>Windows, Mac and Linux</p>
-                        <h4>Download : Available on a desktop version</h4>
+                        <h4>{% trans %}Platform :{% endtrans %}</h4>
+                        <p>{% trans %}Windows, Mac and Linux{% endtrans %}</p>
+                        <h4>{% trans %}Download : Available on a desktop version{% endtrans %}</h4>
                     </div>
 
                 </section>
@@ -261,8 +286,8 @@
             <div class="row sections-row" id="support">
                 <section>
 
-                    <h3 class="mb-50">NEED SOME HELP ABOUT YOUR PURCHASE?</h3>
-                    <a href="{{ path('message_profil') }}" class="button">CONTACT US</a>
+                    <h3 class="mb-50">{% trans %}NEED SOME HELP ABOUT YOUR PURCHASE?{% endtrans %}</h3>
+                    <a href="{{ path('message_profil') }}" class="button">{% trans %}CONTACT US{% endtrans %}</a>
                 </section>
             </div>
             <!-- fin de la section support/contact-->

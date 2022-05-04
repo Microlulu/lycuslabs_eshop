@@ -17,7 +17,7 @@
                                 {{ item ['total'] }} €
                             </h4>
                             <label class="qty">{% trans %}Quantity {% endtrans %}: x</label>
-                            <input aria-label="Quantity" id="updateQuantity{{ key }}" type="number" value="{{ item ['quantity'] }}">
+                            <input aria-label="Quantity" id="updateQuantity{{ key }}" type="number" min="1" value="{{ item ['quantity'] }}">
                             <button onclick="onUpdateButton('{{ path('modify_quantity') }}', {{ item.product.id }}, 'updateQuantity{{ key }}')"
                                     aria-label="update" class="update">{% trans %}UPDATE{% endtrans %}
                             </button>

@@ -3,9 +3,11 @@
 {% block title %}Password Reset Email Sent{% endblock %}
 
 {% block body %}
+    <section class="mt-30">
     <p>
         {% trans %}If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.
         This link will expire in{% endtrans %} {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
     </p>
     <p>{% trans %}If you don't receive an email please check your spam folder or{% endtrans %} <a href="{{ path('app_forgot_password_request') }}">{% trans %}try again{% endtrans %}</a>.</p>
+    </section>
 {% endblock %}

@@ -55,7 +55,7 @@
             {{ form_end(registrationForm) }}
 
             <div class="link">
-                {% trans %}Already have an account?{% endtrans %}<a href="#"> {% trans %}Sign in{% endtrans %}</a>
+                {% trans %}Already have an account?{% endtrans %}<a href="{{ path('app_login') }}"> {% trans %}Sign in{% endtrans %}</a>
             </div>
         </div>
     </div>

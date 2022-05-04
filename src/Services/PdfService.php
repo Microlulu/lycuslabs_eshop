@@ -19,22 +19,8 @@ class PdfService
         $this->domPdf = new Dompdf($pdfOptions);
 
     }
-    // POUR MONTRER LE PDF DE LA FACTURE DANS LE NAVIGATEUR et le TELECHARGER
-    public function ShowPdfFile($html) {
-        $this->domPdf->loadHtml($html);
-        $this->domPdf->render();
-        $this->domPdf->stream("invoice.pdf", [
-        'Attachement' => true
-            ]);
-    }
-    // POUR CREER UN PDF ATTACHER A UN MAIL PAR EXEMPLE
-    public function generateBinaryPdf($html){
-        $this->domPdf->loadHtml($html);
-        $this->domPdf->render();
-        // RETOURNE LE PDF EN STRING
-        $this->domPdf->output();
-    }
 
+// POUR MONTER LE PDF DANS LE NAVIGATEUR ET LE TELECHARGER
     public function generateHTMLAndFile($html) {
 // Configure Dompdf according to your needs
         $pdfOptions = new Options(['isRemoteEnabled' => true]);

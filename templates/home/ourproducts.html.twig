@@ -29,7 +29,7 @@
                     <h2 class="price_prod">{{ product.price }} €</h2>
                     <form id="formAddCart">
                         <label for="quantityProduct" class="qty">{% trans %}Quantity{% endtrans %}</label>
-                        <input  type="number" id="quantityProduct" name="quantity" value="1">
+                        <input  type="number" id="quantityProduct" name="quantity" min="1" value="1">
                         <button type="submit" class="button" aria-label="Add to Cart">{% trans %}ADD TO CART{% endtrans %}</button>
                     </form>
 

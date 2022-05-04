@@ -218,3 +218,16 @@ tr:nth-child(even) {
     box-shadow: var(--box-shadow-inset);
 }
 
+/* SELECTIONS TABLES */
+
+label {
+    font-size: 1rem;
+    padding-right: 10px;
+    color: var(--darkgrey);
+}
+
+select {
+    font-size: .9rem;
+    padding: 2px 5px;
+    color: var(--purple);
+}

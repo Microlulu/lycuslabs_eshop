@@ -200,6 +200,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
     .button{
         margin-top: 20px;
+        height: fit-content;
         margin-bottom: 20px;
     }
     .product_info{

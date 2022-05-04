@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/images/services')]
 class ImagesServicesController extends AbstractController
 {
-    #[Route('/', name: 'images_services_index', methods: ['GET'])]
+    #[Route('/images_services_index', name: 'images_services_index', methods: ['GET'])]
     public function index(ImagesServicesRepository $imagesServicesRepository): Response
     {
         return $this->render('images_services/index.html.twig', [
@@ -22,7 +22,7 @@ class ImagesServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'images_services_new', methods: ['GET', 'POST'])]
+    #[Route('/images_service_new', name: 'images_services_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $imagesService = new ImagesServices();
@@ -62,7 +62,7 @@ class ImagesServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'images_services_show', methods: ['GET'])]
+    #[Route('/{id}/images_services_show', name: 'images_services_show', methods: ['GET'])]
     public function show(ImagesServices $imagesService): Response
     {
         return $this->render('images_services/show.html.twig', [
@@ -70,7 +70,7 @@ class ImagesServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'images_services_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/images_service_edit', name: 'images_services_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ImagesServices $imagesService, EntityManagerInterface $entityManager): Response
     {
         $old_name_image = $imagesService->getImage();
@@ -113,7 +113,7 @@ class ImagesServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/images_service_delete{id}', name: 'images_services_delete', methods: ['POST'])]
+    #[Route('/{id}/images_service_delete', name: 'images_services_delete', methods: ['GET','POST'])]
     public function delete(Request $request, ImagesServices $imagesService, EntityManagerInterface $entityManager): Response
     {
         $entityManager->remove($imagesService);

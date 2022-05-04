@@ -7,7 +7,7 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
     <h1>{% trans %}Reset your password{% endtrans %}</h1>
-
+<section>
     {{ form_start(requestForm) }}
         {{ form_row(requestForm.email) }}
         <div>
@@ -17,6 +17,7 @@
             </small>
         </div>
 
-        <button class="btn btn-primary">{% trans %}Send password reset email{% endtrans %}</button>
+        <button class="button mt-30">{% trans %}Send password reset email{% endtrans %}</button>
     {{ form_end(requestForm) }}
+</section>
 {% endblock %}

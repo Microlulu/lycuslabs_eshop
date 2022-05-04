@@ -1,72 +1,44 @@
 <section>
     <table>
         <tr>
-            <th>Reference</th>
-            <th>Date
+            <th>{% trans %}Reference{% endtrans %}</th>
+            <th>{% trans %}Date{% endtrans %}
                 <button class="img_sorted">
                     <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
                 </button>
             </th>
-            <th>Price
+            <th>{% trans %}Price{% endtrans %}
                 <button class="img_sorted">
                     <img class="img_sort" src="{{ asset('images/svg/chevron.png') }}" alt="sort by">
                 </button>
-            <th>Invoice</th>
+            <th>{% trans %}Invoice{% endtrans %}</th>
         </tr>
         {% for command in commands %}
         <tr>
             <td>{{ command.reference }}</td>
             <td>{{ command.dateOrder|date('d-m-y') }}</td>
-            <td>{{ command.totalPrice }}</td>
+            <td>{{ command.totalPrice }} €</td>
             <td><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
                      alt="Download invoice"></td>
         </tr>
        {% endfor %}
     </table>
+
+
     {# Design pour la partie responsive (téléphones, tablettes..) #}
-    <div class="container_responsive_profile">
-        <h4>Reference :</h4>
-        <p>CFEDGBGVF</p>
-        <h4>Qty :</h4>
-        <p>x 2</p>
-        <h4>Product :</h4>
-        <p>Produit 1</p>
-        <h4>Date :</h4>
-        <p>12.15.25</p>
-        <h4>Price</h4>
-        <p>150 €</p>
-        <h4>Invoice : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+    {% for command in commands %}
+        <div class="container_responsive_profile mb-10">
+
+        <h4>{% trans %}Reference :{% endtrans %}</h4>
+        <p>{{ command.reference }}</p>
+        <h4>{% trans %}Date :{% endtrans %}</h4>
+        <p>{{ command.dateOrder|date('d-m-y') }}</p>
+        <h4>{% trans %}Price{% endtrans %}</h4>
+        <p>{{ command.totalPrice }} €</p>
+        <h4>{% trans %}Invoice :{% endtrans %} <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
                            alt="Download invoice">
         </h4>
     </div>
-    <div class="container_responsive_profile">
-        <h4>Reference :</h4>
-        <p>CFEDGBGVF</p>
-        <h4>Qty :</h4>
-        <p>x 2</p>
-        <h4>Product :</h4>
-        <p>Produit 1</p>
-        <h4>Date :</h4>
-        <p>12.15.25</p>
-        <h4>Price</h4>
-        <p>150 €</p>
-        <h4>Invoice : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
-                           alt="Download invoice">
-        </h4>
-    </div>
-    <div class="container_responsive_profile">
-        <h4>Reference :</h4>
-        <p>CFEDGBGVF</p>
-        <h4>Qty :</h4>
-        <p>x 2</p>
-        <h4>Product :</h4>
-        <p>Produit 1</p>
-        <h4>Date :</h4>
-        <p>12.15.25</p>
-        <h4>Price</h4>
-        <p>150 €</p>
-        <h4>Invoice : <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
-                           alt="Download invoice">
-        </h4>
-    </div>
+    {% endfor %}
+
 </section>
