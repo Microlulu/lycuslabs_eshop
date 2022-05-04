@@ -35,6 +35,8 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
             // je récupère le fichier image passé dans le formulaire
             $image = $form->get('image')->getData();
             // S'il y a une image, j'enregistre si non j'enregistre une image par défaut
@@ -57,7 +59,6 @@ class ProductController extends AbstractController
             // je set la date du jour
             $date_e = new DateTime();
             $product->setCreatedat($date_e);
-
             $entityManager->persist($product);
             $entityManager->flush();
 

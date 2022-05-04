@@ -31,7 +31,7 @@ class HomeController extends AbstractController
     }
 
 
-    #[Route('/ourproduct/{id}', name: 'our_products', methods: ['GET'])]
+    #[Route('/ourproduct/{id}/', name: 'our_products', methods: ['GET'])]
     public function showEachProduct(Product $product,ImagesProductRepository $imagesProductRepository): Response
     {
 
