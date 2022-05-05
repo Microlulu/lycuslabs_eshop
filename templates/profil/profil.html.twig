@@ -32,17 +32,17 @@
                     </div>
                     <div class="mt-30 row">
                         {% for key, adresse in list_adresses %}
-                            <div class="adresses_box">
+                            <div id="boxSelected" class="adresses_box">
                                 <span>Address : #{{ key+1 }}</span>
                                 <h3>{{ adresse.firstName }}  {{ adresse.lastName }}</h3>
                                 <p>{{ adresse.company }}</p>
-                                <p>{{ adresse.vatnumber }}</p>
+                                <p> {{ adresse.vatnumber }}</p>
                                 <p>{{ adresse.adresse }}</p>
                                 <p>{{ adresse.zipcode }}</p>
                                 <p>{{ adresse.city }}</p>
                                 <p>{{ adresse.country }}</p>
                                 <div class="row btn_row">
-                                    <a class="button mt-20 mb-50" href="#">{% trans %}SELECT{% endtrans %}</a>
+                                    <a class="button mt-20 mb-50" id="btnSelect" href="#" onclick="">{% trans %}SELECT{% endtrans %}</a>
                                 </div>
                                 <div class="row btn_row">
                                     <a class="button_inset m-8" href="{{ path('adresse_edit', {'id': adresse.id}) }}">{% trans %}EDIT{% endtrans %}</a>
@@ -232,8 +232,8 @@
                             <td>
                                 <label for="platform-select">{% trans %}Selected : {% endtrans %}</label>
 
-                                <select name="plteform" id="plateform-select">
-                                    <option value="">{% trans %}--Choose your plateform--{% endtrans %}</option>
+                                <select name="platform-select" id="platform-select">
+                                    <option value="">{% trans %}--Choose your platform--{% endtrans %}</option>
                                     <option value="windows">Windows</option>
                                     <option value="mac">Mac</option>
                                     <option value="linux">Linux</option>
@@ -247,18 +247,18 @@
                             <td>
                                 <label for="version-select">{% trans %}Selected : {% endtrans %}</label>
 
-                                <select name="version" id="version-select">
+                                <select name="version-select" id="version-select">
                                     <option value="">{% trans %}--Choose your version--{% endtrans %}</option>
-                                    <option value="versionone">Version 1</option>
-                                    <option value="versiontwo">Version 2</option>
-                                    <option value="veersionthree">Version 3</option>
+                                    <option value="version-one">Version 1</option>
+                                    <option value="version-two">Version 2</option>
+                                    <option value="version-three">Version 3</option>
                                 </select>
                             </td>
                             <td>
                                 <label for="platform-select">{% trans %}Selected : {% endtrans %}</label>
 
-                                <select name="plteform" id="plateform-select">
-                                    <option value="">{% trans %}--Choose your plateform--{% endtrans %}</option>
+                                <select name="platform-select" id="platform-select">
+                                    <option value="">{% trans %}--Choose your platform--{% endtrans %}</option>
                                     <option value="windows">Windows</option>
                                     <option value="mac">Mac</option>
                                     <option value="linux">Linux</option>

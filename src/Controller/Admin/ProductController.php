@@ -134,6 +134,12 @@ class ProductController extends AbstractController
     #[Route('/product_delete{id}', name: 'product_delete', methods: ['GET','POST'])]
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
+        foreach ($product->getImagesProducts() as $row){
+            $filename = $this->getParameter('upload_dir_products') . $row->getImage();
+            if(file_exists($filename)){
+                unlink($filename);
+            }
+        }
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
             // si je supprime ma catégorie, je set la date du jour dans le champ updatedat de ma BDD
             $date_e = new DateTime();
@@ -143,12 +149,7 @@ class ProductController extends AbstractController
             $entityManager->flush();
         }
 
-        foreach ($product->getImagesProducts() as $row){
-            $filename = $this->getParameter('upload_dir_products') . $row->getImage();
-            if(file_exists($filename)){
-                unlink($filename);
-            }
-        }
+
         return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
     }
 

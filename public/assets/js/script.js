@@ -26,7 +26,7 @@
 /* NAVBAR PRINCIPALE  : MENU BURGER TOGGLE */
 function burgerToggle() {
     let x = document.getElementById("myLinks");
-    if (x.style.display == "block") {
+    if (x.style.display === "block") {
         x.style.display = "none";
     } else {
         x.style.display = "block";
@@ -58,35 +58,35 @@ function showSection(button){
     // Pour chaque bouton :je prends l'id du bouton et je prends la section associée (element) et je dis :
     // display block sur la section que je veux afficher et display none sur toutes les autres.
     // et je répète l'opération pour chaque bouton.
-    if(buttonID=="address-btn"){
+    if(buttonID==="address-btn"){
        document.getElementById("adresses").style.display="block";
        document.getElementById("orders").style.display="none";
        document.getElementById("licenses").style.display="none";
        document.getElementById("downloads").style.display="none";
        document.getElementById("support").style.display="none";
    }
-   if(buttonID == "orders-btn"){
+   if(buttonID === "orders-btn"){
        document.getElementById("adresses").style.display="none";
        document.getElementById("orders").style.display="block";
        document.getElementById("licenses").style.display="none";
        document.getElementById("downloads").style.display="none";
        document.getElementById("support").style.display="none";
    }
-   if(buttonID == "downloads-btn"){
+   if(buttonID === "downloads-btn"){
        document.getElementById("adresses").style.display="none";
        document.getElementById("orders").style.display="none";
        document.getElementById("licenses").style.display="none";
        document.getElementById("downloads").style.display="block";
        document.getElementById("support").style.display="none";
    }
-   if(buttonID == "licences-btn") {
+   if(buttonID === "licences-btn") {
        document.getElementById("adresses").style.display = "none";
        document.getElementById("orders").style.display = "none";
        document.getElementById("licenses").style.display = "block";
        document.getElementById("downloads").style.display = "none";
        document.getElementById("support").style.display = "none";
    }
-   if(buttonID == "support-btn"){
+   if(buttonID === "support-btn"){
        document.getElementById("adresses").style.display="none";
        document.getElementById("orders").style.display="none";
        document.getElementById("licenses").style.display="none";
@@ -102,7 +102,7 @@ function showImage(image){
 }
 function toggleThumbnails(){
     var thumbnails = document.getElementById('thumbnails');
-    if(thumbnails.style.display == 'block'){
+    if(thumbnails.style.display === 'block'){
         thumbnails.style.display = 'none';
     } else {
         thumbnails.style.display = 'block';
@@ -116,7 +116,7 @@ function showService(image){
 }
 function toggleThumbsServ(){
     var thumbserv = document.getElementById('thumbserv');
-    if(thumbserv.style.display == 'block'){
+    if(thumbserv.style.display === 'block'){
         thumbserv.style.display = 'none';
     } else {
         thumbserv.style.display = 'block';
@@ -130,12 +130,27 @@ function showServiceDroit(image){
 }
 function toggleThumbsServDroit(){
     var thumbservdroit = document.getElementById('thumbservdroit');
-    if(thumbservdroit.style.display == 'block'){
+    if(thumbservdroit.style.display === 'block'){
         thumbservdroit.style.display = 'none';
     } else {
         thumbservdroit.style.display = 'block';
     }
 }
+
+
+/*FONCTION POUR CHANGER LE BACKGROUND DES CARTES ADRESSES DANS LE PROFIL QUAND CLIQUEES*/
+// Je crée un tableau de couleurs qui reste dans ma charte graphique
+let colors = ['#E4E4EC','#DFE1EC', '#E0E5EB', '#DBE3EE', '#E6EAF0'];
+// Je récupère le bouton
+let btnSelect = document.getElementById('btnSelect');
+// J'ajoute un event listener
+btnSelect.addEventListener('click', function (){
+// Je les fais apparaitrent de manière aléatoire en prenant la longueur de mon tableau
+  var randomColor = colors[Math.floor(Math.random() * colors.length)]
+    //Je récupère le container dont je veux changer la couleur
+    let container = document.getElementById('boxSelected');
+    container.style.background = randomColor;
+})
 
 
 /* FONCTION POUR VOIR DANS MON CODE TOUS LES TAGS UTILISES */

@@ -10,32 +10,24 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Fullname</th>
-                <th>Vat_number</th>
                 <th>Reference</th>
                 <th>Date_order</th>
                 <th>Address</th>
-                <th>Zipcode</th>
-                <th>City</th>
-                <th>Country</th>
-                <th>Telephone</th>
+                <th>Voucher</th>
                 <th>Total</th>
+                <th>Actions</th>
+
             </tr>
         </thead>
         <tbody>
         {% for order in orders %}
             <tr>
                 <td>{{ order.id }}</td>
-                <td>{{ order.fullname }}</td>
-                <td>{{ order.vatNumber }}</td>
                 <td>{{ order.reference }}</td>
                 <td>{{ order.dateOrder ? order.dateOrder|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ order.adresse }}</td>
-                <td>{{ order.zipcode }}</td>
-                <td>{{ order.city }}</td>
-                <td>{{ order.country }}</td>
-                <td>{{ order.telephone }}</td>
-                <td>{{ order.total }}</td>
+                <td>- {{ order.voucher }} %</td>
+                <td>{{ order.totalPrice }} €</td>
                 <td>
                     <a class="button_dash" href="{{ path('order_show', {'id': order.id}) }}">SHOW</a>
                 </td>
@@ -59,12 +51,6 @@
                 <h4>Id</h4> - <h4>{{ order.id }}</h4>
             </div>
             <div class="row">
-                <h4>Fullname</h4> - <h4>{{ order.fullname }}</h4>
-            </div>
-            <div class="row">
-                <h4>Vat Number</h4> - <h4>{{ order.vatNumber }}</h4>
-            </div>
-            <div class="row">
                 <h4>Reference</h4> - <h4>{{ order.reference }}</h4>
             </div>
             <div class="row">
@@ -74,19 +60,10 @@
                 <h4>Address</h4> - <h4>{{ order.adresse }}</h4>
             </div>
             <div class="row">
-                <h4>Zipcode</h4> - <h4>{{ order.zipcode }}</h4>
+                <h4>Voucher</h4> - <h4>- {{ order.voucher }} %</h4>
             </div>
             <div class="row">
-                <h4>City</h4> - <h4>{{ order.city }}</h4>
-            </div>
-            <div class="row">
-                <h4>Country</h4> - <h4>{{ order.country }}</h4>
-            </div>
-            <div class="row">
-                <h4>Telephone</h4> - <h4>{{ order.telephone }}</h4>
-            </div>
-            <div class="row">
-                <h4>Total</h4> - <h4>{{ order.total }}</h4>
+                <h4>Total</h4> - <h4>{{ order.totalPrice }}€</h4>
             </div>
             <div class="row">
                 <h4>Actions</h4> - <a class="button_dash" href="{{ path('order_show', {'id': order.id}) }}">SHOW</a>

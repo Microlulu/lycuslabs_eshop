@@ -13,13 +13,6 @@
                 <td>{{ order.id }}</td>
             </tr>
             <tr>
-                <th>Fullname</th>
-                <td>{{ order.user.fullname }}</td>
-            </tr>
-                <th>Vat_number</th>
-                <td>{{ order.vatNumber }}</td>
-            </tr>
-            <tr>
                 <th>Reference</th>
                 <td>{{ order.reference }}</td>
             </tr>
@@ -32,24 +25,12 @@
                 <td>{{ order.adresse }}</td>
             </tr>
             <tr>
-                <th>Zipcode</th>
-                <td>{{ order.zipcode }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ order.city }}</td>
-            </tr>
-            <tr>
-                <th>Country</th>
-                <td>{{ order.country }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ order.telephone }}</td>
+                <th>Voucher</th>
+                <td>{{ order.voucher }}</td>
             </tr>
             <tr>
                 <th>Total</th>
-                <td>{{ order.total }}</td>
+                <td>{{ order.totalprice }}</td>
             </tr>
             <tr>
         </tbody>
@@ -66,12 +47,6 @@
                 <h4>Id</h4> - <h4>{{ order.id }}</h4>
             </div>
             <div class="row">
-                <h4>Fullname</h4> - <h4>{{ order.user.fullname }}</h4>
-            </div>
-            <div class="row">
-                <h4>Vat number</h4> - <h4>{{ order.vatNumber }}</h4>
-            </div>
-            <div class="row">
                 <h4>Reference</h4><h4>{{ order.reference }}</h4>
             </div>
             <div class="row">
@@ -81,19 +56,10 @@
                 <h4>Adresse</h4> - <h4>{{ order.adresse }}</h4>
             </div>
         <div class="row">
-            <h4>Zipcode</h4> - <h4>{{ order.zipcode }}</h4>
+            <h4>Voucher</h4> - <h4> - {{ order.voucher }} %</h4>
         </div>
         <div class="row">
-            <h4>City</h4> - <h4>{{ order.city }}</h4>
-        </div>
-        <div class="row">
-            <h4>Country</h4> - <h4>{{ order.country }}</h4>
-        </div>
-        <div class="row">
-            <h4>Telephone</h4> - <h4>{{ order.telephone }}</h4>
-        </div>
-        <div class="row">
-            <h4>Total</h4> - <h4>{{ order.total }}</h4>
+            <h4>Total</h4> - <h4>{{ order.totalPrice }} €</h4>
         </div>
 
             <br>

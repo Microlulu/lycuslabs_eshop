@@ -63,9 +63,11 @@
     border-radius: 25px;
     cursor: pointer;
     box-shadow: var(--box-shadow);
-    background: var(--whitebg);
     transition: all 0.3s;
+}
 
+#boxSelected{
+    background: var(--whitebg);
 }
 .adresses_box:hover {
     transform: translateY(-20px);
@@ -88,6 +90,7 @@ section{
     text-decoration: none;
     font-weight: 700;
     color: var(--darkgrey);
+    background: var(--whitebg);
     box-shadow: var(--box-shadow);
     border: none;
     outline: none;
@@ -99,6 +102,7 @@ section{
 }
 .button_inset:hover{
     color: var(--blue);
+    background-color: var(--whitebg);
     box-shadow: var(--box-shadow-inset);
 }
 .button{
