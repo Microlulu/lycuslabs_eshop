@@ -96,9 +96,11 @@ function showSection(button){
 }
 
 /* FONCTION PUR CHANGER LARGE IMAGE PAR PETITES (pour page products, et page services (template 1 et template 2)*/
+// j'appelle mon id de ma grande image et mon id de ma petite images ( qui possèdent des routes vers la BDD en id )
 function showImage(mainImgSrc, imageSrc) {
     let mainImage = document.getElementById(mainImgSrc);
     let thumbServ = document.getElementById(imageSrc);
+    // Et je dis simplement que petite image + grande image = grande image + petite image
     [thumbServ.src, mainImage.src] = [mainImage.src, thumbServ.src];
 }
 
