@@ -32,7 +32,7 @@
                     </div>
                     <div class="mt-30 row">
                         {% for key, adresse in list_adresses %}
-                            <div id="boxSelected" class="adresses_box">
+                            <div id="boxSelected{{ key+1 }}" class="adresses_box">
                                 <span>Address : #{{ key+1 }}</span>
                                 <h3>{{ adresse.firstName }}  {{ adresse.lastName }}</h3>
                                 <p>{{ adresse.company }}</p>
@@ -42,7 +42,7 @@
                                 <p>{{ adresse.city }}</p>
                                 <p>{{ adresse.country }}</p>
                                 <div class="row btn_row">
-                                    <a class="button mt-20 mb-50" id="btnSelect" href="#" onclick="">{% trans %}SELECT{% endtrans %}</a>
+                                    <a class="button mt-20 mb-50" onclick="colorize('boxSelected{{ key+1 }}')">{% trans %}SELECT{% endtrans %}</a>
                                 </div>
                                 <div class="row btn_row">
                                     <a class="button_inset m-8" href="{{ path('adresse_edit', {'id': adresse.id}) }}">{% trans %}EDIT{% endtrans %}</a>

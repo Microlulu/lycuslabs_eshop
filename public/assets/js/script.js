@@ -95,78 +95,27 @@ function showSection(button){
    }
 }
 
-/* FONCTION PUR CHANGER LARGE IMAGE PAR PETITES (pour page products)*/
-function showImage(image){
-    var mainImage = document.getElementById('productImg');
-    mainImage.src = image;
-}
-function toggleThumbnails(){
-    var thumbnails = document.getElementById('thumbnails');
-    if(thumbnails.style.display === 'block'){
-        thumbnails.style.display = 'none';
-    } else {
-        thumbnails.style.display = 'block';
-    }
+/* FONCTION PUR CHANGER LARGE IMAGE PAR PETITES (pour page products, et page services (template 1 et template 2)*/
+function showImage(mainImgSrc, imageSrc) {
+    let mainImage = document.getElementById(mainImgSrc);
+    let thumbServ = document.getElementById(imageSrc);
+    [thumbServ.src, mainImage.src] = [mainImage.src, thumbServ.src];
 }
 
-/* FONCTION PUR CHANGER LARGE IMAGE PAR PETITES (pour page services template 1 (coté gauche)*/
-function showService(image){
-    var mainImage = document.getElementById('serviceImg');
-    mainImage.src = image;
-}
-function toggleThumbsServ(){
-    var thumbserv = document.getElementById('thumbserv');
-    if(thumbserv.style.display === 'block'){
-        thumbserv.style.display = 'none';
-    } else {
-        thumbserv.style.display = 'block';
-    }
-}
-
-/* FONCTION PUR CHANGER LARGE IMAGE PAR PETITES (pour page services template 2 (coté droit)*/
-function showServiceDroit(image){
-    var mainImage = document.getElementById('servicedroitImg');
-    mainImage.src = image;
-}
-function toggleThumbsServDroit(){
-    var thumbservdroit = document.getElementById('thumbservdroit');
-    if(thumbservdroit.style.display === 'block'){
-        thumbservdroit.style.display = 'none';
-    } else {
-        thumbservdroit.style.display = 'block';
-    }
-}
 
 
 /*FONCTION POUR CHANGER LE BACKGROUND DES CARTES ADRESSES DANS LE PROFIL QUAND CLIQUEES*/
-// Je crée un tableau de couleurs qui reste dans ma charte graphique
-let colors = ['#E4E4EC','#DFE1EC', '#E0E5EB', '#DBE3EE', '#E6EAF0'];
-// Je récupère le bouton
-let btnSelect = document.getElementById('btnSelect');
-// J'ajoute un event listener
-btnSelect.addEventListener('click', function (){
-// Je les fais apparaitrent de manière aléatoire en prenant la longueur de mon tableau
-  var randomColor = colors[Math.floor(Math.random() * colors.length)]
+// Je crée un tableau de couleurs qui reste dans ma charte
+function colorize(containerId) {
+    let colors = ['#E4E4EC', '#DFE1EC', '#E0E5EB', '#DBE3EE', '#E6EAF0'];
+    // Je les fais apparaitrent de manière aléatoire en prenant la longueur de mon tableau
+    let randomColor = colors[Math.floor(Math.random() * colors.length)]
     //Je récupère le container dont je veux changer la couleur
-    let container = document.getElementById('boxSelected');
+    let adresseBoxes = document.getElementsByClassName('adresses_box');
+    for (let i = 0; i < adresseBoxes.length; i++) {
+        adresseBoxes[i].style.background = getComputedStyle(document.body).getPropertyValue('--whitebg');
+    }
+    let container = document.getElementById(containerId);
     container.style.background = randomColor;
-})
-
-
-/* FONCTION POUR VOIR DANS MON CODE TOUS LES TAGS UTILISES */
-/* Le but de cette fonction est d'enlever le * dans mon CSS et d'optimisé le class * uniquement avec les tags dont je me sers sans englober tous les tags.*/
-/* Pour me servir de cette fonction il faut que je rajoute un paragraphe dans mon HTML comprenant l'id "allTagsUsed" <p id="allTagsUsed"></p>*/
-/*
-// Je crée une constante collection et je viens récupérer tous les tags
-const collection = document.getElementsByTagName("*");
-// Je précise que je veux un texte.
-let text = ""
-// Et je viens créer une boucle qui prendra un par un tous les tags et les affichera dans mon paragraphe sous forme de texte.
-for (let i = 0; i < collection.length; i++) {
-    // Ma boucle signifie : prends l'index et commence à zéro, prends toute la longueur de la collection (donc tous les tags) et ajoute +1 a chaque fois que tu en trouves un.
-    text += collection[i].tagName + "<br>";
-    // Dispose les tags de ma collection en utilisant leur nom de tags et rajoute un <br> à fin de chaque tag pour que ça soit plus lisible.
 }
-document.getElementById("allTagsUsed").innerHTML = text;
-// Prends l'id "AllTagsUsed" dans mon HTML et donne le texte que j'ai demandé.
-*/
+

@@ -5,13 +5,13 @@
             <h3>{{ item.subtitle }}</h3>
         </div>
         <div class="row">
-            <div class="imgServ_Box mt-5"  onclick="toggleThumbsServ()">
-                <img id="serviceImg" src="{{ asset('images/services/' ~ item.image) }}" alt="{{ item.shortcut }}">
+            <div class="imgServ_Box mt-5">
+                <img id="{{ asset('images/services/' ~ item.image) }}" src="{{ asset('images/services/' ~ item.image) }}" alt="{{ item.shortcut }}">
             </div>
             <div class="small-img-row mt-20">
                 {% for image in item.imagesServices %}
                     <div class="small-img-col">
-                        <img id="thumbserv" onclick="showService('{{ asset('images/services/' ~ image.image ) }}')" src="{{ asset('images/services/' ~image.image ) }}"
+                        <img id="{{ asset('images/services/' ~ image.image ) }}" onclick="showImage('{{ asset('images/services/' ~ item.image) }}','{{ asset('images/services/' ~ image.image ) }}')" src="{{ asset('images/services/' ~image.image ) }}"
                              alt="{{ image.alt }}" class="small-img_serv">
                     </div>
                 {% endfor %}

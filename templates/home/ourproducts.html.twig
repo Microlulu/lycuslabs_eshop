@@ -8,14 +8,14 @@
         <div class="product_container">
             <div class="product_info">
                 <div class="col-2 imgs_box">
-                    <div class="imgProd_Box" onclick="toggleThumbnails()">
+                    <div class="imgProd_Box">
                         <img src="{{ asset('images/products/' ~ product.image ) }}"
-                             alt="{{ product.shortcut }}" id="productImg">
+                             alt="{{ product.shortcut }}" id="{{ asset('images/products/' ~ product.image ) }}">
                     </div>
                     <div class="small-img-row">
                         {% for image in product.imagesProducts %}
                         <div class="small-img-col">
-                            <img id="thumbnails"  onclick="showImage('{{ asset('images/products/' ~ image.image ) }}')" src="{{ asset('images/products/' ~ image.image ) }}"
+                            <img id="{{ asset('images/products/' ~ image.image ) }}"  onclick="showImage('{{ asset('images/products/' ~ product.image ) }}','{{ asset('images/products/' ~ image.image ) }}')" src="{{ asset('images/products/' ~ image.image ) }}"
                                  alt="{{ image.alt }}" class="small-img">
                         </div>
                         {% endfor %}
