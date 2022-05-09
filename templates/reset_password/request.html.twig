@@ -20,4 +20,8 @@
         <button class="button mt-30">{% trans %}Send password reset email{% endtrans %}</button>
     {{ form_end(requestForm) }}
 </section>
+    {% block footer %}
+        {% include 'footer.html.twig' %}
+    {% endblock %}
+
 {% endblock %}

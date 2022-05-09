@@ -30,7 +30,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-
+    /*ici je voudrais mettre mon slug*/
     #[Route('/ourproduct/{id}/', name: 'our_products', methods: ['GET'])]
     public function showEachProduct(Product $product,ImagesProductRepository $imagesProductRepository): Response
     {

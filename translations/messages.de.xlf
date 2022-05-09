@@ -1784,7 +1784,7 @@
         <target>Art :</target>
       </trans-unit>
       <trans-unit id="DvXk5ZK" resname="ost ID :">
-        <source>Host ID :</source>
+        <source>ost ID :</source>
         <target>Host-ID :</target>
       </trans-unit>
       <trans-unit id="cFr8vMJ" resname="Licence :">
@@ -1838,6 +1838,34 @@
       <trans-unit id="JHfFTiS" resname="CONTACT US">
         <source>CONTACT US</source>
         <target>KONTAKT US</target>
+      </trans-unit>
+      <trans-unit id="vJZ6GGR" resname="We are sorry, for now the licences page is in construction. It will be available soon.">
+        <source>We are sorry, for now the licences page is in construction. It will be available soon.</source>
+        <target>Es tut uns leid, die Seite mit den Lizenzen befindet sich noch im Aufbau. Sie wird bald verfügbar sein.</target>
+      </trans-unit>
+      <trans-unit id="lij4fZz" resname="While waiting for the development of the page, here is a preview.">
+        <source>While waiting for the development of the page, here is a preview.</source>
+        <target>Während wir auf die Entwicklung der Seite warten, ist hier eine Vorschau.</target>
+      </trans-unit>
+      <trans-unit id="tPYlaM8" resname="We are sorry, for now the download page is in construction. It will be available soon.">
+        <source>We are sorry, for now the download page is in construction. It will be available soon.</source>
+        <target>Es tut uns leid, aber die Download-Seite befindet sich derzeit noch im Aufbau. Sie wird bald verfügbar sein.</target>
+      </trans-unit>
+      <trans-unit id="JdOorcR" resname="Don't worry, when you buy a product, you automatically receive and email with the activation key and your software attached">
+        <source>Don't worry, when you buy a product, you automatically receive and email with the activation key and your software attached</source>
+        <target>Keine Sorge, wenn Sie ein Produkt kaufen, erhalten Sie automatisch eine E-Mail mit dem Aktivierungsschlüssel und Ihrer Software im Anhang.</target>
+      </trans-unit>
+      <trans-unit id="29UzYs0" resname="--Choose your platform--">
+        <source>--Choose your platform--</source>
+        <target>--Wählen Sie Ihre Plattform--</target>
+      </trans-unit>
+      <trans-unit id="I7EskBT" resname="We are sorry, for now the licenses page is in construction. It will be available soon.">
+        <source>We are sorry, for now the licenses page is in construction. It will be available soon.</source>
+        <target>Es tut uns leid, die Seite mit den Lizenzen befindet sich noch im Aufbau. Sie wird bald verfügbar sein.</target>
+      </trans-unit>
+      <trans-unit id="JwbzQ_F" resname="Here you can find all your past orders and their invoices">
+        <source>Here you can find all your past orders and their invoices</source>
+        <target>Hier finden Sie alle Ihre vergangenen Bestellungen und deren Rechnungen</target>
       </trans-unit>
     </body>
   </file>
