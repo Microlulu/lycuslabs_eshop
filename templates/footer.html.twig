@@ -6,7 +6,7 @@
             <div class="footer_col">
                 <h4>{% trans %}Company{% endtrans %}</h4>
                 <ul>
-                    <li><a href="#sec">{% trans %}About us{% endtrans %}</a></li>
+                    <li><a href="{{ path('home') }}">{% trans %}About us{% endtrans %}</a></li>
                     <li><a href="{{ path('our_services') }}">{% trans %}Our services{% endtrans %}</a></li>
                     <li><a href="{{ path('team_members') }}">{% trans %}Our team{% endtrans %}</a></li>
                     <li><a href="{{ path('terms_of_use') }}">{% trans %}Terms of use{% endtrans %}</a></li>
@@ -49,11 +49,7 @@
     </div>
 </footer>
 
-<div class="banner-cookies">
-    <div>
-        <p>Lycuslabs Web retains data such as cookies to enable essential site functionality, as well as marketing, personalization and analysis. You can change your settings at any time or accept the default settings. You can close this banner to continue with only essential cookies. <a href="">Cookie Policy</a></p>
-    </div>
-</div>
+
 
 
 
