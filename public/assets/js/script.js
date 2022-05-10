@@ -101,6 +101,8 @@ function showImage(mainImgSrc, imageSrc) {
     let mainImage = document.getElementById(mainImgSrc);
     let thumbServ = document.getElementById(imageSrc);
     // Et je dis simplement que petite image + grande image = grande image + petite image
+    // De cette façon, cela changera la disposition des images
+    // La petite image prendra la place de la grande et inversement.
     [thumbServ.src, mainImage.src] = [mainImage.src, thumbServ.src];
 }
 
@@ -114,9 +116,11 @@ function colorize(containerId) {
     let randomColor = colors[Math.floor(Math.random() * colors.length)]
     //Je récupère le container dont je veux changer la couleur
     let adresseBoxes = document.getElementsByClassName('adresses_box');
+    // Et je fais une boucle qui dit que si mon fond et blanc, il faut appliquer un style sur le fond
     for (let i = 0; i < adresseBoxes.length; i++) {
         adresseBoxes[i].style.background = getComputedStyle(document.body).getPropertyValue('--whitebg');
     }
+    // et je precise ici que c'est le container qui est visé et que je lui applique ma variable ramdomColor
     let container = document.getElementById(containerId);
     container.style.background = randomColor;
 }
