@@ -31,10 +31,9 @@ class HomeController extends AbstractController
     }
 
     /*ici je voudrais mettre mon slug*/
-    #[Route('/ourproduct/{id}/', name: 'our_products', methods: ['GET'])]
+    #[Route('/ourproduct/{slug}/', name: 'our_products', methods: ['GET'])]
     public function showEachProduct(Product $product,ImagesProductRepository $imagesProductRepository): Response
     {
-
         return $this->render('home/ourproducts.html.twig', [
             'product' => $product,
         ]);

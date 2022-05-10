@@ -25,7 +25,7 @@
                 <td>{{ order.id }}</td>
                 <td>{{ order.reference }}</td>
                 <td>{{ order.dateOrder ? order.dateOrder|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ order.adresse }}</td>
+                <td>{{ order.adresse|raw }}</td>
                 <td>- {{ order.voucher }} %</td>
                 <td>{{ order.totalPrice }} €</td>
                 <td>

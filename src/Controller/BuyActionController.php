@@ -188,6 +188,8 @@ class BuyActionController extends AbstractController
             'user' => $this->getUser()
         ]);
 
+        $form2->handleRequest($request);
+
         if ($form2->isSubmitted() && $form2->isValid()) {
             $delivery = $form2->get('adresses')->getData();
             $delivery_content = $delivery->getFirstname() . ' ' . $delivery->getLastname();
@@ -208,7 +210,7 @@ class BuyActionController extends AbstractController
             }
             // set de l'adresse et si c'est valide au moment de cliquer sur le bouton je vais sur la page suivante qui et le récapitulatif de ma commande avant achat définitif
             $this->cart->setAdresseforOrder($delivery);
-            $this->redirectToRoute('recap_order');
+            return $this->redirectToRoute('recap_order');
         }
         return $this->render('buy_action/choose_address.html.twig', [
             'form2' => $form2->createView(),

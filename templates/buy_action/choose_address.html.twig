@@ -27,7 +27,7 @@
                         <h3>{% trans %}DELIVERY{% endtrans %}</h3>
                         <div class="small_card">
                             {% set formhtml %}
-                                {{ form_start(form2) }}
+                                {{ form_start(form2, {action: path('choose_address_cart')}) }}
                                 {{ form_end(form2) }}
                             {% endset %}
                             {# Avec le replace je viens remplacer les [br] de ma public function dans mon entity AdressesType par des

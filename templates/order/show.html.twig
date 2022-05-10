@@ -17,6 +17,13 @@
                 <td>{{ order.reference }}</td>
             </tr>
             <tr>
+                <th>Details</th>
+                <td>{% for orderDetail in order.detailOrders %}
+                        <p>{{ orderDetail.title }}</p>
+                        <p>{{ orderDetail.price }}</p>
+                    {% endfor %}</td>
+            </tr>
+            <tr>
                 <th>Date_order</th>
                 <td>{{ order.dateOrder ? order.dateOrder|date('Y-m-d H:i:s') : '' }}</td>
             </tr>

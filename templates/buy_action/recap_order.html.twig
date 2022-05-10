@@ -10,16 +10,14 @@
 
 
         <h3 class="mt-20">{% trans %}MY ADDRESS{% endtrans %}</h3>
-        {% for adresse in data.adresse %}
-            {{ adresse|raw }}
-            <h3>{{ adresse.firstName }}  {{ adresse.lastName }}</h3>
-            <p>{{ adresse.company }}</p>
-            <p>{{ adresse.vatnumber }}</p>
-            <p>{{ adresse.adresse }}</p>
-            <p>{{ adresse.zipcode }}</p>
-            <p>{{ adresse.city }}</p>
-            <p>{{ adresse.country }}</p>
-            {% endfor %}
+            {{ data.adresse|replace({'[br]' : '</br>'})|raw }}
+            <h3>{{ data.adresse.firstName }}  {{ data.adresse.lastName }}</h3>
+            <p>{{ data.adresse.company }}</p>
+            <p>{{ data.adresse.vatnumber }}</p>
+            <p>{{ data.adresse.adresse }}</p>
+            <p>{{ data.adresse.zipcode }}</p>
+            <p>{{ data.adresse.city }}</p>
+            <p>{{ data.adresse.country }}</p>
 
         <h3 class="mt-20">{% trans %}MY PRODUCTS{% endtrans %}</h3>
             <table>
