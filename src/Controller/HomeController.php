@@ -20,6 +20,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(VoucherService $voucherService, Request $request, CategoryRepository $categoryRepository, ServicesRepository $servicesRepository, Cart $cart, CarouselRepository $carouselRepository, TranslatorInterface $translator ): Response
     {
+
         return $this->render('home/home.html.twig', [
             'cart' => $cart->getCart(),
             'carousel' => $carouselRepository->findAll(),
@@ -38,4 +39,7 @@ class HomeController extends AbstractController
             'product' => $product,
         ]);
     }
+
+
+
 }

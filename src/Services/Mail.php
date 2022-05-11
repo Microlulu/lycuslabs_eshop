@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Services;
+
+use Mailjet\Client;
+use Mailjet\Resources;
+
+class Mail
+{
+    private $api_key ='3c7b6426c2aa6fb09a6c7fb1f9df0160';
+    private $api_key_secret = 'bea9908accd38f35ed97da9b8128815d';
+
+    public function send($to_email, $to_name, $subject, $content){
+        $mj = new Client($this->api_key, $this->api_key_secret ,true,['version' => 'v3.1']);
+        $body = [
+            'Messages' => [
+                [
+                    'From' => [
+                        'Email' => "support@lycuslabs.com",
+                        'Name' => "Lycuslabs"
+                    ],
+                    'To' => [
+                        [
+                            'Email' => $to_email,
+                            'Name' => $to_name
+                        ]
+                    ],
+                    'TemplateID' => 3926224,
+                    'TemplateLanguage' => true,
+                    'Subject' => $subject,
+                    'Variables' => [
+                        'content' => $content,
+                    ]
+                ]
+            ]
+        ];
+        $response = $mj->post(Resources::$Email, ['body' => $body]);
+        $response->success($response->getData());
+    }
+
+
+
+
+}

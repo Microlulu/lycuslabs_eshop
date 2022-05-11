@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\MessagesType;
+use App\Services\Mail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,6 +14,7 @@ class MessageProfilController extends AbstractController
     // je nomme ma fonction pour la rendre plus parlante pour moi selon son utilité: Messageprofil
     public function MessageProfil(): Response
     {
+
         // j'ai créé un formulaire appelé MessagesType, que je viens aussi créer dans le controller comme ci pour pouvoir l'appeler dans un bouton :
         $form = $this->createForm(MessagesType::class);
         // je renvoie ma vue non pas au fichier par default messages_profil/index.html.twig mais à ma vue account qui correspond au profil utilisateur
@@ -22,4 +24,5 @@ class MessageProfilController extends AbstractController
 
         ]);
     }
+
 }

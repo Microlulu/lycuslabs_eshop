@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Services\Mail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,10 +33,13 @@ class ContactController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('home');
         }
+
         // je renvoie ensuite ce formulaire à ma vue index de contact
         return $this->render('contact/index.html.twig', [
             'contact_form' => $form->createView(),
         ]);
     }
+
+
 
 }

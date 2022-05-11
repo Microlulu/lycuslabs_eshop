@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Services\Mail;
 use DateTime;
 use App\Entity\User;
 use App\Controller\SecurityController;
@@ -22,10 +23,12 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
+    private EntityManagerInterface $entityManager;
 
-    public function __construct(EmailVerifier $emailVerifier)
+    public function __construct(EmailVerifier $emailVerifier, EntityManagerInterface $entityManager)
     {
         $this->emailVerifier = $emailVerifier;
+        $this->entityManager =$entityManager;
     }
 
     #[Route('/register', name: 'app_register')]
@@ -37,46 +40,49 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // encode the plain password
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
+                // encode the plain password
+                $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $user,
+                        $form->get('Password')->getData()
+                    )
+                );
+                $date_e = new DateTime();
+                $user->setCreatedat($date_e);
+
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+
+                // generate a signed url and email it to the user
+                $this->emailVerifier->sendEmailConfirmation(
+                    'app_verify_email',
                     $user,
-                    $form->get('Password')->getData()
-                )
-            );
-            $date_e = new DateTime();
-            $user->setCreatedat($date_e);
+                    (new TemplatedEmail())
+                        ->from(new Address('support@lycuslabs.com', 'Lycuslabs'))
+                        ->to($user->getEmail())
+                        ->subject('Please Confirm your Email')
+                        ->htmlTemplate('registration/confirmation_email.html.twig')
+                );
+                // do anything else you need here, like send an email
 
-            $entityManager->persist($user);
-            $entityManager->flush();
 
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation(
-                'app_verify_email',
-                $user,
-                (new TemplatedEmail())
-                    ->from(new Address('support@lycuslabs.com', 'support'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
-            // do anything else you need here, like send an email
+                // je précise à mon utilisateur que son email a bien été activée et je le redirige sur la page login
+                $this->addFlash('success', 'Your email address has been verified.');
+                return $this->redirectToRoute('app_login');
 
-            // je précise à mon utilisateur que son email a bien été activée et je le redirige sur la page login
-            $this->addFlash('success', 'Your email address has been verified.');
-            return $this->redirectToRoute('app_login');
+                /*
+                return $userAuthenticator->authenticateUser(
+                    $user,
+                    $authenticator,
+                    $request
+                );*/
 
-            /*
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );*/
+
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
-
         ]);
     }
 
