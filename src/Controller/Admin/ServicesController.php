@@ -132,6 +132,7 @@ class ServicesController extends AbstractController
         return $this->redirectToRoute('services_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    /*ici je remplace l'id de mon produit par mon slug pour avoir une url mieux référencée*/
     #[Route('/our_services', name: 'our_services', methods: ['GET'])]
     public function OurServices(ServicesRepository $servicesRepository, ImagesServicesRepository $imagesServicesRepository): Response
     {
