@@ -125,17 +125,5 @@ function colorize(containerId) {
     // et je precise ici que c'est le container qui est visé et que je lui applique ma variable ramdomColor
     let container = document.getElementById(containerId);
     container.style.background = randomColor;
-}
 
-/* POP UP ALERT POUR CONFIRMER LORS D'UNE SUPRESSION DANS LE PANEL ADMIN*/
-const teams = document.getElementById('memberTeam');
-if (teams){
-    teams.addEventListener('click', e => {
-        if (e.target.className === 'myClass') {
-            if (confirm('Are you sure that you want to delete this?')) {
-                const id = e.target.getAttribute('data-id');
-                alert(id);
-            }
-        }
-    })
 }
