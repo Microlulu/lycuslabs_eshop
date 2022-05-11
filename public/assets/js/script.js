@@ -1,5 +1,5 @@
 
-/* BOUTON DROPDOWN DANS LA NAVBAR PRINCIPALE POUR PRODUITS (BOUTON DYNAMIQUE UTILISANT LA BASE DE DONNEE)*/
+/* BOUTON DROPDOWN DANS LA NAVBAR PRINCIPALE et POUR FOOTER POUR PRODUITS (BOUTON DYNAMIQUE UTILISANT LA BASE DE DONNEE)*/
 // Je crée un script pour mon bouton "products" : c'est un bouton dynamique qui prends en compte tous les produits existants et les affiches sous forme de dropdown.
 // À la demande de mon client, j'ai fait un bouton dynamique et pas de page affichant tous les produits comme les e-commerces traditionnels, car mon client est une start-up qui pour l'instant n'a qu'un seul produit.
 // Cette startup n'a pas pour projet de faire un site avec beaucoup de produits, le CEO m'a dit qu'au grand maximum, il y aurait 5 produits et tous seront très différents des uns des autres, d'où sa demande de les séparer dans des pages bien distincte sans liens entre eux.
@@ -127,3 +127,15 @@ function colorize(containerId) {
     container.style.background = randomColor;
 }
 
+/* POP UP ALERT POUR CONFIRMER LORS D'UNE SUPRESSION DANS LE PANEL ADMIN*/
+const teams = document.getElementById('memberTeam');
+if (teams){
+    teams.addEventListener('click', e => {
+        if (e.target.className === 'myClass') {
+            if (confirm('Are you sure that you want to delete this?')) {
+                const id = e.target.getAttribute('data-id');
+                alert(id);
+            }
+        }
+    })
+}

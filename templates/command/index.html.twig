@@ -36,8 +36,8 @@
         <p>{{ command.dateOrder|date('d-m-y') }}</p>
         <h4>{% trans %}Price{% endtrans %}</h4>
         <p>{{ command.totalPrice }} €</p>
-        <h4>{% trans %}Invoice :{% endtrans %} <img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
-                           alt="Download invoice">
+        <h4>{% trans %}Invoice :{% endtrans %}
+            <a href="{{ path('show_command', {'id': command.id}) }}"><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}" alt="Download invoice"></a>
         </h4>
     </div>
     {% endfor %}

@@ -85,13 +85,13 @@ class CategoryController extends AbstractController
     #[Route('/category_delete{id}', name: 'category_delete', methods: ['GET','POST'])]
     public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
+        $entityManager->remove($category);
+        $entityManager->flush();
         if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
             // si je supprime ma catégorie, je set la date du jour dans le champ updatedat de ma BDD
             $date_e = new DateTime();
             $category->setDeletedat($date_e);
-            
-            $entityManager->remove($category);
-            $entityManager->flush();
+
         }
 
         return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);

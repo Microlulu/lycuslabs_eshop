@@ -80,7 +80,8 @@ class UserController extends AbstractController
             $entityManager->remove($user);
             $entityManager->flush();
         }
-
+        $entityManager->remove($user);
+        $entityManager->flush();
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
     }
 }

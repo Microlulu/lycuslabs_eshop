@@ -20,7 +20,8 @@
                 <th>Details</th>
                 <td>{% for orderDetail in order.detailOrders %}
                         <p>{{ orderDetail.title }}</p>
-                        <p>{{ orderDetail.price }}</p>
+                        <p>x {{ orderDetail.quantity }}</p>
+                        <p>{{ orderDetail.price }} €</p>
                     {% endfor %}</td>
             </tr>
             <tr>
@@ -29,15 +30,15 @@
             </tr>
             <tr>
                 <th>Adresse</th>
-                <td>{{ order.adresse }}</td>
+                <td>{{ order.adresse|raw }}</td>
             </tr>
             <tr>
                 <th>Voucher</th>
-                <td>{{ order.voucher }}</td>
+                <td>{{ order.voucher }} %</td>
             </tr>
             <tr>
                 <th>Total</th>
-                <td>{{ order.totalprice }}</td>
+                <td>{{ order.totalprice }} €</td>
             </tr>
             <tr>
         </tbody>

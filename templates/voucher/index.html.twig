@@ -28,7 +28,7 @@
 			{% for voucher in vouchers %}
 				<tr>
 					<td>{{ voucher.id }}</td>
-					<td>{{ voucher.discount }}</td>
+					<td>{{ voucher.discount }} %</td>
 					<td>{{ voucher.name }}</td>
 					<td>{{ voucher.dateStart ? voucher.dateStart|date('Y-m-d H:i:s') : '' }}</td>
 					<td>{{ voucher.dateEnd ? voucher.dateEnd|date('Y-m-d H:i:s') : '' }}</td>

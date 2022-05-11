@@ -74,7 +74,8 @@ class VoucherController extends AbstractController
     #[Route('/voucher_delete{id}', name: 'voucher_delete', methods: ['GET','POST'])]
     public function delete(Request $request, Voucher $voucher, EntityManagerInterface $entityManager): Response
     {
-
+        $entityManager->remove($voucher);
+        $entityManager->flush();
         if ($this->isCsrfTokenValid('delete'.$voucher->getId(), $request->request->get('_token'))) {
             try{
                 $entityManager->remove($voucher);

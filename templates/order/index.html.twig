@@ -12,6 +12,7 @@
                 <th>Id</th>
                 <th>Reference</th>
                 <th>Date_order</th>
+                <th>Details</th>
                 <th>Address</th>
                 <th>Voucher</th>
                 <th>Total</th>
@@ -25,8 +26,13 @@
                 <td>{{ order.id }}</td>
                 <td>{{ order.reference }}</td>
                 <td>{{ order.dateOrder ? order.dateOrder|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{% for orderDetail in order.detailOrders %}
+                        <p>{{ orderDetail.title }}</p>
+                        <p>x {{ orderDetail.quantity }}</p>
+                        <p>{{ orderDetail.price }} €</p>
+                    {% endfor %}</td>
                 <td>{{ order.adresse|raw }}</td>
-                <td>- {{ order.voucher }} %</td>
+                <td>{{ order.voucher }} %</td>
                 <td>{{ order.totalPrice }} €</td>
                 <td>
                     <a class="button_dash" href="{{ path('order_show', {'id': order.id}) }}">SHOW</a>

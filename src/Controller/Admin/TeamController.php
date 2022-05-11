@@ -125,7 +125,8 @@ class TeamController extends AbstractController
             $entityManager->remove($team);
             $entityManager->flush();
         }
-
+        $entityManager->remove($team);
+        $entityManager->flush();
         return $this->redirectToRoute('team_index', [], Response::HTTP_SEE_OTHER);
     }
 
