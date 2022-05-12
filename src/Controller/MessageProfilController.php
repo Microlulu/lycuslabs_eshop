@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Messages;
 use App\Form\MessagesType;
 use App\Services\Mail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +17,7 @@ class MessageProfilController extends AbstractController
     public function MessageProfil(Request $request): Response
     {
         // Je crée un nouvel objet contact (on fait une entité et on l'appelle dans une variable objet)
-        $message = new MessagesType();
+        $message = new Messages();
         // j'ai créé un formulaire ContactType que je viens aussi créer dans mon controller et je lui passe ma variable contact (entité) pour pouvoir la remplir avec les datas que l'user va me donner.
 
         // j'ai créé un formulaire appelé MessagesType, que je viens aussi créer dans le controller comme ceci pour pouvoir l'appeler dans un bouton :
@@ -30,18 +31,16 @@ class MessageProfilController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             //get Doctrine appelle l'entity manager plus simplement, elle se situe dans le parent de notre contact controller.
             $entityManager = $this->getDoctrine()->getManager();
-            $send_at = new \DateTimeImmutable();
-            $message->setSentDate($send_at);
             // PERSIST permet de sauvegarder les données
             $entityManager->persist($message);
             // FLUSH sert a envoyer les datas dans la base de donnée
             $entityManager->flush();
             // ICI NOUS AVONS UN DEUXIEME EMAIL CREER PAR MAILJET QUI DIT A L'UTILISATEUR QU'ON A BIEN RECU SON MESSAGE ET QU'ON VA LUI REPONDRE
             $mail = new Mail();
-            $content = "Hi " . $message->getFirstname() . " !" . " We are sorry to hear that you have a problem with your order!<br/><br/> 
+            $content = "Hi " . $message->getUserId()->getFirstname() . " ! We are sorry to hear that you have a problem with your order!<br/><br/> 
             Don't worry, We will read your message with great attention and answer you as soon as possible.<br/>
             Thank you for your patience.";
-            $mail->sendSupport($message->getEmail(), $message->getFirstname(), 'We received your message !', $content);
+            $mail->sendSupport($message->getUserId()->getEmail(), $message->getUserId()->getFirstname(), 'We received your message !', $content);
             return $this->redirectToRoute('home');
 
         }

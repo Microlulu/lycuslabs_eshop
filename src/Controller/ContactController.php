@@ -33,7 +33,7 @@ class ContactController extends AbstractController
             $entityManager->flush();
             // ICI NOUS AVONS UN DEUXIEME EMAIL CREER PAR MAILJET QUI DIT A L'UTILISATEUR QU'ON A BIEN RECU SON MESSAGE ET QU'ON VA LUI REPONDRE
             $mail = new Mail();
-            $content = "Hi ".$contact->getFirstname(). " !". "<br/><br/> 
+            $content = "Hi " . $contact->getFirstname() . " !<br/><br/> 
             We will read your message with great attention and answer you as soon as possible.<br/>
             Thank you for your patience.";
             $mail->sendSupport($contact->getEmail(),$contact->getFirstname(),'We received your message !', $content);
