@@ -53,7 +53,7 @@ class RegistrationController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-
+                // ICI NOUS AVONS UN PREMIERE ENVOI DE MAIL AVEC LE LIEN DE VERIFICATION D'EMAIL
                 // generate a signed url and email it to the user
                 $this->emailVerifier->sendEmailConfirmation(
                     'app_verify_email',
@@ -64,10 +64,15 @@ class RegistrationController extends AbstractController
                         ->subject('Please Confirm your Email')
                         ->htmlTemplate('registration/confirmation_email.html.twig')
                 );
-                // do anything else you need here, like send an email
-
+                // ICI NOUS AVONS UN DEUXIEME EMAIL CREER PAR MAILJET QUI REMERCIE L'UTILISATEUR DE S'ETRE INSCRIT ET LUI RAPPEL DE VERIFIER SON ADRESSE EMAIL
+                $mail = new Mail();
+                $content = "Hi ".$user->getFirstname(). " !". "<br/><br/> Thank you for your registration!<br/>
+                Don't forget to activate your account, a second email will be sent to you. <br/>
+                In the meantime, find your favorite products and discover our personalized services on Lycuslabs.";
+                $mail->send($user->getEmail(),$user->getFirstname(),'Welcome to Lycuslabs.com !', $content);
 
                 // je précise à mon utilisateur que son email a bien été activée et je le redirige sur la page login
+                //Todo : faire fonctionner le message flash
                 $this->addFlash('success', 'Your email address has been verified.');
                 return $this->redirectToRoute('app_login');
 

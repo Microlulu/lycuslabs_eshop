@@ -9,6 +9,7 @@ use App\Form\OrderType;
 use App\Repository\ProductRepository;
 use App\Repository\UsedVoucherRepository;
 use App\Repository\VoucherRepository;
+use App\Services\Mail;
 use App\Services\OrderManager;
 use App\Services\Cart;
 use App\Repository\AdresseRepository;
@@ -248,7 +249,7 @@ class BuyActionController extends AbstractController
     }
 
     /*** Cette fonction sera utilisée pour enregistrer les infos de la commande dans la base de données.
-    Elle est utilisée à la fin de toutes les actions utilisateur parce que la commande doit être enregistré au moment du paiement pour ne pas créer de problème avec les vouchers*/
+    Elle est utilisée à la fin de toutes les actions utilisateur parce que la commande doit être enregistré au moment du paiement pour ne pas créer de problème avec les vouchers + generation d'un email de confiramtion de commande créer avec mail jet*/
     #[Route('/buyAction/valid_order', name: 'valid_order', methods: ['GET', 'POST'])]
     public function stripeIntent()
     {
@@ -285,6 +286,10 @@ class BuyActionController extends AbstractController
         }
         // J'envoie toutes les données dans la base de donnée (j'enregistre order et orderdetail)
         $this->entityManager->flush();*/
+
+
+
+
     }
 
     /*
@@ -324,6 +329,16 @@ public function orderCart(OrderManager $orderManager, Cart $cart): Response
 
     }*/
 
+
+
+
+
+    // ICI NOUS AVONS UN EMAIL CREER AVEC MAILJET QUI REMERCIE L'UTILISATEUR DE SA COMMANDE ET LUI RAPPEL CE QU'IL A ACHETER
+    /*$mail = new Mail();
+    $content = "Hi ".$order->getUser()->getFirstname(). " !". "<br/><br/> Thank you for supporting Lycuslabs!<br/>
+            You will receive in a few minutes a 2nd email with your downloadable products!<br/>
+            Enjoy!";
+    $mail->send($order->getUser()->getEmail(),$order()->getUser()->getFirstname(),'Your purchase at Lycuslabs.com is confirmed !', $content);*/
 }
 
 
