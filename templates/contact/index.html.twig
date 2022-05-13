@@ -9,10 +9,12 @@
 			<div class="msg">
 				<div class="heading">
 					<h1>{% trans %}CONTACT{% endtrans %}</h1>
-					<h4>{% trans %}Do you have a project in mind?{% endtrans %}<br>
+					<h4>{% trans %}Do you have a project in mind?{% endtrans %}
 						{% trans %}or a question?
-							Our professionals are at{% endtrans %}<br>
+							Our professionals are at{% endtrans %}
 						{% trans %}your disposal.{% endtrans %}</h4>
+					<h5>{% trans %}Don't remember the services we offer? Take a look at the page {% endtrans %} <a href="{{ path('our_services') }}">{% trans %}Services {% endtrans %}</a></h5>
+
 				</div>
 				{{ form_start(contact_form) }}
 				<div class="user">

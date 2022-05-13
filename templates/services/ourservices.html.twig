@@ -8,7 +8,10 @@
 <!-- START OF THE SERVICES -->
 <div class="col">
     <h1>{% trans %}SERVICES{% endtrans %}</h1>
+    <p class="txt_center">{% trans %}Do you have a specific project to develop and would like to discuss it with us? We would love to hear about it!{% endtrans %} <br>
+        {% trans %}Please, {% endtrans %}<a href="{{ path('contact') }}">{% trans %} contact us.{% endtrans %}</a></p>
     <div class="main_container">
+
         <div class="col">
             {% for item in services %}
                 <div>
