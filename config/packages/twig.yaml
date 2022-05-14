@@ -5,6 +5,7 @@ twig:
     # On déclare ci-dessous le nom de la variable globale
     globals:
         locales: '%app.locales%'
+        stripePublicKey: "pk_test_51KkSNbEWJcWFXkdR2nre8RRT0zTwWgtoaGUNI4hATJrGELNx27bNw6v4pPzJYaxtvdbMTiELJ62F4NrBsqyztHgw00WwGQ4XOP"
 
 when@test:
     twig:

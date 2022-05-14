@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\DetailOrder;
 use App\Entity\Order;
+use App\Entity\Product;
 use App\Form\DiscountCartType;
 use App\Form\OrderType;
+use App\Repository\OrderRepository;
 use App\Repository\ProductRepository;
 use App\Repository\UsedVoucherRepository;
 use App\Repository\VoucherRepository;
@@ -193,22 +195,6 @@ class BuyActionController extends AbstractController
 
         if ($form2->isSubmitted() && $form2->isValid()) {
             $delivery = $form2->get('adresses')->getData();
-            $delivery_content = $delivery->getFirstname() . ' ' . $delivery->getLastname();
-            // Ici j'ajoute une condition pour dire que si l'user a renseigné un numéro de téléphone ajoute le, sinon pas la peine.
-            if ($delivery->getTelephone()) {
-                $delivery_content .= '<br/>' . $delivery->getTelephone();
-            }
-            $delivery_content .= '<br/>' . $delivery->getAdresse();
-            $delivery_content .= '<br/>' . $delivery->getZipcode() . ' - ' . $delivery->getCity();
-            $delivery_content .= '<br/>' . $delivery->getCountry();
-            /* Ici je mets 2 conditions pour dire que s'il y a une company, un numéro de taxe
-            renseigné, ajoute les, sinon pas la peine.*/
-            if ($delivery->getCompany()) {
-                $delivery_content .= '<br/>' . $delivery->getCompany();
-            }
-            if ($delivery->getVatNumber()) {
-                $delivery_content .= '<br/>' . $delivery->getVatNumber();
-            }
             // set de l'adresse et si c'est valide au moment de cliquer sur le bouton je vais sur la page suivante qui et le récapitulatif de ma commande avant achat définitif
             $this->cart->setAdresseforOrder($delivery);
             return $this->redirectToRoute('recap_order');
@@ -218,6 +204,26 @@ class BuyActionController extends AbstractController
             'data' => $this->cart->getOrderPrepare(),
             'cart' => $this->cart->getCart()
         ]);
+    }
+
+    private function stringAdress($delivery) {
+        $delivery_content = $delivery->getFirstname() . ' ' . $delivery->getLastname();
+        // Ici j'ajoute une condition pour dire que si l'user a renseigné un numéro de téléphone ajoute le, sinon pas la peine.
+        if ($delivery->getTelephone()) {
+            $delivery_content .= '<br/>' . $delivery->getTelephone();
+        }
+        $delivery_content .= '<br/>' . $delivery->getAdresse();
+        $delivery_content .= '<br/>' . $delivery->getZipcode() . ' - ' . $delivery->getCity();
+        $delivery_content .= '<br/>' . $delivery->getCountry();
+        /* Ici je mets 2 conditions pour dire que s'il y a une company, un numéro de taxe
+        renseigné, ajoute les, sinon pas la peine.*/
+        if ($delivery->getCompany()) {
+            $delivery_content .= '<br/>' . $delivery->getCompany();
+        }
+        if ($delivery->getVatNumber()) {
+            $delivery_content .= '<br/>' . $delivery->getVatNumber();
+        }
+        return $delivery_content;
     }
 
 
@@ -242,7 +248,7 @@ class BuyActionController extends AbstractController
                 'product_data' => [
                     'name' => $detailOrder->getTitle(),
                 ],
-                'unit_amount' => $detailOrder->getPrice(),
+                'unit_amount' => $detailOrder->getPrice() * 100,
             ],
             'quantity' => $detailOrder->getQuantity(),
         ];
@@ -253,8 +259,8 @@ class BuyActionController extends AbstractController
     #[Route('/buyAction/valid_order', name: 'valid_order', methods: ['GET', 'POST'])]
     public function stripeIntent()
     {
-        /*
-        $allInformationProduct = $cart->getOrderPrepare();
+        $allInformationProduct = $this->cart->getOrderPrepare();
+        $stringAdresse = $this->stringAdress($allInformationProduct['adresse']);
         // J'enregistre la commande
         $date_order = new \DateTime();
         // J'enregistre les produits dans une nouvelle commande
@@ -262,9 +268,10 @@ class BuyActionController extends AbstractController
         $order->setReference($date_order->format("dmy")."-".uniqid());
         $order->setUserId($this->getUser());
         $order->setDateOrder($date_order);
-        $order->setAdresse($delivery_content);
+        $order->setAdresse($stringAdresse);
         $order->SetDelivery(false);
         $order->setVoucher($allInformationProduct['voucher']?->getDiscount());
+        $order->setTotalPrice($allInformationProduct['total']);
         // Je préenregistre dans la base de donnée
         $this->entityManager->persist($order);
 
@@ -285,36 +292,33 @@ class BuyActionController extends AbstractController
             $lines_items[] = $this->prepareIntent($detailOrder);
         }
         // J'envoie toutes les données dans la base de donnée (j'enregistre order et orderdetail)
-        $this->entityManager->flush();*/
-
-
-
-
+        $this->entityManager->flush();
+        $intentApi = $this->stripeApi->paymentIntent($this->getUser()->getEmail(), $lines_items);
+        $order->setStripeSessionId($intentApi->id);
+        return $this->json($intentApi);
     }
 
-    /*
 // Après paiement, redirection sur une page de confirmation d'achat/commande
-#[Route('/buyAction/order_confirmation', name: 'confirm_order', methods: ['GET'])]
-public function orderCart(OrderManager $orderManager, Cart $cart): Response
-{
-    $order = $orderManager->getOrder($cart);
-    $this->manager->persist($order);
-    $detailsCart = $cart->getDetailCart();
-
-    foreach ($detailsCart as $line_cart) {
-        $detailsCart = $orderManager->getDetailOrder($order, $line_cart);
-        $manager->persist($detailsCart);
+#[Route('/buyAction/order_confirmation/{stripeSessionId}', name: 'confirm_order', methods: ['GET'])]
+public function orderCart($stripeSessionId, OrderRepository $orderRepository): Response{
+    $order = $orderRepository->findOneBy(['stripeSessionId' => $stripeSessionId]);
+    if (!$order || $order->getUserId() != $this->getUser()){
+        return $this->redirectToRoute('home');
     }
-
-    $manager->flush();
-    // TO DO : rediriger vers une page apres l'achat
+    if(!$order->getDelivery())
+    {
+            $order->setDelivery(true);
+            $this->entityManager->flush();
+        /*
+        //envoyez un mail
+        $content = "Bonjour ".$this->getUser()->getFirstName()."<br/> Merci de votre commande";
+        $mailJetApi->send($this->getUser()->getEmail(),$this->getUser()->getFirstName(),'Votre commande est validé',$content);*/
+    }
     return $this->render('buy_action/order_confirmation.html.twig', [
-    'order' => $order,
-
+        'order' => $order
     ]);
-
 }
-*/
+//todo faire une fonction
 
 
     //APRES PAIEMENT ET CONFIRMATION DE COMMANDE ON PEUT GENERER LA FACTURE QUI SERA TÉLÉCHARGEABLE DEPUIS LE PROFIL UTILISATEUR

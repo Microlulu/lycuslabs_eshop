@@ -42,11 +42,47 @@
         {% else %}
             <p class="total_price mt-20">{% trans %}TOTAL{% endtrans %} {{ data.total }} € </p>
         {% endif %}
-        <form action="" method="POST">
-            <button class="button mt-20" type="submit" id="checkout-button">PAY</button>
-        </form>
     </article>
+    <a onclick="BuyPerUnit()" class="button mt-20" id="checkout-button">PAY</a>
+
     {% block footer %}
         {% include 'footer.html.twig' %}
+
+    {% endblock %}
+    {% block javascripts %}
+    {{ parent() }}
+        <script src="https://js.stripe.com/v3/"></script>
+        <script type="text/javascript">
+        function BuyPerUnit() {
+            // Create an instance of the Stripe object with your publishable API key
+            var stripe = Stripe("{{ stripePublicKey }}");
+            fetch("{{ path('valid_order') }}", {
+                method: "POST",
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    if(session.error === 'order')
+                    {
+                        window.location.replace('{{ path('home') }}');
+                    }
+                    else {
+                        return stripe.redirectToCheckout({ sessionId: session.id });
+                    }
+                })
+                .then(function (result) {
+                    // If redirectToCheckout fails due to a browser or network
+                    // error, you should display the localized error message to your
+                    // customer using error.message.
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error:", error);
+                });
+        }
+    </script>
     {% endblock %}
 {% endblock %}

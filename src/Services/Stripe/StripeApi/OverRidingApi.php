@@ -30,7 +30,7 @@ class OverRidingApi extends AbstractStripeApi
                 $line_items
             ],
             'mode' => 'payment',
-            'success_url' => 'http://lycasshop.com/success.html',
+            'success_url' => 'http://lycasshop.com/buyAction/order_confirmation/{CHECKOUT_SESSION_ID}',
             'cancel_url' => 'http://lycasshop.com/cancel.html'
         ]);
     }

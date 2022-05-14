@@ -41,6 +41,9 @@ class Order
     #[ORM\Column(type: 'float')]
     private $totalPrice;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $stripeSessionId;
+
     public function __construct()
     {
         $this->detailOrders = new ArrayCollection();
@@ -161,6 +164,18 @@ class Order
     public function setTotalPrice(float $totalPrice): self
     {
         $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    public function getStripeSessionId(): ?string
+    {
+        return $this->stripeSessionId;
+    }
+
+    public function setStripeSessionId(string $stripeSessionId): self
+    {
+        $this->stripeSessionId = $stripeSessionId;
 
         return $this;
     }
