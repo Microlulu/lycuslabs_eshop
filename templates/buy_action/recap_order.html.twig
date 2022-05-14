@@ -36,14 +36,15 @@
             </table>
         <p class="mt-20">{% trans %}Subtotal{% endtrans %} : {{ data.total }} €</p>
         {% if data.voucher is not null %}
-            <p class="codeValid">{% trans %}Coupon Code{% endtrans %} : {{ data.voucher.name }} -{{ data.voucher.discount }}</p>
+            <p class="codeValid">{% trans %}Coupon Code{% endtrans %} : {{ data.voucher.name }} -{{ data.voucher.discount }} %</p>
             <hr>
-            <p class="total_price mt-20"> {% trans %}TOTAL{% endtrans %} : {{ data.total - (data.total * data.voucher.discount / 100) }}€</p>
+            <p class="total_price mt-20"> {% trans %}TOTAL{% endtrans %} : {{ data.total - (data.total * data.voucher.discount / 100) }} €</p>
         {% else %}
             <p class="total_price mt-20">{% trans %}TOTAL{% endtrans %} {{ data.total }} € </p>
         {% endif %}
+        <a onclick="BuyPerUnit()" class="button mt-20" id="checkout-button">PAY</a>
+
     </article>
-    <a onclick="BuyPerUnit()" class="button mt-20" id="checkout-button">PAY</a>
 
     {% block footer %}
         {% include 'footer.html.twig' %}

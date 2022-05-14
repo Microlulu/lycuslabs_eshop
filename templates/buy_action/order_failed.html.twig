@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Failed order{% endblock %}
+
+{% block body %}
+<h3>{% trans %}Oops ! It seems that an error has occurred! {% endtrans %}</h3>
+    <p>{% trans %} If the problem persists contact us! {% endtrans %}</p>
+<a href="{{ path('buy_action') }}" class="button"> {% trans %}Go back to your cart{% trans %}</a>
+{% endblock %}

@@ -162,8 +162,7 @@ class BuyActionController extends AbstractController
 
         }
 
-        # Todo : payment
-        # Todo : select adresse par default?
+        # Todo : select adresse par default
         $this->cart->prepareOrder($this->cart->getDetailCart(), $this->cart->getTotalCart());
         return $this->render('buy_action/cart.html.twig', [
             // j'envoie à la vue buy_action dans le fichier buy_action/cart.html.twig le detail du panier
@@ -318,8 +317,15 @@ public function orderCart($stripeSessionId, OrderRepository $orderRepository): R
         'order' => $order
     ]);
 }
-//todo faire une fonction
 
+// Après paiement, redirection sur une page d'erreur d'achat/commande
+    #[Route('/buyAction/order_failed/{stripeSessionId}', name: 'failed_order', methods: ['GET'])]
+    public function orderFail($stripeSessionId, OrderRepository $orderRepository): Response{
+        // Retourne le template de commande ratée en cas d'erreur
+        return $this->render('buy_action/order_failed.html.twig', [
+
+        ]);
+    }
 
     //APRES PAIEMENT ET CONFIRMATION DE COMMANDE ON PEUT GENERER LA FACTURE QUI SERA TÉLÉCHARGEABLE DEPUIS LE PROFIL UTILISATEUR
     // contenant les informations relatives à sa commande

@@ -31,6 +31,8 @@ class ContactController extends AbstractController
             $entityManager->persist($contact);
             // FLUSH sert a envoyer les datas dans la base de donnée
             $entityManager->flush();
+
+
             // ICI NOUS AVONS UN DEUXIEME EMAIL CREER PAR MAILJET QUI DIT A L'UTILISATEUR QU'ON A BIEN RECU SON MESSAGE ET QU'ON VA LUI REPONDRE
             $mail = new Mail();
             $content = "Hi " . $contact->getFirstname() . " !<br/><br/> 
