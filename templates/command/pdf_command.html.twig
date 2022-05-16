@@ -41,13 +41,14 @@
     </tr>
 
 </table>
-
 <table>
     <tr>
+        {% for command in command %}
         <td><strong>From:</strong> Lycuslabs </td>
         <td><strong>To:</strong> {{  command.adresse }}</td>
         <td> Date : {{ command.date_order }}</td>
         <td> Ref : {{ command.reference }}</td>
+        {% endfor %}
     </tr>
 
 </table>
@@ -64,28 +65,25 @@
         <th>Total €</th>
     </tr>
     </thead>
+
     <tbody>
-    {% for detail in command.detailOrders %}
         <tr>
-            <th scope="row">1</th>
+            {% for detail in command.detailOrders %}
+                <th scope="row">1</th>
             <td>{{ detail.title }}</td>
-            <td>{{ detail.quantity }}</td>
-            <td>{{ detail.price }}</td>
-            <td>{{ detail.total }}</td>
+            <td> x {{ detail.quantity }}</td>
+            <td>{{ detail.price }} €</td>
+            <td>{{ detail.total }} €</td>
+            {% endfor%}
+
         </tr>
-    {% endfor%}
     </tbody>
 
     <tfoot>
     <tr>
         <td colspan="3"></td>
-        <td>Subtotal</td>
-        <td>1635.00 €</td>
-    </tr>
-    <tr>
-        <td colspan="3"></td>
         <td>Discount / Coupon Code</td>
-        <td>{{ command.voucher }} </td>
+        <td> - {{ command.voucher }} %</td>
     </tr>
     <tr>
         <td colspan="3"></td>

@@ -66,5 +66,34 @@ class Mail
         $response->success($response->getData());
     }
 
+// TEMPLATE DE MAIL POUR CONFIRMATION DE COMMANDE
+    public function sendConfirmOrder($to_email, $to_name, $subject, $content){
+        $mj = new Client($this->api_key, $this->api_key_secret ,true,['version' => 'v3.1']);
+        $body = [
+            'Messages' => [
+                [
+                    'From' => [
+                        'Email' => "support@lycuslabs.com",
+                        'Name' => "Lycuslabs"
+                    ],
+                    'To' => [
+                        [
+                            'Email' => $to_email,
+                            'Name' => $to_name
+                        ]
+                    ],
+                    'TemplateID' => 3935031,
+                    'TemplateLanguage' => true,
+                    'Subject' => $subject,
+                    'Variables' => [
+                        'content' => $content,
+                    ]
+                ]
+            ]
+        ];
+        $response = $mj->post(Resources::$Email, ['body' => $body]);
+        $response->success($response->getData());
+    }
+
 
 }

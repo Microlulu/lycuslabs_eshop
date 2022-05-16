@@ -308,10 +308,13 @@ public function orderCart($stripeSessionId, OrderRepository $orderRepository): R
     {
             $order->setDelivery(true);
             $this->entityManager->flush();
-        /*
+
         //envoyez un mail
-        $content = "Bonjour ".$this->getUser()->getFirstName()."<br/> Merci de votre commande";
-        $mailJetApi->send($this->getUser()->getEmail(),$this->getUser()->getFirstName(),'Votre commande est validé',$content);*/
+    // ICI NOUS AVONS UN EMAIL CREER AVEC MAILJET QUI REMERCIE L'UTILISATEUR DE SA COMMANDE ET LUI RAPPEL CE QU'IL A ACHETER
+    $mail = new Mail();
+    $content = "Hi ". $order->getUserId()->getFirstname() . "Your order has been registered!
+       In a very short delay, you will receive an email containing your items and your activation key.";
+    $mail-> sendConfirmOrder($order->getUserId()->getEmail(), $order->getUserId()->getFirstname(),'Your purchase at Lycuslabs.com is confirmed !', $content);
     }
     return $this->render('buy_action/order_confirmation.html.twig', [
         'order' => $order
@@ -327,28 +330,6 @@ public function orderCart($stripeSessionId, OrderRepository $orderRepository): R
         ]);
     }
 
-    //APRES PAIEMENT ET CONFIRMATION DE COMMANDE ON PEUT GENERER LA FACTURE QUI SERA TÉLÉCHARGEABLE DEPUIS LE PROFIL UTILISATEUR
-    // contenant les informations relatives à sa commande
-   /* #[Route('/buyAction/invoice/{id}', name: 'invoice', methods: ['GET'])]
-    public function invoice(Order $order, PdfService $pdf): Response
-    {
-
-       $html = return $this->render('buy_action/recap_order.html.twig',['order' => $order ]);
-
-              $pdf->ShowPdfFile($html);
-
-    }*/
-
-
-
-
-
-    // ICI NOUS AVONS UN EMAIL CREER AVEC MAILJET QUI REMERCIE L'UTILISATEUR DE SA COMMANDE ET LUI RAPPEL CE QU'IL A ACHETER
-    /*$mail = new Mail();
-    $content = "Hi ".$order->getUser()->getFirstname(). " !". "<br/><br/> Thank you for supporting Lycuslabs!<br/>
-            You will receive in a few minutes a 2nd email with your downloadable products!<br/>
-            Enjoy!";
-    $mail->send($order->getUser()->getEmail(),$order()->getUser()->getFirstname(),'Your purchase at Lycuslabs.com is confirmed !', $content);*/
 }
 
 
