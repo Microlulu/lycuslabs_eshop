@@ -19,7 +19,7 @@
             <td>{{ command.reference }}</td>
             <td>{{ command.dateOrder|date('d-m-y') }}</td>
             <td>{{ command.totalPrice }} €</td>
-            <td><a href="{{ path('show_command', {id : 'id'}) }}"><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
+            <td><a href="{{ path('show_command', {'id': command.id}) }}"><img class="img_downloads" src="{{ asset('images/svg/downloads.png') }}"
                                                                        alt="Download invoice"></a></td>
         </tr>
        {% endfor %}

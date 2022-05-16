@@ -39,18 +39,15 @@
             </pre>
         </td>
     </tr>
-
 </table>
+
 <table>
     <tr>
-        {% for command in command %}
         <td><strong>From:</strong> Lycuslabs </td>
         <td><strong>To:</strong> {{  command.adresse }}</td>
-        <td> Date : {{ command.date_order }}</td>
+        <td> Date : {{ command.dateOrder|date('d-m-y')  }}</td>
         <td> Ref : {{ command.reference }}</td>
-        {% endfor %}
     </tr>
-
 </table>
 
 <br/>
@@ -75,7 +72,6 @@
             <td>{{ detail.price }} €</td>
             <td>{{ detail.total }} €</td>
             {% endfor%}
-
         </tr>
     </tbody>
 

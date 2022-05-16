@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CommandController extends AbstractController
 {
-    private $pdfService;
+    private PdfService $pdfService;
 
     public function __construct(PdfService $pdfService)
     {
@@ -35,20 +35,19 @@ class CommandController extends AbstractController
     }
 
     #[Route('/show_Command/{id}', name: 'show_command')]
-    public function showCommand($id, OrderRepository $orderRepository) {
-
+    public function showCommand($id, OrderRepository $orderRepository): Response
+    {
         $order_selected = $orderRepository->findOneBy([
             'id' => $id
             ]);
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('command/pdf_command.html.twig', [
             'command' => $order_selected
-
         ]);
 
-        return $this->render('command/pdf_command.html.twig', [
-            'command' => $order_selected
-        ]);
+        //$this->render('command/pdf_command.html.twig', [
+        //    'command' => $order_selected
+        //]);
 
         $this->pdfService->generateHTMLAndFile($html);
 
