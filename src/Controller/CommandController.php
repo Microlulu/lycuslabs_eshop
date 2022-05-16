@@ -37,6 +37,11 @@ class CommandController extends AbstractController
     #[Route('/show_Command/{id}', name: 'show_command')]
     public function showCommand($id, OrderRepository $orderRepository): Response
     {
+        $dompdf = new \Dompdf\Dompdf();
+        $options = $dompdf->getOptions();
+        $options->set(array('isRemoteEnabled' => true));
+        $dompdf->setOptions($options);
+
         $order_selected = $orderRepository->findOneBy([
             'id' => $id
             ]);

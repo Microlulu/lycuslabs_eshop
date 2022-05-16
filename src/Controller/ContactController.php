@@ -5,6 +5,9 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Services\Mail;
+use ContainerPX9wni0\getContactRepositoryService;
+use Symfony\Bridge\Twig\Mime\NotificationEmail;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,6 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // ce controller est utilisé pour la page contact publique du site
 class ContactController extends AbstractController
 {
+
+
     #[Route('/contact', name: 'contact')]
     // je nomme la fonction contact
     public function Contact(Request $request): Response
@@ -32,6 +37,13 @@ class ContactController extends AbstractController
             // FLUSH sert a envoyer les datas dans la base de donnée
             $entityManager->flush();
 
+            //$this->mailer->send((new NotificationEmail())
+            //->subject('New message from customer received !')
+            //->htmlTemplate('contact/admin-message.html.twig')
+            //->from($contact->getEmail())
+            //->to($this->adminEmail)
+            //->context(['message' => $contact->getMessage(), $contact->getFirstname(),$contact->getLastname(), $contact->getCreatedAt()])
+            //);
 
             // ICI NOUS AVONS UN DEUXIEME EMAIL CREER PAR MAILJET QUI DIT A L'UTILISATEUR QU'ON A BIEN RECU SON MESSAGE ET QU'ON VA LUI REPONDRE
             $mail = new Mail();
