@@ -195,6 +195,7 @@ class Cart
     /**
      * @param array $productList
      * @param float $total total des produits avec réductions
+     * @param Voucher|null $voucher
      * @return void
      */
     // Dans ma function je n'oublie as de re-declarer les paramètres et de préciser que le voucher peut être null !
