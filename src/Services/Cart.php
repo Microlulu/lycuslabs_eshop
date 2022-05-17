@@ -129,8 +129,6 @@ class Cart
         $this->session->remove('cart');
     }
 
-
-
     /**
      * Methode qui renvoi le panier avec le detail des produits
      *
