@@ -23,14 +23,14 @@ class VoucherService {
         $this->usedVoucherRepository = $usedVoucherRepository;
     }
 
-    //Je créer une fonction pour vérifier si mon voucher peut être utilisé.
-    //Cette fonction prends comme paramètres : le code réduction que l'utilisateur va rentrer et l'utilisateur.
-    //Je précise dans la fcnction que je veux un booléen : donc une réponse vrai ou fausse.
+    //Je crée une fonction pour vérifier si mon voucher peut être utilisé.
+    //Cette fonction prend comme paramètres : le code réduction que l'utilisateur va rentrer et l'utilisateur.
+    //Je précise dans la fonction que je veux un booléen : donc une réponse vraie ou fausse.
     function VerifyVoucher(Voucher $voucher, User $user): bool {
-        // pour vérifier mon voucher, je créer une nouvelle datetime dans laquelle je viens stocker la date d'aujourd'hui dans la variable $dateNow.
+        // pour vérifier mon voucher, je crée une nouvelle datetime dans laquelle je viens stocker la date d'aujourd'hui dans la variable $dateNow.
         $dateNow = new \DateTimeImmutable();
-        // Si le voucher est null return false (c'est a dire si la base de données et vide).
-        // Pour la sécurité je rajoute également la variable $user. Je lui précise que si l'utilisateur est également null (pas connecté) il faut retourner faux.
+        // Si le voucher est null return false (c'est-à-dire si la base de données et vide).
+        // Pour la sécurité, je rajoute également la variable $user. Je lui précise que si l'utilisateur est également null (pas connecté) il faut retourner faux.
         // DONC : voucher ou user null? = false
         if ($voucher == null || $user == null){
             return false;
@@ -44,11 +44,11 @@ class VoucherService {
                 if ($usedVoucher == null){
                     return true;
                 }else{
-                    //Sinon : si il y'a deja un code, c'est a dire que l'user a déja utilisé le code, donc on renvoi false. (non)
+                    //Sinon : s'il y a deja un code, c'est-à-dire que l'user a déjà utilisé le code, donc on renvoie false. (non)
                     return false;
                 }
             } else {
-                // dans ce else on dit que si le voucher a une date de début qui n'est pas inférieur ou égale a la date de maintenant et si il a une date de fin qui est inférieur a la date d'aujourd'hui
+                // Dans ce else on dit que si le voucher a une date de début qui n'est pas inférieur ou égale a la date de maintenant et s'il a une date de fin qui est inférieur à la date d'aujourd'hui
                 // Le code n'est pas encore activé ou est expiré.
                 // Et dans ce cas on retourne faux. (non)
                 return false;
