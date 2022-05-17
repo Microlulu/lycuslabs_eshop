@@ -130,3 +130,11 @@ function colorize(containerId) {
     container.style.background = randomColor;
 
 }
+
+function showConfirm() {
+    document.getElementById('popUp').style.display = "block";
+    setTimeout(function(){
+        document.getElementById("popUp").style.display = 'none';
+    }, 4000);
+    }
+

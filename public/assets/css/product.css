@@ -97,3 +97,13 @@
 input:focus{
     outline:none;
 }
+
+.animation{
+    color: var(--purple);
+    margin: 50px auto;
+    display: none;
+    width: 50%;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    border-radius: 20px;
+}
