@@ -323,7 +323,10 @@ class BuyActionController extends AbstractController
             $content = "Hi ". $order->getUserId()->getFirstname() . "Your order has been registered!
                 In a very short delay, you will receive an email containing your items and your activation key.";
             $mail-> sendConfirmOrder($order->getUserId()->getEmail(), $order->getUserId()->getFirstname(),'Your purchase at Lycuslabs.com is confirmed !', $content);
+
+            $this->cart->ClearCart();
         }
+
         return $this->render('buy_action/order_confirmation.html.twig', [
             'order' => $order
         ]);

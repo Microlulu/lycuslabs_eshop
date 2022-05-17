@@ -7,7 +7,7 @@
     <body>
       <trans-unit id="OnhpU4i" resname="Home">
         <source>Home</source>
-        <target>Zuhause</target>
+        <target>Home</target>
       </trans-unit>
       <trans-unit id="TtyL_vx" resname="Products">
         <source>Products</source>

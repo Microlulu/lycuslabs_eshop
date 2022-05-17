@@ -213,7 +213,12 @@ class Cart
         $prepareOrder['adresse'] = $adresse;
         $this->setOrderPrepare($prepareOrder);
     }
+    public function ClearCart(){
+        $this->session->remove('cart');
+        $this->session->remove('orderPrepare');
+    }
 }
+
 
 
 
