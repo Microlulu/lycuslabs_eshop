@@ -290,36 +290,36 @@ class BuyActionController extends AbstractController
 
             $lines_items[] = $this->prepareIntent($detailOrder);
         }
-        // J'envoie toutes les données dans la base de donnée (j'enregistre order et orderdetail)
-        $this->entityManager->flush();
         $intentApi = $this->stripeApi->paymentIntent($this->getUser()->getEmail(), $lines_items);
         $order->setStripeSessionId($intentApi->id);
+        // J'envoie toutes les données dans la base de donnée (j'enregistre order et orderdetail)
+        $this->entityManager->flush();
         return $this->json($intentApi);
     }
 
 // Après paiement, redirection sur une page de confirmation d'achat/commande
-#[Route('/buyAction/order_confirmation/{stripeSessionId}', name: 'confirm_order', methods: ['GET'])]
-public function orderCart($stripeSessionId, OrderRepository $orderRepository): Response{
-    $order = $orderRepository->findOneBy(['stripeSessionId' => $stripeSessionId]);
-    if (!$order || $order->getUserId() != $this->getUser()){
-        return $this->redirectToRoute('home');
-    }
-    if(!$order->getDelivery())
-    {
+    #[Route('/buyAction/order_confirmation/{stripeSessionId}', name: 'confirm_order', methods: ['GET'])]
+    public function orderConfirm($stripeSessionId, OrderRepository $orderRepository): Response{
+        $order = $orderRepository->findOneBy(['stripeSessionId' => $stripeSessionId]);
+        if (!$order || $order->getUserId() != $this->getUser()){
+            return $this->redirectToRoute('home');
+        }
+        if(!$order->getDelivery())
+        {
             $order->setDelivery(true);
             $this->entityManager->flush();
 
-        //envoyez un mail
-    // ICI NOUS AVONS UN EMAIL CREER AVEC MAILJET QUI REMERCIE L'UTILISATEUR DE SA COMMANDE ET LUI RAPPEL CE QU'IL A ACHETER
-    $mail = new Mail();
-    $content = "Hi ". $order->getUserId()->getFirstname() . "Your order has been registered!
-       In a very short delay, you will receive an email containing your items and your activation key.";
-    $mail-> sendConfirmOrder($order->getUserId()->getEmail(), $order->getUserId()->getFirstname(),'Your purchase at Lycuslabs.com is confirmed !', $content);
+            //envoyez un mail
+            // ICI NOUS AVONS UN EMAIL CREER AVEC MAILJET QUI REMERCIE L'UTILISATEUR DE SA COMMANDE ET LUI RAPPEL CE QU'IL A ACHETER
+            $mail = new Mail();
+            $content = "Hi ". $order->getUserId()->getFirstname() . "Your order has been registered!
+                In a very short delay, you will receive an email containing your items and your activation key.";
+            $mail-> sendConfirmOrder($order->getUserId()->getEmail(), $order->getUserId()->getFirstname(),'Your purchase at Lycuslabs.com is confirmed !', $content);
+        }
+        return $this->render('buy_action/order_confirmation.html.twig', [
+            'order' => $order
+        ]);
     }
-    return $this->render('buy_action/order_confirmation.html.twig', [
-        'order' => $order
-    ]);
-}
 
 // Après paiement, redirection sur une page d'erreur d'achat/commande
     #[Route('/buyAction/order_failed/{stripeSessionId}', name: 'failed_order', methods: ['GET'])]
