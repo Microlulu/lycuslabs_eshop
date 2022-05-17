@@ -37,6 +37,7 @@ class ContactController extends AbstractController
             // FLUSH sert a envoyer les datas dans la base de donnée
             $entityManager->flush();
 
+            //TODO : Envoyer un message a l'administrateur avec le contenu et toutes les infos du message qu'a envoyer l'utilisateur
             //$this->mailer->send((new NotificationEmail())
             //->subject('New message from customer received !')
             //->htmlTemplate('contact/admin-message.html.twig')
