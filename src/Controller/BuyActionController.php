@@ -264,13 +264,18 @@ class BuyActionController extends AbstractController
         $date_order = new \DateTime();
         // J'enregistre les produits dans une nouvelle commande
         $order = new Order();
+
+        $total = $allInformationProduct['total'];
+        $totalWithVoucher = ($allInformationProduct['voucher'] != null ? $total - ($total * ($allInformationProduct['voucher']?->getDiscount()/100)): $total);
+
+
         $order->setReference($date_order->format("dmy")."-".uniqid());
         $order->setUserId($this->getUser());
         $order->setDateOrder($date_order);
         $order->setAdresse($stringAdresse);
         $order->SetDelivery(false);
         $order->setVoucher($allInformationProduct['voucher']?->getDiscount());
-        $order->setTotalPrice($allInformationProduct['total']);
+        $order->setTotalPrice($totalWithVoucher);
         // Je préenregistre dans la base de donnée
         $this->entityManager->persist($order);
 
@@ -279,12 +284,15 @@ class BuyActionController extends AbstractController
             // Je crée un nouveau détail de commande a chaque nouvelle commande qui reprendra les infos principales
             // L'id de l'order, le prix de chaque élément(produit), la quantité, le total final et le nom du produit
             $detailOrder = new DetailOrder();
+            $price = $product['product']->getPrice();
+            $priceWithVoucher = ($allInformationProduct['voucher'] != null ? $price - ($price * ($allInformationProduct['voucher']?->getDiscount()/100)): $price);
 
             $detailOrder->setOrderId($order);
-            $detailOrder->setPrice($product['product']->getPrice());
+            $detailOrder->setPrice($priceWithVoucher);
             $detailOrder->setQuantity($product['quantity']);
             $detailOrder->setTotal($product['total']);
             $detailOrder->setTitle($product['product']->getTitle());
+
             // Je préenregistre dans la base de donnée
             $this->entityManager->persist($detailOrder);
 
