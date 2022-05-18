@@ -104,6 +104,6 @@ input:focus{
     display: none;
     width: 50%;
     padding: 20px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-inset);
     border-radius: 20px;
 }

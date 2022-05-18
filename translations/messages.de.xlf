@@ -2052,15 +2052,54 @@
       </trans-unit>
       <trans-unit id="GyzBgAa" resname="In order to be eligible for a refund, you have to return the goods within">
         <source>In order to be eligible for a refund, you have to return the goods within</source>
-        <target>__In order to be eligible for a refund, you have to return the goods within</target>
+        <target>Um einen Anspruch auf Rückerstattung zu haben, müssen Sie die Waren innerhalb von</target>
       </trans-unit>
       <trans-unit id="5CQXXwW" resname="days of your purchase. If the product is damaged in any way, or you have initiated the return after">
         <source>days of your purchase. If the product is damaged in any way, or you have initiated the return after</source>
-        <target>__days of your purchase. If the product is damaged in any way, or you have initiated the return after</target>
+        <target>Tage nach Ihrem Kauf. Wenn das Produkt in irgendeiner Weise beschädigt ist oder Sie die Rückgabe eingeleitet haben, nachdem</target>
       </trans-unit>
       <trans-unit id="2Z06Yod" resname="days have passed, you will not be eligible for a refund.">
         <source>days have passed, you will not be eligible for a refund.</source>
-        <target>__days have passed, you will not be eligible for a refund.</target>
+        <target>Tage verstrichen sind, haben Sie keinen Anspruch auf eine Erstattung.</target>
+      </trans-unit>
+      <trans-unit id="_E04kkY" resname="Thank you for your order !">
+        <source>Thank you for your order !</source>
+        <target>Vielen Dank für Ihre Bestellung!</target>
+      </trans-unit>
+      <trans-unit id="bOGTfgX" resname="You can now go to your Profile and download your product and enter your activation key.">
+        <source>You can now go to your Profile and download your product and enter your activation key.</source>
+        <target>Sie können nun zu Ihrem Profil gehen, Ihr Produkt herunterladen und Ihren Aktivierungsschlüssel eingeben.</target>
+      </trans-unit>
+      <trans-unit id="QcYNGeF" resname="Go to home">
+        <source>Go to home</source>
+        <target>Nach Home gehen</target>
+      </trans-unit>
+      <trans-unit id="n8cn4kh" resname="Don't remember the services we offer? Take a look at the page">
+        <source>Don't remember the services we offer? Take a look at the page</source>
+        <target>Sie erinnern sich nicht an die von uns angebotenen Dienstleistungen? Schauen Sie sich die Seite</target>
+      </trans-unit>
+      <trans-unit id="WEdW0kw" resname="This&#10;                                                            link will expire in&#10;                                                            :">
+        <source>This
+                                                            link will expire in
+                                                            :</source>
+        <target>Dieser Link verfällt in
+                                                            :</target>
+      </trans-unit>
+      <trans-unit id="6dTACKL" resname="Do you have a specific project to develop and would like to discuss it with us? We would love to hear about it!">
+        <source>Do you have a specific project to develop and would like to discuss it with us? We would love to hear about it!</source>
+        <target>Haben Sie ein bestimmtes Projekt zu entwickeln und möchten es mit uns besprechen? Wir würden uns freuen, davon zu hören!</target>
+      </trans-unit>
+      <trans-unit id="wCOdawt" resname="Please,">
+        <source>Please,</source>
+        <target>Bitte,</target>
+      </trans-unit>
+      <trans-unit id="oBMFrBP" resname="contact us.">
+        <source>contact us.</source>
+        <target>kontaktieren Sie uns.</target>
+      </trans-unit>
+      <trans-unit id="b0kS7P1" resname="This product has been added to your cart!">
+        <source>This product has been added to your cart!</source>
+        <target>Dieses Produkt wurde in Ihren Warenkorb gelegt!</target>
       </trans-unit>
     </body>
   </file>

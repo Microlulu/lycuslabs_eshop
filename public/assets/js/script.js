@@ -131,10 +131,11 @@ function colorize(containerId) {
 
 }
 
+/* FONCTION QUI AFFICHE UN MESSAGE LORSQUE QU'UN PRODUIT EST AJOUTE AU PANIER*/
 function showConfirm() {
     document.getElementById('popUp').style.display = "block";
     setTimeout(function(){
         document.getElementById("popUp").style.display = 'none';
-    }, 4000);
+    }, 2000);
     }
 

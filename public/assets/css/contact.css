@@ -9,7 +9,7 @@
 .contact_container{
     box-shadow: var(--box-shadow);
     width: 1000px;
-    height: 600px;
+    height: fit-content;
     border-radius: 25px;
     display: flex;
     flex-direction: row;

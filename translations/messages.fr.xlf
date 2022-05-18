@@ -2067,6 +2067,46 @@
         <source>days have passed, you will not be eligible for a refund.</source>
         <target>jours se sont écoulés, vous n'aurez pas droit à un remboursement.</target>
       </trans-unit>
+      <trans-unit id="_E04kkY" resname="Thank you for your order !">
+        <source>Thank you for your order !</source>
+        <target>Merci de votre commande !</target>
+      </trans-unit>
+      <trans-unit id="bOGTfgX" resname="You can now go to your Profile and download your product and enter your activation key.">
+        <source>You can now go to your Profile and download your product and enter your activation key.</source>
+        <target>Vous pouvez maintenant vous rendre dans votre profil, télécharger votre produit et saisir votre clé d'activation.</target>
+      </trans-unit>
+      <trans-unit id="QcYNGeF" resname="Go to home">
+        <source>Go to home</source>
+        <target>Retour à l'accueil</target>
+      </trans-unit>
+      <trans-unit id="n8cn4kh" resname="Don't remember the services we offer? Take a look at the page">
+        <source>Don't remember the services we offer? Take a look at the page</source>
+        <target>Vous ne vous souvenez pas des services que nous offrons ? Jetez un coup d'œil à la page</target>
+      </trans-unit>
+      <trans-unit id="WEdW0kw" resname="This&#10;                                                            link will expire in&#10;                                                            :">
+        <source>This
+                                                            link will expire in
+                                                            :</source>
+        <target>Ce
+                                                            lien expirera dans
+                                                            :</target>
+      </trans-unit>
+      <trans-unit id="6dTACKL" resname="Do you have a specific project to develop and would like to discuss it with us? We would love to hear about it!">
+        <source>Do you have a specific project to develop and would like to discuss it with us? We would love to hear about it!</source>
+        <target>Vous avez un projet spécifique à développer et vous souhaitez en discuter avec nous ? Nous serions ravis de l'entendre !</target>
+      </trans-unit>
+      <trans-unit id="wCOdawt" resname="Please,">
+        <source>Please,</source>
+        <target>S'il vous plait,</target>
+      </trans-unit>
+      <trans-unit id="oBMFrBP" resname="contact us.">
+        <source>contact us.</source>
+        <target>contactez-nous.</target>
+      </trans-unit>
+      <trans-unit id="b0kS7P1" resname="This product has been added to your cart!">
+        <source>This product has been added to your cart!</source>
+        <target>Ce produit a été ajouté à votre panier !</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

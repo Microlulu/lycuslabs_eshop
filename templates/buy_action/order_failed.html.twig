@@ -3,7 +3,9 @@
 {% block title %}Failed order{% endblock %}
 
 {% block body %}
+    <section>
 <h3>{% trans %}Oops ! It seems that an error has occurred! {% endtrans %}</h3>
     <p>{% trans %} If the problem persists contact us! {% endtrans %}</p>
-<a href="{{ path('buy_action') }}" class="button"> {% trans %}Go back to your cart{% trans %}</a>
+<a href="{{ path('buy_action') }}" class="button mt-30"> {% trans %}Go back to your cart{% trans %}</a>
+    </section>
 {% endblock %}

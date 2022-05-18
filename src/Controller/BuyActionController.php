@@ -243,6 +243,7 @@ class BuyActionController extends AbstractController
     {
         return [
             'price_data' => [
+                //Je précise que la monnaie est en Euros
                 'currency' => 'eur',
                 'product_data' => [
                     'name' => $detailOrder->getTitle(),
@@ -264,8 +265,12 @@ class BuyActionController extends AbstractController
         $date_order = new \DateTime();
         // J'enregistre les produits dans une nouvelle commande
         $order = new Order();
-
+        // ICI je suis obligée de déclarée des variables en cas de codes promo.
+        // Je viens dire ici que la variable total correspond à mon prix final
         $total = $allInformationProduct['total'];
+        // Et ici, je viens dire que la variable totalWithVoucher correspond au prix - le voucher
+        // Prix final = le prix x le voucher / 100, car il s'agira toujours d'un voucher en pourcentage.
+        // Je précise aussi dans cette ligne que le voucher peut être null !
         $totalWithVoucher = ($allInformationProduct['voucher'] != null ? $total - ($total * ($allInformationProduct['voucher']?->getDiscount()/100)): $total);
 
 
@@ -284,9 +289,14 @@ class BuyActionController extends AbstractController
             // Je crée un nouveau détail de commande a chaque nouvelle commande qui reprendra les infos principales
             // L'id de l'order, le prix de chaque élément(produit), la quantité, le total final et le nom du produit
             $detailOrder = new DetailOrder();
+            // ICI je suis obligée de déclarée des variables en cas de codes promo.
+            // Je viens dire ici que la variable price correspond à mon prix final
             $price = $product['product']->getPrice();
+            // Et ici, je viens dire que la variable priceWithVoucher correspond au prix - le voucher
+            // Prix final = le prix x le voucher / 100, car il s'agira toujours d'un voucher en pourcentage.
+            // Je précise aussi dans cette ligne que le voucher peut être null !
             $priceWithVoucher = ($allInformationProduct['voucher'] != null ? $price - ($price * ($allInformationProduct['voucher']?->getDiscount()/100)): $price);
-
+            // Je viens setter toutes les informations dont j'ai besoin dans ma base de données
             $detailOrder->setOrderId($order);
             $detailOrder->setPrice($priceWithVoucher);
             $detailOrder->setQuantity($product['quantity']);
@@ -295,13 +305,15 @@ class BuyActionController extends AbstractController
 
             // Je préenregistre dans la base de donnée
             $this->entityManager->persist($detailOrder);
-
+            // Je dis ici, prends chaque ligne de ma variable $lines_items (c'est un tableau) est mets les dans la variable $detailOrder de la commande.
             $lines_items[] = $this->prepareIntent($detailOrder);
         }
+        // Ici, je dis que stripeApi doit prendre la tentative de paiement (la demande de commande), qui contient: l'utilisateur, son email et toutes les lignes de sa commande
         $intentApi = $this->stripeApi->paymentIntent($this->getUser()->getEmail(), $lines_items);
         $order->setStripeSessionId($intentApi->id);
         // J'envoie toutes les données dans la base de donnée (j'enregistre order et orderdetail)
         $this->entityManager->flush();
+        // Et j'envoie les données trouvés dans API stripe pour effectuer le paiement
         return $this->json($intentApi);
     }
 
@@ -314,28 +326,29 @@ class BuyActionController extends AbstractController
         }
         if(!$order->getDelivery())
         {
+            //Je viens setter la livraison à vraie, car l'utilisateur a payé
             $order->setDelivery(true);
             $this->entityManager->flush();
 
-            //envoyez un mail
-            // ICI NOUS AVONS UN EMAIL CREER AVEC MAILJET QUI REMERCIE L'UTILISATEUR DE SA COMMANDE ET LUI RAPPEL CE QU'IL A ACHETER
+            //Envoi de mail de confirmation
+            // ICI NOUS AVONS UN EMAIL CREE AVEC MAILJET QUI REMERCIE L'UTILISATEUR DE SA COMMANDE ET LUI RAPPEL CE QU'IL A ACHETER
             $mail = new Mail();
             $content = "Hi ". $order->getUserId()->getFirstname() . "Your order has been registered!
                 In a very short delay, you will receive an email containing your items and your activation key.";
             $mail-> sendConfirmOrder($order->getUserId()->getEmail(), $order->getUserId()->getFirstname(),'Your purchase at Lycuslabs.com is confirmed !', $content);
-
+            // Et je n'oublie pas d'appeler ma fonction ClearCart qui vient nettoyer mon panier en enlevant les produits
             $this->cart->ClearCart();
         }
-
+        // Je retourne la vue que la commande a bien été passée.
         return $this->render('buy_action/order_confirmation.html.twig', [
             'order' => $order
         ]);
     }
 
-// Après paiement, redirection sur une page d'erreur d'achat/commande
+    // EN CAS DE PROBLEMES DE PAIEMENT, redirection sur une page d'erreur d'achat/commande
     #[Route('/buyAction/order_failed/{stripeSessionId}', name: 'failed_order', methods: ['GET'])]
     public function orderFail($stripeSessionId, OrderRepository $orderRepository): Response{
-        // Retourne le template de commande ratée en cas d'erreur
+        // Retourne le template de commande ratée en cas d'erreur de paiement
         return $this->render('buy_action/order_failed.html.twig', [
 
         ]);
