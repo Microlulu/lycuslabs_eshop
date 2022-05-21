@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <!-- SEO GOOGLE -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T0QXCSJ4HF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-T0QXCSJ4HF');
+    </script>
     <meta charset="UTF-8">
     <title>
-        {% block title %}Lycus labs : Plugins for Autodesk and 3D Visualizations
+        {% block title %}Lycus labs : 3D plugins and visualizations
         {% endblock %}
     </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,6 +58,7 @@
         }
     </script>
     {% block stylesheets %}
+        <link rel="icon" href="http://www.lycuslabs.com/favicon.png">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/profil.css') }}">
