@@ -12,10 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin/services')]
+#[Route('/services')]
 class ServicesController extends AbstractController
 {
-    #[Route('/services_index', name: 'services_index', methods: ['GET'])]
+    #[Route('/admin/services_index', name: 'services_index', methods: ['GET'])]
     public function index(ServicesRepository $servicesRepository): Response
     {
 
@@ -25,7 +25,7 @@ class ServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/service_new', name: 'service_new', methods: ['GET', 'POST'])]
+    #[Route('/admin/service_new', name: 'service_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $service = new Services();
@@ -64,7 +64,7 @@ class ServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/service_show{id}', name: 'service_show', methods: ['GET'])]
+    #[Route('/admin/service_show{id}', name: 'service_show', methods: ['GET'])]
     public function show(Services $service): Response
     {
         return $this->render('services/show.html.twig', [
@@ -73,7 +73,7 @@ class ServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/service_edit', name: 'service_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/{id}/service_edit', name: 'service_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Services $service, EntityManagerInterface $entityManager): Response
     {
         // je reccupère l'ancien nom de l'image
@@ -95,7 +95,7 @@ class ServicesController extends AbstractController
                     //Deuxieme argument : le nouveau nom de l'image
                     $image_new_name
                 );
-                
+
                 //je verifie si il y'a déjà une image uploader pour ce service
                 $filename = $this->getParameter('upload_dir_services') . $old_name_image;
                 if (file_exists($filename)) {
@@ -119,7 +119,7 @@ class ServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/services_delete{id}', name: 'services_delete', methods: ['GET','POST'])]
+    #[Route('/admin/services_delete{id}', name: 'services_delete', methods: ['GET','POST'])]
     public function delete(Request $request, Services $service, EntityManagerInterface $entityManager): Response
     {
         $entityManager->remove($service);
@@ -141,5 +141,5 @@ class ServicesController extends AbstractController
 
         ]);
     }
-    
+
 }
