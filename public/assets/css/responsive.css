@@ -649,7 +649,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
 
     /* HOME*/
     .skill{
-        margin-left: 40px
+        margin: 2% auto;
     }
     .container_responsive_profile{
         display: none;
