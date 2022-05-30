@@ -29,14 +29,14 @@
                     <div class="user">
                     <div class="row">
                         <img class="small_icon_register" src="{{ asset('images/svg/email.png') }}" alt="email" aria-label="enter your email">
-                    <input placeholder="Email" type="email" value="{{ last_username }}" name="email" id="inputEmail"
-                           autocomplete="email" required autofocus >
+                        <input placeholder="Email" type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                                               autocomplete="email" required autofocus>
                     </div>
                     </div>
                     <div class="user">
                         <div class="row">
                             <img class="small_icon_register" src="{{ asset('images/svg/lock.png') }}" alt="password" aria-label="enter your password">
-                            <input placeholder="Password" alt="password" aria-label="enter your password" type="password"
+                            <input placeholder="Password" aria-label="enter your password" type="password"
                            name="password" id="inputPassword" autocomplete="current-password" required>
 
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

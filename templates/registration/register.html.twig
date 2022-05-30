@@ -16,7 +16,6 @@
             <h4 class="txt_center">{% trans %}Welcome aboard !{% endtrans %}</h4>
             {{ form_start(registrationForm) }}
             <div class="fields">
-
                     <div class="user">
                         <div class="row">
                         <img class="small_icon_register" src="{{ asset('images/svg/account.png') }}" alt="firstname" aria-label="enter your firstname">
@@ -48,7 +47,7 @@
                     {{ form_row(registrationForm.Password.second) }}
                     </div>
                 </div>
-
+            </div>
                 {{ form_row(registrationForm.agreeTerms) }}
 
             <button class="mt-20 button" aria-label="login">{% trans %}LOGIN{% endtrans %}</button>
