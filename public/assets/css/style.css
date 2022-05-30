@@ -332,7 +332,10 @@ nav .logo{
 .mainMenu ul li a{
     line-height: 50px;
 }
-
+.mainMenu li:hover ul,
+.mainMenu li:focus-within ul {
+    display: block;
+}
 .burger_m{
     display: none;
 }

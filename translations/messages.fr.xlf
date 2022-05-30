@@ -1098,13 +1098,12 @@
         <source>The modeling solutions are not intended for a specific market. Indeed, the company aims to provide solutions
             to different fields such as architecture, video games, machinery, etc.</source>
         <target>Les solutions de modélisation ne sont pas destinées à un marché spécifique. En effet, l'entreprise vise à fournir des solutions
-                            à différents domaines tels que l'architecture, les jeux vidéo, les machines, etc.</target>
+                            à différents domaines tels que l'architecture, les jeux vidéo, le domaine de la machinerie, etc.</target>
       </trans-unit>
       <trans-unit id="xFfSzr_" resname="The software plugins, on the other hand, are intended for artists and users of 3D modeling and rendering&#10;            software.">
         <source>The software plugins, on the other hand, are intended for artists and users of 3D modeling and rendering
             software.</source>
-        <target>Les plugins logiciels, quant à eux, sont destinés aux artistes et aux utilisateurs de logiciels de modélisation et de rendu 3D.
-                            logiciels.</target>
+        <target>Les plugins logiciels, quant à eux, sont destinés aux artistes et aux utilisateurs de logiciels de modélisation et de rendu 3D.</target>
       </trans-unit>
       <trans-unit id="twKTq4B" resname="Exceptionally Efficient">
         <source>Exceptionally Efficient</source>
@@ -1124,15 +1123,13 @@
         <source>Software development with a focus 3D is at the heart of what we do. From 3D pipelines to the state
                     of
                     the art in 3D algorithm development - we have done it all.</source>
-        <target>Le développement de logiciels axés sur la 3D est au cœur de nos activités. Des pipelines 3D à l'état
-                                    de
-                                    l'état de l'art en matière de développement d'algorithmes 3D - nous avons tout fait.</target>
+        <target>Le développement de logiciels axés sur la 3D est au cœur de nos activités. Des pipelines 3D jusqu'au développement d'algorithmes 3D artistiques - nous avons tout fait.</target>
       </trans-unit>
       <trans-unit id="mAdrBT2" resname="We are experts in computer graphics - mathematicians and engineers with computer&#10;                    graphics&#10;                    as the focus.">
         <source>We are experts in computer graphics - mathematicians and engineers with computer
                     graphics
                     as the focus.</source>
-        <target>Nous sommes des experts en infographie - des mathématiciens et des ingénieurs avec des compétences phares en infographie.</target>
+        <target>Nous sommes des experts en infographie - mathématiciens et ingénieurs avec des compétences phares en infographie.</target>
       </trans-unit>
       <trans-unit id="quNXjy3" resname="Extremely driven">
         <source>Extremely driven</source>
@@ -1145,7 +1142,7 @@
       <trans-unit id="gwT3siy" resname="Need a hand with a complex 3D pipeline or a want a geometric algorithm prototyped.&#10;                    Reach out to us and we will find a solution.">
         <source>Need a hand with a complex 3D pipeline or a want a geometric algorithm prototyped.
                     Reach out to us and we will find a solution.</source>
-        <target>Vous avez besoin d'un coup de main pour un pipeline 3D complexe ou vous voulez prototyper un algorithme géométrique.
+        <target>Vous avez besoin d'un coup de main pour une conception 3D complexe ou vous voulez prototyper un algorithme géométrique.
                                     N'hésitez pas à nous contacter et nous trouverons une solution.</target>
       </trans-unit>
       <trans-unit id="Um4Ah8w" resname="Description">
@@ -1327,7 +1324,7 @@
       <trans-unit id="zW8W6o2" resname="At Lycuslabs, we share a common passion for immersive technologies, especially 3D, VR and AR, and are fascinated by the enormous possibilities they offer. Our mission is to bring a unique experience of transforming the perception of the border between your imagination and reality.&#10;                 And it is our specialty to create interactive visual solutions for architects, designers, digital agencies, and businesses in various fields. Our goal is to develop applications that convey your message to the world in the most elegant and clear way possible.">
         <source>At Lycuslabs, we share a common passion for immersive technologies, especially 3D, VR and AR, and are fascinated by the enormous possibilities they offer. Our mission is to bring a unique experience of transforming the perception of the border between your imagination and reality.
                  And it is our specialty to create interactive visual solutions for architects, designers, digital agencies, and businesses in various fields. Our goal is to develop applications that convey your message to the world in the most elegant and clear way possible.</source>
-        <target>Chez Lycuslabs, nous partageons une passion commune pour les technologies immersives, notamment la 3D, la RV et la RA, et sommes fascinés par les énormes possibilités qu'elles offrent. Notre mission est d'apporter une expérience unique de transformation de la perception de la frontière entre votre imagination et la réalité.
+        <target>Chez Lycuslabs, nous partageons une passion commune pour les technologies immersives, notamment la 3D, la RV et la RA, et sommes fascinés par les énormes possibilités qu'elles offrent. Notre mission est d'apporter une expérience unique et de transformer la perception de la frontière entre votre imagination et la réalité.
                                  Et c'est notre spécialité de créer des solutions visuelles interactives pour les architectes, les designers, les agences numériques et les entreprises dans divers domaines. Notre objectif est de développer des applications qui transmettent votre message au monde entier de la manière la plus élégante et la plus claire possible.</target>
       </trans-unit>
       <trans-unit id="S.yI1TE" resname="Our team includes the top 3D specialists, technology experts and designers in the industry. We believe that constant innovation is the key to building successful products. As a growing software development startup, we’re passionate and enthusiastic about experimenting with latest emerging technologies and strive to integrate creative vision, technical expertise and project management capabilities to ensure customer satisfaction.">
