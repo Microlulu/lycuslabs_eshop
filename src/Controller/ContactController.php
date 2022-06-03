@@ -52,13 +52,19 @@ class ContactController extends AbstractController
             We will read your message with great attention and answer you as soon as possible.<br/>
             Thank you for your patience.";
             $mail->sendSupport($contact->getEmail(),$contact->getFirstname(),'We received your message !', $content);
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('message_sent_confirmation');
         }
 
         // je renvoie ensuite ce formulaire à ma vue index de contact
         return $this->render('contact/index.html.twig', [
             'contact_form' => $form->createView(),
         ]);
+    }
+    //Route créer pour la page de confirmation après un envoi de message
+    #[Route('/message_sent_confirmation/', name: 'message_sent_confirmation', methods: ['GET'])]
+    public function showContactConfirmation(): Response
+    {
+        return $this->render('contact/sent_confirmation_contact.html.twig');
     }
 
 

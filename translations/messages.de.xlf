@@ -2101,6 +2101,46 @@
         <source>This product has been added to your cart!</source>
         <target>Dieses Produkt wurde in Ihren Warenkorb gelegt!</target>
       </trans-unit>
+      <trans-unit id="JovBgz6" resname="Thank you">
+        <source>Thank you</source>
+        <target>Danke</target>
+      </trans-unit>
+      <trans-unit id="HzHiLVO" resname="for your message !">
+        <source>for your message !</source>
+        <target>für Ihre Nachricht!</target>
+      </trans-unit>
+      <trans-unit id="jEwqAzr" resname="An email has been sent to our team, and we will answer you as soon as possible!">
+        <source>An email has been sent to our team, and we will answer you as soon as possible!</source>
+        <target>Eine E-Mail wurde an unser Team gesendet, und wir werden Ihnen so schnell wie möglich antworten!</target>
+      </trans-unit>
+      <trans-unit id="6F5EsCE" resname="In the meantime, feel free to explore our website!">
+        <source>In the meantime, feel free to explore our website!</source>
+        <target>In der Zwischenzeit können Sie sich gerne auf unserer Website umsehen!</target>
+      </trans-unit>
+      <trans-unit id="5rmX9iU" resname="GO TO HOME">
+        <source>GO TO HOME</source>
+        <target>NACH HOME GEHEN</target>
+      </trans-unit>
+      <trans-unit id="k3EzKJL" resname="An email has been sent to our team, and we will answer you as soon as possible to fix your problem!">
+        <source>An email has been sent to our team, and we will answer you as soon as possible to fix your problem!</source>
+        <target>An email has been sent to our team, and we will answer you as soon as possible to fix your problem!</target>
+      </trans-unit>
+      <trans-unit id="DiImtSN" resname="Welcome">
+        <source>Welcome</source>
+        <target>Willkommen</target>
+      </trans-unit>
+      <trans-unit id="qKfFFPC" resname="on Lycuslabs.com !">
+        <source>on Lycuslabs.com !</source>
+        <target>auf Lycuslabs.com !</target>
+      </trans-unit>
+      <trans-unit id="ZcoeLOs" resname="Please, look at your mailbox, you will receive a message from us containing a validation link to activate your account.">
+        <source>Please, look at your mailbox, you will receive a message from us containing a validation link to activate your account.</source>
+        <target>Schauen Sie in Ihrer Mailbox nach, Sie werden eine Nachricht von uns erhalten, die einen Validierungslink zur Aktivierung Ihres Kontos enthält.</target>
+      </trans-unit>
+      <trans-unit id="mjit051" resname="After the activation of your account, you will be able to access to the purchase of our products and manage your profile!">
+        <source>After the activation of your account, you will be able to access to the purchase of our products and manage your profile!</source>
+        <target>Nach der Aktivierung Ihres Kontos können Sie auf den Kauf unserer Produkte zugreifen und Ihr Profil verwalten!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

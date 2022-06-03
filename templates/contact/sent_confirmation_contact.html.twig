@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section>
+        <h1>{% trans %}Thank you{% endtrans %}</h1>
+        <h2>{% trans %}for your message !{% endtrans %}</h2>
+        <img class="mt-30" src="{{ asset('images/message-sent.png') }}" alt="message_sent">
+        <h3 class="mt-30">{% trans %}An email has been sent to our team, and we will answer you as soon as possible!{% endtrans %}</h3>
+        <h4>{% trans %}In the meantime, feel free to explore our website!{% endtrans %}</h4>
+        <a href="{{ path("home") }}" class="button mt-30">{% trans %}GO TO HOME{% endtrans %}</a>
+    </section>
+{% endblock %}

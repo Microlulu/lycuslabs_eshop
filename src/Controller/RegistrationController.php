@@ -74,14 +74,14 @@ class RegistrationController extends AbstractController
                 // je précise à mon utilisateur que son email a bien été activée et je le redirige sur la page login
                 //Todo : faire fonctionner le message flash
                 $this->addFlash('success', 'Your email address has been verified.');
-                return $this->redirectToRoute('app_login');
+                return $this->redirectToRoute('register_confirmation');
 
                 /*
                 return $userAuthenticator->authenticateUser(
                     $user,
                     $authenticator,
                     $request
-                );*/
+                ); */
 
 
         }
@@ -105,10 +105,17 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
         // quand l'inscription se passe correctement je renvoie l'utilisateur sur home
         return $this->redirectToRoute('home');
     }
+
+    //Route créer pour la page après un enregistrement utilisateur
+    #[Route('/register_confirmation/', name: 'register_confirmation', methods: ['GET'])]
+    public function showRegisterConfirmation(): Response
+    {
+        return $this->render('registration/register_confirmation_page.html.twig');
+    }
+
 }

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<section>
+    <h1>{% trans %}Welcome{% endtrans %}</h1>
+    <h2>{% trans %}on Lycuslabs.com !{% endtrans %}</h2>
+    <img class="mt-30" src="{{ asset('images/Lycuslabslogo.png') }}" alt="lycuslabs logo">
+    <h3 class="mt-30">{% trans %}Please, look at your mailbox, you will receive a message from us containing a validation link to activate your account.{% endtrans %}</h3>
+    <h4>{% trans %}After the activation of your account, you will be able to access to the purchase of our products and manage your profile!{% endtrans %}</h4>
+    <a href="{{ path("app_login") }}" class="button mt-30">{% trans %}LOGIN{% endtrans %}</a>
+</section>
+{% endblock %}
