@@ -121,7 +121,7 @@ class ResetPasswordController extends AbstractController
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('reset_password_confirmation');
         }
 
         return $this->render('reset_password/reset.html.twig', [
@@ -171,5 +171,12 @@ class ResetPasswordController extends AbstractController
         $this->setTokenObjectInSession($resetToken);
 
         return $this->redirectToRoute('app_check_email');
+    }
+
+    //Route créer pour la page après un changement de mot de passe
+    #[Route('/reset_password_confirmation/', name: 'reset_password_confirmation', methods: ['GET'])]
+    public function showRegisterConfirmation(): Response
+    {
+        return $this->render('reset_password/confirmation_reset_password.html.twig');
     }
 }

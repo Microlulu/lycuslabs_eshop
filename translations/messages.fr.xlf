@@ -2144,6 +2144,14 @@
         <source>After the activation of your account, you will be able to access to the purchase of our products and manage your profile!</source>
         <target>Après l'activation de votre compte, vous pourrez accéder à l'achat de nos produits et gérer votre profil !</target>
       </trans-unit>
+      <trans-unit id="yvqKR18" resname="Your password is up to date !">
+        <source>Your password is up to date !</source>
+        <target>Votre mot de passe est à jour !</target>
+      </trans-unit>
+      <trans-unit id="H9Yde0X" resname="You can now access to the website with your new password !">
+        <source>You can now access to the website with your new password !</source>
+        <target>Vous pouvez maintenant accéder au site avec votre nouveau mot de passe !</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
